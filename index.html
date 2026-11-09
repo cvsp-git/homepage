@@ -28,15 +28,13 @@ slug: index
       <p class="eyebrow">Research</p>
       <h2 id="research-title">Three directions, one goal: AI that works in real space.</h2>
     </header>
+    {% if site.research_overview and site.research_overview != "" %}
     <figure class="research-overview">
-      {% if site.research_overview and site.research_overview != "" %}
       <a href="{{ site.research_overview | prepend: '/images/research/' | relative_url }}" aria-label="Open research overview at full size">
         <img src="{{ site.research_overview | prepend: '/images/research/' | relative_url }}" alt="Overview of CVSP research topics">
       </a>
-      {% else %}
-      <div class="overview-ph"><span class="mono">Research overview figure</span><span>images/research/ 폴더에 그림을 넣고 _config.yml 의 research_overview 에 파일 이름을 적으세요.</span></div>
-      {% endif %}
     </figure>
+    {% endif %}
     <div class="research-grid">
       {% for r in site.data.research %}
       {% assign related = intl | where_exp: "p", "p.tags contains r.tag" %}
