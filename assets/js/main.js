@@ -139,14 +139,14 @@
   var mascotMode = false, assembleT = 0;
   var colorSprites = {};
   var spriteFor = function (r, g, b) {
-    var key = (r >> 4) + "," + (g >> 4) + "," + (b >> 4);
+    var key = (r >> 3) + "," + (g >> 3) + "," + (b >> 3);
     if (colorSprites[key]) return colorSprites[key];
-    var c = [(r >> 4) * 17, (g >> 4) * 17, (b >> 4) * 17];
+    var c = [(r >> 3) << 3, (g >> 3) << 3, (b >> 3) << 3];
     var s = document.createElement("canvas"); s.width = s.height = 32;
     var gx = s.getContext("2d");
     var grad = gx.createRadialGradient(16, 16, 0, 16, 16, 16);
     grad.addColorStop(0, "rgba(" + c + ",1)");
-    grad.addColorStop(0.5, "rgba(" + c + ",0.7)");
+    grad.addColorStop(0.45, "rgba(" + c + ",0.85)");
     grad.addColorStop(1, "rgba(" + c + ",0)");
     gx.fillStyle = grad; gx.fillRect(0, 0, 32, 32);
     colorSprites[key] = s;
@@ -159,53 +159,30 @@
       pts.push({ kind: 1, a: a, b: b, R: R, r: r, s: .7 + Math.random() * .6, c: Math.random() < 0.06 ? 3 : 1 });
     }
   };
-  var SH = 140; // mascot sample height (tools/make_mascot_data.py uses the same value)
-  var addMascotPixels = function (data, SW) {
-    var HEIGHT = 0.8, unit = HEIGHT / SH, step = 2, added = 0;
-    for (var py = 0; py < SH; py += step) {
-      for (var px = 0; px < SW; px += step) {
-        var o = (py * SW + px) * 4;
-        if (data[o + 3] < 140) continue;
-        var nx = (px - SW / 2) / (SW / 2), ny = (py - SH / 2) / (SH / 2);
-        var bulge = 0.1 * Math.sqrt(Math.max(0, 1 - (nx * nx * 0.8 + ny * ny * 0.6)));
-        var tx = (px - SW / 2) * unit, ty = 0.1 + (SH - py) * unit, tz = bulge + (Math.random() - .5) * .012;
-        pts.push({
-          kind: 2, tx: tx, ty: ty, tz: tz,
-          // start scattered, then assemble
-          sx0: (Math.random() - .5) * 2.4, sy0: Math.random() * 1.6 - .2, sz0: (Math.random() - .5) * 2.4,
-          spr: spriteFor(data[o], data[o + 1], data[o + 2]), s: .9 + Math.random() * .2, delay: Math.random() * .6
-        });
-        added++;
-      }
-    }
-    return added > 0;
-  };
-  var addMascotFromImage = function (img) {
-    var SW = Math.max(1, Math.round(img.naturalWidth / img.naturalHeight * SH));
-    var oc = document.createElement("canvas"); oc.width = SW; oc.height = SH;
-    var ox = oc.getContext("2d");
-    ox.drawImage(img, 0, 0, SW, SH);
-    try { return addMascotPixels(ox.getImageData(0, 0, SW, SH).data, SW); } catch (e) { return false; }
-  };
-  // fallback when the browser refuses to read the picture's pixels (e.g. sandboxed previews)
+  // Sanjini as a 3D gaussian cloud: points come from assets/js/mascot-data.js
+  // (made by tools/make_mascot_data.py: front, back and side surfaces of an inflated picture)
   var addMascotFromData = function () {
     var m = window.CVSP_MASCOT;
-    if (!m || m.h !== SH) return false;
-    var bin = atob(m.rgba), data = new Uint8Array(bin.length);
-    for (var q = 0; q < bin.length; q++) data[q] = bin.charCodeAt(q);
-    return addMascotPixels(data, m.w);
+    if (!m || !m.data) return false;
+    var bin = atob(m.data), dv = new DataView(new ArrayBuffer(bin.length));
+    for (var q = 0; q < bin.length; q++) dv.setUint8(q, bin.charCodeAt(q));
+    var thin = window.innerWidth < 640 ? 2 : 1; // lighter on phones
+    for (var k = 0; k < m.n; k += thin) {
+      var o = k * 9;
+      var tx = dv.getInt16(o, true) / 10000, ty = dv.getInt16(o + 2, true) / 10000, tz = -dv.getInt16(o + 4, true) / 10000; // +z is away from the camera
+      pts.push({
+        kind: 2, tx: tx, ty: ty, tz: tz,
+        sx0: (Math.random() - .5) * 2.4, sy0: Math.random() * 1.6 - .2, sz0: (Math.random() - .5) * 2.4,
+        spr: spriteFor(dv.getUint8(o + 6), dv.getUint8(o + 7), dv.getUint8(o + 8)),
+        s: (thin > 1 ? 1.35 : 1) * (.95 + Math.random() * .1), delay: Math.random() * .6
+      });
+    }
+    return m.n > 0;
   };
-  var startMascot = function () { mascotMode = true; assembleT = reduce ? 10 : 0; yaw = 0; pitch = 0.2; if (reduce) draw(3); };
+  var startMascot = function () { mascotMode = true; assembleT = reduce ? 10 : 0; yaw = 0; pitch = 0.2; };
   var setCount = function () { if (countEl) countEl.textContent = pts.length.toLocaleString("en-US"); };
-  if (mascotSrc) {
-    var mimg = new Image();
-    var fallback = function () { if (addMascotFromData()) startMascot(); else addTorus(); setCount(); };
-    mimg.onload = function () {
-      if (addMascotFromImage(mimg)) { startMascot(); setCount(); } else fallback();
-    };
-    mimg.onerror = fallback;
-    mimg.src = mascotSrc;
-  } else { addTorus(); }
+  var useMascot = !!mascotSrc && addMascotFromData();
+  if (!useMascot) addTorus();
   setCount();
 
   var W = 0, H = 0, dpr = 1, cx = 0, cy = 0, scale = 1;
@@ -278,7 +255,7 @@
     for (var q = 0; q < buf.length; q++) {
       var b = buf[q];
       if (b.k === 2) {
-        var ms = 10 * b.r * (scale / 320);
+        var ms = 6.5 * b.r * (scale / 320);
         ctx.globalCompositeOperation = "source-over";
         ctx.globalAlpha = 0.95;
         ctx.drawImage(b.spr, b.sx - ms / 2, b.sy - ms / 2, ms, ms);
@@ -299,13 +276,14 @@
     var dt = Math.min(0.05, (now - last) / 1000); last = now;
     if (visible && !document.hidden) {
       simT += dt;
-      if (mascotMode) { assembleT += dt; if (!drag) yaw += (Math.sin(simT * 0.45) * 0.28 - yaw) * Math.min(1, dt * 1.5); }
+      if (mascotMode) { assembleT += dt; if (!drag) yaw += (Math.sin(simT * 0.4) * 0.75 - yaw) * Math.min(1, dt * 1.5); }
       else if (!drag) yaw += spin * dt;
       draw(simT);
     }
     requestAnimationFrame(loop);
   };
 
+  if (useMascot) startMascot();
   resize();
   window.addEventListener("resize", resize);
   if ("IntersectionObserver" in window) {
