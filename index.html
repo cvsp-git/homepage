@@ -15,7 +15,6 @@ slug: index
     <h1 id="hero-title" class="hero-title">Computer Vision &amp; Signal Processing Lab</h1>
     <p class="hero-lede">We build spatial multimodal AI that understands, generates, and interacts with the physical world, from 4D scene reconstruction to robots that reason about the space around them.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="{{ '/publications.html' | relative_url }}">See our publications</a>
       <a class="btn btn-ghost" href="{{ '/join.html' | relative_url }}">Join the lab</a>
     </div>
   </div>
@@ -24,9 +23,12 @@ slug: index
 
 <section class="section" id="research" aria-labelledby="research-title">
   <div class="wrap">
-    <header class="section-head">
-      <p class="eyebrow">Research</p>
-      <h2 id="research-title">Our research focuses on:</h2>
+    <header class="section-head section-head-row research-head">
+      <div>
+        <p class="eyebrow">Research</p>
+        <h2 id="research-title">Our research focuses on:</h2>
+      </div>
+      <a class="btn btn-primary" href="{{ '/publications.html' | relative_url }}">See our publications</a>
     </header>
     {% if site.research_overview and site.research_overview != "" %}
     <figure class="research-overview">
@@ -37,18 +39,9 @@ slug: index
     {% endif %}
     <div class="research-grid">
       {% for r in site.data.research %}
-      {% assign related = intl | where_exp: "p", "p.tags contains r.tag" %}
       <article class="research-card">
-        <h3>{{ r.title }}</h3>
+        <h3>{{ r.title | replace: '-', '‑' }}</h3>
         <ul class="kw">{% for k in r.keywords %}<li>{{ k }}</li>{% endfor %}</ul>
-        <div class="research-recent">
-          <p class="mono small">{{ related.size }} papers · latest</p>
-          <ul>
-            {% for p in related limit: 2 %}
-            <li><span class="mono">{{ p.id }}</span> {{ p.title | split: ':' | first }}</li>
-            {% endfor %}
-          </ul>
-        </div>
       </article>
       {% endfor %}
     </div>

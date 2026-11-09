@@ -5,7 +5,7 @@
     Reconstructing and generating dynamic 3D worlds with Gaussian splatting,
     from single images, monocular video, and multi-view capture.
   keywords: [Gaussian Splatting, Dynamic Scene Reconstruction, 4D Generation]
-- title: Efficient Vision-Language(-Action) Models
+- title: Efficient Vision-Language Models and Vision-Language-Action Models
   tag: Efficient
   summary: >-
     Making multimodal foundation models fast and trustworthy through visual token pruning,
