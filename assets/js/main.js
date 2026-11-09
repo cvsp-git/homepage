@@ -220,7 +220,7 @@
       if (p.kind !== 2) continue;
       // fly outward from the body center, with some randomness
       var dx = p.tx + (Math.random() - .5) * .3, dy = p.ty - 0.45 + (Math.random() - .5) * .3, dz = p.tz + (Math.random() - .5) * .3;
-      var len = Math.sqrt(dx * dx + dy * dy + dz * dz) || 1, dist = 0.9 + Math.random() * 1.4;
+      var len = Math.sqrt(dx * dx + dy * dy + dz * dz) || 1, dist = 0.3 + Math.random() * 0.5;
       p.sx0 = p.tx + dx / len * dist; p.sy0 = p.ty + dy / len * dist; p.sz0 = p.tz + dz / len * dist;
       p.delay = Math.random() * .35;
     }
