@@ -206,10 +206,35 @@
   };
 
   var yaw = 0.6, pitch = 0.42, drag = null, spin = 0.12;
-  canvas.addEventListener("pointerdown", function (e) { drag = { x: e.clientX, y: e.clientY, yaw: yaw, pitch: pitch }; canvas.classList.add("dragging"); });
-  window.addEventListener("pointerup", function () { drag = null; canvas.classList.remove("dragging"); });
+  // click (or tap) on the mascot: the gaussians burst apart and fly back
+  var burstT = -1;
+  var onMascot = function (e) {
+    if (!mascotMode) return false;
+    var r = canvas.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
+    return Math.abs(mx - cx) < scale * 0.45 && my > cy - scale * 1.0 && my < cy + scale * 0.05;
+  };
+  var burst = function () {
+    if (burstT >= 0) return;
+    for (var n = 0; n < pts.length; n++) {
+      var p = pts[n];
+      if (p.kind !== 2) continue;
+      // fly outward from the body center, with some randomness
+      var dx = p.tx + (Math.random() - .5) * .3, dy = p.ty - 0.45 + (Math.random() - .5) * .3, dz = p.tz + (Math.random() - .5) * .3;
+      var len = Math.sqrt(dx * dx + dy * dy + dz * dz) || 1, dist = 0.9 + Math.random() * 1.4;
+      p.sx0 = p.tx + dx / len * dist; p.sy0 = p.ty + dy / len * dist; p.sz0 = p.tz + dz / len * dist;
+      p.delay = Math.random() * .35;
+    }
+    burstT = 0;
+  };
+  canvas.addEventListener("pointerdown", function (e) { drag = { x: e.clientX, y: e.clientY, yaw: yaw, pitch: pitch, moved: false }; canvas.classList.add("dragging"); });
+  window.addEventListener("pointerup", function (e) {
+    if (drag && !drag.moved && onMascot(e)) burst();
+    drag = null; canvas.classList.remove("dragging");
+  });
+  canvas.addEventListener("pointermove", function (e) { if (!drag) canvas.style.cursor = onMascot(e) ? "pointer" : ""; });
   window.addEventListener("pointermove", function (e) {
     if (!drag) return;
+    if (Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) > 6) drag.moved = true;
     yaw = drag.yaw + (e.clientX - drag.x) * 0.006;
     pitch = Math.max(0.1, Math.min(1.1, drag.pitch + (e.clientY - drag.y) * 0.004));
   });
@@ -228,7 +253,13 @@
         y = Math.sin(x * 3.1 + t * 0.9) * Math.cos(z * 2.6 - t * 0.7) * 0.12 + Math.sin((x + z) * 5 + t * 1.6) * 0.025;
         col = y > 0.06 ? 1 : (y > -0.02 ? 2 : 0);
       } else if (p.kind === 2) {
-        var e = Math.min(1, Math.max(0, (assembleT - p.delay) / 1.8));
+        var e;
+        if (burstT >= 0 && burstT < 0.55) {
+          // burst phase: from the shape out to the scattered positions
+          var u2 = burstT / 0.55; e = 1 - (1 - Math.pow(1 - u2, 3));
+        } else {
+          e = Math.min(1, Math.max(0, (assembleT - p.delay) / 1.8));
+        }
         e = 1 - Math.pow(1 - e, 3);
         var wob = Math.sin(t * 1.4 + p.tx * 6) * 0.004;
         x = p.sx0 + (p.tx - p.sx0) * e;
@@ -276,6 +307,7 @@
     var dt = Math.min(0.05, (now - last) / 1000); last = now;
     if (visible && !document.hidden) {
       simT += dt;
+      if (burstT >= 0) { burstT += dt; if (burstT >= 0.55) { burstT = -1; assembleT = 0; } }
       if (mascotMode) { assembleT += dt; if (!drag) yaw += (Math.sin(simT * 0.4) * 0.75 - yaw) * Math.min(1, dt * 1.5); }
       else if (!drag) yaw += spin * dt;
       draw(simT);

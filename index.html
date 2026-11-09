@@ -18,14 +18,8 @@ slug: index
       <a class="btn btn-primary" href="{{ '/publications.html' | relative_url }}">See our publications</a>
       <a class="btn btn-ghost" href="{{ '/join.html' | relative_url }}">Join the lab</a>
     </div>
-    <dl class="hero-stats">
-      <div><dt>International journals</dt><dd>{{ journals.size }}</dd></div>
-      <div><dt>International conferences</dt><dd>{{ confs.size }}</dd></div>
-      <div><dt>Ongoing projects</dt><dd>{{ ongoing.size }}</dd></div>
-      <div><dt>GPUs</dt><dd>{{ site.data.lab.compute[0].value }}</dd></div>
-    </dl>
   </div>
-  <p class="hero-readout mono" aria-hidden="true"><span id="splat-count">0</span> gaussians · t = <span id="splat-time">0.00</span>s · drag to orbit</p>
+  <p class="hero-readout mono" aria-hidden="true"><span id="splat-count">0</span> gaussians · t = <span id="splat-time">0.00</span>s · drag to orbit · click to scatter</p>
 </section>
 
 <section class="section" id="research" aria-labelledby="research-title">
