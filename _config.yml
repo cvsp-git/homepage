@@ -9,6 +9,7 @@ university: Pusan National University
 university_ko: 부산대학교
 department: Department of Electrical & Electronics Engineering, College of Engineering
 department_ko: 공과대학 전기전자공학부
+department_short: Electronic Engineering   # 메인 첫 화면 학교 이름 옆에 표시
 description: >-
   Computer Vision & Signal Processing Lab (CVSP) at Pusan National University.
   Spatial multimodal AI for understanding, generating, and interacting with the physical world.

@@ -10,6 +10,7 @@
 {{ content }}
 </main>
 {% include footer.html %}
-<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+{% if page.slug == 'index' and site.hero_mascot and site.hero_mascot != "" %}<script src="{{ '/assets/js/mascot-data.js' | relative_url }}"></script>
+{% endif %}<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>

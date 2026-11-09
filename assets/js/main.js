@@ -159,42 +159,51 @@
       pts.push({ kind: 1, a: a, b: b, R: R, r: r, s: .7 + Math.random() * .6, c: Math.random() < 0.06 ? 3 : 1 });
     }
   };
-  var addMascot = function (img) {
-    var SH = 124; // sample height in pixels
-    var SW = Math.max(1, Math.round(img.naturalWidth / img.naturalHeight * SH));
-    var oc = document.createElement("canvas"); oc.width = SW; oc.height = SH;
-    var ox = oc.getContext("2d");
-    ox.drawImage(img, 0, 0, SW, SH);
-    var data;
-    try { data = ox.getImageData(0, 0, SW, SH).data; } catch (e) { return false; }
-    var HEIGHT = 0.78, unit = HEIGHT / SH, step = 2, added = 0;
+  var SH = 140; // mascot sample height (tools/make_mascot_data.py uses the same value)
+  var addMascotPixels = function (data, SW) {
+    var HEIGHT = 0.8, unit = HEIGHT / SH, step = 2, added = 0;
     for (var py = 0; py < SH; py += step) {
       for (var px = 0; px < SW; px += step) {
         var o = (py * SW + px) * 4;
         if (data[o + 3] < 140) continue;
         var nx = (px - SW / 2) / (SW / 2), ny = (py - SH / 2) / (SH / 2);
-        var bulge = 0.16 * Math.sqrt(Math.max(0, 1 - (nx * nx * 0.8 + ny * ny * 0.6)));
-        var tx = (px - SW / 2) * unit, ty = 0.12 + (SH - py) * unit, tz = bulge + (Math.random() - .5) * .03;
+        var bulge = 0.1 * Math.sqrt(Math.max(0, 1 - (nx * nx * 0.8 + ny * ny * 0.6)));
+        var tx = (px - SW / 2) * unit, ty = 0.1 + (SH - py) * unit, tz = bulge + (Math.random() - .5) * .012;
         pts.push({
           kind: 2, tx: tx, ty: ty, tz: tz,
           // start scattered, then assemble
           sx0: (Math.random() - .5) * 2.4, sy0: Math.random() * 1.6 - .2, sz0: (Math.random() - .5) * 2.4,
-          spr: spriteFor(data[o], data[o + 1], data[o + 2]), s: .85 + Math.random() * .3, delay: Math.random() * .6
+          spr: spriteFor(data[o], data[o + 1], data[o + 2]), s: .9 + Math.random() * .2, delay: Math.random() * .6
         });
         added++;
       }
     }
     return added > 0;
   };
+  var addMascotFromImage = function (img) {
+    var SW = Math.max(1, Math.round(img.naturalWidth / img.naturalHeight * SH));
+    var oc = document.createElement("canvas"); oc.width = SW; oc.height = SH;
+    var ox = oc.getContext("2d");
+    ox.drawImage(img, 0, 0, SW, SH);
+    try { return addMascotPixels(ox.getImageData(0, 0, SW, SH).data, SW); } catch (e) { return false; }
+  };
+  // fallback when the browser refuses to read the picture's pixels (e.g. sandboxed previews)
+  var addMascotFromData = function () {
+    var m = window.CVSP_MASCOT;
+    if (!m || m.h !== SH) return false;
+    var bin = atob(m.rgba), data = new Uint8Array(bin.length);
+    for (var q = 0; q < bin.length; q++) data[q] = bin.charCodeAt(q);
+    return addMascotPixels(data, m.w);
+  };
+  var startMascot = function () { mascotMode = true; assembleT = reduce ? 10 : 0; yaw = 0; pitch = 0.2; if (reduce) draw(3); };
   var setCount = function () { if (countEl) countEl.textContent = pts.length.toLocaleString("en-US"); };
   if (mascotSrc) {
     var mimg = new Image();
+    var fallback = function () { if (addMascotFromData()) startMascot(); else addTorus(); setCount(); };
     mimg.onload = function () {
-      if (addMascot(mimg)) { mascotMode = true; assembleT = reduce ? 10 : 0; yaw = 0; pitch = 0.22; if (reduce) draw(3); }
-      else addTorus();
-      setCount();
+      if (addMascotFromImage(mimg)) { startMascot(); setCount(); } else fallback();
     };
-    mimg.onerror = function () { addTorus(); setCount(); };
+    mimg.onerror = fallback;
     mimg.src = mascotSrc;
   } else { addTorus(); }
   setCount();
@@ -269,9 +278,9 @@
     for (var q = 0; q < buf.length; q++) {
       var b = buf[q];
       if (b.k === 2) {
-        var ms = 12 * b.r * (scale / 320);
+        var ms = 10 * b.r * (scale / 320);
         ctx.globalCompositeOperation = "source-over";
-        ctx.globalAlpha = 0.85;
+        ctx.globalAlpha = 0.95;
         ctx.drawImage(b.spr, b.sx - ms / 2, b.sy - ms / 2, ms, ms);
         ctx.globalCompositeOperation = "lighter";
         continue;
@@ -290,7 +299,7 @@
     var dt = Math.min(0.05, (now - last) / 1000); last = now;
     if (visible && !document.hidden) {
       simT += dt;
-      if (mascotMode) { assembleT += dt; if (!drag) yaw += (Math.sin(simT * 0.45) * 0.55 - yaw) * Math.min(1, dt * 1.5); }
+      if (mascotMode) { assembleT += dt; if (!drag) yaw += (Math.sin(simT * 0.45) * 0.28 - yaw) * Math.min(1, dt * 1.5); }
       else if (!drag) yaw += spin * dt;
       draw(simT);
     }

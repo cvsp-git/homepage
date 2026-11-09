@@ -11,7 +11,7 @@ slug: index
   <canvas class="hero-canvas" id="splat-canvas" aria-hidden="true"{% if site.hero_mascot and site.hero_mascot != "" %} data-mascot="{{ site.hero_mascot | prepend: '/images/logo/' | relative_url }}"{% endif %}></canvas>
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="wrap hero-inner">
-    <p class="eyebrow eyebrow-hero">{{ site.university }} · {{ site.department_ko }}</p>
+    <p class="eyebrow eyebrow-hero">{{ site.university }} · {{ site.department_short }}</p>
     <h1 id="hero-title" class="hero-title">Computer Vision &amp; Signal Processing Lab</h1>
     <p class="hero-lede">We build spatial multimodal AI that understands, generates, and interacts with the physical world, from 4D scene reconstruction to robots that reason about the space around them.</p>
     <div class="hero-actions">
