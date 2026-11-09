@@ -1,19 +1,7 @@
-# 홈 화면 "Research" 영역. tag는 논문 데이터의 tags와 같아야 관련 논문이 자동으로 붙습니다.
+# 홈 화면 "Our research focuses on:" 목록. 굵은 제목 — 설명 형식으로 나옵니다.
 - title: 3D/4D World Modeling
-  tag: World Modeling
-  summary: >-
-    Reconstructing and generating dynamic 3D worlds with Gaussian splatting,
-    from single images, monocular video, and multi-view capture.
-  keywords: [Gaussian Splatting, Dynamic Scene Reconstruction, 4D Generation]
-- title: Efficient Vision-Language Models and Vision-Language-Action Models
-  tag: Efficient
-  summary: >-
-    Making multimodal foundation models fast and trustworthy through visual token pruning,
-    model compression, and reliable multimodal reasoning.
-  keywords: [Token Pruning, Model Compression, Hallucination Mitigation]
+  summary: Gaussian splatting, dynamic scene reconstruction
+- title: Efficient Vision-Language/Vision-Language-Action Models
+  summary: token pruning, model compression, and reliable multimodal reasoning
 - title: Embodied Spatial Intelligence
-  tag: Robotics
-  summary: >-
-    Perception and decision-making for robots acting in real homes and workplaces,
-    from open-vocabulary detection to spatial reasoning.
-  keywords: [Home Robots, Open-Vocabulary Perception, Spatial Reasoning]
+  summary: real-world perception and decision-making for robots

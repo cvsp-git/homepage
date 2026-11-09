@@ -22,29 +22,30 @@ slug: index
 </section>
 
 <section class="section" id="research" aria-labelledby="research-title">
-  <div class="wrap">
-    <header class="section-head section-head-row research-head">
-      <div>
-        <p class="eyebrow">Research</p>
+  <div class="wrap research-split">
+    <div class="research-main">
+      <header class="research-head">
         <h2 id="research-title">Our research focuses on:</h2>
-      </div>
-      <a class="btn btn-primary" href="{{ '/publications.html' | relative_url }}">See our publications</a>
-    </header>
-    {% if site.research_overview and site.research_overview != "" %}
-    <figure class="research-overview">
-      <a href="{{ site.research_overview | prepend: '/images/research/' | relative_url }}" aria-label="Open research overview at full size">
-        <img src="{{ site.research_overview | prepend: '/images/research/' | relative_url }}" alt="Overview of CVSP research topics">
-      </a>
-    </figure>
-    {% endif %}
-    <div class="research-grid">
-      {% for r in site.data.research %}
-      <article class="research-card">
-        <h3>{{ r.title | replace: '-', '‑' }}</h3>
-        <ul class="kw">{% for k in r.keywords %}<li>{{ k }}</li>{% endfor %}</ul>
-      </article>
-      {% endfor %}
+        <a class="pill-btn" href="{{ '/publications.html' | relative_url }}">Explore Our Research <span aria-hidden="true">→</span></a>
+      </header>
+      {% if site.research_overview and site.research_overview != "" %}
+      <figure class="research-overview">
+        <a href="{{ site.research_overview | prepend: '/images/research/' | relative_url }}" aria-label="Open research overview at full size">
+          <img src="{{ site.research_overview | prepend: '/images/research/' | relative_url }}" alt="Overview of CVSP research topics">
+        </a>
+      </figure>
+      {% endif %}
+      <ul class="focus-list">
+        {% for r in site.data.research %}
+        <li><strong>{{ r.title }}</strong> — {{ r.summary }}</li>
+        {% endfor %}
+      </ul>
     </div>
+    <aside class="recruit-card" aria-labelledby="recruit-title">
+      <h2 id="recruit-title">We are recruiting</h2>
+      <p>{{ site.recruiting }}</p>
+      <a class="pill-btn pill-outline" href="{{ '/join.html' | relative_url }}">Join Us!</a>
+    </aside>
   </div>
 </section>
 
@@ -127,13 +128,3 @@ slug: index
   </div>
 </section>
 
-<section class="join-band" aria-labelledby="join-title">
-  <div class="wrap join-inner">
-    <div>
-      <p class="eyebrow eyebrow-hero">We are recruiting</p>
-      <h2 id="join-title">Research interns, M.S. and Ph.D. students, and postdocs</h2>
-      <p>Self-motivated students who want to work on 3D/4D vision, multimodal models, and robotics are welcome. Flexible hours, real hardware, and papers at top venues.</p>
-    </div>
-    <a class="btn btn-primary" href="{{ '/join.html' | relative_url }}">How to apply</a>
-  </div>
-</section>

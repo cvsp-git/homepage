@@ -16,6 +16,8 @@ description: >-
 email: kbkong@pusan.ac.kr
 phone: "(+82) 51-510-2399"
 address: "Computer Vision & Signal Processing Lab, Dept. of Electrical & Electronics Engineering, Pusan National University, 2 Busandaehak-ro 63beon-gil, Geumjeong-gu, Busan 46241, Republic of Korea"
+# 홈 화면 "We are recruiting" 카드 문구
+recruiting: "Research Interns, M.S. Students, Ph.D. Students and Postdoctoral Researchers"
 project_pages: https://paper.pnu-cvsp.com/
 github: https://github.com/cvsp-lab
 
