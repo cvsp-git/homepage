@@ -133,13 +133,71 @@
       pts.push({ kind: 0, x: u + (Math.random() - .5) * .04, z: v + (Math.random() - .5) * .04, y: 0, s: .9 + Math.random() * .5 });
     }
   }
-  for (var k = 0; k < 260; k++) {
-    // points on a torus
-    var a = Math.random() * Math.PI * 2, b = Math.random() * Math.PI * 2;
-    var R = .34, r = .12 + Math.random() * .03;
-    pts.push({ kind: 1, a: a, b: b, R: R, r: r, s: .7 + Math.random() * .6, c: Math.random() < 0.06 ? 3 : 1 });
-  }
-  if (countEl) countEl.textContent = pts.length.toLocaleString("en-US");
+  // optional mascot: <canvas data-mascot="..."> turns a picture into gaussians standing on the field.
+  // Without it, a floating torus is drawn instead.
+  var mascotSrc = canvas.getAttribute("data-mascot");
+  var mascotMode = false, assembleT = 0;
+  var colorSprites = {};
+  var spriteFor = function (r, g, b) {
+    var key = (r >> 4) + "," + (g >> 4) + "," + (b >> 4);
+    if (colorSprites[key]) return colorSprites[key];
+    var c = [(r >> 4) * 17, (g >> 4) * 17, (b >> 4) * 17];
+    var s = document.createElement("canvas"); s.width = s.height = 32;
+    var gx = s.getContext("2d");
+    var grad = gx.createRadialGradient(16, 16, 0, 16, 16, 16);
+    grad.addColorStop(0, "rgba(" + c + ",1)");
+    grad.addColorStop(0.5, "rgba(" + c + ",0.7)");
+    grad.addColorStop(1, "rgba(" + c + ",0)");
+    gx.fillStyle = grad; gx.fillRect(0, 0, 32, 32);
+    colorSprites[key] = s;
+    return s;
+  };
+  var addTorus = function () {
+    for (var k = 0; k < 260; k++) {
+      var a = Math.random() * Math.PI * 2, b = Math.random() * Math.PI * 2;
+      var R = .34, r = .12 + Math.random() * .03;
+      pts.push({ kind: 1, a: a, b: b, R: R, r: r, s: .7 + Math.random() * .6, c: Math.random() < 0.06 ? 3 : 1 });
+    }
+  };
+  var addMascot = function (img) {
+    var SH = 96; // sample height in pixels
+    var SW = Math.max(1, Math.round(img.naturalWidth / img.naturalHeight * SH));
+    var oc = document.createElement("canvas"); oc.width = SW; oc.height = SH;
+    var ox = oc.getContext("2d");
+    ox.drawImage(img, 0, 0, SW, SH);
+    var data;
+    try { data = ox.getImageData(0, 0, SW, SH).data; } catch (e) { return false; }
+    var HEIGHT = 0.78, unit = HEIGHT / SH, step = 2, added = 0;
+    for (var py = 0; py < SH; py += step) {
+      for (var px = 0; px < SW; px += step) {
+        var o = (py * SW + px) * 4;
+        if (data[o + 3] < 140) continue;
+        var nx = (px - SW / 2) / (SW / 2), ny = (py - SH / 2) / (SH / 2);
+        var bulge = 0.16 * Math.sqrt(Math.max(0, 1 - (nx * nx * 0.8 + ny * ny * 0.6)));
+        var tx = (px - SW / 2) * unit, ty = 0.12 + (SH - py) * unit, tz = bulge + (Math.random() - .5) * .03;
+        pts.push({
+          kind: 2, tx: tx, ty: ty, tz: tz,
+          // start scattered, then assemble
+          sx0: (Math.random() - .5) * 2.4, sy0: Math.random() * 1.6 - .2, sz0: (Math.random() - .5) * 2.4,
+          spr: spriteFor(data[o], data[o + 1], data[o + 2]), s: .85 + Math.random() * .3, delay: Math.random() * .6
+        });
+        added++;
+      }
+    }
+    return added > 0;
+  };
+  var setCount = function () { if (countEl) countEl.textContent = pts.length.toLocaleString("en-US"); };
+  if (mascotSrc) {
+    var mimg = new Image();
+    mimg.onload = function () {
+      if (addMascot(mimg)) { mascotMode = true; assembleT = reduce ? 10 : 0; yaw = 0; pitch = 0.22; if (reduce) draw(3); }
+      else addTorus();
+      setCount();
+    };
+    mimg.onerror = function () { addTorus(); setCount(); };
+    mimg.src = mascotSrc;
+  } else { addTorus(); }
+  setCount();
 
   var W = 0, H = 0, dpr = 1, cx = 0, cy = 0, scale = 1;
   var resize = function () {
@@ -149,8 +207,9 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     var wide = W > 900;
     cx = wide ? W * 0.70 : W * 0.5;
-    cy = wide ? H * 0.50 : H * 0.86;
-    scale = Math.min(wide ? W * 0.30 : W * 0.42, H * 0.62);
+    var hasM = canvas.hasAttribute("data-mascot");
+    cy = wide ? H * 0.50 : (hasM ? H - 70 : H * 0.86);
+    scale = Math.min(wide ? W * 0.30 : W * 0.42, H * 0.62) * (canvas.hasAttribute("data-mascot") ? 0.82 : 1);
   };
 
   var yaw = 0.6, pitch = 0.42, drag = null, spin = 0.12;
@@ -172,8 +231,17 @@
       var p = pts[n], x, y, z, col;
       if (p.kind === 0) {
         x = p.x; z = p.z;
+        if (mascotMode) { x *= 0.85; z *= 0.85; }
         y = Math.sin(x * 3.1 + t * 0.9) * Math.cos(z * 2.6 - t * 0.7) * 0.12 + Math.sin((x + z) * 5 + t * 1.6) * 0.025;
         col = y > 0.06 ? 1 : (y > -0.02 ? 2 : 0);
+      } else if (p.kind === 2) {
+        var e = Math.min(1, Math.max(0, (assembleT - p.delay) / 1.8));
+        e = 1 - Math.pow(1 - e, 3);
+        var wob = Math.sin(t * 1.4 + p.tx * 6) * 0.004;
+        x = p.sx0 + (p.tx - p.sx0) * e;
+        y = p.sy0 + (p.ty + wob + Math.sin(t * 1.1) * 0.012 - p.sy0) * e;
+        z = p.sz0 + (p.tz - p.sz0) * e;
+        col = -1;
       } else {
         var bb = p.b + t * 0.6;
         var rx = (p.R + p.r * Math.cos(bb)) * Math.cos(p.a), ry = p.r * Math.sin(bb), rz = (p.R + p.r * Math.cos(bb)) * Math.sin(p.a);
@@ -187,13 +255,22 @@
       var X = x * cyw - z * syw, Z = x * syw + z * cyw;
       var Y = y * cp - Z * sp, Z2 = y * sp + Z * cp;
       var persp = 2.6 / (2.6 + Z2);
-      buf.push({ sx: cx + X * scale * persp, sy: cy - Y * scale * persp, d: Z2, r: p.s * persp, c: col, k: p.kind });
+      buf.push({ sx: cx + X * scale * persp, sy: cy - Y * scale * persp, d: Z2, r: p.s * persp, c: col, k: p.kind, spr: p.spr });
     }
-    buf.sort(function (m, n2) { return n2.d - m.d; });
+    // in mascot mode the field is drawn first and the mascot on top, so it stays readable
+    buf.sort(function (m, n2) { if (mascotMode && (m.k === 2) !== (n2.k === 2)) return m.k === 2 ? 1 : -1; return n2.d - m.d; });
     for (var q = 0; q < buf.length; q++) {
       var b = buf[q];
+      if (b.k === 2) {
+        var ms = 15 * b.r * (scale / 320);
+        ctx.globalCompositeOperation = "source-over";
+        ctx.globalAlpha = 0.85;
+        ctx.drawImage(b.spr, b.sx - ms / 2, b.sy - ms / 2, ms, ms);
+        ctx.globalCompositeOperation = "lighter";
+        continue;
+      }
       var size = (b.k === 1 ? 16 : 22) * b.r * (scale / 320);
-      ctx.globalAlpha = Math.max(0.05, Math.min(0.55, 0.42 - b.d * 0.18));
+      ctx.globalAlpha = Math.max(0.05, Math.min(mascotMode ? 0.3 : 0.55, (mascotMode ? 0.24 : 0.42) - b.d * 0.18));
       ctx.drawImage(sprites[b.c], b.sx - size / 2, b.sy - size / 2, size, size);
     }
     ctx.globalAlpha = 1;
@@ -206,7 +283,8 @@
     var dt = Math.min(0.05, (now - last) / 1000); last = now;
     if (visible && !document.hidden) {
       simT += dt;
-      if (!drag) yaw += spin * dt;
+      if (mascotMode) { assembleT += dt; if (!drag) yaw += (Math.sin(simT * 0.45) * 0.55 - yaw) * Math.min(1, dt * 1.5); }
+      else if (!drag) yaw += spin * dt;
       draw(simT);
     }
     requestAnimationFrame(loop);

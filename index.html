@@ -7,8 +7,8 @@ slug: index
 {% assign confs = intl | where: "type", "conference" %}
 {% assign ongoing = site.data.projects | where: "status", "ongoing" %}
 
-<section class="hero" aria-labelledby="hero-title">
-  <canvas class="hero-canvas" id="splat-canvas" aria-hidden="true"></canvas>
+<section class="hero{% if site.hero_mascot and site.hero_mascot != "" %} has-mascot{% endif %}" aria-labelledby="hero-title">
+  <canvas class="hero-canvas" id="splat-canvas" aria-hidden="true"{% if site.hero_mascot and site.hero_mascot != "" %} data-mascot="{{ site.hero_mascot | prepend: '/images/logo/' | relative_url }}"{% endif %}></canvas>
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="wrap hero-inner">
     <p class="eyebrow eyebrow-hero">{{ site.university }} · {{ site.department_ko }}</p>

@@ -22,6 +22,10 @@ github: https://github.com/cvsp-lab
 url: "https://www.pnu-cvsp.com"
 baseurl: ""
 
+# 메인 첫 화면 가우시안 필드 위에 서 있는 캐릭터(산지니 등). 배경이 투명한 PNG를 images/logo/ 에 넣고 파일 이름을 적으세요.
+# 비워 두면 기본 모양(도넛)이 나옵니다.
+hero_mascot: ""
+
 # 홈 화면 Research 섹션 맨 위에 크게 들어가는 연구주제 모음 그림 (images/research/ 폴더의 파일 이름)
 research_overview: ""
 

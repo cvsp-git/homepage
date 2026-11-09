@@ -6,19 +6,19 @@
 # - 사진이 아직 없으면 image 를 비워 두세요. 색 블록으로 표시됩니다.
 # ─────────────────────────────────────────────
 - {date: "2026.10", category: Celebration, title: "October Birthday Party", image: ""}
-- {date: "2026.09", category: Conference, title: "ECCV 2026 in Sweden", image: "", featured: true}
+- {date: "2026.09", category: Conference, title: "ECCV 2026 in Malmö, Sweden", image: "2026-09-eccv-malmo.jpg", featured: true}
 - {date: "2026.09", category: Celebration, title: "September Birthday Party", image: ""}
-- {date: "2026.08", category: Celebration, title: "Graduation Ceremony", image: ""}
+- {date: "2026.08", category: Celebration, title: "First CVSP Graduation Ceremony", image: "2026-08-graduation.jpg", featured: true}
 - {date: "2026.08", category: Celebration, title: "Celebration Party", image: ""}
 - {date: "2026.08", category: Conference, title: "KCCV 2026 in Busan", image: ""}
-- {date: "2026.07", category: Conference, title: "ICML 2026 in Seoul", image: "", featured: true}
+- {date: "2026.07", category: Conference, title: "ICML 2026 in Seoul", image: ""}
 - {date: "2026.07", category: Conference, title: "ITC-CSCC 2026 in Bangkok", image: ""}
-- {date: "2026.06", category: Event, title: "Lab Renewal", image: "", featured: true}
-- {date: "2026.06", category: Event, title: "CVSP 2026 Summer MT", image: "", featured: true}
-- {date: "2026.06", category: Conference, title: "IEIE Summer Conference 2026 in Jeju", image: ""}
-- {date: "2026.06", category: Conference, title: "CVPR 2026 in Denver", image: "", featured: true}
+- {date: "2026.06", category: Event, title: "Lab Renewal", image: ""}
+- {date: "2026.06", category: Event, title: "CVSP 2026 Summer MT", image: ""}
+- {date: "2026.06", category: Conference, title: "IEIE Summer Conference 2026 in Jeju", image: "2026-06-ieie-jeju.jpg", featured: true}
+- {date: "2026.06", category: Conference, title: "CVPR 2026 in Denver", image: ""}
 - {date: "2026.05", category: Event, title: "Teachers' Day", image: ""}
-- {date: "2026.04", category: Conference, title: "ICLR 2026 in Brazil", image: ""}
+- {date: "2026.04", category: Conference, title: "ICLR 2026 in Brazil", image: "2026-04-iclr-brazil.jpg", featured: true}
 - {date: "2026.04", category: Event, title: "Spring Blossom Outing", image: ""}
 - {date: "2026.02", category: Celebration, title: "Graduation Ceremony", image: ""}
 - {date: "2026.02", category: Event, title: "CVSP 2026 Winter MT", image: ""}
