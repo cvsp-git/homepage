@@ -160,7 +160,7 @@
     }
   };
   var addMascot = function (img) {
-    var SH = 96; // sample height in pixels
+    var SH = 124; // sample height in pixels
     var SW = Math.max(1, Math.round(img.naturalWidth / img.naturalHeight * SH));
     var oc = document.createElement("canvas"); oc.width = SW; oc.height = SH;
     var ox = oc.getContext("2d");
@@ -262,7 +262,7 @@
     for (var q = 0; q < buf.length; q++) {
       var b = buf[q];
       if (b.k === 2) {
-        var ms = 15 * b.r * (scale / 320);
+        var ms = 12 * b.r * (scale / 320);
         ctx.globalCompositeOperation = "source-over";
         ctx.globalAlpha = 0.85;
         ctx.drawImage(b.spr, b.sx - ms / 2, b.sy - ms / 2, ms, ms);
