@@ -206,10 +206,17 @@
     canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     var wide = W > 900;
+    if (canvas.hasAttribute("data-mascot")) {
+      // centered stage at the top of the hero; the lab name sits below it
+      var stage = parseFloat(getComputedStyle(canvas.parentNode).getPropertyValue("--stage")) || 400;
+      cx = W * 0.5;
+      cy = stage - 80;
+      scale = Math.min(W * 0.5, stage * 0.78);
+      return;
+    }
     cx = wide ? W * 0.70 : W * 0.5;
-    var hasM = canvas.hasAttribute("data-mascot");
-    cy = wide ? H * 0.50 : (hasM ? H - 70 : H * 0.86);
-    scale = Math.min(wide ? W * 0.30 : W * 0.42, H * 0.62) * (canvas.hasAttribute("data-mascot") ? 0.82 : 1);
+    cy = wide ? H * 0.50 : H * 0.86;
+    scale = Math.min(wide ? W * 0.30 : W * 0.42, H * 0.62);
   };
 
   var yaw = 0.6, pitch = 0.42, drag = null, spin = 0.12;

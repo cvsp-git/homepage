@@ -1,11 +1,8 @@
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="{{ '/index.html' | relative_url }}" aria-label="CVSP Lab home">
-      {% include logo.svg %}
-      <span class="brand-text">
-        <span class="brand-name">CVSP Lab</span>
-        <span class="brand-sub">{{ site.university }}</span>
-      </span>
+      <img class="brand-logo" src="{{ '/images/logo/cvsp-logo-light.png' | relative_url }}" alt="CVSP Lab" width="573" height="137">
+      <span class="brand-sub">{{ site.university }}</span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
       <span class="sr">Menu</span><span class="bars" aria-hidden="true"></span>
