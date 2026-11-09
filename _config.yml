@@ -1,0 +1,29 @@
+# ─────────────────────────────────────────────
+# CVSP Lab 홈페이지 기본 설정
+# 이 파일을 바꾼 뒤에는 로컬 미리보기(jekyll serve)를 다시 켜야 반영됩니다.
+# ─────────────────────────────────────────────
+title: CVSP Lab
+long_title: Computer Vision & Signal Processing Lab
+korean_title: 컴퓨터비전 및 신호처리 연구실
+university: Pusan National University
+university_ko: 부산대학교
+department: Department of Electrical & Electronics Engineering, College of Engineering
+department_ko: 공과대학 전기전자공학부
+description: >-
+  Computer Vision & Signal Processing Lab (CVSP) at Pusan National University.
+  Spatial multimodal AI for understanding, generating, and interacting with the physical world.
+email: kbkong@pusan.ac.kr
+phone: "(+82) 51-510-2399"
+address: "Computer Vision & Signal Processing Lab, Dept. of Electrical & Electronics Engineering, Pusan National University, 2 Busandaehak-ro 63beon-gil, Geumjeong-gu, Busan 46241, Republic of Korea"
+project_pages: https://paper.pnu-cvsp.com/
+github: https://github.com/cvsp-lab
+
+# 도메인 연결 후에는 url을 실제 주소로 둡니다. baseurl은 비워 두세요.
+url: "https://www.pnu-cvsp.com"
+baseurl: ""
+
+# 교수님 이름: 논문 저자 목록에서 굵게 표시됩니다.
+pi_names: ["Kyeongbo Kong", "공경보"]
+
+markdown: kramdown
+exclude: [README.md, Gemfile, Gemfile.lock, vendor, tools, .github]

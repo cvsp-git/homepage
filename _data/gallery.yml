@@ -1,0 +1,23 @@
+# ─────────────────────────────────────────────
+# 갤러리 (Lab Life). 새 사진은 맨 위에 추가하세요.
+# - image: images/gallery/ 폴더에 사진을 넣고 파일 이름을 적습니다. (가로 1600px 정도 권장)
+# - category: Conference / Celebration / Event
+# - 사진이 아직 없으면 image 를 비워 두세요. 색 블록으로 표시됩니다.
+# ─────────────────────────────────────────────
+- {date: "2026.10", category: Celebration, title: "October Birthday Party", image: ""}
+- {date: "2026.09", category: Conference, title: "ECCV 2026 in Sweden", image: ""}
+- {date: "2026.09", category: Celebration, title: "September Birthday Party", image: ""}
+- {date: "2026.08", category: Celebration, title: "Graduation Ceremony", image: ""}
+- {date: "2026.08", category: Celebration, title: "Celebration Party", image: ""}
+- {date: "2026.08", category: Conference, title: "KCCV 2026 in Busan", image: ""}
+- {date: "2026.07", category: Conference, title: "ICML 2026 in Seoul", image: ""}
+- {date: "2026.07", category: Conference, title: "ITC-CSCC 2026 in Bangkok", image: ""}
+- {date: "2026.06", category: Event, title: "Lab Renewal", image: ""}
+- {date: "2026.06", category: Event, title: "CVSP 2026 Summer MT", image: ""}
+- {date: "2026.06", category: Conference, title: "IEIE Summer Conference 2026 in Jeju", image: ""}
+- {date: "2026.06", category: Conference, title: "CVPR 2026 in Denver", image: ""}
+- {date: "2026.05", category: Event, title: "Teachers' Day", image: ""}
+- {date: "2026.04", category: Conference, title: "ICLR 2026 in Brazil", image: ""}
+- {date: "2026.04", category: Event, title: "Spring Blossom Outing", image: ""}
+- {date: "2026.02", category: Celebration, title: "Graduation Ceremony", image: ""}
+- {date: "2026.02", category: Event, title: "CVSP 2026 Winter MT", image: ""}

@@ -1,0 +1,19 @@
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-id">
+      <p class="footer-name">{{ site.long_title }}</p>
+      <p class="footer-ko">{{ site.university_ko }} {{ site.department_ko }} · {{ site.korean_title }}</p>
+      <p class="footer-addr">{{ site.address }}</p>
+    </div>
+    <dl class="footer-contact">
+      <div><dt>Email</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
+      <div><dt>Phone</dt><dd>{{ site.phone }}</dd></div>
+      <div><dt>Project pages</dt><dd><a href="{{ site.project_pages }}">paper.pnu-cvsp.com</a></dd></div>
+      <div><dt>Code</dt><dd><a href="{{ site.github }}">github.com/cvsp-lab</a></dd></div>
+    </dl>
+  </div>
+  <div class="wrap footer-base">
+    <span>© {{ site.time | date: '%Y' }} CVSP Lab, Pusan National University</span>
+    <span class="mono">35.2316° N, 129.0825° E</span>
+  </div>
+</footer>

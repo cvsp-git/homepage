@@ -1,0 +1,49 @@
+---
+layout: default
+title: Projects
+slug: projects
+---
+{% assign ongoing = site.data.projects | where: "status", "ongoing" %}
+{% assign done = site.data.projects | where: "status", "complete" %}
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Projects</p>
+    <h1>Research projects</h1>
+    <p class="lede">Funded by government agencies and industry partners including MSIT, NRF, ETRI, LG Electronics, and LG Display.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="group-head"><h2>Ongoing</h2><span class="mono count">{{ ongoing.size }}</span></header>
+    <ul class="project-grid">
+      {% for pj in ongoing %}
+      <li class="project">
+        <p class="pj-funder">{{ pj.funder }}</p>
+        <h3>{{ pj.title }}</h3>
+        <p class="pj-period mono"><span class="live-dot" aria-hidden="true"></span>{{ pj.start }} – {% if pj.end != "" %}{{ pj.end }}{% else %}Present{% endif %}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <header class="group-head"><h2>Completed</h2><span class="mono count">{{ done.size }}</span></header>
+    <div class="table-scroll">
+      <table class="pj-table">
+        <thead><tr><th scope="col">Period</th><th scope="col">Project</th><th scope="col">Funder</th></tr></thead>
+        <tbody>
+          {% for pj in done %}
+          <tr>
+            <td class="mono nowrap">{{ pj.start }} – {{ pj.end }}</td>
+            <td>{{ pj.title }}{% if pj.note %} <span class="badge badge-award">{{ pj.note }}</span>{% endif %}</td>
+            <td class="nowrap">{{ pj.funder }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

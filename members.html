@@ -1,0 +1,49 @@
+---
+layout: default
+title: Members
+slug: members
+---
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Members</p>
+    <h1>People</h1>
+    <p class="lede">CVSP is a team of researchers at Pusan National University working across computer vision, multimodal learning, and robotics.</p>
+  </div>
+</section>
+
+{% for g in site.data.members %}
+<section class="section member-group{% if forloop.first %} member-group-pi{% endif %}" aria-labelledby="g-{{ forloop.index }}">
+  <div class="wrap">
+    <header class="group-head">
+      <h2 id="g-{{ forloop.index }}">{{ g.group }}</h2>
+      <span class="mono count">{{ g.people.size }}</span>
+    </header>
+    {% if forloop.first %}
+      {% for m in g.people %}
+      <article class="pi-card">
+        {% include avatar.html m=m %}
+        <div class="pi-body">
+          <h3>{{ m.name }} <span class="ko">{{ m.name_ko }}</span></h3>
+          <p class="role">{{ m.role }}</p>
+          <p class="pi-dept">{{ site.department }}, {{ site.university }}</p>
+          {% if m.interests %}<ul class="kw">{% for k in m.interests %}<li>{{ k }}</li>{% endfor %}</ul>{% endif %}
+          <p class="pi-contact"><a href="mailto:{{ m.email }}">{{ m.email }}</a> · {{ site.phone }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    {% else %}
+    <ul class="member-grid">
+      {% for m in g.people %}
+      <li class="member">
+        {% include avatar.html m=m %}
+        <p class="m-name">{{ m.name }}</p>
+        {% if m.name_ko != "" %}<p class="m-ko">{{ m.name_ko }}</p>{% endif %}
+        {% if m.note %}<p class="m-note mono">{{ m.note }}</p>{% endif %}
+        {% if m.email %}<a class="m-mail" href="mailto:{{ m.email }}">{{ m.email }}</a>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</section>
+{% endfor %}

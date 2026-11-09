@@ -1,0 +1,33 @@
+# ─────────────────────────────────────────────
+# 국내 논문 (Domestic). 형식은 publications_international.yml 과 같습니다.
+# award: 최우수상, 장려상 등 수상 내역 (없으면 생략)
+# ─────────────────────────────────────────────
+- {id: C20, type: conference, year: 2026, title: "단안 비디오 기반 인간-공간 통합형 3D 글로벌 모션 복원 기술 동향", venue: "대한전자공학회 하계종합학술대회, 2026. 6", authors: ["최지훈*", "진인환", "공경보†"], tags: [Computer Vision, 3D/4D Reconstruction]}
+- {id: C19, type: conference, year: 2026, title: "Open-Vocabulary Audio-Visual Event Localization을 위한 Agentic Decision-Rule 탐색 프레임워크", venue: "대한전자공학회 하계종합학술대회, 2026. 6", authors: ["조범권*", "박순찬", "공경보†"], tags: [Agentic, Audio-Visual Event Localization]}
+- {id: C18, type: conference, year: 2026, title: "3D 질의응답을 위한 효율적 시각 토큰 압축 기법", venue: "대한전자공학회 하계종합학술대회, 2026. 6", authors: ["백창우*", "공경보†"], tags: [Efficient, Vision-Language Model]}
+- {id: C17, type: conference, year: 2026, title: "RF-DETR 기반 깊이 정보 활용 위장 객체 탐지", venue: "대한전자공학회 하계종합학술대회, 2026. 6", authors: ["윤지원*", "정성훈", "공경보†"], tags: [Computer Vision, Object Detection]}
+- {id: C16, type: conference, year: 2026, title: "단일 이미지 기반 물리적 행동 조건부 비디오 및 4D Scene 생성 기술 연구 동향", venue: "대한전자공학회 하계종합학술대회, 2026. 6", authors: ["김우형*", "문형주", "공경보†"], tags: [Computer Vision, Dynamic Scene Generation]}
+- {id: C15, type: conference, year: 2026, title: "최신 V2A 연구 동향: 제어성, 충실도, 공간감", venue: "대한전자공학회 하계종합학술대회, 2026. 6", authors: ["김준수*", "박순찬", "공경보†"], tags: [Computer Vision, Video-to-Audio Generation]}
+- {id: C14, type: conference, year: 2026, title: "위장 객체 탐지를 위한 경량 모델 성능 비교 연구", venue: "대한전자공학회 하계종합학술대회, 2026. 6", authors: ["정성훈*", "윤지원", "공경보†"], tags: [Computer Vision, Object Detection]}
+- {id: C13, type: conference, year: 2026, title: "단일 이미지 기반 동역학 인터랙티브 4D 월드 생성", venue: "대한전자공학회 하계종합학술대회, 2026. 6", authors: ["김소형*", "공경보†"], tags: [Computer Vision, 3D/4D Reconstruction]}
+- {id: C12, type: conference, year: 2026, title: "대규모 비전-언어 모델의 객체 환각 완화를 위한 비전 인코더 Attention-Value 동역학 분석", venue: "대한전자공학회 하계종합학술대회, 2026. 6", authors: ["김소현*", "윤상연", "공경보†"], tags: [Computer Vision, Vision-Language Model]}
+- {id: C11, type: conference, year: 2026, title: "입력 모달리티에 따른 3D 거대 멀티모달 모델 연구 동향 조사", venue: "대한전자공학회 하계종합학술대회, 2026. 6", authors: ["윤상연*", "백창우", "김소현", "공경보†"], tags: [Computer Vision, Multi-Modality]}
+- {id: C10, type: conference, year: 2026, title: "Dynamic Gaussian Splatting을 위한 Shared Latent Dynamics Space 구현", venue: "대한전자공학회 하계종합학술대회, 2026. 6", authors: ["진인환*", "김태훈", "공경보†"], tags: [Computer Vision, Gaussian Splatting]}
+- {id: J9, type: journal, year: 2026, title: "멀티패스 환경에서의 TDOA 기반 위치추정 오차 완화 기법", venue: "전자공학회논문지, 2026", authors: ["문형주*", "정성훈", "박진오", "채주희", "이명식", "길기성", "김진우", "공경보†"], tags: [Signal Processing]}
+- {id: J8, type: journal, year: 2026, title: "멀티모달 LLM에서의 비전 인코더 계층별 엔트로피 변화를 활용한 시각 토큰 프루닝", venue: "방송공학회논문지, 제31권 제1호, 2026. 1", authors: ["백창우*", "김소현*", "송주원*", "백광렬", "공경보†"], tags: [Computer Vision]}
+- {id: C9, type: conference, year: 2025, title: "LLM-VLM 통합 기반 파노라마 장면 편집 및 일관성 평가 자동화 프레임워크", venue: "한국방송미디어공학회 동계학술대회, 2025. 12", authors: ["김민주*", "유가연*", "강성민*", "진인환", "문형주", "공경보†"], tags: [Computer Vision], award: 최우수상}
+- {id: C8, type: conference, year: 2025, title: "이미지 복잡도와 환각 생성 관점에서 본 대규모 비전-언어 모델의 시각 토큰 프루닝 분석", venue: "대한전자공학회 추계학술대회, 2025. 11", authors: ["김소현*", "백창우*", "송주원*", "공경보†"], tags: [Computer Vision], award: 장려상}
+- {id: C7, type: conference, year: 2025, title: "단일 이미지 기반 4차원 동적 장면 생성 프레임워크 구현", venue: "대한임베디드공학회 ICT 대학생 논문경진대회, 2025. 6", authors: ["추해수*", "진인환*", "공경보†"], tags: [Computer Vision], award: 장려상}
+- {id: C6, type: conference, year: 2025, title: "오픈셋 이미지 복원을 위한 프롬프트 기반 적응", venue: "대한임베디드공학회 ICT 대학생 논문경진대회, 2025. 6", authors: ["김태훈*", "정다운*", "공경보†"], tags: [Computer Vision]}
+- {id: J7, type: journal, year: 2025, title: "동적 이미지 합성을 위한 4D Gaussian Splatting 기법 비교 및 연구 동향", venue: "방송공학회논문지, 제30권 제1호, 2025. 1", authors: ["우민수*", "진인환*", "김준수", "윤국진", "공경보†"], tags: [Computer Vision]}
+- {id: J6, type: journal, year: 2024, title: "버추얼 프로덕션을 위한 딥러닝 기반 2.5D 에셋 생성 기술 연구", venue: "방송공학회논문지, 제29권 제6호, 2024. 11", authors: ["추해수*", "진인환", "정성훈", "김정환†", "공경보†"], tags: [Computer Vision, Generative AI]}
+- {id: C5, type: conference, year: 2024, title: "단일 풍경 이미지의 Dynamic Scene Video 생성을 위한 4D Gaussian Splatting 최적화 알고리즘 구현", venue: "제34회 인공지능신호처리 학술대회, 2024. 10", authors: ["진인환*", "추해수*", "정성훈", "공경보†"], tags: [Computer Vision]}
+- {id: J5, type: journal, year: 2024, title: "딥러닝 기반 저조도 향상 기술을 활용한 얼굴 인식 성능 개선", venue: "대한임베디드공학회논문지, 제19권 제5호, 2024. 10", authors: ["백창우*", "공경보†"], tags: [Computer Vision]}
+- {id: C4, type: conference, year: 2024, title: "Optical Flow의 방향 정보를 활용한 Text-to-Video 편집 기술", venue: "대한임베디드공학회 ICT 대학생 논문경진대회, 2024. 7", authors: ["정성훈*", "진인환*", "추해수*", "공경보†"], tags: [Computer Vision], award: 장려상}
+- {id: C3, type: conference, year: 2023, title: "휴먼 모션 생성을 통한 텍스트 기반 비디오 생성 알고리즘에 관한 연구", venue: "대한전자공학회 하계학술대회, 2023. 6", authors: ["김태훈*", "정다운*", "박재혁*", "공경보†"], tags: [Computer Vision]}
+- {id: J4, type: journal, year: 2023, title: "심층신경망 기반의 프리코딩 시스템을 활용한 다중사용자 스케줄링 기법에 관한 연구", venue: "방송공학회논문지, 제28권 제1호, 2023. 1", authors: ["공경보*", "민문식†"], tags: [Core AI & Applications, Communications], paper: "http://www.kibme.org/resources/journal/20230217151642777.pdf"}
+- {id: C2, type: conference, year: 2022, title: "YOLO 네트워크를 이용한 단자 구분", venue: "한국방송미디어공학회 추계학술대회, 2022. 11", authors: ["정다운*", "정성훈", "김재윤", "정지훈", "공경보†"], tags: [Computer Vision], award: 최우수상}
+- {id: J3, type: journal, year: 2022, title: "멀티오믹스 데이터를 활용한 알츠하이머 질병 예측 딥러닝 모델 개발 연구", venue: "한국정보기술학회논문지, 제20권 제7호, 2022. 7", authors: ["하지환*†", "공경보", "박동건"], tags: [Core AI & Applications], paper: "http://ki-it.com/_PR/view/?aidx=33653&bidx=3012"}
+- {id: J2, type: journal, year: 2022, title: "딥러닝 기반 단일 이미지 생성적 적대 신경망 기법 비교 분석", venue: "방송공학회논문지, 제27권 제3호, 2022. 5", authors: ["정성훈*", "공경보†"], tags: [Image Processing, GAN], paper: "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002845402"}
+- {id: C1, type: conference, year: 2021, title: "비지도 학습 기반 상호보완적 거리 및 움직임 추정 시스템", venue: "대한전자공학회 추계학술대회, 2021. 11", authors: ["조민지*", "조영수", "공경보", "강석주†"], tags: [Computer Vision, Motion Estimation]}
+- {id: J1, type: journal, year: 2021, title: "딥러닝 기반 이미지 아웃페인팅 기술의 현황 및 최신 동향", venue: "방송공학회논문지, 제26권 제1호, 2021. 1", authors: ["김경훈*", "공경보", "강석주†"], tags: [Image Processing, Image Outpainting], paper: "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002681837"}

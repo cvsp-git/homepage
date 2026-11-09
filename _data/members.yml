@@ -1,0 +1,88 @@
+# ─────────────────────────────────────────────
+# 멤버 목록
+# - 그룹(group) 순서대로 화면에 나옵니다.
+# - photo: images/members/ 폴더에 사진을 넣고 파일 이름을 적으세요. 비워 두면 이니셜이 표시됩니다.
+# - 졸업하면 해당 사람 블록을 통째로 잘라서 Alumni 그룹 아래로 옮기면 됩니다.
+# ─────────────────────────────────────────────
+- group: Professor
+  people:
+    - name: Kyeongbo Kong
+      name_ko: 공경보
+      role: Principal Investigator
+      photo: ""
+      email: kbkong@pusan.ac.kr
+      interests: [3D/4D World Modeling, Vision-Language Models, Embodied AI]
+
+- group: Postdoctoral Researcher
+  people:
+    - name: Sunchan Park
+      name_ko: 박순찬
+      photo: ""
+      interests: [Multi-Modality, Audio-Visual Learning]
+
+- group: Ph.D. Course
+  people:
+    - name: JiAn Yang
+      name_ko: ""
+      photo: ""
+    - name: Seong-Hun Jeong
+      name_ko: 정성훈
+      photo: ""
+
+- group: M.S. Course
+  people:
+    - name: Daun Jeong
+      name_ko: 정다운
+      photo: ""
+    - name: In-Hwan Jin
+      name_ko: 진인환
+      photo: ""
+    - name: Taehoon Kim
+      name_ko: 김태훈
+      photo: ""
+
+- group: Integrated B.S.–M.S. Course
+  people:
+    - name: Changwoo Baek
+      name_ko: 백창우
+      photo: ""
+    - name: HyeongJu Mun
+      name_ko: 문형주
+      photo: ""
+    - name: MinSoo Woo
+      name_ko: 우민수
+      photo: ""
+    - name: Sohyeon Kim
+      name_ko: 김소현
+      photo: ""
+    - name: Sohyeong Kim
+      name_ko: 김소형
+      photo: ""
+    - name: Jihoon Choi
+      name_ko: 최지훈
+      photo: ""
+    - name: Beomkwon Cho
+      name_ko: 조범권
+      photo: ""
+    - name: Woohyeong Kim
+      name_ko: 김우형
+      photo: ""
+    - name: Junsu Kim
+      name_ko: 김준수
+      photo: ""
+
+- group: Research Intern
+  people:
+    - name: Sang Yeon Yoon
+      name_ko: 윤상연
+      photo: ""
+    - name: JongWon Choi
+      name_ko: ""
+      photo: ""
+
+- group: Alumni
+  people:
+    - name: Haesoo Choo
+      name_ko: 추해수
+      photo: ""
+      note: NAVER WEBTOON

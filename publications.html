@@ -1,0 +1,54 @@
+---
+layout: default
+title: Publications
+slug: publications
+---
+{% assign intl = site.data.publications_international %}
+{% assign dom = site.data.publications_domestic %}
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Publications</p>
+    <h1>Papers</h1>
+    <p class="lede">Work published at CVPR, ICCV, ECCV, NeurIPS, ICML, ICLR, AAAI and in journals including IEEE TPAMI, TMM, and TCSVT. <span class="mono">*</span> first author, <span class="mono">†</span> corresponding author.</p>
+  </div>
+</section>
+
+<section class="section pubs" data-pubs>
+  <div class="wrap">
+    <div class="pub-controls" role="toolbar" aria-label="Filter publications">
+      <div class="seg" role="tablist" aria-label="Scope">
+        <button type="button" role="tab" aria-selected="true" data-scope="intl" id="tab-intl">International <span class="mono">{{ intl.size }}</span></button>
+        <button type="button" role="tab" aria-selected="false" data-scope="dom" id="tab-dom">Domestic <span class="mono">{{ dom.size }}</span></button>
+      </div>
+      <div class="chips" aria-label="Type">
+        <button type="button" class="chip is-on" data-type="all">All</button>
+        <button type="button" class="chip" data-type="conference">Conference</button>
+        <button type="button" class="chip" data-type="journal">Journal</button>
+      </div>
+      <label class="search"><span class="sr">Search publications</span>
+        <input type="search" id="pub-search" placeholder="Search title, author, venue">
+      </label>
+    </div>
+    <p class="pub-empty" hidden>No papers match this search.</p>
+
+    {% assign scopes = "intl,dom" | split: "," %}
+    {% for s in scopes %}
+      {% if s == "intl" %}{% assign list = intl %}{% else %}{% assign list = dom %}{% endif %}
+      {% assign years = list | group_by: "year" | sort: "name" | reverse %}
+      <div class="pub-scope" data-scope-panel="{{ s }}"{% if s == "dom" %} hidden{% endif %}>
+        <nav class="year-jump mono" aria-label="Jump to year">
+          {% for y in years %}<a href="#{{ s }}-{{ y.name }}">{{ y.name }}</a>{% endfor %}
+        </nav>
+        {% for y in years %}
+        <section class="pub-year" id="{{ s }}-{{ y.name }}">
+          <h2 class="year-label"><span>{{ y.name }}</span><span class="mono count">{{ y.items.size }}</span></h2>
+          <ol class="pub-list">
+            {% assign items = y.items %}
+            {% for p in items %}{% include pub-item.html p=p %}{% endfor %}
+          </ol>
+        </section>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</section>

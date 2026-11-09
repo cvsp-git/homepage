@@ -1,0 +1,9 @@
+# 상단 메뉴. 순서를 바꾸거나 항목을 추가/삭제할 수 있습니다.
+- {title: Research, url: "/index.html#research"}
+- {title: Members, url: "/members.html"}
+- {title: Publications, url: "/publications.html"}
+- {title: Projects, url: "/projects.html"}
+- {title: News, url: "/news.html"}
+- {title: Gallery, url: "/gallery.html"}
+- {title: Lab, url: "/lab.html"}
+- {title: Join Us, url: "/join.html", cta: true}

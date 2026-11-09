@@ -1,0 +1,200 @@
+/* CVSP Lab site script: mobile menu, publication filters, gallery filter, hero Gaussian field. */
+(function () {
+  "use strict";
+
+  /* ---------- mobile menu ---------- */
+  var toggle = document.querySelector(".nav-toggle");
+  if (toggle) {
+    toggle.addEventListener("click", function () {
+      var open = document.body.classList.toggle("nav-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    document.querySelectorAll(".site-nav a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        document.body.classList.remove("nav-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  /* ---------- publications ---------- */
+  var pubs = document.querySelector("[data-pubs]");
+  if (pubs) {
+    var state = { scope: "intl", type: "all", q: "" };
+    var tabs = pubs.querySelectorAll("[data-scope]");
+    var chips = pubs.querySelectorAll(".chip[data-type]");
+    var search = pubs.querySelector("#pub-search");
+    var empty = pubs.querySelector(".pub-empty");
+
+    var apply = function () {
+      var shown = 0;
+      pubs.querySelectorAll("[data-scope-panel]").forEach(function (panel) {
+        var active = panel.getAttribute("data-scope-panel") === state.scope;
+        panel.hidden = !active;
+        if (!active) return;
+        panel.querySelectorAll(".pub-year").forEach(function (sec) {
+          var visible = 0;
+          sec.querySelectorAll(".pub").forEach(function (li) {
+            var ok = (state.type === "all" || li.dataset.type === state.type) &&
+                     (!state.q || li.dataset.search.indexOf(state.q) !== -1);
+            li.hidden = !ok;
+            if (ok) visible++;
+          });
+          sec.hidden = visible === 0;
+          var c = sec.querySelector(".year-label .count");
+          if (c) c.textContent = visible;
+          shown += visible;
+        });
+      });
+      if (empty) empty.hidden = shown !== 0;
+    };
+
+    tabs.forEach(function (t) {
+      t.addEventListener("click", function () {
+        state.scope = t.dataset.scope;
+        tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+        apply();
+      });
+    });
+    chips.forEach(function (c) {
+      c.addEventListener("click", function () {
+        state.type = c.dataset.type;
+        chips.forEach(function (x) { x.classList.toggle("is-on", x === c); });
+        apply();
+      });
+    });
+    if (search) search.addEventListener("input", function () { state.q = search.value.trim().toLowerCase(); apply(); });
+  }
+
+  /* ---------- gallery ---------- */
+  var gf = document.querySelector("[data-gallery-filter]");
+  if (gf) {
+    var gchips = gf.querySelectorAll(".chip");
+    gchips.forEach(function (c) {
+      c.addEventListener("click", function () {
+        var cat = c.dataset.cat;
+        gchips.forEach(function (x) { x.classList.toggle("is-on", x === c); });
+        document.querySelectorAll(".gallery-grid .g-tile").forEach(function (t) {
+          t.hidden = !(cat === "all" || t.classList.contains("g-" + cat));
+        });
+      });
+    });
+  }
+
+  /* ---------- hero: a living 4D Gaussian field ---------- */
+  var canvas = document.getElementById("splat-canvas");
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext("2d");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var countEl = document.getElementById("splat-count");
+  var timeEl = document.getElementById("splat-time");
+
+  // soft gaussian sprites, one per palette color
+  var palette = [[47, 123, 255], [63, 211, 224], [150, 190, 255], [255, 255, 255]];
+  var sprites = palette.map(function (c) {
+    var s = document.createElement("canvas"); s.width = s.height = 64;
+    var g = s.getContext("2d");
+    var grad = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+    grad.addColorStop(0, "rgba(" + c + ",1)");
+    grad.addColorStop(0.35, "rgba(" + c + ",0.45)");
+    grad.addColorStop(1, "rgba(" + c + ",0)");
+    g.fillStyle = grad; g.fillRect(0, 0, 64, 64);
+    return s;
+  });
+
+  // scene: a rippling terrain (the "world") plus a floating object cluster (the "thing in it")
+  var pts = [];
+  var GRID = 34;
+  for (var i = 0; i < GRID; i++) {
+    for (var j = 0; j < GRID; j++) {
+      var u = i / (GRID - 1) * 2 - 1, v = j / (GRID - 1) * 2 - 1;
+      if (u * u + v * v > 1.05) continue; // round patch
+      pts.push({ kind: 0, x: u + (Math.random() - .5) * .04, z: v + (Math.random() - .5) * .04, y: 0, s: .9 + Math.random() * .5 });
+    }
+  }
+  for (var k = 0; k < 260; k++) {
+    // points on a torus
+    var a = Math.random() * Math.PI * 2, b = Math.random() * Math.PI * 2;
+    var R = .34, r = .12 + Math.random() * .03;
+    pts.push({ kind: 1, a: a, b: b, R: R, r: r, s: .7 + Math.random() * .6, c: Math.random() < 0.06 ? 3 : 1 });
+  }
+  if (countEl) countEl.textContent = pts.length.toLocaleString("en-US");
+
+  var W = 0, H = 0, dpr = 1, cx = 0, cy = 0, scale = 1;
+  var resize = function () {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = canvas.clientWidth; H = canvas.clientHeight;
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var wide = W > 900;
+    cx = wide ? W * 0.70 : W * 0.5;
+    cy = wide ? H * 0.50 : H * 0.86;
+    scale = Math.min(wide ? W * 0.30 : W * 0.42, H * 0.62);
+  };
+
+  var yaw = 0.6, pitch = 0.42, drag = null, spin = 0.12;
+  canvas.addEventListener("pointerdown", function (e) { drag = { x: e.clientX, y: e.clientY, yaw: yaw, pitch: pitch }; canvas.classList.add("dragging"); });
+  window.addEventListener("pointerup", function () { drag = null; canvas.classList.remove("dragging"); });
+  window.addEventListener("pointermove", function (e) {
+    if (!drag) return;
+    yaw = drag.yaw + (e.clientX - drag.x) * 0.006;
+    pitch = Math.max(0.1, Math.min(1.1, drag.pitch + (e.clientY - drag.y) * 0.004));
+  });
+
+  var buf = [];
+  var draw = function (t) {
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = "lighter";
+    var cyw = Math.cos(yaw), syw = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch);
+    buf.length = 0;
+    for (var n = 0; n < pts.length; n++) {
+      var p = pts[n], x, y, z, col;
+      if (p.kind === 0) {
+        x = p.x; z = p.z;
+        y = Math.sin(x * 3.1 + t * 0.9) * Math.cos(z * 2.6 - t * 0.7) * 0.12 + Math.sin((x + z) * 5 + t * 1.6) * 0.025;
+        col = y > 0.06 ? 1 : (y > -0.02 ? 2 : 0);
+      } else {
+        var bb = p.b + t * 0.6;
+        var rx = (p.R + p.r * Math.cos(bb)) * Math.cos(p.a), ry = p.r * Math.sin(bb), rz = (p.R + p.r * Math.cos(bb)) * Math.sin(p.a);
+        // tilt and bob the torus
+        var tilt = 0.9 + Math.sin(t * 0.5) * 0.15;
+        var y2 = ry * Math.cos(tilt) - rz * Math.sin(tilt), z2 = ry * Math.sin(tilt) + rz * Math.cos(tilt);
+        x = rx; y = y2 + 0.52 + Math.sin(t * 0.8) * 0.04; z = z2;
+        col = p.c;
+      }
+      // rotate yaw (around y), then pitch (around x)
+      var X = x * cyw - z * syw, Z = x * syw + z * cyw;
+      var Y = y * cp - Z * sp, Z2 = y * sp + Z * cp;
+      var persp = 2.6 / (2.6 + Z2);
+      buf.push({ sx: cx + X * scale * persp, sy: cy - Y * scale * persp, d: Z2, r: p.s * persp, c: col, k: p.kind });
+    }
+    buf.sort(function (m, n2) { return n2.d - m.d; });
+    for (var q = 0; q < buf.length; q++) {
+      var b = buf[q];
+      var size = (b.k === 1 ? 16 : 22) * b.r * (scale / 320);
+      ctx.globalAlpha = Math.max(0.05, Math.min(0.55, 0.42 - b.d * 0.18));
+      ctx.drawImage(sprites[b.c], b.sx - size / 2, b.sy - size / 2, size, size);
+    }
+    ctx.globalAlpha = 1;
+    ctx.globalCompositeOperation = "source-over";
+    if (timeEl) timeEl.textContent = t.toFixed(2);
+  };
+
+  var visible = true, t0 = performance.now(), last = t0, simT = 0;
+  var loop = function (now) {
+    var dt = Math.min(0.05, (now - last) / 1000); last = now;
+    if (visible && !document.hidden) {
+      simT += dt;
+      if (!drag) yaw += spin * dt;
+      draw(simT);
+    }
+    requestAnimationFrame(loop);
+  };
+
+  resize();
+  window.addEventListener("resize", resize);
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(canvas);
+  }
+  if (reduce) { draw(1.5); } else { requestAnimationFrame(loop); }
+})();

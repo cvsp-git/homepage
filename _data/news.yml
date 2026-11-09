@@ -1,0 +1,30 @@
+# ─────────────────────────────────────────────
+# 소식 (News). 새 소식은 맨 위에 추가하세요. 홈에는 위에서부터 6개가 나옵니다.
+# - category: Paper / Award / Service / People 중 하나
+# - date: "2026.10" 형식
+# - link: 관련 페이지 주소 (선택)
+# ─────────────────────────────────────────────
+- {date: "2026.10", category: Service, text: "Prof. Kyeongbo Kong will serve as an Area Chair for ICML 2027."}
+- {date: "2026.10", category: Award, text: "Prof. Kyeongbo Kong was recognized as a Top Area Chair at NeurIPS 2026."}
+- {date: "2026.09", category: Paper, text: "One paper accepted to NeurIPS 2026, and one to a NeurIPS 2026 workshop."}
+- {date: "2026.09", category: Award, text: "Sohyeon Kim was selected for the 2026 NRF Master's Research Grant."}
+- {date: "2026.08", category: People, text: "In-Hwan Jin was selected for the 2027 University of Toronto AI Convergence Education Program."}
+- {date: "2026.08", category: People, text: "Haesoo Choo joined NAVER WEBTOON as a full-time engineer."}
+- {date: "2026.07", category: Paper, text: "One paper accepted to IEEE TPAMI."}
+- {date: "2026.06", category: Paper, text: "Four papers accepted to ECCV 2026."}
+- {date: "2026.05", category: Paper, text: "Eight papers accepted to ICML 2026 workshops."}
+- {date: "2026.05", category: Paper, text: "One paper accepted to IEEE RA-L (to be presented at ICRA 2027)."}
+- {date: "2026.05", category: Paper, text: "One paper accepted to ACM TOMM."}
+- {date: "2026.05", category: Award, text: "Prof. Kyeongbo Kong was recognized as a Gold Reviewer at ICML 2026."}
+- {date: "2026.05", category: Paper, text: "One paper accepted to ICML 2026."}
+- {date: "2026.04", category: Service, text: "Prof. Kyeongbo Kong will serve as an Area Chair for NeurIPS 2026."}
+- {date: "2026.03", category: Paper, text: "One paper accepted to an ICLR 2026 workshop."}
+- {date: "2026.02", category: Paper, text: "One paper accepted to CVPR 2026 Findings."}
+- {date: "2026.01", category: Paper, text: "Two papers accepted to ICLR 2026."}
+- {date: "2026.01", category: People, text: "Haesoo Choo started an internship at NAVER WEBTOON."}
+- {date: "2026.01", category: Award, text: "Three students won the top award at the KIBME Winter Conference for their capstone project."}
+- {date: "2026.01", category: Award, text: "Sohyeon Kim's paper was selected as an outstanding undergraduate paper by IEIE."}
+- {date: "2026.01", category: Paper, text: "One paper accepted to IEEE TCSVT."}
+- {date: "2025.11", category: Award, text: "Prof. Kyeongbo Kong received the 2025 KIBME Emerging Researcher Award."}
+- {date: "2025.10", category: Paper, text: "One paper accepted to a NeurIPS 2025 workshop."}
+- {date: "2025.09", category: Award, text: "Dr. Sunchan Park was selected for the NRF Domestic Postdoctoral Fellowship."}

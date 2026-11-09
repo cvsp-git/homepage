@@ -1,0 +1,20 @@
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="{{ '/index.html' | relative_url }}" aria-label="CVSP Lab home">
+      {% include logo.svg %}
+      <span class="brand-text">
+        <span class="brand-name">CVSP Lab</span>
+        <span class="brand-sub">{{ site.university }}</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="sr">Menu</span><span class="bars" aria-hidden="true"></span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      {% for item in site.data.navigation %}
+        {% assign item_page = item.url | remove: '/' | remove: '.html' | split: '#' | first %}
+        <a href="{{ item.url | relative_url }}" class="{% if item.cta %}nav-cta{% endif %}{% unless item.url contains '#' %}{% if page.slug == item_page %} is-active{% endif %}{% endunless %}">{{ item.title }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>

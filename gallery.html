@@ -1,0 +1,25 @@
+---
+layout: default
+title: Gallery
+slug: gallery
+---
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Gallery</p>
+    <h1>Lab life</h1>
+    <p class="lede">Conference trips, celebrations, and everyday moments at CVSP.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="chips" data-gallery-filter aria-label="Filter photos">
+      <button type="button" class="chip is-on" data-cat="all">All</button>
+      <button type="button" class="chip" data-cat="conference">Conference</button>
+      <button type="button" class="chip" data-cat="celebration">Celebration</button>
+      <button type="button" class="chip" data-cat="event">Event</button>
+    </div>
+    <div class="gallery-grid">
+      {% for g in site.data.gallery %}{% include gallery-tile.html g=g i=0 %}{% endfor %}
+    </div>
+  </div>
+</section>
