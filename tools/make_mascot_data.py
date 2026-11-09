@@ -14,7 +14,7 @@ from PIL import Image
 from scipy import ndimage
 
 src = sys.argv[1] if len(sys.argv) > 1 else "images/logo/sanjini.png"
-TARGET_H = 232           # 샘플링 해상도 (세로 픽셀)
+TARGET_H = 180           # 샘플링 해상도 (세로 픽셀)
 HEIGHT = 0.8             # 화면 속 키 (main.js 좌표 단위)
 FLAT = 0.8              # 1이면 공처럼, 작을수록 납작
 
@@ -46,6 +46,10 @@ blue = (rgb[..., 2] > rgb[..., 0] + 40) & mask
 body = np.median(rgb[blue], axis=0) if blue.any() else np.array([60, 120, 200])
 yellow = (rgb[..., 0] > 190) & (rgb[..., 1] > 160) & (rgb[..., 2] < 140)
 feet = yellow & (np.arange(H)[:, None] > H * 0.75)  # only the feet show from behind, not the beak
+
+# outline fringe pixels are half white (leftover from the removed background): paint them body blue
+fringe = mask & ((alpha < 250) | ndimage.binary_erosion(mask, iterations=1) == False) & (rgb.mean(-1) > 150)
+rgb[fringe] = body
 
 # detail pixels (eyes, beak, outlines): sample them more densely
 lum = rgb.mean(-1)

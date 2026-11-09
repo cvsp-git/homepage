@@ -115,7 +115,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .brand { display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; }
 .brand:hover { color: inherit; }
 .brand-logo { height: 44px; width: auto; }
-.brand-sub { padding-left: 12px; border-left: 1px solid rgba(157,176,200,.25); line-height: 1.3; font: 400 .7rem/1.3 var(--f-mono); color: var(--hero-muted); letter-spacing: .04em; }
 .site-nav { display: flex; align-items: center; gap: 4px; }
 .site-nav a {
   color: var(--hero-muted); text-decoration: none; font-size: .92rem; font-weight: 500;
@@ -174,7 +173,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hero-stats dd { margin: 0; font: 600 2rem/1 var(--f-display); font-variant-numeric: tabular-nums; }
 .hero-readout { position: absolute; right: max(20px, env(safe-area-inset-right, 0px)); bottom: 18px; font-size: .7rem; color: var(--hero-muted); opacity: .8; pointer-events: none; }
 /* mascot layout: Sanjini made of gaussians stands centered, the lab name sits under it */
-.hero.has-mascot { --stage: 440px; }
+.hero.has-mascot { --stage: 220px; }
 .has-mascot .hero-inner { padding-top: var(--stage); justify-items: center; text-align: center; }
 .has-mascot .hero-title { max-width: none; font-size: clamp(1.9rem, 4.1vw, 3.6rem); }
 .has-mascot .hero-lede { margin-inline: auto; }
@@ -184,8 +183,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .has-mascot .hero-stats { margin-inline: auto; justify-content: center; }
 .has-mascot .hero-stats div { align-items: center; }
 @media (min-width: 1000px) { .has-mascot .hero-title { white-space: nowrap; } }
-@media (max-width: 640px) { .hero.has-mascot { --stage: 320px; } }
-@media (max-width: 520px) { .brand-sub { display: none; } }
+@media (max-width: 640px) { .hero.has-mascot { --stage: 190px; } }
 @media (max-width: 640px) {
   .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero-readout { display: none; }

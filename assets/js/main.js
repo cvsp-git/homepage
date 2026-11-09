@@ -125,7 +125,7 @@
 
   // scene: a rippling terrain (the "world") plus a floating object cluster (the "thing in it")
   var pts = [];
-  var GRID = 34;
+  var GRID = canvas.hasAttribute("data-mascot") ? 0 : 34; // with a mascot, only the mascot is drawn
   for (var i = 0; i < GRID; i++) {
     for (var j = 0; j < GRID; j++) {
       var u = i / (GRID - 1) * 2 - 1, v = j / (GRID - 1) * 2 - 1;
@@ -166,7 +166,7 @@
     if (!m || !m.data) return false;
     var bin = atob(m.data), dv = new DataView(new ArrayBuffer(bin.length));
     for (var q = 0; q < bin.length; q++) dv.setUint8(q, bin.charCodeAt(q));
-    var thin = window.innerWidth < 640 ? 2 : 1; // lighter on phones
+    var thin = 1;
     for (var k = 0; k < m.n; k += thin) {
       var o = k * 9;
       var tx = dv.getInt16(o, true) / 10000, ty = dv.getInt16(o + 2, true) / 10000, tz = -dv.getInt16(o + 4, true) / 10000; // +z is away from the camera
@@ -196,8 +196,8 @@
       // centered stage at the top of the hero; the lab name sits below it
       var stage = parseFloat(getComputedStyle(canvas.parentNode).getPropertyValue("--stage")) || 400;
       cx = W * 0.5;
-      cy = stage - 80;
-      scale = Math.min(W * 0.5, stage * 0.78);
+      scale = Math.min(W * 0.5, 343) / 3;
+      cy = stage * 0.5 + scale * 0.5 + 10;
       return;
     }
     cx = wide ? W * 0.70 : W * 0.5;
@@ -255,7 +255,7 @@
     for (var q = 0; q < buf.length; q++) {
       var b = buf[q];
       if (b.k === 2) {
-        var ms = 6.5 * b.r * (scale / 320);
+        var ms = 9 * b.r * (scale / 320);
         ctx.globalCompositeOperation = "source-over";
         ctx.globalAlpha = 0.95;
         ctx.drawImage(b.spr, b.sx - ms / 2, b.sy - ms / 2, ms, ms);
