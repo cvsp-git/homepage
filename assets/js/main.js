@@ -81,6 +81,27 @@
     });
   }
 
+  /* ---------- home photo slider ---------- */
+  document.querySelectorAll("[data-slider]").forEach(function (sl) {
+    var slides = sl.querySelectorAll(".slide"), dots = sl.querySelectorAll(".slider-dots button");
+    if (slides.length < 2) return;
+    var i = 0, timer = null;
+    var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var show = function (n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle("is-active", k === i); s.setAttribute("aria-hidden", k === i ? "false" : "true"); });
+      dots.forEach(function (d, k) { if (k === i) d.setAttribute("aria-current", "true"); else d.removeAttribute("aria-current"); });
+    };
+    var play = function () { if (!still) { clearInterval(timer); timer = setInterval(function () { show(i + 1); }, 5000); } };
+    var stop = function () { clearInterval(timer); };
+    sl.querySelector("[data-prev]").addEventListener("click", function () { show(i - 1); play(); });
+    sl.querySelector("[data-next]").addEventListener("click", function () { show(i + 1); play(); });
+    dots.forEach(function (d, k) { d.addEventListener("click", function () { show(k); play(); }); });
+    sl.addEventListener("mouseenter", stop); sl.addEventListener("mouseleave", play);
+    sl.addEventListener("focusin", stop); sl.addEventListener("focusout", play);
+    show(0); play();
+  });
+
   /* ---------- hero: a living 4D Gaussian field ---------- */
   var canvas = document.getElementById("splat-canvas");
   if (!canvas || !canvas.getContext) return;

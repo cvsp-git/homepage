@@ -22,6 +22,9 @@ github: https://github.com/cvsp-lab
 url: "https://www.pnu-cvsp.com"
 baseurl: ""
 
+# 홈 화면 Research 섹션 맨 위에 크게 들어가는 연구주제 모음 그림 (images/research/ 폴더의 파일 이름)
+research_overview: ""
+
 # 교수님 이름: 논문 저자 목록에서 굵게 표시됩니다.
 pi_names: ["Kyeongbo Kong", "공경보"]
 
