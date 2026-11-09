@@ -26,7 +26,7 @@ slug: index
   <div class="wrap">
     <header class="section-head">
       <p class="eyebrow">Research</p>
-      <h2 id="research-title">Three directions, one goal: AI that works in real space.</h2>
+      <h2 id="research-title">Our research focuses on:</h2>
     </header>
     {% if site.research_overview and site.research_overview != "" %}
     <figure class="research-overview">
@@ -39,9 +39,7 @@ slug: index
       {% for r in site.data.research %}
       {% assign related = intl | where_exp: "p", "p.tags contains r.tag" %}
       <article class="research-card">
-        <div class="research-visual rv-{{ forloop.index }}" aria-hidden="true"></div>
         <h3>{{ r.title }}</h3>
-        <p>{{ r.summary }}</p>
         <ul class="kw">{% for k in r.keywords %}<li>{{ k }}</li>{% endfor %}</ul>
         <div class="research-recent">
           <p class="mono small">{{ related.size }} papers · latest</p>
