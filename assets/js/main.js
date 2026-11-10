@@ -207,14 +207,20 @@
 
   var yaw = 0.6, pitch = 0.42, drag = null, spin = 0.12;
   // click (or tap) on the mascot: the gaussians burst apart and fly back
-  var burstT = -1;
+  var burstT = -1, scattered = false;
   var onMascot = function (e) {
     if (!mascotMode) return false;
     var r = canvas.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
     return Math.abs(mx - cx) < scale * 0.45 && my > cy - scale * 1.0 && my < cy + scale * 0.05;
   };
   var burst = function () {
-    if (burstT >= 0) return;
+    if (burstT >= 0 && burstT < 0.55) return;
+    if (scattered) {
+      // second click: gather back into Sanjini
+      for (var k = 0; k < pts.length; k++) if (pts[k].kind === 2) pts[k].delay = Math.random() * .25;
+      scattered = false; assembleT = 0; burstT = -1;
+      return;
+    }
     for (var n = 0; n < pts.length; n++) {
       var p = pts[n];
       if (p.kind !== 2) continue;
@@ -224,7 +230,7 @@
       p.sx0 = p.tx + dx / len * dist; p.sy0 = p.ty + dy / len * dist; p.sz0 = p.tz + dz / len * dist;
       p.delay = Math.random() * .35;
     }
-    burstT = 0;
+    burstT = 0; scattered = true;
   };
   canvas.addEventListener("pointerdown", function (e) { drag = { x: e.clientX, y: e.clientY, yaw: yaw, pitch: pitch, moved: false }; canvas.classList.add("dragging"); });
   window.addEventListener("pointerup", function (e) {
@@ -254,9 +260,9 @@
         col = y > 0.06 ? 1 : (y > -0.02 ? 2 : 0);
       } else if (p.kind === 2) {
         var e;
-        if (burstT >= 0 && burstT < 0.55) {
-          // burst phase: from the shape out to the scattered positions
-          var u2 = burstT / 0.55; e = 1 - (1 - Math.pow(1 - u2, 3));
+        if (scattered) {
+          // burst phase: from the shape out to the scattered positions, then stay there
+          var u2 = Math.min(1, burstT / 0.55); e = 1 - (1 - Math.pow(1 - u2, 3));
         } else {
           e = Math.min(1, Math.max(0, (assembleT - p.delay) / 1.8));
         }
@@ -307,7 +313,7 @@
     var dt = Math.min(0.05, (now - last) / 1000); last = now;
     if (visible && !document.hidden) {
       simT += dt;
-      if (burstT >= 0) { burstT += dt; if (burstT >= 0.55) { burstT = -1; assembleT = 0; } }
+      if (burstT >= 0) burstT = Math.min(0.55, burstT + dt);
       if (mascotMode) { assembleT += dt; if (!drag) yaw += (Math.sin(simT * 0.4) * 0.75 - yaw) * Math.min(1, dt * 1.5); }
       else if (!drag) yaw += spin * dt;
       draw(simT);
