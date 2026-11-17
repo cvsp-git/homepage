@@ -463,3 +463,14 @@ a.pub-fig:hover img { transform: scale(1.04); }
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
 @media (max-width: 640px) { .pub-fig.is-empty .pub-fig-ph { padding-top: 16px; } .pub-fig-ph b { overflow-wrap: anywhere; } }
+
+/* join page details */
+.join-notice { display: grid; gap: 8px; max-width: 760px; }
+.join-cta { margin-top: 6px; }
+.join-card h3 { font: 600 .74rem/1.2 var(--f-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--ink); margin-top: 6px; }
+.join-card h3 .muted { color: var(--muted); text-transform: none; letter-spacing: 0; font-weight: 400; }
+.join-list { list-style: disc; } .join-steps { list-style: decimal; }
+.join-list, .join-steps { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; color: var(--muted); font-size: .94rem; }
+.join-list li::marker, .join-steps li::marker { color: var(--signal); font-family: var(--f-mono); font-weight: 600; }
+.join-alert { font-size: .9rem; color: var(--pnu) !important; background: var(--pnu-soft); border-radius: 10px; padding: 10px 12px; }
+ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }

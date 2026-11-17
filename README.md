@@ -19,6 +19,7 @@ GitHub Pages로 무료 호스팅되며, **`_data/` 폴더의 파일만 고치면
 | 과제 추가, 진행 중 → 완료 | `_data/projects.yml` |
 | 소식(News) 추가 | `_data/news.yml` |
 | 갤러리 사진 추가 | `_data/gallery.yml` + `images/gallery/` 에 사진 |
+| 모집 안내·Contact (Join Us 페이지) | `_data/join.yml` |
 | 장비·세미나·강의 | `_data/lab.yml` |
 | 홈 화면 연구 분야 소개 | `_data/research.yml` |
 | 상단 메뉴 | `_data/navigation.yml` |
