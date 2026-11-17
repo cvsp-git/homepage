@@ -1,6 +1,17 @@
 {% assign p = include.p %}
 <li class="pub" data-type="{{ p.type }}" data-year="{{ p.year }}" data-search="{{ p.title | downcase | escape }} {{ p.authors | join: ' ' | downcase | escape }} {{ p.venue | downcase | escape }} {{ p.tags | join: ' ' | downcase | escape }}">
-  <span class="pub-id mono">{{ p.id }}</span>
+  {%- assign fig = nil -%}
+  {%- if p.figure -%}{%- assign fig = "/images/publications/" | append: include.figdir | append: "/" | append: p.figure -%}
+  {%- elsif include.figdir -%}
+    {%- assign figpath = "/images/publications/" | append: include.figdir | append: "/" -%}
+    {%- for f in pubfigs -%}{%- if f.basename == p.id and f.path contains figpath -%}{%- assign fig = f.path -%}{%- break -%}{%- endif -%}{%- endfor -%}
+  {%- endif -%}
+  {%- if p.venue contains "(" -%}{%- assign vshort = p.venue | split: "(" | last | split: ")" | first -%}{%- elsif p.type == "journal" -%}{%- assign vshort = "Journal" -%}{%- else -%}{%- assign vshort = "Conference" -%}{%- endif -%}
+  {%- assign flink = p.project | default: p.paper -%}
+  {% if flink %}<a class="pub-fig{% unless fig %} is-empty{% endunless %}" href="{{ flink }}" tabindex="-1">{% else %}<div class="pub-fig{% unless fig %} is-empty{% endunless %}">{% endif %}
+    <span class="pub-id mono">{{ p.id }}</span>
+    {% if fig %}<img src="{{ fig | relative_url }}" alt="{{ p.title | escape }} figure" loading="lazy" decoding="async">{% else %}<span class="pub-fig-ph mono"><b>{{ vshort }}</b>{{ p.year }}</span>{% endif %}
+  {% if flink %}</a>{% else %}</div>{% endif %}
   <div class="pub-body">
     <p class="pub-title">{{ p.title }}</p>
     <p class="pub-authors">{% for a in p.authors %}{% assign clean = a | remove: '*' | remove: '†' %}{% if site.pi_names contains clean %}<strong>{{ a }}</strong>{% else %}{{ a }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</p>

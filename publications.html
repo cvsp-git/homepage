@@ -5,6 +5,7 @@ slug: publications
 ---
 {% assign intl = site.data.publications_international %}
 {% assign dom = site.data.publications_domestic %}
+{% assign pubfigs = site.static_files | where_exp: "f", "f.path contains '/images/publications/'" %}
 <section class="page-head">
   <div class="wrap">
     <p class="eyebrow">Publications</p>
@@ -44,7 +45,8 @@ slug: publications
           <h2 class="year-label"><span>{{ y.name }}</span><span class="mono count">{{ y.items.size }}</span></h2>
           <ol class="pub-list">
             {% assign items = y.items %}
-            {% for p in items %}{% include pub-item.html p=p %}{% endfor %}
+            {% if s == "intl" %}{% assign figdir = "international" %}{% else %}{% assign figdir = "domestic" %}{% endif %}
+            {% for p in items %}{% include pub-item.html p=p figdir=figdir %}{% endfor %}
           </ol>
         </section>
         {% endfor %}

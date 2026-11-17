@@ -284,9 +284,18 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .pub-year { padding-top: 28px; }
 .year-label { display: flex; align-items: baseline; gap: 12px; font-size: var(--s-2); padding-bottom: 10px; border-bottom: 2px solid var(--ink); margin-bottom: 4px; }
 .year-label .count, .group-head .count { font-size: .8rem; color: var(--muted); font-weight: 400; }
-.pub { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; padding-block: 18px; border-bottom: 1px solid var(--line); }
-.pub-id { font-size: .78rem; color: var(--signal); padding-top: 3px; }
+.pub { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 22px; align-items: start; padding-block: 20px; border-bottom: 1px solid var(--line); }
+/* representative figure: images/publications/<international|domestic>/<id>.png */
+.pub-fig { position: relative; display: grid; place-items: center; aspect-ratio: 16 / 10; border-radius: 10px; overflow: hidden; background: #fff; border: 1px solid var(--line); text-decoration: none; }
+.pub-fig img { width: 100%; height: 100%; object-fit: contain; padding: 6px; transition: transform .3s ease; }
+a.pub-fig:hover img { transform: scale(1.04); }
+.pub-fig .pub-id { position: absolute; top: 6px; left: 6px; z-index: 1; font-size: .7rem; line-height: 1; padding: 4px 6px; border-radius: 5px; background: var(--surface); border: 1px solid var(--line); }
+.pub-fig.is-empty { background: linear-gradient(135deg, var(--pnu-soft), var(--surface)); }
+.pub-fig-ph { display: grid; justify-items: center; gap: 4px; font-size: .74rem; color: var(--muted); text-align: center; padding: 0 12px; }
+.pub-fig-ph b { font: 600 1.05rem/1.2 var(--f-display); color: var(--pnu); }
+.pub-id { font-size: .78rem; color: var(--signal); }
 .pub[data-type="journal"] .pub-id { color: var(--pnu); }
+@media (max-width: 640px) { .pub { grid-template-columns: 116px minmax(0, 1fr); gap: 14px; } .pub-fig-ph b { font-size: .85rem; } }
 
 /* ---------- news + life ---------- */
 .news-life { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 56px; }
@@ -453,3 +462,4 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+@media (max-width: 640px) { .pub-fig.is-empty .pub-fig-ph { padding-top: 16px; } .pub-fig-ph b { overflow-wrap: anywhere; } }

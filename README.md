@@ -15,6 +15,7 @@ GitHub Pages로 무료 호스팅되며, **`_data/` 폴더의 파일만 고치면
 | 멤버 추가·졸업 처리 | `_data/members.yml` |
 | 국제 논문 추가 | `_data/publications_international.yml` |
 | 국내 논문 추가 | `_data/publications_domestic.yml` |
+| 논문 대표 그림 | `images/publications/international/` 에 `논문id.png` (예: `C55.png`) |
 | 과제 추가, 진행 중 → 완료 | `_data/projects.yml` |
 | 소식(News) 추가 | `_data/news.yml` |
 | 갤러리 사진 추가 | `_data/gallery.yml` + `images/gallery/` 에 사진 |
@@ -58,6 +59,12 @@ GitHub Pages로 무료 호스팅되며, **`_data/` 폴더의 파일만 고치면
 - `tags` 에 `World Modeling`, `Efficient`, `Robotics` 가 들어가면 홈 화면 연구 분야 카드에 자동으로 연결됩니다.
 - 교수님 이름(`Kyeongbo Kong`, `공경보`)은 자동으로 굵게 표시됩니다.
 - 편수(32편, 55편 등)는 자동으로 계산되니 따로 고칠 필요 없습니다.
+
+### 예시: 논문 대표 그림(figure) 넣기
+1. 국제 논문은 `images/publications/international/`, 국내 논문은 `images/publications/domestic/` 폴더에 그림을 올립니다.
+2. 파일 이름을 논문 `id` 와 똑같이 하면 자동으로 붙습니다. 예: `C55.png`, `J32.jpg`. (yml 은 고칠 필요 없음)
+3. 이름을 다르게 하고 싶으면 그 논문에 `figure: 파일이름.png` 줄을 추가하세요.
+4. 가로로 긴 그림(대략 16:10), 가로 800px 정도면 충분합니다. 그림이 없으면 학회 이름이 적힌 기본 칸이 보입니다.
 
 ### 예시: 멤버 사진 넣기
 1. `images/members/` 폴더에서 **Add file → Upload files** 로 사진을 올립니다. 파일 이름은 영어로 (예: `sohyeong-kim.jpg`).
