@@ -3,7 +3,6 @@
 - {title: Members, url: "/members.html"}
 - {title: Publications, url: "/publications.html"}
 - {title: Projects, url: "/projects.html"}
-- {title: News, url: "/news.html"}
 - {title: Gallery, url: "/gallery.html"}
 - {title: Lab, url: "/lab.html"}
 - {title: Join Us, url: "/join.html", cta: true}
