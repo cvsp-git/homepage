@@ -142,13 +142,16 @@
     var key = (r >> 3) + "," + (g >> 3) + "," + (b >> 3);
     if (colorSprites[key]) return colorSprites[key];
     var c = [(r >> 3) << 3, (g >> 3) << 3, (b >> 3) << 3];
-    var s = document.createElement("canvas"); s.width = s.height = 32;
+    var s = document.createElement("canvas"); s.width = s.height = 48;
     var gx = s.getContext("2d");
-    var grad = gx.createRadialGradient(16, 16, 0, 16, 16, 16);
+    var grad = gx.createRadialGradient(24, 24, 0, 24, 24, 24);
+    // gaussian-like falloff
     grad.addColorStop(0, "rgba(" + c + ",1)");
-    grad.addColorStop(0.45, "rgba(" + c + ",0.85)");
+    grad.addColorStop(0.3, "rgba(" + c + ",0.88)");
+    grad.addColorStop(0.6, "rgba(" + c + ",0.38)");
+    grad.addColorStop(0.85, "rgba(" + c + ",0.08)");
     grad.addColorStop(1, "rgba(" + c + ",0)");
-    gx.fillStyle = grad; gx.fillRect(0, 0, 32, 32);
+    gx.fillStyle = grad; gx.fillRect(0, 0, 48, 48);
     colorSprites[key] = s;
     return s;
   };
@@ -166,15 +169,18 @@
     if (!m || !m.data) return false;
     var bin = atob(m.data), dv = new DataView(new ArrayBuffer(bin.length));
     for (var q = 0; q < bin.length; q++) dv.setUint8(q, bin.charCodeAt(q));
-    var thin = 1;
+    var thin = 1, stride = m.stride || 9, AX = m.ax || 3000;
     for (var k = 0; k < m.n; k += thin) {
-      var o = k * 9;
+      var o = k * stride;
       var tx = dv.getInt16(o, true) / 10000, ty = dv.getInt16(o + 2, true) / 10000, tz = -dv.getInt16(o + 4, true) / 10000; // +z is away from the camera
       pts.push({
         kind: 2, tx: tx, ty: ty, tz: tz,
         sx0: (Math.random() - .5) * 2.4, sy0: Math.random() * 1.6 - .2, sz0: (Math.random() - .5) * 2.4,
         spr: spriteFor(dv.getUint8(o + 6), dv.getUint8(o + 7), dv.getUint8(o + 8)),
-        s: (thin > 1 ? 1.35 : 1) * (.95 + Math.random() * .1), delay: Math.random() * .6
+        s: (thin > 1 ? 1.35 : 1) * (.95 + Math.random() * .1), delay: Math.random() * .6,
+        // ellipsoid axes (z flipped like the position); absent in old data = round splat
+        ax: stride >= 15 ? [dv.getInt8(o + 9) / AX, dv.getInt8(o + 10) / AX, -dv.getInt8(o + 11) / AX,
+                            dv.getInt8(o + 12) / AX, dv.getInt8(o + 13) / AX, -dv.getInt8(o + 14) / AX] : null
       });
     }
     return m.n > 0;
@@ -285,17 +291,37 @@
       var X = x * cyw - z * syw, Z = x * syw + z * cyw;
       var Y = y * cp - Z * sp, Z2 = y * sp + Z * cp;
       var persp = 2.6 / (2.6 + Z2);
-      buf.push({ sx: cx + X * scale * persp, sy: cy - Y * scale * persp, d: Z2, r: p.s * persp, c: col, k: p.kind, spr: p.spr });
+      var it = { sx: cx + X * scale * persp, sy: cy - Y * scale * persp, d: Z2, r: p.s * persp, c: col, k: p.kind, spr: p.spr, a: null };
+      if (p.ax) {
+        // project both ellipsoid axes to the screen (same rotation as the position, no translation)
+        var A = p.ax, k2 = scale * persp;
+        var ax1 = A[0] * cyw - A[2] * syw, az1 = A[0] * syw + A[2] * cyw, ay1 = A[1] * cp - az1 * sp;
+        var ax2 = A[3] * cyw - A[5] * syw, az2 = A[3] * syw + A[5] * cyw, ay2 = A[4] * cp - az2 * sp;
+        it.a = [ax1 * k2, -ay1 * k2, ax2 * k2, -ay2 * k2];
+      }
+      buf.push(it);
     }
     // in mascot mode the field is drawn first and the mascot on top, so it stays readable
     buf.sort(function (m, n2) { if (mascotMode && (m.k === 2) !== (n2.k === 2)) return m.k === 2 ? 1 : -1; return n2.d - m.d; });
     for (var q = 0; q < buf.length; q++) {
       var b = buf[q];
       if (b.k === 2) {
-        var ms = 9 * b.r * (scale / 320);
         ctx.globalCompositeOperation = "source-over";
         ctx.globalAlpha = 0.95;
-        ctx.drawImage(b.spr, b.sx - ms / 2, b.sy - ms / 2, ms, ms);
+        if (b.a) {
+          // anisotropic gaussian: map the round sprite onto the projected ellipse
+          var e4 = b.a, minA = 0.6;
+          // keep a hair of thickness when an ellipse is seen edge-on
+          var det = e4[0] * e4[3] - e4[1] * e4[2], l2 = Math.hypot(e4[2], e4[3]);
+          var bx = e4[2], by = e4[3];
+          if (Math.abs(det) < minA * Math.hypot(e4[0], e4[1])) { var l1 = Math.hypot(e4[0], e4[1]) || 1; bx = -e4[1] / l1 * minA; by = e4[0] / l1 * minA; }
+          ctx.setTransform(dpr * e4[0], dpr * e4[1], dpr * bx, dpr * by, dpr * b.sx, dpr * b.sy);
+          ctx.drawImage(b.spr, -1.7, -1.7, 3.4, 3.4);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        } else {
+          var ms = 9 * b.r * (scale / 320);
+          ctx.drawImage(b.spr, b.sx - ms / 2, b.sy - ms / 2, ms, ms);
+        }
         ctx.globalCompositeOperation = "lighter";
         continue;
       }
