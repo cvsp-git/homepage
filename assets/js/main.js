@@ -177,7 +177,7 @@
         kind: 2, tx: tx, ty: ty, tz: tz,
         sx0: (Math.random() - .5) * 2.4, sy0: Math.random() * 1.6 - .2, sz0: (Math.random() - .5) * 2.4,
         spr: spriteFor(dv.getUint8(o + 6), dv.getUint8(o + 7), dv.getUint8(o + 8)),
-        s: (thin > 1 ? 1.35 : 1) * (.95 + Math.random() * .1), delay: Math.random() * .6, op: 0.62 + Math.random() * 0.33,
+        s: (thin > 1 ? 1.35 : 1) * (.95 + Math.random() * .1), delay: Math.random() * .6, op: 0.78 + Math.random() * 0.2,
         // ellipsoid axes (z flipped like the position); absent in old data = round splat
         ax: stride >= 15 ? [dv.getInt8(o + 9) / AX, dv.getInt8(o + 10) / AX, -dv.getInt8(o + 11) / AX,
                             dv.getInt8(o + 12) / AX, dv.getInt8(o + 13) / AX, -dv.getInt8(o + 14) / AX] : null
