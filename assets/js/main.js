@@ -147,9 +147,9 @@
     var grad = gx.createRadialGradient(24, 24, 0, 24, 24, 24);
     // gaussian-like falloff
     grad.addColorStop(0, "rgba(" + c + ",1)");
-    grad.addColorStop(0.3, "rgba(" + c + ",0.88)");
-    grad.addColorStop(0.6, "rgba(" + c + ",0.38)");
-    grad.addColorStop(0.85, "rgba(" + c + ",0.08)");
+    grad.addColorStop(0.25, "rgba(" + c + ",0.93)");
+    grad.addColorStop(0.5, "rgba(" + c + ",0.62)");
+    grad.addColorStop(0.75, "rgba(" + c + ",0.22)");
     grad.addColorStop(1, "rgba(" + c + ",0)");
     gx.fillStyle = grad; gx.fillRect(0, 0, 48, 48);
     colorSprites[key] = s;
@@ -177,7 +177,7 @@
         kind: 2, tx: tx, ty: ty, tz: tz,
         sx0: (Math.random() - .5) * 2.4, sy0: Math.random() * 1.6 - .2, sz0: (Math.random() - .5) * 2.4,
         spr: spriteFor(dv.getUint8(o + 6), dv.getUint8(o + 7), dv.getUint8(o + 8)),
-        s: (thin > 1 ? 1.35 : 1) * (.95 + Math.random() * .1), delay: Math.random() * .6,
+        s: (thin > 1 ? 1.35 : 1) * (.95 + Math.random() * .1), delay: Math.random() * .6, op: 0.62 + Math.random() * 0.33,
         // ellipsoid axes (z flipped like the position); absent in old data = round splat
         ax: stride >= 15 ? [dv.getInt8(o + 9) / AX, dv.getInt8(o + 10) / AX, -dv.getInt8(o + 11) / AX,
                             dv.getInt8(o + 12) / AX, dv.getInt8(o + 13) / AX, -dv.getInt8(o + 14) / AX] : null
@@ -291,7 +291,7 @@
       var X = x * cyw - z * syw, Z = x * syw + z * cyw;
       var Y = y * cp - Z * sp, Z2 = y * sp + Z * cp;
       var persp = 2.6 / (2.6 + Z2);
-      var it = { sx: cx + X * scale * persp, sy: cy - Y * scale * persp, d: Z2, r: p.s * persp, c: col, k: p.kind, spr: p.spr, a: null };
+      var it = { sx: cx + X * scale * persp, sy: cy - Y * scale * persp, d: Z2, r: p.s * persp, c: col, k: p.kind, spr: p.spr, a: null, op: p.op };
       if (p.ax) {
         // project both ellipsoid axes to the screen (same rotation as the position, no translation)
         var A = p.ax, k2 = scale * persp;
@@ -307,7 +307,7 @@
       var b = buf[q];
       if (b.k === 2) {
         ctx.globalCompositeOperation = "source-over";
-        ctx.globalAlpha = 0.95;
+        ctx.globalAlpha = b.op || 0.95;
         if (b.a) {
           // anisotropic gaussian: map the round sprite onto the projected ellipse
           var e4 = b.a, minA = 0.6;
@@ -316,7 +316,7 @@
           var bx = e4[2], by = e4[3];
           if (Math.abs(det) < minA * Math.hypot(e4[0], e4[1])) { var l1 = Math.hypot(e4[0], e4[1]) || 1; bx = -e4[1] / l1 * minA; by = e4[0] / l1 * minA; }
           ctx.setTransform(dpr * e4[0], dpr * e4[1], dpr * bx, dpr * by, dpr * b.sx, dpr * b.sy);
-          ctx.drawImage(b.spr, -1.7, -1.7, 3.4, 3.4);
+          ctx.drawImage(b.spr, -1.5, -1.5, 3, 3);
           ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         } else {
           var ms = 9 * b.r * (scale / 320);

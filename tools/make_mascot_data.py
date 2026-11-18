@@ -99,27 +99,30 @@ for y in range(H):
             continue
         X = (x - cx) * unit; Y = 0.1 + (H - y) * unit; Z = zpx[y, x] * unit
         if edge[y, x]:
-            size = 1 if (x + y) % 2 == 0 else 0
+            size = 1.4 if (x % 2 == 0 and y % 2 == 0) else 0
         elif near[y, x]:
-            size = 2 if (x % 2 == 0 and y % 2 == 0) else 0
+            size = 2.5 if (x % 3 == 0 and y % 3 == 0) else 0
         else:
-            size = 4 if (x % 4 == 0 and y % 4 == 0) else 0
+            size = 6 if (x % 5 == 0 and y % 5 == 0) else 0
         if size:
-            jx = rng.uniform(-.5, .5) * (size - 1); jy = rng.uniform(-.5, .5) * (size - 1)
-            a_img = ang[y, x] + rng.normal(0, 0.25 if size > 1 else 0.08)
-            L = size * unit * rng.uniform(1.25, 2.1); S = size * unit * rng.uniform(0.45, 0.7)
+            jx = rng.uniform(-.5, .5) * size * 0.6; jy = rng.uniform(-.5, .5) * size * 0.6
+            # blobs: moderate elongation, loosely oriented (fine details still follow the edge)
+            a_img = ang[y, x] + (rng.normal(0, 0.15) if size < 2 else rng.uniform(-0.9, 0.9))
+            L = size * unit * rng.uniform(0.9, 1.5); S = L * rng.uniform(0.4, 0.75)
             t1, t2 = tangent_axes(x, y, a_img, L, S)
             c = rgb[y, x] if (dist[y, x] >= 2 or feet[y, x]) else body  # rim: no light halo
-            add(X + jx * unit, Y - jy * unit, Z, c, shade[y, x], t1, t2)
-        if x % 4 == 2 and y % 4 == 2:  # back side: large body-blue ellipses
-            a_img = out_ang[y, x] + rng.normal(0, 0.3)
-            t1, t2 = tangent_axes(x, y, a_img, 4 * unit * rng.uniform(1.3, 2.0), 4 * unit * rng.uniform(0.5, 0.75), back=True)
+            # slight per-gaussian brightness variation so individual ellipses read
+            add(X + jx * unit, Y - jy * unit, Z, c, shade[y, x] * (rng.uniform(0.88, 1.12) if size > 2 else 1.0), t1, t2)
+        if x % 5 == 2 and y % 5 == 2:  # back side: large body-blue ellipses
+            a_img = rng.uniform(0, np.pi)
+            Lb = 6 * unit * rng.uniform(0.9, 1.5)
+            t1, t2 = tangent_axes(x, y, a_img, Lb, Lb * rng.uniform(0.4, 0.75), back=True)
             add(X, Y, -Z, rgb[y, x] if feet[y, x] else body, 0.7 * shade[y, x], t1, t2)
-        if dist[y, x] < 1.5 and (x + y) % 3 == 0:  # side wall: ellipses stretched front-to-back
+        if dist[y, x] < 1.5 and (x + y) % 4 == 0:  # side wall: ellipses stretched front-to-back
             a_img = out_ang[y, x]
-            tw = np.array([np.cos(a_img), -np.sin(a_img), 0.0]) * unit * 1.6
+            tw = np.array([np.cos(a_img), -np.sin(a_img), 0.0]) * unit * 2.2
             for t in (-0.5, 0.0, 0.5):
-                tz = np.array([0, 0, max(abs(Z) * 0.3, unit)])
+                tz = np.array([0, 0, max(abs(Z) * 0.32, unit)])
                 add(X, Y, Z * t, rgb[y, x] if feet[y, x] else body, 0.75, tw, tz)
 
 arr = np.array(pts, dtype=np.float64)
