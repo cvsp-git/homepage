@@ -25,7 +25,7 @@ GitHub Pages로 무료 호스팅되며, **`_data/` 폴더의 파일만 고치면
 | 상단 메뉴 | `_data/navigation.yml` |
 | 연락처·주소·사이트 이름 | `_config.yml` |
 | 색상 | `assets/css/main.css` 맨 위 `:root` 부분 |
-| 메인 화면 산지니 (입체 가우시안) | `images/logo/sanjini.png` 교체 후 `pip install pillow numpy scipy` → `python3 tools/make_mascot_data.py images/logo/sanjini.png` 실행 |
+| 메인 화면 산지니 (학습된 3D 가우시안) | `images/logo/sanjini.png` 교체 후 ① `pip install pillow numpy scipy torch` ② `python3 tools/make_mascot_data.py images/logo/sanjini.png` (점 구름 GT 생성) ③ 생성된 `assets/js/mascot-data.js` 를 다른 이름으로 복사 후 `python3 tools/train_mascot_gaussians.py <복사본> 4500` (CPU 약 12분) |
 
 각 파일 맨 위에 형식 설명이 주석(`#`)으로 적혀 있습니다.
 

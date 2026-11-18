@@ -155,6 +155,20 @@
     colorSprites[key] = s;
     return s;
   };
+  // true gaussian sprite: exp(-r^2/2) out to 3 sigma (used by trained gaussians)
+  var gaussSprites = {};
+  var gaussSprite = function (r, g, b) {
+    var key = (r >> 2) + "," + (g >> 2) + "," + (b >> 2);
+    if (gaussSprites[key]) return gaussSprites[key];
+    var c = [(r >> 2) << 2, (g >> 2) << 2, (b >> 2) << 2];
+    var s = document.createElement("canvas"); s.width = s.height = 64;
+    var gx = s.getContext("2d");
+    var grad = gx.createRadialGradient(32, 32, 0, 32, 32, 32);
+    for (var i = 0; i <= 12; i++) { var t = i / 12; grad.addColorStop(t, "rgba(" + c + "," + Math.exp(-0.5 * 9 * t * t).toFixed(4) + ")"); }
+    gx.fillStyle = grad; gx.fillRect(0, 0, 64, 64);
+    gaussSprites[key] = s;
+    return s;
+  };
   var addTorus = function () {
     for (var k = 0; k < 260; k++) {
       var a = Math.random() * Math.PI * 2, b = Math.random() * Math.PI * 2;
@@ -169,6 +183,29 @@
     if (!m || !m.data) return false;
     var bin = atob(m.data), dv = new DataView(new ArrayBuffer(bin.length));
     for (var q = 0; q < bin.length; q++) dv.setUint8(q, bin.charCodeAt(q));
+    if (m.fmt === "gs3") {
+      // trained 3D gaussians (tools/train_mascot_gaussians.py): position, rgb, opacity, 3 scales, rotation
+      for (var g = 0; g < m.n; g++) {
+        var o3 = g * 17, L = m.lmax - m.lmin;
+        var sc = [Math.exp(m.lmin + dv.getUint8(o3 + 10) / 255 * L), Math.exp(m.lmin + dv.getUint8(o3 + 11) / 255 * L), Math.exp(m.lmin + dv.getUint8(o3 + 12) / 255 * L)];
+        var qw = dv.getInt8(o3 + 13) / 127, qx = dv.getInt8(o3 + 14) / 127, qy = dv.getInt8(o3 + 15) / 127, qz = dv.getInt8(o3 + 16) / 127;
+        var qn = Math.hypot(qw, qx, qy, qz) || 1; qw /= qn; qx /= qn; qy /= qn; qz /= qn;
+        // rotation matrix columns scaled by the axis lengths -> M (row-major 3x3)
+        var R = [1 - 2 * (qy * qy + qz * qz), 2 * (qx * qy - qw * qz), 2 * (qx * qz + qw * qy),
+                 2 * (qx * qy + qw * qz), 1 - 2 * (qx * qx + qz * qz), 2 * (qy * qz - qw * qx),
+                 2 * (qx * qz - qw * qy), 2 * (qy * qz + qw * qx), 1 - 2 * (qx * qx + qy * qy)];
+        var M = [];
+        for (var r3 = 0; r3 < 3; r3++) for (var c3 = 0; c3 < 3; c3++) M.push(R[r3 * 3 + c3] * sc[c3]);
+        var gx0 = dv.getInt16(o3, true) / 10000, gy0 = dv.getInt16(o3 + 2, true) / 10000, gz0 = dv.getInt16(o3 + 4, true) / 10000;
+        pts.push({
+          kind: 2, tx: gx0, ty: gy0, tz: gz0,
+          sx0: (Math.random() - .5) * 2.4, sy0: Math.random() * 1.6 - .2, sz0: (Math.random() - .5) * 2.4,
+          spr: gaussSprite(dv.getUint8(o3 + 6), dv.getUint8(o3 + 7), dv.getUint8(o3 + 8)),
+          s: 1, delay: Math.random() * .6, op: dv.getUint8(o3 + 9) / 255, M: M, ax: null
+        });
+      }
+      return m.n > 0;
+    }
     var thin = 1, stride = m.stride || 9, AX = m.ax || 3000;
     for (var k = 0; k < m.n; k += thin) {
       var o = k * stride;
@@ -292,7 +329,19 @@
       var Y = y * cp - Z * sp, Z2 = y * sp + Z * cp;
       var persp = 2.6 / (2.6 + Z2);
       var it = { sx: cx + X * scale * persp, sy: cy - Y * scale * persp, d: Z2, r: p.s * persp, c: col, k: p.kind, spr: p.spr, a: null, op: p.op };
-      if (p.ax) {
+      if (p.M) {
+        // full 3D gaussian: project the covariance with the perspective jacobian (as in 3DGS)
+        var Mm = p.M, fz = scale * persp, dz = 2.6 + Z2, a2 = 0.3, b2 = 0, c2 = 0.3;
+        for (var ci = 0; ci < 3; ci++) {
+          var vx = Mm[ci], vy = Mm[3 + ci], vz = Mm[6 + ci];
+          var rx = vx * cyw - vz * syw, rzt = vx * syw + vz * cyw;
+          var ry = vy * cp - rzt * sp, rz = vy * sp + rzt * cp;
+          var ux = fz * (rx - X * rz / dz), uy = -fz * (ry - Y * rz / dz);
+          a2 += ux * ux; b2 += ux * uy; c2 += uy * uy;
+        }
+        var l11 = Math.sqrt(a2), l21 = b2 / l11, l22 = Math.sqrt(Math.max(c2 - l21 * l21, 1e-4));
+        it.g = [3 * l11, 3 * l21, 3 * l22];
+      } else if (p.ax) {
         // project both ellipsoid axes to the screen (same rotation as the position, no translation)
         var A = p.ax, k2 = scale * persp;
         var ax1 = A[0] * cyw - A[2] * syw, az1 = A[0] * syw + A[2] * cyw, ay1 = A[1] * cp - az1 * sp;
@@ -308,7 +357,12 @@
       if (b.k === 2) {
         ctx.globalCompositeOperation = "source-over";
         ctx.globalAlpha = b.op || 0.95;
-        if (b.a) {
+        if (b.g) {
+          if (b.op < 0.02) { ctx.globalCompositeOperation = "lighter"; continue; }
+          ctx.setTransform(dpr * b.g[0], dpr * b.g[1], 0, dpr * b.g[2], dpr * b.sx, dpr * b.sy);
+          ctx.drawImage(b.spr, -1, -1, 2, 2);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        } else if (b.a) {
           // anisotropic gaussian: map the round sprite onto the projected ellipse
           var e4 = b.a, minA = 0.6;
           // keep a hair of thickness when an ellipse is seen edge-on
