@@ -177,7 +177,7 @@
     }
   };
   // Sanjini as a 3D gaussian cloud: points come from assets/js/mascot-data.js
-  // (made by tools/make_mascot_data.py: front, back and side surfaces of an inflated picture)
+  // (trained by tools/train_mascot_gaussians.py; older point formats still render)
   var addMascotFromData = function () {
     var m = window.CVSP_MASCOT;
     if (!m || !m.data) return false;
