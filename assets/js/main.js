@@ -458,27 +458,48 @@
   });
 })();
 
-/* home hero photo slides (Notion main page "oopy:slide"): crossfade every 4 s */
+/* home hero photo slides (Notion main page "oopy:slide"): slide sideways every 4.5 s; arrows, dots and swipe */
 (function () {
   var box = document.querySelector("[data-hero-slides]");
   if (!box) return;
-  var imgs = box.querySelectorAll("img"), n = imgs.length, cur = 0, timer = null;
+  var imgs = Array.prototype.slice.call(box.querySelectorAll("img")), n = imgs.length, cur = 0, timer = null, busy = false;
   if (n < 2) return;
+  imgs.forEach(function (im, i) { im.classList.remove("is-on"); im.style.transform = "translateX(" + (i ? 100 : 0) + "%)"; });
   var dots = document.createElement("div"); dots.className = "hero-slides-dots";
-  var go = function (i) {
-    imgs[cur].classList.remove("is-on"); dots.children[cur].classList.remove("is-on");
-    cur = (i + n) % n;
-    imgs[cur].loading = "eager"; imgs[(cur + 1) % n].loading = "eager";
-    imgs[cur].classList.add("is-on"); dots.children[cur].classList.add("is-on");
+  var go = function (i, dir) {
+    i = (i + n) % n;
+    if (i === cur || busy) return;
+    dir = dir || (i > cur ? 1 : -1);
+    var a = imgs[cur], b = imgs[i];
+    b.loading = "eager"; imgs[(i + 1) % n].loading = "eager";
+    b.style.transition = "none"; b.style.transform = "translateX(" + (dir * 100) + "%)";
+    void b.offsetWidth;  // place it beside the current photo before animating
+    busy = true;
+    a.style.transition = b.style.transition = "";
+    a.style.transform = "translateX(" + (-dir * 100) + "%)"; b.style.transform = "translateX(0)";
+    dots.children[cur].classList.remove("is-on"); dots.children[i].classList.add("is-on");
+    cur = i; setTimeout(function () { busy = false; }, 820);
   };
-  var restart = function () { clearInterval(timer); timer = setInterval(function () { go(cur + 1); }, 4000); };
+  var restart = function () { clearInterval(timer); if (!reduce) timer = setInterval(function () { go(cur + 1, 1); }, 4500); };
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   for (var i = 0; i < n; i++) (function (i) {
-    var b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", "Photo " + (i + 1));
-    b.addEventListener("click", function () { go(i); restart(); }); dots.appendChild(b);
+    var d = document.createElement("button"); d.type = "button"; d.setAttribute("aria-label", "Photo " + (i + 1));
+    d.addEventListener("click", function () { go(i); restart(); }); dots.appendChild(d);
   })(i);
   dots.children[0].classList.add("is-on"); box.appendChild(dots);
+  [["prev", -1, "Previous photo", "\u2039"], ["next", 1, "Next photo", "\u203A"]].forEach(function (x) {
+    var btn = document.createElement("button"); btn.type = "button"; btn.className = "hero-slides-arrow is-" + x[0];
+    btn.setAttribute("aria-label", x[2]); btn.textContent = x[3];
+    btn.addEventListener("click", function () { go(cur + x[1], x[1]); restart(); }); box.appendChild(btn);
+  });
+  var sx = null;
+  box.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener("touchend", function (e) {
+    if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; sx = null;
+    if (Math.abs(dx) > 40) { go(cur + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1); restart(); }
+  });
   imgs[1].loading = "eager";
-  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) restart();
+  restart();
 })();
 
 /* Notion "oopy:slide" photo slides on board pages */

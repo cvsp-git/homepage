@@ -49,8 +49,8 @@ class Renderer:
             core_raw = txt.strip()
             lead = txt[:len(txt) - len(txt.lstrip())].replace("\n", "<br>")
             trail = txt[len(txt.rstrip()):].replace("\n", "<br>")
-            if not core_raw:
-                out.append(lead + trail); continue
+            if not core_raw:  # whitespace only: keep it once (a lone "\n" is one line break, not two)
+                out.append(txt.replace("\n", "<br>")); continue
             core = esc(core_raw).replace("\n", "<br>")
             kinds = [a[0] for a in anns]
             if "c" in kinds: core = "<code>" + html.escape(core_raw).replace("\n", "<br>") + "</code>"
@@ -125,7 +125,9 @@ class Renderer:
         if t == "text":
             out = [pad + title if title.strip() else ""]
             if kids: out += self.render_list(kids, ind)
-            return [""] + out + [""] if title.strip() else [""]
+            if title.strip(): return [""] + out + [""]
+            # an empty Notion line: kept as a blank gap (shown on member pages, like Notion)
+            return ["", pad + '<p class="nb-gap"></p>', ""] if not kids else [""] + out + [""]
         if t in ("header", "sub_header", "sub_sub_header"):
             lvl = {"header": 1, "sub_header": 2, "sub_sub_header": 3}[t]
             return ["", pad + "#" * lvl + " " + title, ""] if title.strip() else []

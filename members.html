@@ -37,8 +37,7 @@ slug: members
       <li class="member">
         {% if m.page %}<a class="m-photo" href="{{ m.page | relative_url }}" tabindex="-1" aria-hidden="true">{% include avatar.html m=m %}</a>{% else %}{% include avatar.html m=m %}{% endif %}
         <p class="m-name">{% if m.page %}<a href="{{ m.page | relative_url }}">{{ m.name }}</a>{% else %}{{ m.name }}{% endif %}</p>
-        {% if m.note %}<p class="m-note mono">{{ m.note }}</p>{% endif %}
-        {% if m.honors %}<ul class="m-honors">{% for h in m.honors %}<li>{{ h }}</li>{% endfor %}</ul>{% endif %}
+        {% if m.note or m.honors %}<ul class="m-honors">{% if m.note %}<li>{{ m.note }}</li>{% endif %}{% for h in m.honors %}<li>{{ h }}</li>{% endfor %}</ul>{% endif %}
         {% if m.email %}<a class="m-mail" href="mailto:{{ m.email }}">{{ m.email }}</a>{% endif %}
       </li>
       {% endfor %}
