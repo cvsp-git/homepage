@@ -8,7 +8,7 @@ def get(u):
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
 
 home = get("https://www.pnu-cvsp.com/")
-paths = sorted(set(re.findall(r'href="(/[a-z][\w/-]*)"', home)))
+paths = sorted(set(re.findall(r'(?:href="|"url":")(?:https?://www\.pnu-cvsp\.com)?(/[a-z][\w/-]*)"', home)) | {"/publications", "/projects", "/lab", "/members", "/contact", "/gallery", "/news", "/research", "/publication", "/project"})
 print("links on home:", paths)
 for path in paths:
     if path.startswith(("/_next", "/board", "/members/")): continue
