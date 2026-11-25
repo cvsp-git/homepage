@@ -79,6 +79,9 @@
         });
       });
     });
+    /* gallery.html#conference 처럼 주소 끝에 분류를 붙이면 그 분류만 보여 줍니다. */
+    var h = (location.hash || "").slice(1).toLowerCase();
+    gchips.forEach(function (c) { if (h && c.dataset.cat === h) c.click(); });
   }
 
   /* ---------- home photo slider ---------- */
