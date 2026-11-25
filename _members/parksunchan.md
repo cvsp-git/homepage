@@ -15,7 +15,7 @@ notion_id: 24fabcc9-0e34-80fd-a4b2-e0e4c22ea1d6
 
 ## Sunchan Park
 
-<code>sunchanpark@pusan.ac.kr</code>
+<span class="nc-gray"><code>sunchanpark@pusan.ac.kr</code></span>
 
 [🔗 sunchan.me](https://sunchan.me)
 
@@ -24,7 +24,7 @@ notion_id: 24fabcc9-0e34-80fd-a4b2-e0e4c22ea1d6
 </div>
 <div markdown="1">
 
-## Research Interests
+## <span class="nc-blue">Research Interests</span>
 
 - Multimodal AI
 - Audio-Visual Perception
@@ -35,7 +35,7 @@ notion_id: 24fabcc9-0e34-80fd-a4b2-e0e4c22ea1d6
 
 </div>
 
-## **Publication**
+## <span class="nc-blue">**Publication**</span>
 
 <hr>
 
@@ -81,7 +81,7 @@ notion_id: 24fabcc9-0e34-80fd-a4b2-e0e4c22ea1d6
 
 \[C1\] 음성 감정 인식에서 운율 특징의 영향 분석<br>**박순찬\***, 김형순†<br>한국음성학회 가을 학술대회, Nov. 2020.
 
-## **Patents**
+## <span class="nc-blue">**Patents**</span>
 
 <hr>
 
@@ -89,7 +89,7 @@ notion_id: 24fabcc9-0e34-80fd-a4b2-e0e4c22ea1d6
 
 - 김형순, **박순찬**, "메타데이터를 활용한 화자 유사도 정규화 방법", 등록일자: 2026년 9월 9일, 등록번호: 10-3019367, 부산대학교 산학협력단.<br>- 김형순, **박순찬**, "음성 세그먼트간의 유사도 통계량을 이용한 화자 확인 방법", 등록일자: 2026년 8월 7일, 등록번호: 10-3003668, 부산대학교 산학협력단.<br>- 김형순, **박순찬**, "음소 및 문맥 정보를 고려한 화자 임베딩 추출 장치", 등록일자: 2024년 11월 21일, 등록번호: 10-2734362, 부산대학교 산학협력단.<br>- 김형순, **박순찬**, "대규모 대화 음성 데이터 분석을 위한 자동 화자 레이블링 방법 및 장치", 등록일자: 2024년 7월 11일, 등록번호: 10-2685265, 부산대학교 산학협력단.<br>- 김형순, **박순찬**, "잔향 제거 오토 인코더를 이용한 잔향 환경 임베딩 추출 방법 및 장치", 등록일자: 2022년 6월 15일, 등록번호: 10-2410850, 부산대학교 산학협력단.
 
-## **Projects**
+## <span class="nc-blue">**Projects**</span>
 
 <hr>
 

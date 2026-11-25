@@ -22,7 +22,7 @@ Integrated BS-MS  Course
 </div>
 <div markdown="1">
 
-## Research Interests
+## <span class="nc-blue">Research Interests</span>
 
 <hr>
 
@@ -34,39 +34,39 @@ Integrated BS-MS  Course
 
 </div>
 
-## **Publication**
+## <span class="nc-blue">**Publication**</span>
 
 <hr>
 
-**(\* indicates first author, † indicates corresponding author)**
+<span class="nc-red">**(\* indicates first author, † indicates corresponding author)**</span>
 
 ### **International Conference Papers**
 
-**\[C4\] Counterfactual Simulation-Guided Physical Reasoning for Physics-Based Video Generation**<br>Sohyeong Kim\*, Woo Hyeong Kim\*, In-Hwan Jin\*, **Hyeongju Mun**, Kyeongbo Kong†<br>**ECCVW,** 2025. (Top-tier AI conference workshop)<br>[<code>Paper</code>](https://eccv2026-3d-world-models.github.io/papers/files/25-counterfactual-simulation-guided-physical-reasoning-for-physics-based-video-gene.pdf)  [<code>Project Page</code>](https://annon-repo-for-science.github.io/CounterFactual/)  
+**\[C4\] Counterfactual Simulation-Guided Physical Reasoning for Physics-Based Video Generation**<br><span class="nc-gray">Sohyeong Kim\*, Woo Hyeong Kim\*, In-Hwan Jin\*,</span> <span class="nc-gray">**Hyeongju Mun**</span><span class="nc-gray">, Kyeongbo Kong†</span><br><span class="nc-gray">**ECCVW,**</span> <span class="nc-gray">2025. (Top-tier AI conference workshop)</span><br><span class="nc-blue">[<code>Paper</code>](https://eccv2026-3d-world-models.github.io/papers/files/25-counterfactual-simulation-guided-physical-reasoning-for-physics-based-video-gene.pdf)</span>  <span class="nc-blue">[<code>Project Page</code>](https://annon-repo-for-science.github.io/CounterFactual/)</span>  
 
-**\[C3\] LivingWorld: Interactive 4D World Generation with Environmental Dynamics<br>Hyeongju Mun\***, In-Hwan Jin\*, Sohyeong Kim, Kyeongbo Kong†<br>**ECCV**, 2026. (**Top-tier AI Conference**, **Acceptance Rate: 27.5%**)<br>[<code>Paper</code>](https://arxiv.org/pdf/2604.01641)  [<code>Project Page</code>](https://paper.pnu-cvsp.com/LivingWorld/)  
+**\[C3\] LivingWorld: Interactive 4D World Generation with Environmental Dynamics**<br><span class="nc-gray">**Hyeongju Mun\***</span><span class="nc-gray">, In-Hwan Jin\*, Sohyeong Kim, Kyeongbo Kong†</span><br><span class="nc-default_background">**ECCV**</span><span class="nc-gray">, 2026. (</span><span class="nc-gray">**Top-tier AI Conference**</span><span class="nc-gray">,</span> <span class="nc-gray">**Acceptance Rate: 27.5%**</span><span class="nc-gray">)</span><br><span class="nc-blue">[<code>Paper</code>](https://arxiv.org/pdf/2604.01641)</span>  <span class="nc-blue">[<code>Project Page</code>](https://paper.pnu-cvsp.com/LivingWorld/)</span>  
 
-**\[C2\] MoE-GS: Mixture of Experts for Dynamic Gaussian Splatting**<br>In-Hwan Jin\*, **Hyeongju Mun\***, Joonsoo Kim, Kyeongbo Kong†<br>**ICLR,** 2026 . **(Top-tier AI conference, Acceptance Rate: 28%)**<br><br>[<code>Paper</code>](https://arxiv.org/pdf/2510.19210)  [<code>Project Page</code>](https://paper.pnu-cvsp.com/MoE-GS/)  [<code>Code</code>](https://github.com/cvsp-lab/ICLR2025_3D-MOM)      
+**\[C2\] MoE-GS: Mixture of Experts for Dynamic Gaussian Splatting**<br><span class="nc-gray">In-Hwan Jin\*,</span> <span class="nc-gray">**Hyeongju Mun\***</span><span class="nc-gray">, Joonsoo Kim, Kyeongbo Kong†</span><br><span class="nc-gray">**ICLR,**</span> <span class="nc-gray">2026 .</span> <span class="nc-gray">**(Top-tier AI conference, Acceptance Rate: 28%)**</span><br><br><span class="nc-blue">[<code>Paper</code>](https://arxiv.org/pdf/2510.19210)</span>  <span class="nc-blue">[<code>Project Page</code>](https://paper.pnu-cvsp.com/MoE-GS/)</span>  <span class="nc-blue">[<code>Code</code>](https://github.com/cvsp-lab/ICLR2025_3D-MOM)</span>      
 
-**\[C1\] Generating 3D Gaussian Motion Fields for Dynamic Scene Video from Single Image**<br>Sohyeong Kim\*, **Hyeongju Mun\***, In-Hwan Jin\*, Kyeongbo Kong†<br>**ICEIC,** 2026.
+**\[C1\] Generating 3D Gaussian Motion Fields for Dynamic Scene Video from Single Image**<br><br><span class="nc-gray">Sohyeong Kim\*,</span> <span class="nc-gray">**Hyeongju Mun\***</span><span class="nc-gray">, In-Hwan Jin\*, Kyeongbo Kong†</span><br><span class="nc-gray">**ICEIC,**</span> <span class="nc-gray">2026.</span>
 
 ### **International Journal Papers**
 
-**\[J2\] On the Design of Mixture-of-Experts for Dynamic Gaussian Splatting**<br>In-Hwan Jin\*, **Hyeongju Mun\***, Joonsoo Kim, Kugjin Yun, Kyeongbo Kong†<br>***IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)***, **2026.** (IF: 20.4, JCR top 0.9%)
+**\[J2\]** **On the Design of Mixture-of-Experts for Dynamic Gaussian Splatting**<br><br><span class="nc-gray">In-Hwan Jin\*,</span> <span class="nc-gray">**Hyeongju Mun\***</span><span class="nc-gray">, Joonsoo Kim, Kugjin Yun, Kyeongbo Kong†</span><br><span class="nc-gray">***IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)***</span><span class="nc-gray">,</span> <span class="nc-gray">**2026.**</span> <span class="nc-gray">(IF: 20.4, JCR top 0.9%)</span>
 
-[<code>Paper</code>](https://ieeexplore.ieee.org/document/11606163)  [<code>Arxiv</code>](https://arxiv.org/pdf/2607.08250)  [<code>Project Page</code>](https://github.com/cvsp-lab/MoE-GS-studio)    [<code>Code</code>](https://github.com/cvsp-lab/MoDE)  
+<span class="nc-pink">[<code>Paper</code>](https://ieeexplore.ieee.org/document/11606163)</span>  <span class="nc-pink">[<code>Arxiv</code>](https://arxiv.org/pdf/2607.08250)</span>  <span class="nc-pink">[<code>Project Page</code>](https://github.com/cvsp-lab/MoE-GS-studio)</span>    <span class="nc-pink">[<code>Code</code>](https://github.com/cvsp-lab/MoDE)</span>  
 
-**\[J1\] 3D Gaussian rasterization for rendering of view-multiplexed image for multiview displays**<br>Joonsoo Kim\*, Kugjin Yun, Hyon-Gon Choo, **Hyeongju Mun**, Kyeongbo Kong†<br>***ETRI Jounal***, **2026.** (IF: 1.6)
+**\[J1\] 3D Gaussian rasterization for rendering of view-multiplexed image for multiview displays**<br><span class="nc-gray">Joonsoo Kim\*, Kugjin Yun, Hyon-Gon Choo,</span> <span class="nc-gray">**Hyeongju Mun**</span><span class="nc-gray">, Kyeongbo Kong†</span><br><span class="nc-gray">***ETRI Jounal***</span><span class="nc-gray">,</span> <span class="nc-gray">**2026.**</span> <span class="nc-gray">(IF: 1.6)</span>
 
 ### **Domestic Conference Papers**
 
-**\[C1\] LLM-VLM 통합 기반 파노라마 장면 편집 및 일관성 평가 자동화 프레임워크**<br>김민주\*, 유가연\*, 강성민\*, 진인환, **문형주**, 공경보†<br><br>방송미디어공학회 동계학술대회 대학생 논문 경진대회, Dec 2025. **(최우수상)**
+**\[C1\] LLM-VLM 통합 기반 파노라마 장면 편집 및 일관성 평가 자동화 프레임워크**<br><span class="nc-gray">김민주\*, 유가연\*, 강성민\*, 진인환,</span> <span class="nc-gray">**문형주**</span><span class="nc-gray">, 공경보†</span><br><br><span class="nc-gray">방송미디어공학회 동계학술대회 대학생 논문 경진대회, Dec 2025.</span> <span class="nc-red">**(최우수상)**</span>
 
 ### **Domestic Journal Papers**
 
 **\[1\] 문형주**, … , “멀티패스 환경에서의 TDOA 기반 위치추정 오차 완화 기법”
 
-## Project
+## <span class="nc-blue">Project</span>
 
 <hr>
 
@@ -83,7 +83,7 @@ Integrated BS-MS  Course
 
 - 다중송신원 환경 TDOA Hybrid 위치추정 기술, LIG Nex1, Korea/ **공동연구원** (Nov. 2023 ~ Sep. 2025)
 
-## Patents
+## <span class="nc-blue">Patents</span>
 
 <hr>
 

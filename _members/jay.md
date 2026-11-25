@@ -22,12 +22,12 @@ Ph.D. Course
 </div>
 <div markdown="1">
 
-## Research Interests
+## <span class="nc-blue">Research Interests</span>
 
 - Data analysis
 - Battery life estimation
 
-## **Publication**
+## <span class="nc-blue">**Publication**</span>
 
 **\[C1\] Data–Driven Fault Diagnosis and Cause Analysis of Battery Pack with Real Data**<br>Yang J, Jung J, Ghorbanpour S, Han S.
 

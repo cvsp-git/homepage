@@ -15,14 +15,14 @@ Integrated BS-MS  Course
 
 ## SoHyeon Kim
 
-sohyeon967@gmail.com
+<span class="nc-gray">sohyeon967@gmail.com</span>
 
 </div>
 
 </div>
 <div markdown="1">
 
-## Research Interests
+## <span class="nc-blue">Research Interests</span>
 
 - Efficient AI
 - Vision-Language Model
@@ -31,38 +31,38 @@ sohyeon967@gmail.com
 
 </div>
 
-## Publication
+## <span class="nc-blue">Publication</span>
 
 <hr>
 
-**(\* indicates first author, † indicates corresponding author)**
+<span class="nc-red">**(\* indicates first author, † indicates corresponding author)**</span>
 
 ### **International Conference Papers**
 
-**\[C4\] Focus Matters: Attention-Value Dynamics for Hallucination Mitigation in Vision-Language Models<br>Sohyeon Kim**\*, Sang Yeon Yoon, Kyeongbo Kong†<br>**NeurIPS**, 2026.
+**\[C4\]** **Focus Matters: Attention-Value Dynamics for Hallucination Mitigation in Vision-Language Models**<br><br><span class="nc-gray">**Sohyeon Kim**</span><span class="nc-gray">\*, Sang Yeon Yoon, Kyeongbo Kong†</span><br><span class="nc-gray">**NeurIPS**</span><span class="nc-gray">, 2026.</span>
 
-**\[C3\] Uncertainty-Guided Graph Formulation via MWIS for Token Pruning in LVLMs**<br>Jouwon Song\*, **Sohyeon Kim\***, Kyeongbo Kong†<br>**CVPR Findings**, 2026. 
+**\[C3\] Uncertainty-Guided Graph Formulation via MWIS for Token Pruning in LVLMs**<br><span class="nc-gray">Jouwon Song\*,</span> <span class="nc-gray">**Sohyeon Kim\***</span><span class="nc-gray">, Kyeongbo Kong†</span><br><span class="nc-gray">**CVPR Findings**</span><span class="nc-gray">, 2026.</span> 
 
-**\[C2\] AgilePruner: An Empirical Study of Attention and Diversity for Adaptive Visual Token Pruning in Large Vision-Language Models**<br>Changwoo Baek\*, Jouwon Song\*, **Sohyeon Kim\***, Kyeongbo Kong†<br>**ICLR 2026**, 2026.<br>Initial version was presented **NeurIPSW**, 2025
+**\[C2\] AgilePruner: An Empirical Study of Attention and Diversity for Adaptive Visual Token Pruning in Large Vision-Language Models**<br><span class="nc-gray">Changwoo Baek\*, Jouwon Song\*,</span> <span class="nc-gray">**Sohyeon Kim\***</span><span class="nc-gray">, Kyeongbo Kong†</span><br><span class="nc-gray">**ICLR 2026**</span><span class="nc-gray">, 2026.<br>Initial version was presented</span> <span class="nc-gray">**NeurIPSW**</span><span class="nc-gray">, 2025</span>
 
-**\[C1\] Efficient Token Pruning for Large Vision-Language Models in Multi-turn Scenarios**<br>Changwoo Baek\*, **Sohyeon Kim\***, Jouwon Song\*, Kyeongbo Kong†<br>IEEE Asia Pacific Conference on Circuits and Systems **(APCCAS)**, 2025.  
+**\[C1\]** **Efficient Token Pruning for Large Vision-Language Models in Multi-turn Scenarios**<br><br><span class="nc-gray">Changwoo Baek\*,</span> <span class="nc-gray">**Sohyeon Kim\***</span><span class="nc-gray">, Jouwon Song\*, Kyeongbo Kong†<br>IEEE Asia Pacific Conference on Circuits and Systems</span> <span class="nc-gray">**(APCCAS)**</span><span class="nc-gray">, 2025.</span>  
 
 ### **International Workshop Papers**
 
-**\[W2\] Mitigating Visual Hallucinations for Reliable Multimodal Agents<br>Sohyeon Kim**\*, Sang Yeon Yoon, Kyeongbo Kong†<br>*ICML Workshop* (Agents in the Wild: Safety, Security, and Beyond), 2026.  
+**\[W2\] Mitigating Visual Hallucinations for Reliable Multimodal Agents**<br><span class="nc-gray">**Sohyeon Kim**</span><span class="nc-gray">\*, Sang Yeon Yoon, Kyeongbo Kong†</span><br><span class="nc-gray">*ICML Workshop*</span> <span class="nc-gray">(Agents in the Wild: Safety, Security, and Beyond), 2026.</span>  
 
-**\[W1\] Failure-Aware Query Refinement for Reliable Open-Vocabulary Home-Robot Perception**<br>Daun Jeong\*, **Sohyeon Kim\***, Jouwon Song, Kyeongbo Kong†<br>*ICML Workshop* (Agents in the Wild: Safety, Security, and Beyond), 2026.
+**\[W1\] Failure-Aware Query Refinement for Reliable Open-Vocabulary Home-Robot Perception**<br><span class="nc-gray">Daun Jeong\*,</span> <span class="nc-gray">**Sohyeon Kim\***</span><span class="nc-gray">, Jouwon Song, Kyeongbo Kong†</span><br><span class="nc-gray">*ICML Workshop*</span> <span class="nc-gray">(Agents in the Wild: Safety, Security, and Beyond), 2026.</span>
 
 ### **Domestic Conference Papers**
 
-1. **김소현\***, 백창우\*, 송주원\*, 공경보†, “이미지 복잡도와 환각 생성 관점에서 본 대규모 비전-언어 모델의 시각 토큰 프루닝 분석”, 대한전자공학회 추계학술대회, 2025년 11월. **(장려상)**
-2. **김소현\***, 윤상연,  공경보†, “대규모 비전-언어 모델의 객체 환각 완화를 위한 비전 인코더 Attention-Value 동역학 분석”, 대한전자공학회 하계학술대회, 2026년 06월. **(우수학생논문상)**
+1. **김소현\***, 백창우\*, 송주원\*, 공경보†, “이미지 복잡도와 환각 생성 관점에서 본 대규모 비전-언어 모델의 시각 토큰 프루닝 분석”, 대한전자공학회 추계학술대회, 2025년 11월. <span class="nc-red">**(장려상)**</span>
+2. **김소현\***, 윤상연,  공경보†, “대규모 비전-언어 모델의 객체 환각 완화를 위한 비전 인코더 Attention-Value 동역학 분석”, 대한전자공학회 하계학술대회, 2026년 06월. <span class="nc-red">**(우수학생논문상)**</span>
 
 ### **Domestic Journal Papers**
 
 1. 백창우\*, **김소현\***, 송주원\*, 백광렬, 공경보†, “멀티모달 LLM에서의 비전 인코더 계층별 엔트로피 변화를 활용한 시각 토큰 프루닝, 방송공학회논문지, 2026년 1월.
 
-## **Project**
+## <span class="nc-blue">**Project**</span>
 
 <hr>
 

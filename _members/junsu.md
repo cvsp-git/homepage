@@ -15,14 +15,14 @@ Integrated BS-MS  Course
 
 ## Junsu Kim
 
-<code>wave2503@pusan.ac.kr</code>
+<span class="nc-gray"><code>wave2503@pusan.ac.kr</code></span>
 
 </div>
 
 </div>
 <div markdown="1">
 
-## Research Interests
+## <span class="nc-blue">Research Interests</span>
 
 - Multimodal AI
 - Audio-Visual Understanding
@@ -31,10 +31,10 @@ Integrated BS-MS  Course
 
 </div>
 
-## **Publication**
+## <span class="nc-blue">**Publication**</span>
 
 <hr>
 
 ### **Domestic Conference Papers**
 
-**\[C1\] 최신 V2A 연구 동향: 제어성, 충실도, 공간감**<br><br>**김준수\***, 박순찬, 공경보†<br>대한전자공학회 하계학술대회, June.2026.
+**\[C1\] 최신 V2A 연구 동향: 제어성, 충실도, 공간감**<br><br><span class="nc-gray">**김준수\***</span><span class="nc-gray">, 박순찬, 공경보†</span><br><br><span class="nc-gray">대한전자공학회 하계학술대회, June.2026.</span>

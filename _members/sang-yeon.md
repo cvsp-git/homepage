@@ -15,16 +15,16 @@ Research Intern
 
 ## Sang Yeon Yoon
 
-<code>yskite09@gmail.com</code><br><br><code>palsc@pukyong.ac.kr</code>
+<span class="nc-gray"><code>yskite09@gmail.com</code><br><br><code>palsc@pukyong.ac.kr</code></span>
 
-> [Personal page](https://glesep.github.io/)
+> <span class="nc-default_background">[Personal page](https://glesep.github.io/)</span>
 
 </div>
 
 </div>
 <div markdown="1">
 
-## Research Interests
+## <span class="nc-blue">Research Interests</span>
 
 - Efficient AI
 - Multi-Agent System
@@ -33,43 +33,43 @@ Research Intern
 
 </div>
 
-## **Publication**
+## <span class="nc-blue">**Publication**</span>
 
 <hr>
 
-**(\* indicates equal contribution, † indicates corresponding author)**
+<span class="nc-red">**(\* indicates equal contribution, † indicates corresponding author)**</span>
 
 ### **International Conference Papers**
 
 **\[C1\] Focus Matters: Attention-Value Dynamics for Hallucination Mitigation in Vision-Language Models**
 
-Sohyeon Kim, **Sang Yeon Yoon**, Kyeongbo Kong†
+<span class="nc-gray">Sohyeon Kim,</span> <span class="nc-gray">**Sang Yeon Yoon**</span><span class="nc-gray">, Kyeongbo Kong†</span>
 
-**NeurIPS,** Dec. 2026.
+<span class="nc-gray">**NeurIPS,**</span> <span class="nc-gray">Dec. 2026.</span>
 
 ### **International Workshop Papers**
 
 **\[W1\] Mitigating Visual Hallucinations for Reliable Multimodal Agents**
 
-Sohyeon Kim, **Sang Yeon Yoon**, Kyeongbo Kong†
+<span class="nc-gray">Sohyeon Kim,</span> <span class="nc-gray">**Sang Yeon Yoon**</span><span class="nc-gray">, Kyeongbo Kong†</span>
 
-**ICMLw,** Jul. 2026.
+<span class="nc-gray">**ICMLw,**</span> <span class="nc-gray">Jul. 2026.</span>
 
 ### **Domestic Conference Papers**
 
-**\[D2\] 대규모 비전-언어 모델의 객체 환각 완화를 위한 비전 인코더 Attention-Value 동역학 분석 (우수학생논문상)**
+**\[D2\] 대규모 비전-언어 모델의 객체 환각 완화를 위한 비전 인코더 Attention-Value 동역학 분석** <span class="nc-red">**(우수학생논문상)**</span>
 
-김소현, **윤상연**, 공경보†
+<span class="nc-gray">김소현,</span> <span class="nc-gray">**윤상연**</span><span class="nc-gray">, 공경보†</span>
 
-**대한전자공학회 하계종합학술대회,** June. 2026.
+<span class="nc-gray">**대한전자공학회 하계종합학술대회,**</span> <span class="nc-gray">June. 2026.</span>
 
 **\[D1\] 입력 모달리티에 따른  3D 거대 멀티모달 모델 연구 동향 조사**
 
-**윤상연**, 백창우, 김소현, 공경보†
+<span class="nc-gray">**윤상연**</span><span class="nc-gray">, 백창우, 김소현, 공경보†</span>
 
-**대한전자공학회 하계종합학술대회,** June. 2026.
+<span class="nc-gray">**대한전자공학회 하계종합학술대회,**</span> <span class="nc-gray">June. 2026.</span>
 
-## Project
+## <span class="nc-blue">Project</span>
 
 <hr>
 

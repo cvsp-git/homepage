@@ -15,14 +15,14 @@ Integrated BS-MS  Course
 
 ## Beomkwon Cho
 
-<code>chobk1@pusan.ac.kr</code>
+<span class="nc-gray"><code>chobk1@pusan.ac.kr</code></span>
 
 </div>
 
 </div>
 <div markdown="1">
 
-## Research Interests
+## <span class="nc-blue">Research Interests</span>
 
 - Multimodal AI
 - Audio-Visual Perception
@@ -31,23 +31,23 @@ Integrated BS-MS  Course
 
 </div>
 
-## **Publication**
+## <span class="nc-blue">**Publication**</span>
 
 <hr>
 
-**(\*equally contributed, †corresponding author)**
+<span class="nc-red">**(\*equally contributed, †corresponding author)**</span>
 
 ### **International Conference Papers**
 
-**\[C2\] Compositional Agentic Formulation Search for Open-Vocabulary Audio-Visual Event Localization<br>Beomkwon Cho**\*, Sunchan Park\*, Kyeongbo Kong†<br>ICMLW, 2026. (Top-tier AI conference workshop)
+**\[C2\] Compositional Agentic Formulation Search for Open-Vocabulary Audio-Visual Event Localization**<br>**Beomkwon Cho**\*, Sunchan Park\*, Kyeongbo Kong†<br><br>ICMLW, 2026. (Top-tier AI conference workshop)
 
-**\[C1\] Video-Conditioned Hyperparameter Prediction for Audio-Visual Event Localization<br>Beomkwon Cho**\*, Sunchan Park\*, Kyeongbo Kong†<br>ITC-CSCC**,** 2026.
+**\[C1\] Video-Conditioned Hyperparameter Prediction for Audio-Visual Event Localization**<br>**Beomkwon Cho**\*, Sunchan Park\*, Kyeongbo Kong†<br><br>ITC-CSCC**,** 2026.
 
 ### **Domestic Conference Papers**
 
-**\[C1\] Open-Vocabulary Audio-Visual Event Localization을 위한 Agentic Decision-Rule 탐색 프레임워크<br>조범권**\*, 박순찬\*, 공경보†<br>대한전자공학회 하계학술대회**,** 2026.
+**\[C1\] Open-Vocabulary Audio-Visual Event Localization을 위한 Agentic Decision-Rule 탐색 프레임워크<br>조범권**\*, 박순찬\*, 공경보†<br><br>대한전자공학회 하계학술대회**,** 2026.
 
-## **Project**
+## <span class="nc-blue">**Project**</span>
 
 <hr>
 

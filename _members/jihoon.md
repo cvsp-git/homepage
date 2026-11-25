@@ -15,14 +15,14 @@ Integrated BS-MS  Course
 
 ## Jihoon Choi
 
-[chlwlgns0101@pusan.ac.kr](mailto:chlwlgns0101@pusan.ac.kr)
+<span class="nc-gray">[chlwlgns0101@pusan.ac.kr](mailto:chlwlgns0101@pusan.ac.kr)</span>
 
 </div>
 
 </div>
 <div markdown="1">
 
-## Research Interests
+## <span class="nc-blue">Research Interests</span>
 
 - Computer Vision
 - 3D/4D World Reconstruction
@@ -33,23 +33,23 @@ Integrated BS-MS  Course
 
 </div>
 
-## **Publication**
+## <span class="nc-blue">**Publication**</span>
 
 <hr>
 
 ### **Submitted**
 
-**\[S1\] Anonymized Title<br>Jihoon Choi\***, In-Hwan Jin\*, Joonsoo Kim, Kugjin Yun, Kyeongbo Kong†
+**\[S1\] Anonymized Title**<br><span class="nc-gray">**Jihoon Choi\***</span><span class="nc-gray">, In-Hwan Jin\*, Joonsoo Kim, Kugjin Yun, Kyeongbo Kong†</span>
 
 ### **International Conference Papers**
 
-**\[C1\] Sparse-View Dynamic Scene Reconstruction with 4D Gaussian Splatting<br>Jihoon Choi\***, Kyeongbo Kong†<br>**ICEIC,** 2027.
+**\[C1\] Sparse-View Dynamic Scene Reconstruction with 4D Gaussian Splatting**<br><span class="nc-gray">**Jihoon Choi\***</span><span class="nc-gray">, Kyeongbo Kong†</span><br><span class="nc-gray">**ICEIC,**</span> <span class="nc-gray">2027.</span>
 
 ### **Domestic Conference Papers**
 
-**\[C1\] 단안 비디오 기반 인간-공간 통합형 3D 글로벌 모션 복원 기술 동향**<br><br>**최지훈\***, 진인환\*, 공경보†<br>대한전자공학회 하계학술대회, June.2026.
+**\[C1\] 단안 비디오 기반 인간-공간 통합형 3D 글로벌 모션 복원 기술 동향**<br><br><span class="nc-gray">**최지훈\***</span><span class="nc-gray">, 진인환\*, 공경보†</span><br><br><span class="nc-gray">대한전자공학회 하계학술대회, June.2026.</span>
 
-## Projects
+## <span class="nc-blue">Projects</span>
 
 <hr>
 

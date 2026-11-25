@@ -15,14 +15,14 @@ Research Intern
 
 ## JongWon Choi
 
-<code>202224265@pusan.ac.kr</code>
+<span class="nc-gray"><code>202224265@pusan.ac.kr</code></span>
 
 </div>
 
 </div>
 <div markdown="1">
 
-## Research Interests
+## <span class="nc-blue">Research Interests</span>
 
 - Computer Vision
 - Generative AI
@@ -31,6 +31,6 @@ Research Intern
 
 </div>
 
-## **Publication**
+## <span class="nc-blue">**Publication**</span>
 
 <hr>

@@ -15,14 +15,14 @@ Integrated BS-MS  Course
 
 ## MinSoo Woo
 
-wminsoo123@naver.com
+<span class="nc-gray">wminsoo123@naver.com</span>
 
 </div>
 
 </div>
 <div markdown="1">
 
-## Research Interests
+## <span class="nc-blue">Research Interests</span>
 
 - multi modality
 - generative AI
@@ -32,19 +32,19 @@ wminsoo123@naver.com
 
 </div>
 
-## **Publication**
+## <span class="nc-blue">**Publication**</span>
 
 <hr>
 
-**(\* indicates first author, † indicates corresponding author)**
+<span class="nc-red">**(\* indicates first author, † indicates corresponding author)**</span>
 
 **\[J1\] 동적 이미지 합성을 위한 4D Gaussian Splatting 기법 비교 및 연구 동향**
 
-**우민수**\***,** 진인환**\*,** 김준수, 윤국진, 공경보†
+<span class="nc-gray">**우민수**</span><span class="nc-gray">\*</span><span class="nc-gray">**,**</span> <span class="nc-gray">진인환</span><span class="nc-gray">**\*,**</span> <span class="nc-gray">김준수, 윤국진, 공경보†</span>
 
-방송공학회논문지, 2025년 1월.
+<span class="nc-gray">방송공학회논문지, 2025년 1월.</span>
 
-## **Project**
+## <span class="nc-blue">**Project**</span>
 
 <hr>
 
