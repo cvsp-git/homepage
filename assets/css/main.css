@@ -526,9 +526,10 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 .demo-media { position: relative; border-radius: var(--radius); overflow: hidden; background: var(--hero-bg); border: 1px solid var(--line); box-shadow: var(--shadow); }
 .demo-video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #000; }
 .demo-body { display: grid; gap: 8px; }
-.demo-body h3 { font-size: 1.25rem; }
-.demo-lead .demo-body h3 { font-size: var(--s-2, 1.8rem); }
-.demo-sub { color: var(--pnu); font-weight: 600; font-size: .95rem; }
+
+.demo-sub { color: var(--ink); font-weight: 600; font-size: 1.15rem; line-height: 1.35; }
+.demo-sub a { color: inherit; }
+.demo-lead .demo-sub { font-size: 1.45rem; }
 .demo-cap { color: var(--muted); font-size: .92rem; line-height: 1.6; }
 .demo-tags { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
 .demo-tags li { font-size: .7rem; padding: 3px 8px; border-radius: 999px; background: var(--pnu-soft); color: var(--pnu); }

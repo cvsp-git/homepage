@@ -57,8 +57,7 @@ slug: index
       {% for d in site.data.demos %}
       <article class="demo{% if forloop.first %} demo-lead{% endif %}">
         <div class="demo-body">
-          <h3>{% if d.link and d.link != "" %}<a href="{{ d.link }}">{{ d.title }}</a>{% else %}{{ d.title }}{% endif %}</h3>
-          <p class="demo-sub">{{ d.subtitle }}</p>
+          <h3 class="demo-sub">{% if d.link and d.link != "" %}<a href="{{ d.link }}">{{ d.subtitle }}</a>{% else %}{{ d.subtitle }}{% endif %}</h3>
           <p class="demo-cap">{{ d.caption }}</p>
           {% if d.tags %}<ul class="demo-tags mono">{% for t in d.tags %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
         </div>
