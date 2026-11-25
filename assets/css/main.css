@@ -469,7 +469,7 @@ img.avatar { object-fit: cover; }  /* 틀은 4:5 고정. 새 사진은 미리 4:
 .contact-box dd, .footer-contact dd { margin: 2px 0 0; }
 
 /* ---------- footer ---------- */
-.site-footer { background: var(--hero-bg); color: var(--hero-muted); padding-block: 56px 28px; font-size: .9rem; }
+.site-footer { background: #061325; color: var(--hero-muted); padding-block: 56px 28px; font-size: .9rem; }
 .site-footer a { color: var(--hero-ink); }
 .footer-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 40px; }
 .footer-id { display: grid; gap: 8px; }
@@ -562,7 +562,7 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 .bcard-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
 .bcard-meta time { font-size: .72rem; color: var(--muted); }
 .bcard-tag { display: inline-block; font: 500 .68rem var(--f-mono, monospace); padding: 2px 7px; border-radius: 999px; background: var(--pnu-soft); color: var(--pnu); }
-.bcard-title { font-weight: 600; font-size: .9rem; line-height: 1.4; overflow-wrap: anywhere; }
+.bcard-title { font-weight: 600; font-size: .9rem; line-height: 1.4; overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; min-height: 2.8em; }
 .board-grid { margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 18px; }
 
 /* 카드 상세 페이지 */
@@ -605,7 +605,11 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 .board-table table { border-collapse: collapse; width: 100%; font-size: .92rem; }
 .board-table td { border: 1px solid var(--line, #e5e5e5); padding: 6px 10px; vertical-align: top; }
 .board-body code { font-size: .85em; padding: 1px 6px; border-radius: 6px; background: var(--surface, #f4f4f4); }
-.member-body .callout .board-fig img { max-width: 220px; border-radius: 12px; }
+/* member page: profile like a Members card (photo, then name and details below), no tinted box */
+.member-body .callout { background: none; padding: 0; border-radius: 0; }
+.member-body .callout .board-fig { justify-items: start; margin-block: 6px 14px; }
+.member-body .callout .board-fig img { width: 220px; max-width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 10px; margin: 0; }
+.member-body .callout h2 { margin: 0 0 6px; }
 .m-name a, .pi-body h3 a { color: inherit; text-decoration: none; }
 .m-name a:hover, .pi-body h3 a:hover { text-decoration: underline; }
 

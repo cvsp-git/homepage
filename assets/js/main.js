@@ -471,4 +471,25 @@
   if (!bar) return;
   var set = function () { document.documentElement.style.setProperty("--pubbar", bar.offsetHeight + "px"); };
   set(); window.addEventListener("resize", set);
+  // year buttons: put the year label right under the sticky filter bar
+  var go = function (id, smooth) {
+    var sec = document.getElementById(id);
+    if (!sec || sec.hidden) return false;
+    var label = sec.querySelector(".year-label") || sec;
+    var top = label.getBoundingClientRect().top + window.scrollY - (parseFloat(getComputedStyle(bar).top) || 0) - bar.offsetHeight - 16;
+    window.scrollTo({ top: top, behavior: smooth ? "smooth" : "auto" });
+    return true;
+  };
+  document.querySelectorAll(".year-jump a[href^='#']").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var id = a.getAttribute("href").slice(1);
+      if (go(id, false)) {
+        e.preventDefault(); history.replaceState(null, "", "#" + id);
+        // images above may finish loading and push the year down: correct once more
+        setTimeout(function () { go(id, false); }, 250);
+        setTimeout(function () { go(id, false); }, 800);
+      }
+    });
+  });
+  if (location.hash) window.addEventListener("load", function () { go(location.hash.slice(1), false); });
 })();
