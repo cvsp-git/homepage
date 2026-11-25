@@ -955,6 +955,36 @@
    "slug": "gallery-2024-08-12-1"
   }
  },
+ "home_slides": {
+  "3c9abcc9-0e34-804a-a319-d14f87bccad6": {
+   "key": "3c9abcc9-0e34-804a-a319-d14f87bccad6@1787808440257",
+   "path": "images/home/slides/3c9abcc90e34804aa319d14f87bccad6.jpg"
+  },
+  "3c9abcc9-0e34-8080-8650-cd97b3e0a84a": {
+   "key": "3c9abcc9-0e34-8080-8650-cd97b3e0a84a@1787808378822",
+   "path": "images/home/slides/3c9abcc90e3480808650cd97b3e0a84a.jpg"
+  },
+  "3c9abcc9-0e34-80e7-914c-d8ba898fbf17": {
+   "key": "3c9abcc9-0e34-80e7-914c-d8ba898fbf17@1787808372001",
+   "path": "images/home/slides/3c9abcc90e3480e7914cd8ba898fbf17.jpg"
+  },
+  "3c9abcc9-0e34-80ee-9f25-ef53d01d69a7": {
+   "key": "3c9abcc9-0e34-80ee-9f25-ef53d01d69a7@1787808401253",
+   "path": "images/home/slides/3c9abcc90e3480ee9f25ef53d01d69a7.jpg"
+  },
+  "3c9abcc9-0e34-80ef-9065-fc7f869d7a7c": {
+   "key": "3c9abcc9-0e34-80ef-9065-fc7f869d7a7c@1787809245292",
+   "path": "images/home/slides/3c9abcc90e3480ef9065fc7f869d7a7c.jpg"
+  },
+  "3caabcc9-0e34-80e5-ae64-fb9aced6fada": {
+   "key": "3caabcc9-0e34-80e5-ae64-fb9aced6fada@1787907281449",
+   "path": "images/home/slides/3caabcc90e3480e5ae64fb9aced6fada.jpg"
+  },
+  "401abcc9-0e34-80f2-9009-fbcc9d776805": {
+   "key": "401abcc9-0e34-80f2-9009-fbcc9d776805@1792660331457",
+   "path": "images/home/slides/401abcc90e3480f29009fbcc9d776805.jpg"
+  }
+ },
  "lab": {
   "img:intel-d435i": "attachment:14bcccf8-1ba4-4505-bff3-fe4dbcbf3a93:메탈릭_3D_깊이_센서_카메라.png",
   "img:nvidia-thor": "attachment:6c6c0054-f67f-4dc3-9d58-4ce1f56d191d:엔비디아_스타일_컴퓨팅_박스와_PCB.png",
