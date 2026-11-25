@@ -14,25 +14,25 @@
    "name": "SO-101",
    "count": "1",
    "category": "Robot",
-   "image": ""
+   "image": "so-101.jpg"
   },
   {
    "name": "NVIDIA Thor",
    "count": "1",
    "category": "Compute platform",
-   "image": ""
+   "image": "nvidia-thor.jpg"
   },
   {
    "name": "Intel D435i",
    "count": "1",
    "category": "Depth sensor",
-   "image": ""
+   "image": "intel-d435i.jpg"
   },
   {
    "name": "YOR",
    "count": "1",
    "category": "Robot",
-   "image": ""
+   "image": "yor.jpg"
   }
  ],
  "seminars": [
