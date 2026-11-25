@@ -1,5 +1,5 @@
 {% comment %}
-  홈 화면 카드 묶음. kind: news / gallery / life, cols: 한 줄 카드 수. 처음에는 2줄만 보이고 "Load more"를 누를 때마다 2줄씩 더 나옵니다.
+  홈 화면 카드 묶음. kind: news / gallery / life, cols: 한 줄 카드 수. 처음에는 2줄만 보이고 아래 "Load more" 하나를 누를 때마다 섹션마다 2줄씩 더 나옵니다.
 {% endcomment %}
 {% assign items = site.board | where: "kind", include.kind | sort: "order" %}
 {% assign first = include.cols | times: 2 %}
@@ -11,5 +11,4 @@
   <div class="feed-cards">
     {% for b in items %}{% if forloop.index > first %}{% include board-card.html b=b more=true %}{% else %}{% include board-card.html b=b %}{% endif %}{% endfor %}
   </div>
-  {% if items.size > first %}<button type="button" class="feed-more" data-feed-more>Load more</button>{% endif %}
 </div>

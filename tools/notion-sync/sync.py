@@ -535,6 +535,42 @@ def text(b):
     return re.sub(r"\s+", " ", plain((b.get("properties") or {}).get("title"))).strip()
 
 
+def home_slides(rm):
+    """Photos of the 'oopy:slide' callout on the main page -> images/home/slides/, in Notion order."""
+    B = rm.get("block", {})
+    box = next((b for b in B.values() if b.get("type") == "callout" and b.get("alive", True)
+                and "oopy:slide" in "".join(x[0] for x in (b.get("properties") or {}).get("title", []))), None)
+    cache = state.setdefault("home_slides", {})
+    if not box: return []
+    folder = os.path.join(ROOT, "images/home/slides"); os.makedirs(folder, exist_ok=True)
+    out, keep = [], set()
+    for cid in box.get("content") or []:
+        b = B.get(cid)
+        if not b or b.get("type") != "image" or not b.get("alive", True): continue
+        key = "%s@%s" % (b["id"], b.get("last_edited_time"))
+        path = cache.get(b["id"], {}).get("path")
+        if cache.get(b["id"], {}).get("key") != key or not path or not os.path.exists(os.path.join(ROOT, path)):
+            if args.dump:
+                if path: out.append(path); keep.add(b["id"])
+                continue
+            src = Renderer.source(b)
+            from media import fetch
+            got = fetch(src, b["id"], b.get("space_id"), os.path.join(folder, b["id"].replace("-", "")))
+            if not got:
+                if path: out.append(path); keep.add(b["id"])
+                continue
+            path = os.path.relpath(got, ROOT).replace(os.sep, "/")
+            cache[b["id"]] = {"key": key, "path": path}
+        out.append(path); keep.add(b["id"])
+    if not args.dump:
+        for bid in list(cache):
+            if bid not in keep:
+                p = os.path.join(ROOT, cache.pop(bid)["path"])
+                if os.path.exists(p): os.remove(p)
+    log("home: %d slides" % len(out))
+    return out
+
+
 def sync_home():
     rm = load_full(MAIN_PAGE, "main")
     if not rm: return
@@ -549,6 +585,7 @@ def sync_home():
             home["research"].append({"title": m.group(1), "summary": m.group(2)} if m else {"title": x, "summary": ""}); continue
         if t in ("sub_header", "header", "sub_sub_header") and "recruit" in x.lower(): in_recruit = True; continue
         if in_recruit and t == "text" and x and not home["recruiting"] and "join" not in x.lower(): home["recruiting"] = x
+    home["slides"] = home_slides(rm)
     if home["lede"] and home["research"]:
         write_json(os.path.join(ROOT, "_data/home.json"), home)
     log("home: %d research lines" % len(home["research"]))

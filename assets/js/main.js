@@ -238,6 +238,13 @@
     canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     var wide = W > 900;
+    if (canvas.hasAttribute("data-mascot") && canvas.parentNode.classList.contains("has-slides")) {
+      // photo slides take the middle: Sanjini stands small in the top-right corner
+      scale = Math.min(W * 0.34, 300) / 3;
+      cx = W - Math.max(scale * 0.8, Math.min(W * 0.09, 150));
+      cy = scale * 1.05 + 22;
+      return;
+    }
     if (canvas.hasAttribute("data-mascot")) {
       // centered stage at the top of the hero; the lab name sits below it
       var stage = parseFloat(getComputedStyle(canvas.parentNode).getPropertyValue("--stage")) || 400;
@@ -430,18 +437,44 @@
   vids.forEach(function (v) { io.observe(v); });
 })();
 
-/* 홈 News / Gallery / LAB Life: "Load more"를 누르면 카드가 2줄씩 더 나옵니다. */
+/* 홈 News / Gallery / LAB Life: 아래 "Load more" 하나를 누르면 각 섹션에 카드가 2줄씩 더 나옵니다. */
 (function () {
-  document.querySelectorAll("[data-feed]").forEach(function (box) {
-    var btn = box.querySelector("[data-feed-more]");
-    if (!btn) return;
-    var step = parseInt(box.getAttribute("data-step"), 10) || 4;
-    btn.addEventListener("click", function () {
+  var btn = document.querySelector("[data-feed-more-all]");
+  if (!btn) return;
+  var boxes = document.querySelectorAll("[data-feed]");
+  var left = function () { return document.querySelectorAll("[data-feed] .bcard.is-more[hidden]").length; };
+  if (!left()) { btn.hidden = true; return; }
+  btn.addEventListener("click", function () {
+    boxes.forEach(function (box) {
+      var step = parseInt(box.getAttribute("data-step"), 10) || 4;
       var rest = box.querySelectorAll(".bcard.is-more[hidden]");
       for (var i = 0; i < rest.length && i < step; i++) rest[i].hidden = false;
-      if (rest.length <= step) btn.hidden = true;
     });
+    if (!left()) btn.hidden = true;
   });
+})();
+
+/* home hero photo slides (Notion main page "oopy:slide"): crossfade every 4 s */
+(function () {
+  var box = document.querySelector("[data-hero-slides]");
+  if (!box) return;
+  var imgs = box.querySelectorAll("img"), n = imgs.length, cur = 0, timer = null;
+  if (n < 2) return;
+  var dots = document.createElement("div"); dots.className = "hero-slides-dots";
+  var go = function (i) {
+    imgs[cur].classList.remove("is-on"); dots.children[cur].classList.remove("is-on");
+    cur = (i + n) % n;
+    imgs[cur].loading = "eager"; imgs[(cur + 1) % n].loading = "eager";
+    imgs[cur].classList.add("is-on"); dots.children[cur].classList.add("is-on");
+  };
+  var restart = function () { clearInterval(timer); timer = setInterval(function () { go(cur + 1); }, 4000); };
+  for (var i = 0; i < n; i++) (function (i) {
+    var b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", "Photo " + (i + 1));
+    b.addEventListener("click", function () { go(i); restart(); }); dots.appendChild(b);
+  })(i);
+  dots.children[0].classList.add("is-on"); box.appendChild(dots);
+  imgs[1].loading = "eager";
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) restart();
 })();
 
 /* Notion "oopy:slide" photo slides on board pages */

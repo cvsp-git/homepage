@@ -4,13 +4,18 @@ slug: index
 ---
 {% assign ongoing = site.data.projects | where: "status", "ongoing" %}
 
-<section class="hero{% if site.hero_mascot and site.hero_mascot != "" %} has-mascot{% endif %}" aria-labelledby="hero-title">
+{% assign home = site.data.home %}
+<section class="hero{% if site.hero_mascot and site.hero_mascot != "" %} has-mascot{% endif %}{% if home.slides and home.slides.size > 0 %} has-slides{% endif %}" aria-labelledby="hero-title">
   <canvas class="hero-canvas" id="splat-canvas" aria-hidden="true"{% if site.hero_mascot and site.hero_mascot != "" %} data-mascot="{{ site.hero_mascot | prepend: '/images/logo/' | relative_url }}"{% endif %}></canvas>
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="wrap hero-inner">
     <p class="eyebrow eyebrow-hero">{{ site.university }} · {{ site.department_short }}</p>
     <h1 id="hero-title" class="hero-title">Computer Vision &amp; Signal Processing Lab</h1>
-    {% assign home = site.data.home %}
+    {% if home.slides and home.slides.size > 0 %}
+    <div class="hero-slides" data-hero-slides>
+      {% for img in home.slides %}<img src="{{ '/' | append: img | relative_url }}" alt=""{% if forloop.first %} class="is-on"{% else %} loading="lazy"{% endif %}>{% endfor %}
+    </div>
+    {% endif %}
     <p class="hero-lede">{% if home.lede and home.lede != "" %}{{ home.lede }}{% else %}We build spatial multimodal AI that understands, generates, and interacts with the physical world, from 4D scene reconstruction to robots that reason about the space around them.{% endif %}</p>
     <div class="hero-actions">
       <a class="btn btn-ghost" href="{{ '/join.html' | relative_url }}">Join the lab</a>
@@ -81,5 +86,6 @@ slug: index
     {% include board-feed.html kind="gallery" cols=2 title="Gallery" all="/gallery.html#gallery" %}
     {% include board-feed.html kind="life" cols=1 title="LAB Life" all="/gallery.html#life" %}
   </div>
+  <div class="wrap wide feed-more-row"><button type="button" class="feed-more" data-feed-more-all>Load more</button></div>
 </section>
 
