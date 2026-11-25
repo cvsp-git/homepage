@@ -8,8 +8,8 @@
 
 :root {
   /* color */
-  --bg: #f5f7fa;
-  --photo-bg: #e9eef5;
+  --bg: #ffffff;
+  --photo-bg: #eef2f8;
   --surface: #ffffff;
   --ink: #0b1a2e;
   --muted: #5a6a80;
@@ -204,7 +204,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- sections ---------- */
 .section { padding-block: clamp(56px, 8vw, 96px); }
-.section-alt { background: var(--surface); border-block: 1px solid var(--line); }
+.section-alt { background: #f4f7fb; border-block: 1px solid var(--line); }
 .section-head { display: grid; gap: 14px; margin-bottom: 36px; }
 .section-head h2 { font-size: var(--s-2); max-width: 26ch; }
 .section-head-row { display: flex; align-items: end; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap; }
