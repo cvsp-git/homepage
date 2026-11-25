@@ -35,5 +35,14 @@ research_overview: ""
 # 교수님 이름: 논문 저자 목록에서 굵게 표시됩니다.
 pi_names: ["Kyeongbo Kong", "공경보"]
 
+# News / Gallery / Lab Life 카드: _board 폴더에 카드 하나당 .md 파일 하나 (README 참고)
+collections:
+  board:
+    output: true
+    permalink: /board/:name/
+defaults:
+  - scope: {path: "", type: board}
+    values: {layout: board}
+
 markdown: kramdown
 exclude: [README.md, Gemfile, Gemfile.lock, vendor, tools, .github]

@@ -1,9 +1,0 @@
-{% assign g = include.g %}
-<figure class="g-tile g-{{ g.category | downcase }}{% if include.i == 1 %} g-lead{% endif %}{% if g.image and g.image != "" %} has-photo{% endif %}">
-  {% if g.image and g.image != "" %}
-  <img src="{{ '/images/gallery/' | append: g.image | relative_url }}" alt="{{ g.title }}" loading="lazy">
-  {% else %}
-  <span class="g-placeholder" aria-hidden="true"></span>
-  {% endif %}
-  <figcaption><span class="mono">{{ g.date }} · {{ g.category }}</span>{{ g.title }}</figcaption>
-</figure>

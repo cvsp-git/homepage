@@ -3,24 +3,26 @@ layout: default
 title: Gallery
 slug: gallery
 ---
+{% comment %} 사진 카드는 _board 폴더의 gallery-*.md(학회·세미나), life-*.md(Lab Life) 파일입니다. {% endcomment %}
+{% assign gal = site.board | where: "kind", "gallery" | sort: "order" %}
+{% assign life = site.board | where: "kind", "life" | sort: "order" %}
 <section class="page-head">
   <div class="wrap">
     <p class="eyebrow">Gallery</p>
-    <h1>Lab life</h1>
-    <p class="lede">Conference trips, celebrations, and everyday moments at CVSP.</p>
+    <h1>Gallery &amp; Lab Life</h1>
+    <p class="lede">Conference trips, seminars, celebrations, and everyday moments at CVSP.</p>
   </div>
 </section>
 <section class="section">
   <div class="wrap">
     <div class="chips" data-gallery-filter aria-label="Filter photos">
       <button type="button" class="chip is-on" data-cat="all">All</button>
-      <button type="button" class="chip" data-cat="conference">Conference</button>
-      <button type="button" class="chip" data-cat="seminar">Seminar</button>
-      <button type="button" class="chip" data-cat="celebration">Celebration</button>
-      <button type="button" class="chip" data-cat="event">Event</button>
+      <button type="button" class="chip" data-cat="gallery">Gallery</button>
+      <button type="button" class="chip" data-cat="life">Lab Life</button>
     </div>
-    <div class="gallery-grid">
-      {% for g in site.data.gallery %}{% include gallery-tile.html g=g i=0 %}{% endfor %}
+    <div class="board-grid">
+      {% for b in gal %}{% include board-card.html b=b %}{% endfor %}
+      {% for b in life %}{% include board-card.html b=b %}{% endfor %}
     </div>
   </div>
 </section>

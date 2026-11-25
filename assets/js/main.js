@@ -74,8 +74,8 @@
       c.addEventListener("click", function () {
         var cat = c.dataset.cat;
         gchips.forEach(function (x) { x.classList.toggle("is-on", x === c); });
-        document.querySelectorAll(".gallery-grid .g-tile").forEach(function (t) {
-          t.hidden = !(cat === "all" || t.classList.contains("g-" + cat));
+        document.querySelectorAll(".board-grid .bcard").forEach(function (t) {
+          t.hidden = !(cat === "all" || t.classList.contains("bcard-" + cat));
         });
       });
     });
@@ -427,4 +427,18 @@
     });
   }, { threshold: 0.35 });
   vids.forEach(function (v) { io.observe(v); });
+})();
+
+/* 홈 News / Gallery / LAB Life: "Load more"를 누르면 카드가 2줄씩 더 나옵니다. */
+(function () {
+  document.querySelectorAll("[data-feed]").forEach(function (box) {
+    var btn = box.querySelector("[data-feed-more]");
+    if (!btn) return;
+    var step = parseInt(box.getAttribute("data-step"), 10) || 4;
+    btn.addEventListener("click", function () {
+      var rest = box.querySelectorAll(".bcard.is-more[hidden]");
+      for (var i = 0; i < rest.length && i < step; i++) rest[i].hidden = false;
+      if (rest.length <= step) btn.hidden = true;
+    });
+  });
 })();

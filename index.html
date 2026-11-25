@@ -78,34 +78,9 @@ slug: index
 
 <section class="section home-feed" aria-label="Latest news, gallery and lab life">
   <div class="wrap feed-grid">
-    <div class="feed-col">
-      <header class="feed-head">
-        <h2 id="news-title">Latest News</h2>
-        <a class="text-link" href="{{ '/news.html' | relative_url }}">All →</a>
-      </header>
-      <ul class="feed-news">
-        {% for n in site.data.news limit: 6 %}
-        <li>
-          <span class="feed-meta"><span class="cat cat-{{ n.category | downcase }}">{{ n.category }}</span><time class="mono">{{ n.date }}</time></span>
-          <p>{% if n.link %}<a href="{{ n.link }}">{{ n.text }}</a>{% else %}{{ n.text }}{% endif %}</p>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div class="feed-col">
-      <header class="feed-head">
-        <h2>Gallery</h2>
-        <a class="text-link" href="{{ '/gallery.html#conference' | relative_url }}">All →</a>
-      </header>
-      {% include feed-photos.html cats="conference,seminar" %}
-    </div>
-    <div class="feed-col">
-      <header class="feed-head">
-        <h2>Lab Life</h2>
-        <a class="text-link" href="{{ '/gallery.html#celebration' | relative_url }}">All →</a>
-      </header>
-      {% include feed-photos.html cats="celebration,event" %}
-    </div>
+    {% include board-feed.html kind="news" cols=3 title="Latest News" all="/news.html" %}
+    {% include board-feed.html kind="gallery" cols=2 title="Gallery" all="/gallery.html#gallery" %}
+    {% include board-feed.html kind="life" cols=1 title="LAB Life" all="/gallery.html#life" %}
   </div>
 </section>
 

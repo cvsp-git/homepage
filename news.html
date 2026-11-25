@@ -3,11 +3,13 @@ layout: default
 title: News
 slug: news
 ---
-{% assign groups = site.data.news | group_by_exp: "n", "n.date | slice: 0, 4" %}
+{% comment %} 소식 카드는 _board 폴더의 news-*.md 파일입니다. {% endcomment %}
+{% assign items = site.board | where: "kind", "news" | sort: "order" %}
+{% assign groups = items | group_by_exp: "n", "n.date | date: '%Y'" %}
 <section class="page-head">
   <div class="wrap">
     <p class="eyebrow">News</p>
-    <h1>News &amp; awards</h1>
+    <h1>Latest News</h1>
   </div>
 </section>
 <section class="section">
@@ -17,9 +19,9 @@ slug: news
     <ul class="news-list news-list-full">
       {% for n in g.items %}
       <li class="news-item">
-        <time class="mono">{{ n.date }}</time>
-        <span class="cat cat-{{ n.category | downcase }}">{{ n.category }}</span>
-        <p>{% if n.link %}<a href="{{ n.link }}">{{ n.text }}</a>{% else %}{{ n.text }}{% endif %}</p>
+        <time class="mono">{{ n.date | date: "%Y.%m" }}</time>
+        <span class="bcard-tag">#{{ n.tag }}</span>
+        <p><a href="{{ n.url | relative_url }}">{{ n.title }}</a></p>
       </li>
       {% endfor %}
     </ul>

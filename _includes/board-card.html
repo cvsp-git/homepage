@@ -1,0 +1,12 @@
+{% assign b = include.b %}
+<a class="bcard bcard-{{ b.kind }}{% if include.more %} is-more{% endif %}" href="{{ b.url | relative_url }}"{% if include.more %} hidden{% endif %}>
+  {% unless b.kind == "news" %}
+  <span class="bcard-img{% if b.image == '' %} is-empty{% endif %}">
+    {% if b.image != "" %}<img src="{{ '/images/gallery/' | append: b.image | relative_url }}" alt="" loading="lazy">{% endif %}
+  </span>
+  {% endunless %}
+  <span class="bcard-body">
+    <span class="bcard-meta"><span class="bcard-tag">#{{ b.tag }}</span><time class="mono" datetime="{{ b.date | date: '%Y-%m-%d' }}">{{ b.date | date: "%Y.%m" }}</time></span>
+    <span class="bcard-title">{{ b.title }}</span>
+  </span>
+</a>

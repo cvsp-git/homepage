@@ -17,8 +17,7 @@ GitHub Pages로 무료 호스팅되며, **`_data/` 폴더의 파일만 고치면
 | 국내 논문 추가 | `_data/publications_domestic.yml` |
 | 논문 대표 그림 | `images/publications/international/` 에 `논문id.png` (예: `C55.png`) |
 | 과제 추가, 진행 중 → 완료 | `_data/projects.yml` |
-| 소식(News) 추가 | `_data/news.yml` |
-| 갤러리 사진 추가 | `_data/gallery.yml` + `images/gallery/` 에 사진 |
+| News / Gallery / LAB Life 카드 추가 | `_board/` 폴더에 카드 하나당 `.md` 파일 하나 (아래 "카드 추가하기") |
 | 모집 안내·Contact (Join Us 페이지) | `_data/join.yml` |
 | 홈 화면 데모 영상 | `_data/demos.yml` + 영상·포스터는 `videos/demos/` (mp4 H.264, 소리 없이. 예: `ffmpeg -ss 시작 -to 끝 -i 원본.mp4 -an -vf scale=1280:-2 -c:v libx264 -crf 28 -movflags +faststart 이름.mp4`) |
 | 장비·세미나·강의 | `_data/lab.yml` |
@@ -32,7 +31,7 @@ GitHub Pages로 무료 호스팅되며, **`_data/` 폴더의 파일만 고치면
 
 ## 2. 가장 쉬운 방법: GitHub 웹에서 바로 고치기
 
-1. GitHub 저장소 페이지에서 고칠 파일(예: `_data/news.yml`)을 엽니다.
+1. GitHub 저장소 페이지에서 고칠 파일(예: `_data/members.yml`)을 엽니다.
 2. 오른쪽 위 연필(✏️) 아이콘을 누릅니다.
 3. 기존 항목 한 줄을 복사해서 맨 위에 붙여넣고 내용만 바꿉니다.
 4. **Commit changes** 를 누릅니다. 끝입니다.
@@ -114,3 +113,26 @@ assets/js/main.js    메뉴, 논문 검색/필터, 메인 화면 3D 애니메이
 images/              사진 (members, gallery, infra, projects, logo)
 index.html 외 *.html 각 페이지
 ```
+
+## 카드 추가하기 (News / Gallery / LAB Life)
+
+`_board/` 폴더에 파일을 하나 만들면 홈 화면과 News·Gallery 페이지에 카드가 생기고, 카드를 누르면 그 파일 내용이 상세 페이지로 나옵니다.
+
+- 파일 이름: `종류-날짜-번호.md` (예: `life-2026-11-20-1.md`). 종류는 `news`(소식), `gallery`(학회·세미나 사진), `life`(생일·MT 등 연구실 생활)
+- 사진: `images/gallery/` 에 넣고 `image:` 에 파일 이름. 본문 안에 사진을 더 넣으려면 `![설명](/images/gallery/파일이름.jpg)`
+- `order:` 는 같은 종류 안에서의 순서입니다. 숫자가 작을수록 앞에 나오니, 새 카드는 `-1` 처럼 기존보다 작은 값을 주면 맨 앞에 옵니다.
+
+```markdown
+---
+title: "CVSP 2026 겨울 MT"
+date: 2026-12-20
+kind: life
+tag: "Event/Dining"
+badges: ["Event/Dining"]
+image: "2026-12-winter-mt.jpg"
+order: -1
+---
+여기에 본문을 씁니다. 줄을 바꾸려면 빈 줄을 하나 두세요.
+```
+
+홈 화면에는 News 6개(3칸×2줄), Gallery 4개(2칸×2줄), LAB Life 2개(1칸×2줄)가 먼저 나오고, "Load more"를 누를 때마다 2줄씩 더 나옵니다.
