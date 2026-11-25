@@ -20,6 +20,7 @@ GitHub Pages로 무료 호스팅되며, **`_data/` 폴더의 파일만 고치면
 | 소식(News) 추가 | `_data/news.yml` |
 | 갤러리 사진 추가 | `_data/gallery.yml` + `images/gallery/` 에 사진 |
 | 모집 안내·Contact (Join Us 페이지) | `_data/join.yml` |
+| 홈 화면 데모 영상 | `_data/demos.yml` + 영상·포스터는 `videos/demos/` (mp4 H.264, 소리 없이. 예: `ffmpeg -ss 시작 -to 끝 -i 원본.mp4 -an -vf scale=1280:-2 -c:v libx264 -crf 28 -movflags +faststart 이름.mp4`) |
 | 장비·세미나·강의 | `_data/lab.yml` |
 | 홈 화면 연구 분야 소개 | `_data/research.yml` |
 | 상단 메뉴 | `_data/navigation.yml` |

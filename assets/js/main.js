@@ -409,3 +409,19 @@
   }
   if (reduce) { draw(1.5); } else { requestAnimationFrame(loop); }
 })();
+
+/* Demos: 화면에 보일 때만 자동 재생(소리 없음), 벗어나면 멈춤 → 처음 로딩이 가볍습니다. */
+(function () {
+  var vids = document.querySelectorAll(".demo-video");
+  if (!vids.length) return;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || !("IntersectionObserver" in window)) return;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      var v = e.target;
+      if (e.isIntersecting) { if (v.preload === "none") v.preload = "auto"; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      else if (!v.paused) v.pause();
+    });
+  }, { threshold: 0.35 });
+  vids.forEach(function (v) { io.observe(v); });
+})();

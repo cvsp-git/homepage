@@ -1,0 +1,24 @@
+# 홈 화면 "Demos" 섹션. 위에서부터 순서대로 나오고, 첫 번째 영상은 크게 표시됩니다.
+# - video / poster: videos/demos/ 폴더 안의 파일 이름 (mp4는 H.264, 소리 없이 넣는 것을 권장)
+# - link: 논문·프로젝트 페이지 주소 (없으면 비워 두세요)
+- title: "EgoAround"
+  subtitle: "Visibility-independent person tracking from egocentric audio-visual streams"
+  caption: "Each person's 3D head position is tracked at every moment, even after they leave the camera view, by fusing scene, view and sound direction. Recorded with a wearable rig and a mobile robot."
+  tags: [Egocentric, Audio-Visual, Tracking]
+  video: egoaround.mp4
+  poster: egoaround.jpg
+  link: ""
+- title: "BeyondDet"
+  subtitle: "Object detection, change detection and identity matching in one network"
+  caption: "Running on a mobile robot with NVIDIA Jetson Thor, it finds objects that were added or moved in a real home and keeps an up-to-date instance memory."
+  tags: [Embodied AI, Change Detection, Jetson]
+  video: beyonddet.mp4
+  poster: beyonddet.jpg
+  link: ""
+- title: "Attention Boosting"
+  subtitle: "Keeping a VLA policy on the right target under perturbations"
+  caption: "π0.5 vs. π0.5 + Ours on LIBERO-Object and a real SO-101 arm: when the instruction or object position changes, ours follows the current target instead of the memorized one."
+  tags: [VLA, Robot Manipulation]
+  video: attention-boosting.mp4
+  poster: attention-boosting.jpg
+  link: ""

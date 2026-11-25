@@ -515,3 +515,18 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 .field-info p { color: var(--hero-muted); font-size: .94rem; line-height: 1.65; }
 .field-info b { color: var(--hero-signal); font-weight: 600; }
 @media (max-width: 760px) { .field-info-grid { grid-template-columns: minmax(0, 1fr); } .field-info { padding: 18px; } }
+
+/* ---------- Demos (홈) ---------- */
+.demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.demo { display: grid; gap: 16px; align-content: start; }
+.demo-lead { grid-column: 1 / -1; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); gap: 32px; align-items: center; }
+.demo-media { position: relative; border-radius: var(--radius); overflow: hidden; background: var(--hero-bg); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.demo-video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #000; }
+.demo-body { display: grid; gap: 8px; }
+.demo-body h3 { font-size: 1.25rem; }
+.demo-lead .demo-body h3 { font-size: var(--s-2, 1.8rem); }
+.demo-sub { color: var(--pnu); font-weight: 600; font-size: .95rem; }
+.demo-cap { color: var(--muted); font-size: .92rem; line-height: 1.6; }
+.demo-tags { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.demo-tags li { font-size: .7rem; padding: 3px 8px; border-radius: 999px; background: var(--pnu-soft); color: var(--pnu); }
+@media (max-width: 860px) { .demo-grid, .demo-lead { grid-template-columns: minmax(0, 1fr); } .demo-lead { gap: 16px; } }

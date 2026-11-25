@@ -49,6 +49,36 @@ slug: index
   </div>
 </section>
 
+{% if site.data.demos and site.data.demos.size > 0 %}
+<section class="section demos" id="demos" aria-labelledby="demos-title">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="eyebrow">Demos</p>
+      <h2 id="demos-title">See our research in action</h2>
+    </header>
+    <div class="demo-grid">
+      {% for d in site.data.demos %}
+      <article class="demo{% if forloop.first %} demo-lead{% endif %}">
+        <div class="demo-media">
+          <video class="demo-video" muted loop playsinline controls preload="none"
+            poster="{{ d.poster | prepend: '/videos/demos/' | relative_url }}"
+            aria-label="{{ d.title }} demo">
+            <source src="{{ d.video | prepend: '/videos/demos/' | relative_url }}" type="video/mp4">
+          </video>
+        </div>
+        <div class="demo-body">
+          <h3>{% if d.link and d.link != "" %}<a href="{{ d.link }}">{{ d.title }}</a>{% else %}{{ d.title }}{% endif %}</h3>
+          <p class="demo-sub">{{ d.subtitle }}</p>
+          <p class="demo-cap">{{ d.caption }}</p>
+          {% if d.tags %}<ul class="demo-tags mono">{% for t in d.tags %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
 <section class="section section-alt" aria-labelledby="sel-title">
   <div class="wrap">
     <header class="section-head section-head-row">
