@@ -92,6 +92,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   padding-right: max(20px, env(safe-area-inset-right, 0px));
 }
 .wrap.narrow { max-width: 900px; }
+.wrap.wide { max-width: 1720px; padding-left: max(32px, 3vw); padding-right: max(32px, 3vw); }
+@media (max-width: 640px) { .wrap.wide { padding-left: 20px; padding-right: 20px; } }
 
 .eyebrow {
   font: 500 .75rem/1 var(--f-mono);
