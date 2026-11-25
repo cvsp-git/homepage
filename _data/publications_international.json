@@ -48,7 +48,8 @@
   "tags": [
    "Computer Vision",
    "Referring Segmentation"
-  ]
+  ],
+  "figure": "J31.jpg"
  },
  {
   "id": "J30",
@@ -159,7 +160,8 @@
    "Computer Vision",
    "Human Pose Estimation"
   ],
-  "note": "IF: 11.1, JCR 2.7%"
+  "note": "IF: 11.1, JCR 2.7%",
+  "figure": "J25.jpg"
  },
  {
   "id": "C57",
@@ -209,7 +211,8 @@
   ],
   "note": "Top-tier AI Conference, Acceptance Rate: 25.7%",
   "paper": "https://arxiv.org/pdf/2604.03556",
-  "project": "https://paper.pnu-cvsp.com/FocusMatters/"
+  "project": "https://paper.pnu-cvsp.com/FocusMatters/",
+  "figure": "C55.jpg"
  },
  {
   "id": "C54",
@@ -228,7 +231,8 @@
    "World Modeling",
    "Gaussian Splatting"
   ],
-  "note": "Top-tier AI conference workshop"
+  "note": "Top-tier AI conference workshop",
+  "figure": "C54.jpg"
  },
  {
   "id": "C53",
@@ -248,7 +252,8 @@
   ],
   "note": "Top-tier AI Conference, Acceptance Rate: 27.5%",
   "paper": "https://arxiv.org/pdf/2604.01641",
-  "project": "https://paper.pnu-cvsp.com/LivingWorld/"
+  "project": "https://paper.pnu-cvsp.com/LivingWorld/",
+  "figure": "C53.jpg"
  },
  {
   "id": "C52",
@@ -274,7 +279,8 @@
   ],
   "note": "Top-tier AI Conference, Acceptance Rate: 27.5%",
   "paper": "https://arxiv.org/pdf/2604.00538",
-  "project": "https://wwwjjn.github.io/TRiGS-project_page/"
+  "project": "https://wwwjjn.github.io/TRiGS-project_page/",
+  "figure": "C52.jpg"
  },
  {
   "id": "C51",
@@ -472,7 +478,8 @@
    "Text-to-Music Generatio"
   ],
   "note": "Top-tier AI Conference, Acceptance Rate: 26.6%",
-  "project": "https://pads-tal.github.io/PADS-TAL.io/"
+  "project": "https://pads-tal.github.io/PADS-TAL.io/",
+  "figure": "C41.jpg"
  },
  {
   "id": "C40",
@@ -505,7 +512,8 @@
    "Efficient",
    "Vision-Language Model"
   ],
-  "note": "Top-tier AI Conference"
+  "note": "Top-tier AI Conference",
+  "figure": "C39.jpg"
  },
  {
   "id": "C38",
@@ -582,7 +590,8 @@
   "tags": [
    "World Modeling",
    "Gaussian Splatting"
-  ]
+  ],
+  "figure": "J24.jpg"
  },
  {
   "id": "J23",
@@ -862,7 +871,8 @@
    "Computer Vision",
    "Semantic Segmentation"
   ],
-  "note": "Top-tier AI Conference, Acceptance Rate: 27.9%"
+  "note": "Top-tier AI Conference, Acceptance Rate: 27.9%",
+  "figure": "C29.jpg"
  },
  {
   "id": "C28",
@@ -1068,7 +1078,8 @@
   "tags": [
    "Computer Vision",
    "Generative AI"
-  ]
+  ],
+  "figure": "C21.jpg"
  },
  {
   "id": "C20",
@@ -1104,7 +1115,8 @@
   "tags": [
    "Computer Vision",
    "Generative AI"
-  ]
+  ],
+  "figure": "C19.jpg"
  },
  {
   "id": "C18",
@@ -1161,7 +1173,8 @@
    "Semantic Segmentation"
   ],
   "note": "Top-tier AI Conference, Acceptance Rate: 19.6%",
-  "paper": "https://ojs.aaai.org/index.php/AAAI/article/view/25321"
+  "paper": "https://ojs.aaai.org/index.php/AAAI/article/view/25321",
+  "figure": "C16.jpg"
  },
  {
   "id": "C15",
@@ -1215,7 +1228,8 @@
    "Image Outpainting"
   ],
   "note": "Second-tier AI Conference, Acceptance Rate in Round 2: 29.1%",
-  "paper": "https://openaccess.thecvf.com/content/WACV2023/papers/Kim_An_Unified_Framework_for_Language_Guided_Image_Completion_WACV_2023_paper.pdf"
+  "paper": "https://openaccess.thecvf.com/content/WACV2023/papers/Kim_An_Unified_Framework_for_Language_Guided_Image_Completion_WACV_2023_paper.pdf",
+  "figure": "C13.jpg"
  },
  {
   "id": "J12",
@@ -1292,7 +1306,8 @@
   "tags": [
    "Computer Vision",
    "Multi-view Stereo"
-  ]
+  ],
+  "figure": "C12.jpg"
  },
  {
   "id": "C11",
@@ -1312,7 +1327,8 @@
    "High Dynamic Range (HDR)"
   ],
   "note": "Top-tier AI Conference, Acceptance Rate: 28%",
-  "paper": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136770292.pdf"
+  "paper": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136770292.pdf",
+  "figure": "C11.jpg"
  },
  {
   "id": "C10",
@@ -1347,7 +1363,8 @@
    "Visual Inspection AI",
    "Anomaly Detection"
   ],
-  "paper": "https://openreview.net/pdf?id=x-Tw-P777R"
+  "paper": "https://openreview.net/pdf?id=x-Tw-P777R",
+  "figure": "C9.jpg"
  },
  {
   "id": "C8",
@@ -1366,7 +1383,8 @@
    "Image Processing",
    "Image Outpainting"
   ],
-  "paper": "https://openaccess.thecvf.com/content/WACV2022/papers/Kong_Image-Adaptive_Hint_Generation_via_Vision_Transformer_for_Outpainting_WACV_2022_paper.pdf"
+  "paper": "https://openaccess.thecvf.com/content/WACV2022/papers/Kong_Image-Adaptive_Hint_Generation_via_Vision_Transformer_for_Outpainting_WACV_2022_paper.pdf",
+  "figure": "C8.jpg"
  },
  {
   "id": "J9",
@@ -1384,7 +1402,8 @@
    "Communications"
   ],
   "note": "IF: 6.239",
-  "paper": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9531511&tag=1"
+  "paper": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9531511&tag=1",
+  "figure": "J9.jpg"
  },
  {
   "id": "C7",
@@ -1402,7 +1421,8 @@
    "Instance Selection"
   ],
   "note": "Spotlight",
-  "paper": "https://arxiv.org/pdf/2107.06869.pdf"
+  "paper": "https://arxiv.org/pdf/2107.06869.pdf",
+  "figure": "C7.jpg"
  },
  {
   "id": "C6",
@@ -1421,7 +1441,8 @@
    "GAN Training"
   ],
   "note": "Spotlight",
-  "paper": "https://arxiv.org/pdf/2107.08792.pdf"
+  "paper": "https://arxiv.org/pdf/2107.08792.pdf",
+  "figure": "C6.jpg"
  },
  {
   "id": "C5",
@@ -1442,7 +1463,8 @@
    "Noisy Label"
   ],
   "note": "Spotlight",
-  "paper": "https://arxiv.org/pdf/2107.07041.pdf"
+  "paper": "https://arxiv.org/pdf/2107.07041.pdf",
+  "figure": "C5.jpg"
  },
  {
   "id": "C4",
@@ -1462,7 +1484,8 @@
    "Image Processing",
    "Image Outpainting"
   ],
-  "paper": "https://openaccess.thecvf.com/content/WACV2021/papers/Kim_Painting_Outside_As_Inside_Edge_Guided_Image_Outpainting_via_Bidirectional_WACV_2021_paper.pdf"
+  "paper": "https://openaccess.thecvf.com/content/WACV2021/papers/Kim_Painting_Outside_As_Inside_Edge_Guided_Image_Outpainting_via_Bidirectional_WACV_2021_paper.pdf",
+  "figure": "C4.jpg"
  },
  {
   "id": "J8",
@@ -1497,7 +1520,8 @@
    "Computer Vision",
    "Motion Estimation"
   ],
-  "paper": "https://www.mdpi.com/2073-8994/12/5/840/htm"
+  "paper": "https://www.mdpi.com/2073-8994/12/5/840/htm",
+  "figure": "J7.jpg"
  },
  {
   "id": "J6",
