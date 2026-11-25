@@ -240,9 +240,13 @@
     var wide = W > 900;
     if (canvas.hasAttribute("data-mascot") && canvas.parentNode.classList.contains("has-slides")) {
       // photo slides take the middle: Sanjini stands small in the top-right corner
-      scale = Math.min(W * 0.34, 300) / 3;
-      cx = W - Math.max(scale * 0.8, Math.min(W * 0.09, 150));
-      cy = scale * 1.05 + 22;
+      if (W < 760) {  // phones: small, centered above the photos
+        scale = Math.min(W * 0.3, 150) / 3; cx = W * 0.5; cy = scale * 1.05 + 18;
+      } else {        // a little in from the corner so the burst stays on screen
+        scale = Math.min(W * 0.34, 300) / 3;
+        cx = W - Math.max(scale * 1.7, Math.min(W * 0.12, 220));
+        cy = scale * 1.05 + Math.min(H * 0.1, 90);
+      }
       return;
     }
     if (canvas.hasAttribute("data-mascot")) {

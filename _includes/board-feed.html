@@ -6,7 +6,6 @@
 <div class="feed-block feed-{{ include.kind }}" style="--cols: {{ include.cols }}" data-feed data-step="{{ first }}">
   <header class="feed-head">
     <h2>{{ include.title }}</h2>
-    <a class="text-link" href="{{ include.all | relative_url }}">All →</a>
   </header>
   <div class="feed-cards">
     {% for b in items %}{% if forloop.index > first %}{% include board-card.html b=b more=true %}{% else %}{% include board-card.html b=b %}{% endif %}{% endfor %}

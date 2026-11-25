@@ -9,17 +9,17 @@ slug: index
   <canvas class="hero-canvas" id="splat-canvas" aria-hidden="true"{% if site.hero_mascot and site.hero_mascot != "" %} data-mascot="{{ site.hero_mascot | prepend: '/images/logo/' | relative_url }}"{% endif %}></canvas>
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="wrap hero-inner">
-    <p class="eyebrow eyebrow-hero">{{ site.university }} · {{ site.department_short }}</p>
-    <h1 id="hero-title" class="hero-title">Computer Vision &amp; Signal Processing Lab</h1>
     {% if home.slides and home.slides.size > 0 %}
     <div class="hero-slides" data-hero-slides>
       {% for img in home.slides %}<img src="{{ '/' | append: img | relative_url }}" alt=""{% if forloop.first %} class="is-on"{% else %} loading="lazy"{% endif %}>{% endfor %}
     </div>
     {% endif %}
+    <p class="eyebrow eyebrow-hero">{{ site.university }} · {{ site.department_short }}</p>
+    <h1 id="hero-title" class="hero-title">Computer Vision &amp; Signal Processing Lab</h1>
     <p class="hero-lede">{% if home.lede and home.lede != "" %}{{ home.lede }}{% else %}We build spatial multimodal AI that understands, generates, and interacts with the physical world, from 4D scene reconstruction to robots that reason about the space around them.{% endif %}</p>
-    <div class="hero-actions">
+    {% unless home.slides and home.slides.size > 0 %}<div class="hero-actions">
       <a class="btn btn-ghost" href="{{ '/join.html' | relative_url }}">Join the lab</a>
-    </div>
+    </div>{% endunless %}
   </div>
 </section>
 
