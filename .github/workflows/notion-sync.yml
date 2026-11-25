@@ -31,9 +31,13 @@ jobs:
         run: python3 tools/notion-sync/sync.py ${{ (github.event_name == 'workflow_dispatch' && inputs.full) && '--full' || '' }}
       - name: Commit and publish
         run: |
+          git config user.name "notion-sync"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           if git diff --cached --quiet; then echo "No changes in Notion."; exit 0; fi
-          git -c user.name="notion-sync" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -qm "Sync from Notion"
-          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
+          git commit -qm "Sync from Notion"
+          ok=
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && ok=1 && break; sleep 5; done
+          [ -n "$ok" ] || { echo "push failed"; exit 1; }
           curl -sS -X POST -H "Authorization: Bearer ${{ github.token }}" -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/${{ github.repository }}/pages/builds" || true
