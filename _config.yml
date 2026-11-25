@@ -23,7 +23,7 @@ github: https://github.com/cvsp-lab
 
 # 도메인 연결 후에는 url을 실제 주소로 둡니다. baseurl은 비워 두세요.
 url: "https://www.pnu-cvsp.com"
-baseurl: ""
+baseurl: "/homepage"  # 도메인(www.pnu-cvsp1.com) 연결 후에는 "" 로 바꾸세요
 
 # 메인 첫 화면 가우시안 필드 위에 서 있는 캐릭터(산지니 등). 배경이 투명한 PNG를 images/logo/ 에 넣고 파일 이름을 적으세요.
 # 비워 두면 기본 모양(도넛)이 나옵니다.
