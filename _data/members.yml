@@ -9,7 +9,7 @@
     - name: Kyeongbo Kong
       name_ko: 공경보
       role: Principal Investigator
-      photo: ""
+      photo: "kyeongbo-kong.jpg"
       email: kbkong@pusan.ac.kr
       interests: [3D/4D World Modeling, Vision-Language Models, Embodied AI]
 
@@ -33,7 +33,7 @@
   people:
     - name: Daun Jeong
       name_ko: 정다운
-      photo: ""
+      photo: "daun-jeong.jpg"
     - name: In-Hwan Jin
       name_ko: 진인환
       photo: ""
@@ -45,7 +45,7 @@
   people:
     - name: Changwoo Baek
       name_ko: 백창우
-      photo: ""
+      photo: "changwoo-baek.jpg"
     - name: HyeongJu Mun
       name_ko: 문형주
       photo: ""
@@ -78,7 +78,7 @@
       photo: ""
     - name: JongWon Choi
       name_ko: ""
-      photo: ""
+      photo: "jongwon-choi.jpg"
 
 - group: Alumni
   people:
