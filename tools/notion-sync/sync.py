@@ -91,6 +91,7 @@ class Media:
     def __init__(self, rm, folder, web):
         self.rm, self.folder, self.web, self.n = rm, folder, web, 0
         self.paths = []
+        self.failed = 0
         if os.path.isdir(folder): shutil.rmtree(folder)
 
     def __call__(self, kind, src, block, caption):
@@ -103,6 +104,7 @@ class Media:
         out = fetch(src, block["id"], block.get("space_id"), os.path.join(self.folder, "%02d" % self.n))
         if out:
             p = "%s/%s" % (self.web, os.path.basename(out)); self.paths.append(p); return p
+        self.failed += 1
         if src.startswith("http") and not __import__("media").notion_hosted(src):
             self.paths.append(src); return src          # keep external image as a remote link
         return None
@@ -185,7 +187,8 @@ def sync_board():
               "show_cover: " + ("true" if show_cover else "false"), "order: %d" % c["order"],
               "notion_id: " + c["id"], "---", ""]
         open(md, "w", encoding="utf-8").write("\n".join(fm) + body)
-        st[c["id"]] = {"slug": slug, "edited": c["edited"], "cover": cover, "show_cover": show_cover}
+        retry = fresh and (media.failed or (c["cover"] and not cover))
+        st[c["id"]] = {"slug": slug, "edited": None if retry else c["edited"], "cover": cover, "show_cover": show_cover}
     # remove cards that were hidden or deleted in Notion
     keep = {c["slug"] for c in cards}
     for k in [k for k in st if k not in {c["id"] for c in cards}]: del st[k]
@@ -255,6 +258,7 @@ def sync_members():
             media = Media(p["rm"], os.path.join(img_dir, p["slug"]), "/images/members/pages/" + p["slug"])
             body = Renderer(p["rm"], media, lambda pid: MEMBER_URLS.get(pid) or BOARD_URLS.get(pid)).page(p["id"])
             changed += 1; log("  rendered member", p["slug"])
+            if media.failed: p["edited"] = None   # try the missing media again next run
         else:
             body = (read_body(md) or "").strip()
         fm = ["---", "title: " + yq(p["name"]), "status: " + yq(p["status"]), "notion_id: " + p["id"], "---", ""]

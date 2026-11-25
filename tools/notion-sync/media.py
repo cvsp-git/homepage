@@ -39,6 +39,7 @@ def name_of(src):
 
 
 def download(url, dst):
+    url = urllib.parse.quote(url, safe=":/?&=%#+@,;~!$'()*[]")   # Korean file names in signed URLs
     req = urllib.request.Request(url, headers=UA)
     with urllib.request.urlopen(req, timeout=120) as r, open(dst, "wb") as f:
         shutil.copyfileobj(r, f)
