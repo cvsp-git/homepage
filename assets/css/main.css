@@ -605,3 +605,12 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 .member-body .callout .board-fig img { max-width: 220px; border-radius: 12px; }
 .m-name a, .pi-body h3 a { color: inherit; text-decoration: none; }
 .m-name a:hover, .pi-body h3 a:hover { text-decoration: underline; }
+
+/* Notion text colours (synced pages) */
+:root { --nc-gray:#787774; --nc-brown:#9f6b53; --nc-orange:#d9730d; --nc-yellow:#cb912f; --nc-green:#448361; --nc-blue:#337ea9; --nc-purple:#9065b0; --nc-pink:#c14c8a; --nc-red:#d44c47; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --nc-gray:#9ba3ad; --nc-brown:#ba856f; --nc-orange:#d98a4f; --nc-yellow:#d6a454; --nc-green:#5bb07e; --nc-blue:#5aaee0; --nc-purple:#b07fe0; --nc-pink:#e06aa6; --nc-red:#ec6a64; } }
+:root[data-theme="dark"] { --nc-gray:#9ba3ad; --nc-brown:#ba856f; --nc-orange:#d98a4f; --nc-yellow:#d6a454; --nc-green:#5bb07e; --nc-blue:#5aaee0; --nc-purple:#b07fe0; --nc-pink:#e06aa6; --nc-red:#ec6a64; }
+.nc-gray{color:var(--nc-gray)} .nc-brown{color:var(--nc-brown)} .nc-orange{color:var(--nc-orange)} .nc-yellow{color:var(--nc-yellow)} .nc-green{color:var(--nc-green)} .nc-blue{color:var(--nc-blue)} .nc-purple{color:var(--nc-purple)} .nc-pink{color:var(--nc-pink)} .nc-red{color:var(--nc-red)}
+[class*="_background"] { padding: 0 3px; border-radius: 4px; }
+.nc-gray_background{background:rgba(120,119,116,.18)} .nc-brown_background{background:rgba(159,107,83,.18)} .nc-orange_background{background:rgba(217,115,13,.18)} .nc-yellow_background{background:rgba(203,145,47,.2)} .nc-green_background{background:rgba(68,131,97,.18)} .nc-blue_background{background:rgba(51,126,169,.18)} .nc-purple_background{background:rgba(144,101,176,.18)} .nc-pink_background{background:rgba(193,76,138,.18)} .nc-red_background{background:rgba(212,76,71,.18)}
+.board-body a code { color: var(--nc-blue); }

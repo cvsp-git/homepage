@@ -28,7 +28,7 @@ class Renderer:
         """Join neighbouring segments that only differ in colour, so **a****b** becomes **ab**."""
         res = []
         for seg in t or []:
-            anns = [a for a in (seg[1] if len(seg) > 1 else []) if a[0] != "h"]
+            anns = list(seg[1] if len(seg) > 1 else [])
             key = sorted(json.dumps(a) for a in anns)
             if res and seg[0] != "‣" and res[-1][0] != "‣" and res[-1][2] == key:
                 res[-1][0] += seg[0]
@@ -59,6 +59,9 @@ class Renderer:
             if "s" in kinds: core = "~~" + core + "~~"
             if "_" in kinds: core = "<u>" + core + "</u>"
             if href: core = "[%s](%s)" % (core, self.fix_href(href))
+            color = next((a[1] for a in anns if a[0] == "h" and isinstance(a[1], str)), None)
+            if color and color != "default":
+                core = '<span class="nc-%s">%s</span>' % (re.sub(r"[^a-z_]", "", color), core)
             s = lead + core + trail
             out.append(s)
         return "".join(out)
@@ -115,6 +118,9 @@ class Renderer:
         t, p, f = b["type"], b.get("properties") or {}, b.get("format") or {}
         pad = " " * ind
         title = self.rich(p.get("title"))
+        bc = re.sub(r"[^a-z_]", "", f.get("block_color") or "")
+        if bc and bc != "default" and title.strip() and t in ("text", "bulleted_list", "numbered_list", "header", "sub_header", "sub_sub_header", "quote", "toggle"):
+            title = '<span class="nc-%s">%s</span>' % (bc, title)
         kids = self.children(b)
         if t == "text":
             out = [pad + title if title.strip() else ""]
