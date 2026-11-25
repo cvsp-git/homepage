@@ -24,6 +24,8 @@ def unwrap(rec):
 
 def merge(dst, rm):
     for table, recs in (rm or {}).items():
+        if not isinstance(recs, dict):
+            continue
         t = dst.setdefault(table, {})
         for k, rec in recs.items():
             v = unwrap(rec)
