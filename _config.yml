@@ -40,9 +40,15 @@ collections:
   board:
     output: true
     permalink: /board/:name/
+  # 멤버 개인 페이지: 노션 MEMBERS에서 자동으로 만들어집니다 (tools/notion-sync). 직접 고치지 마세요.
+  members:
+    output: true
+    permalink: /members/:name/
 defaults:
   - scope: {path: "", type: board}
     values: {layout: board}
+  - scope: {path: "", type: members}
+    values: {layout: member}
 
 markdown: kramdown
 exclude: [README.md, Gemfile, Gemfile.lock, vendor, tools, .github]
