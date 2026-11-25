@@ -142,17 +142,24 @@ order: -1
 
 ## 노션 자동 반영 (Notion sync)
 
-News / Gallery / LAB Life 카드와 멤버 개인 페이지(`/members/이름/`)는 **노션에서 고치면 15분 안에 자동으로 반영**됩니다.
+홈페이지 내용은 거의 전부 **노션에서 고치면 15분 안에 자동으로 반영**됩니다.
 GitHub Actions의 `Notion sync` 작업이 공개된 노션 페이지를 읽어서 아래 파일을 새로 만듭니다. 이 파일들은 직접 고치지 말고 노션에서 고치세요(덮어써집니다).
 
 - `_board/*.md`, `images/gallery/board/` : 카드와 상세 페이지
 - `_members/*.md`, `images/members/pages/` : 멤버 개인 페이지 (주소는 노션 페이지 맨 위 `cleanUrl` 코드 블록의 값)
+- `_data/members.json` : Members 목록 (노션 LABDB_family의 이름, 과정, 이메일)
+- `_data/publications_international.json`, `_data/publications_domestic.json` : International / Domestic Papers 페이지
+- `_data/projects.json` : LABDB_projects 데이터베이스
+- `_data/lab.json`, `_board/seminar-*.md`, `images/infra/` : Resources (Infrastructure, Seminar, Course)
+- `_data/join.json` : Contact 페이지
+- `_data/home.json` : 메인 페이지 소개 문구, 연구 분야, 모집 문구
 
 노션 규칙(예전 사이트와 동일):
 - `post_type`이 news면 News, gallary이면서 badges에 Conference / Journals / Forum / Workshop/Seminar가 있으면 Gallery, 나머지 gallary는 LAB Life
 - `is_hidden`을 체크하거나 `date`가 비어 있으면 홈페이지에 나오지 않습니다
 - 멤버는 `id_hidden`이 Yes면 개인 페이지를 만들지 않습니다
-- 멤버 목록(사진, 한글 이름, 수상 등)은 지금처럼 `_data/members.yml`에서 관리하고, 이름이 같으면 개인 페이지로 링크됩니다
+- 한글 이름, 프로필 사진, 수상 내역 등 노션에 없는 정보는 `_data/member_extras.yml`에 적으면 이름으로 합쳐집니다
+- 논문 대표 그림은 `tools/notion-sync/pub_figures.json`(제목 → `images/publications/` 파일)으로 붙입니다
 
 바로 반영하고 싶으면 GitHub의 Actions 탭 > Notion sync > Run workflow 를 누르세요. 전체를 다시 만들려면 "모든 페이지를 처음부터 다시 만들기"를 체크합니다.
 노션 페이지가 웹에 공개(Share to web)되어 있어야 읽을 수 있습니다.

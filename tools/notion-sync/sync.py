@@ -98,9 +98,12 @@ class Media:
         if not src: return None
         if args.dump:
             self.n += 1; p = "%s/%02d.jpg" % (self.web, self.n); self.paths.append(p); return p
-        from media import fetch
+        from media import fetch, fetch_file
         os.makedirs(self.folder, exist_ok=True)
         self.n += 1
+        if kind == "file":
+            out = fetch_file(src, block["id"], block.get("space_id"), os.path.join(self.folder, "%02d" % self.n))
+            return "%s/%s" % (self.web, os.path.basename(out)) if out else None
         out = fetch(src, block["id"], block.get("space_id"), os.path.join(self.folder, "%02d" % self.n))
         if out:
             p = "%s/%s" % (self.web, os.path.basename(out)); self.paths.append(p); return p
@@ -193,7 +196,7 @@ def sync_board():
     keep = {c["slug"] for c in cards}
     for k in [k for k in st if k not in {c["id"] for c in cards}]: del st[k]
     for f in os.listdir(out_dir):
-        if f.endswith(".md") and f[:-3] not in keep:
+        if f.endswith(".md") and f[:-3] not in keep and not f.startswith("seminar-"):
             os.remove(os.path.join(out_dir, f)); log("  removed", f)
             d = os.path.join(img_dir, f[:-3])
             if os.path.isdir(d): shutil.rmtree(d)
@@ -209,6 +212,7 @@ MEMBER_URLS = {}
 def sync_members():
     rows, rm = load_db(FAMILY_DB, "family")
     coll = rm["block"][FAMILY_DB]["collection_id"]
+    rows_b = [rm["block"][i] for i in rows if i in rm["block"]]
     get = prop(rm, coll)
     st = state.setdefault("members", {})
     out_dir = os.path.join(ROOT, "_members"); img_dir = os.path.join(ROOT, "images/members/pages")
@@ -272,6 +276,58 @@ def sync_members():
             d = os.path.join(img_dir, f[:-3])
             if os.path.isdir(d): shutil.rmtree(d)
     log("members: %d pages, %d re-rendered" % (len(people), changed))
+    sync_member_list(rows_b, rm, get)
+
+
+GROUPS = [("Professor", "Professor"), ("Postdoctoral researcher", "Postdoctoral Researcher"), ("Ph.D. Course", "Ph.D. Course"),
+          ("M.S. Course", "M.S. Course"), ("Integrated B.S./M.S. Course", "Integrated B.S.–M.S. Course"),
+          ("Research Intern", "Research Intern"), ("Alumni", "Alumni")]
+
+
+def sync_member_list(rows, rm, get):
+    """Members page: who is in which group comes from Notion; extra details from _data/member_extras.yml."""
+    import yaml
+    extras_path = os.path.join(ROOT, "_data/member_extras.yml")
+    extras, order = {}, {}
+    if os.path.exists(extras_path):
+        for g in yaml.safe_load(open(extras_path, encoding="utf-8")) or []:
+            for k, p in enumerate(g.get("people") or []):
+                extras[N(p["name"]).lower()] = p; order[N(p["name"]).lower()] = k
+    photo_dir = os.path.join(ROOT, "images/members/notion"); os.makedirs(photo_dir, exist_ok=True)
+    keep_photos = set()
+    groups = {}
+    for n, b in enumerate(rows):
+        if not b.get("alive", True) or plain(get(b, "id_hidden")) == "Yes": continue
+        status = plain(get(b, "status")).strip()
+        g = next((label for key, label in GROUPS if key.lower() == status.lower()), None)
+        if not g: continue
+        name = N(plain(get(b, "name")))
+        x = dict(extras.get(name.lower(), {}))
+        x.pop("group", None)
+        person = {"name": name, "name_ko": x.pop("name_ko", "")}
+        person.update(x)
+        if b["id"] in MEMBER_URLS: person["page"] = MEMBER_URLS[b["id"]]
+        hp = plain(get(b, "Homepage"))
+        if hp.startswith("http") and "homepage" not in person: person["homepage"] = hp
+        if not person.get("photo"):
+            att = [a[1] for seg in (get(b, "Profile image") or []) for a in (seg[1] if len(seg) > 1 else []) if a[0] == "a"]
+            if att:
+                slug = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+                fn = None
+                for f in os.listdir(photo_dir):
+                    if f.startswith(slug + ".") and state.get("member_photos", {}).get(slug) == att[0]: fn = f
+                if not fn and not args.dump:
+                    from media import fetch
+                    out = fetch(att[0], b["id"], b.get("space_id"), os.path.join(photo_dir, slug), first_frame=True)
+                    if out: fn = os.path.basename(out); state.setdefault("member_photos", {})[slug] = att[0]
+                if fn: person["photo"] = "notion/" + fn; keep_photos.add(fn)
+        groups.setdefault(g, []).append((order.get(name.lower(), 1000 + n), person))
+    out = [{"group": label, "people": [p for _, p in sorted(groups[label], key=lambda t: t[0])]} for _, label in GROUPS if label in groups]
+    for f in os.listdir(photo_dir):
+        if f not in keep_photos and not args.dump: os.remove(os.path.join(photo_dir, f))
+    if sum(len(g["people"]) for g in out) >= 3:
+        write_json(os.path.join(ROOT, "_data/members.json"), out)
+    log("member list: " + ", ".join("%s %d" % (g["group"], len(g["people"])) for g in out))
 
 
 # ---------------- publications ----------------
@@ -311,8 +367,239 @@ def sync_publications():
         log("publications/%s: %d" % (name, len(recs)))
 
 
+# ---------------- projects ----------------
+PROJECTS_DB = "a84b8302-1d81-4972-92b6-5a74f5569f60"   # LABDB_projects (shown on the Projects page)
+
+
+def db_rows(page, block, dumpname):
+    """Rows of the database shown by `block` on Notion page `page`: (rows, recordMap, getter)."""
+    if args.dump:
+        d = json.load(open(os.path.join(args.dump, dumpname + ".json")))
+        rm = d["recordMap"]; ids = d["collections"].get(block) or next(iter(d["collections"].values()))
+    else:
+        rm = notion.load_page(page)
+        b = rm["block"][block]
+        ids, rm = notion.query(b["collection_id"], b["view_ids"][0], b["space_id"], rm)
+    rows = [rm["block"][i] for i in ids if i in rm["block"] and rm["block"][i].get("alive", True)]
+    get = prop(rm, rows[0]["parent_id"]) if rows else None
+    return rows, rm, get
+
+
+def ym(d):
+    return d[:7].replace("-", ".") if d else ""
+
+
+def sync_projects():
+    rows, rm, get = db_rows(PROJECTS_DB, PROJECTS_DB, "projects")
+    today = datetime.date.today().isoformat()
+    out = []
+    for b in rows:
+        title = N(plain(get(b, "project_name"))).replace("\xa0", " ")
+        if not title: continue
+        d = {}
+        for seg in get(b, "date") or []:
+            for a in (seg[1] if len(seg) > 1 else []):
+                if a[0] == "d": d = a[1]
+        start, end = d.get("start_date", ""), d.get("end_date", "")
+        st = plain(get(b, "status")).lower()
+        status = "ongoing" if "going" in st or "progress" in st else "complete" if st else ("ongoing" if not end or end >= today else "complete")
+        rec = {"title": title, "funder": ", ".join(x.strip() for x in plain(get(b, "site_name")).split(",") if x.strip()),
+               "start": ym(start), "end": ym(end) if (end and status == "complete") or (end and end > today) else "", "status": status}
+        note = N(plain(get(b, "postscript")))
+        if note and not note.startswith("["): rec["note"] = note
+        out.append(rec)
+    out.sort(key=lambda r: r["start"], reverse=True)
+    if len(out) >= 3:
+        write_json(os.path.join(ROOT, "_data/projects.json"), out)
+    log("projects: %d" % len(out))
+
+
+# ---------------- resources (old "Lab" pages) ----------------
+INFRA = ("3fcabcc9-0e34-80b5-9b49-ce0842425db8", "3fcabcc9-0e34-80a8-86a8-f56fb283bbd2")
+SEMINAR = ("481c5dbf-1b79-4ccc-8651-35e35c822dae", "0a9d8a9a-ca2c-4d5b-b4aa-d2082cb9356b")
+COURSE = "ecd04e3a-7d2c-478c-9df0-c9213eb21bb2"
+CATEGORY = {"robots": "Robot", "computeplatform": "Compute platform", "sensor/depth": "Depth sensor", "sensors": "Sensor", "depth": "Depth sensor"}
+
+
+def file_attachment(v):
+    return next((a[1] for seg in (v or []) for a in (seg[1] if len(seg) > 1 else []) if a[0] == "a"), None)
+
+
+def sync_lab():
+    lab = {"compute": [], "robots": [], "seminars": [], "courses": []}
+    st = state.setdefault("lab", {})
+    # infrastructure
+    rows, rm, get = db_rows(*INFRA, "infrastructure")
+    img_dir = os.path.join(ROOT, "images/infra"); os.makedirs(img_dir, exist_ok=True)
+    keep = set()
+    for b in rows:
+        name = N(plain(get(b, "EquipmentsName"))); sec = plain(get(b, "Section")).lower()
+        amount = N(plain(get(b, "Amount")))
+        if not name: continue
+        if "comput" in sec:
+            lab["compute"].append({"label": name, "value": re.sub(r"\s*장$", "", amount)})
+        else:
+            cats = [c.strip() for c in plain(get(b, "Category")).split(",") if c.strip()]
+            r = {"name": name, "count": amount or "1", "category": CATEGORY.get(cats[0].lower(), cats[0]) if cats else "", "image": ""}
+            att = file_attachment(get(b, "Image"))
+            if att:
+                slug = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+                have = [f for f in os.listdir(img_dir) if f.startswith(slug + ".")]
+                if have and st.get("img:" + slug) == att: r["image"] = have[0]
+                elif not args.dump:
+                    from media import fetch
+                    for f in have: os.remove(os.path.join(img_dir, f))
+                    out = fetch(att, b["id"], b.get("space_id"), os.path.join(img_dir, slug), first_frame=True)
+                    if out: r["image"] = os.path.basename(out); st["img:" + slug] = att
+                if r["image"]: keep.add(r["image"])
+            lab["robots"].append(r)
+    for f in os.listdir(img_dir):
+        if f not in keep and not args.dump: os.remove(os.path.join(img_dir, f))
+    # seminars: each one gets its own page under /board/seminar-.../
+    rows, rm, get = db_rows(*SEMINAR, "seminar")
+    sem = []
+    for b in rows:
+        if plain(get(b, "is_hidden")) == "Yes": continue
+        title = N(plain(get(b, "name")))
+        d = date_of(get(b, "date")) or ""
+        nice = " ".join(w.capitalize() if w.isupper() and len(w) > 2 else w for w in title.split())
+        sem.append((d, nice, b))
+    sem.sort(key=lambda x: x[0], reverse=True)
+    out_dir = os.path.join(ROOT, "_board"); simg = os.path.join(ROOT, "images/gallery/board")
+    made = set()
+    for d, title, b in sem:
+        slug = "seminar-" + (d or "x") + "-" + re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")[:40]
+        made.add(slug)
+        md = os.path.join(out_dir, slug + ".md")
+        if not args.full and os.path.exists(md) and st.get("sem:" + slug) == b.get("last_edited_time"):
+            body = read_body(md)
+        else:
+            prm = load_page(b["id"], None) if not args.dump else (json.load(open(os.path.join(args.dump, "seminar.json")))["rows"].get(b["id"]))
+            if prm is None: continue
+            if b["id"] not in prm.get("block", {}): prm.setdefault("block", {})[b["id"]] = b
+            media = Media(prm, os.path.join(simg, slug), "/images/gallery/board/" + slug)
+            body = Renderer(prm, media, lambda pid: BOARD_URLS.get(pid) or MEMBER_URLS.get(pid)).page(b["id"])
+            body = body + "\n" if body else ""
+            st["sem:" + slug] = None if media.failed else b.get("last_edited_time")
+            log("  rendered", slug)
+        fm = ["---", "title: " + yq(title), "date: " + (d or "2000-01-01"), "kind: seminar", "tag: \"Seminar\"",
+              "badges: [\"Seminar\"]", "image: \"\"", "show_cover: false", "notion_id: " + b["id"], "---", ""]
+        open(md, "w", encoding="utf-8").write("\n".join(fm) + (body or ""))
+        lab["seminars"].append({"title": title, "date": d.replace("-", "."), "link": "/board/%s/" % slug})
+    for f in os.listdir(out_dir):
+        if f.startswith("seminar-") and f[:-3] not in made:
+            os.remove(os.path.join(out_dir, f))
+            if os.path.isdir(os.path.join(simg, f[:-3])): shutil.rmtree(os.path.join(simg, f[:-3]))
+    # courses: '## 2026 Spring' headings followed by 'CODE  Name' lines
+    crm = load_full(COURSE, "course")
+    if crm:
+        from pubs import Flat
+        fl = Flat(crm); term = None
+        for b in fl.walk(fl.b[COURSE]):
+            txt = re.sub(r"\s+", " ", plain((b.get("properties") or {}).get("title"))).strip()
+            if b["type"] in ("sub_header", "header", "sub_sub_header"):
+                if re.search(r"\d{4}", txt):
+                    term = {"term": txt, "list": []}; lab["courses"].append(term)
+            elif term is not None and txt:
+                term["list"].append(re.sub(r"(\S)\(", r"\1 (", txt))
+        lab["courses"] = [t for t in lab["courses"] if t["list"]]
+    if lab["compute"] or lab["robots"]:
+        write_json(os.path.join(ROOT, "_data/lab.json"), lab)
+    log("resources: %d compute, %d robots, %d seminars, %d terms" % (len(lab["compute"]), len(lab["robots"]), len(lab["seminars"]), len(lab["courses"])))
+
+
+# ---------------- home intro + contact ----------------
+MAIN_PAGE = "8929fd4e-b99b-4c4e-9301-9c294dbcbc24"
+CONTACT_PAGE = "830f30e4-23ef-4e49-b329-2afe04656597"
+
+
+def tree(rm, root):
+    """Every block under root in reading order, with the callout it sits in (if any)."""
+    B = rm.get("block", {})
+    def kids(b):
+        return [B[c] for c in (b.get("content") or []) if c in B and "type" in B[c] and B[c].get("alive", True)]
+    def walk(b, callout):
+        for k in kids(b):
+            t = k["type"]
+            if t == "transclusion_reference":
+                ptr = ((k.get("format") or {}).get("transclusion_reference_pointer") or {}).get("id")
+                if ptr in B: yield from walk(B[ptr], callout)
+                continue
+            if t in ("code",): continue
+            yield k, callout
+            yield from walk(k, k if t == "callout" else callout)
+    yield from walk(B[root], None)
+
+
+def text(b):
+    return re.sub(r"\s+", " ", plain((b.get("properties") or {}).get("title"))).strip()
+
+
+def sync_home():
+    rm = load_full(MAIN_PAGE, "main")
+    if not rm: return
+    home = {"lede": "", "research": [], "recruiting": ""}
+    after_welcome, in_recruit = False, False
+    for b, callout in tree(rm, MAIN_PAGE):
+        t, x = b["type"], text(b)
+        if t == "header" and x.lower().startswith("welcome"): after_welcome = True; continue
+        if after_welcome and t == "text" and x and not home["lede"]: home["lede"] = x; continue
+        if after_welcome and t == "bulleted_list" and x:
+            m = re.match(r"(.+?)\s+[—–-]\s+(.+)", x)
+            home["research"].append({"title": m.group(1), "summary": m.group(2)} if m else {"title": x, "summary": ""}); continue
+        if t in ("sub_header", "header", "sub_sub_header") and "recruit" in x.lower(): in_recruit = True; continue
+        if in_recruit and t == "text" and x and not home["recruiting"] and "join" not in x.lower(): home["recruiting"] = x
+    if home["lede"] and home["research"]:
+        write_json(os.path.join(ROOT, "_data/home.json"), home)
+    log("home: %d research lines" % len(home["research"]))
+
+
+def sync_contact():
+    rm = load_full(CONTACT_PAGE, "contact")
+    if not rm: return
+    j = {"notice": [], "intro": "", "principles": [], "offer": "", "tracks": [], "address": []}
+    track, part = None, None
+    for b, callout in tree(rm, CONTACT_PAGE):
+        t, x = b["type"], text(b)
+        if not x: continue
+        if t == "sub_header":
+            m = re.match(r"(?:for\s+)?(.+?)\s*(?:\((.+)\))?$", x, re.I)
+            label, title = m.group(1), m.group(2) or m.group(1)
+            short = "Undergraduate" if "intern" in label.lower() else "Graduate" if "graduate" in label.lower() else "Researcher" if "research" in label.lower() or "postdoc" in label.lower() else label
+            track = {"label": short, "title": label}
+            if m.group(2): track["dept"] = m.group(2)
+            j["tracks"].append(track); part = None; continue
+        if t == "sub_sub_header":
+            low = x.lower(); part = "role" if "role" in low else "apply" if "appl" in low else "recommended" if "recommend" in low else None
+            continue
+        if t == "callout":
+            continue
+        if callout is not None and track is None and t == "bulleted_list":
+            j["notice"].append(x); continue
+        if callout is not None and track is not None and t == "bulleted_list" and part is None:
+            track["notice"] = (track.get("notice", "") + " " + x).strip(); continue
+        if callout is not None and t == "text" and track is not None and track is j["tracks"][-1] and part is not None and "address" in "".join(j["address"]).lower() or (callout is not None and t == "text" and re.search(r"phone|address|\(\+82\)|department|college|laboratory|lab\.", x, re.I) and track is not None and part is not None):
+            if not re.fullmatch(r"\[.*\]", x): j["address"].append(x)
+            continue
+        if track is None:
+            if t == "numbered_list": j["principles"].append(x)
+            elif t == "text" and callout is None:
+                if not j["intro"]: j["intro"] = x
+                else: j["offer"] = x
+            continue
+        if part and t in ("bulleted_list", "numbered_list"):
+            track.setdefault(part, []).append(x)
+    if j["tracks"]:
+        write_json(os.path.join(ROOT, "_data/join.json"), j)
+    log("contact: %d notices, %d principles, %d tracks" % (len(j["notice"]), len(j["principles"]), len(j["tracks"])))
+
+
 BOARD_URLS = {k: "/board/%s/" % v["slug"] for k, v in state.get("board", {}).items()}
+sync_home()
+sync_contact()
 sync_publications()
+sync_projects()
 sync_members()
 sync_board()
+sync_lab()
 json.dump(state, open(STATE, "w"), ensure_ascii=False, indent=1, sort_keys=True)

@@ -1,0 +1,18 @@
+{
+ "lede": "The CVSP Lab at Pusan National University, led by Prof. Kyeongbo Kong, develops Spatial Multimodal AI for understanding, generating, and interacting with Physical world.",
+ "research": [
+  {
+   "title": "3D/4D World Modeling",
+   "summary": "Gaussian splatting, dynamic scene reconstruction"
+  },
+  {
+   "title": "Efficient Vision-Language/Vision-Language-Action Models",
+   "summary": "token pruning, model compression, and reliable multimodal reasoning"
+  },
+  {
+   "title": "Embodied Spatial Intelligence",
+   "summary": "real-world perception and decision-making for robots"
+  }
+ ],
+ "recruiting": "Research Interns, M.S. Students, Ph.D. students and Postdoctoral Researcher"
+}

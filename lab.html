@@ -36,7 +36,7 @@ slug: lab
     <header class="group-head"><h2>Seminar</h2><span class="mono count">{{ lab.seminars.size }}</span></header>
     <ul class="row-list">
       {% for s in lab.seminars %}
-      <li><a href="{{ s.link }}"><span>{{ s.title }}</span><time class="mono">{{ s.date }}</time></a></li>
+      <li><a href="{% if s.link contains '://' %}{{ s.link }}{% else %}{{ s.link | relative_url }}{% endif %}"><span>{{ s.title }}</span><time class="mono">{{ s.date }}</time></a></li>
       {% endfor %}
     </ul>
   </div>

@@ -1,0 +1,65 @@
+{
+ "notice": [
+  "CVSP 연구실은 컴퓨터비전, 멀티모달 AI, 3D/4D 공간지능, 로봇 시각지능을 연구합니다.",
+  "학부연구생, 대학원생, 박사후연구원을 상시 모집하고 있으며, 지원 전 이메일 상담을 권장합니다.",
+  "관심 있는 학생은 간단한 자기소개, 관심 연구분야, 성적표 또는 CV를 kbkong@pusan.ac.kr로 보내주시기 바랍니다."
+ ],
+ "intro": "The Computer Vision & Signal Processing Lab, led by Professor Kyeongbo Kong at Pusan National University, is dedicated to fostering a sustainable and collaborative research environment. We are looking for dedicated researchers to join our team. Here are some key principles of our lab:",
+ "principles": [
+  "CVSP promotes a respectful and inclusive lab culture.",
+  "CVSP values collaboration over competition for mutual growth.",
+  "CVSP seeks self-motivated students.",
+  "Flexible working hours and the freedom to choose your research location."
+ ],
+ "offer": "We offer various opportunities to join the lab, which includes internships, graduate positions, and postdoctoral appointments. Below are the details on how to apply based on your interest and current status.",
+ "tracks": [
+  {
+   "label": "Undergraduate",
+   "title": "Internships",
+   "dept": "Undergraduate Research Internship",
+   "role": [
+    "Study fundamental deep learning and computer vision problems and acquire background knowledge.",
+    "Assist in writing and presenting papers at domestic and international conferences.",
+    "Optionally participate in a research project within the lab."
+   ],
+   "apply": [
+    "Email a brief description of your research interests in computer vision to kbkong@pusan.ac.kr.",
+    "If positions are available, a short interview will be scheduled."
+   ],
+   "recommended": [
+    "Programming skills (e.g., Python, C/C++, MATLAB).",
+    "Basic mathematics (e.g., probability & statistics, linear algebra)."
+   ]
+  },
+  {
+   "label": "Graduate",
+   "title": "Graduate Students",
+   "dept": "Electrical & Electronics Engineering",
+   "notice": "Contact the lab before applying to the Electrical & Electronics Engineering Graduate School at Pusan National University. It is highly recommended to apply for an internship before applying to the graduate program.",
+   "apply": [
+    "Email your academic transcript, CV, and research interests in computer vision to kbkong@pusan.ac.kr.",
+    "A preliminary interview with the professor will be scheduled before you officially apply to the graduate school.",
+    "Apply to the Electrical & Electronics Engineering Graduate School at Pusan National University.",
+    "Note: Besides the department-level interview, there will be an independent lab-level interview."
+   ],
+   "recommended": [
+    "A first-class Bachelor’s degree in electrical & electronics engineering, computer science engineering, or a related field (e.g., industrial engineering, semiconductor engineering, mechanical engineering, mathematics).",
+    "Programming skills (e.g., Python, C/C++, MATLAB).",
+    "Basic mathematics (e.g., probability & statistics, linear algebra).",
+    "Preferable: Experience in deep learning through projects or publications."
+   ]
+  },
+  {
+   "label": "Researcher",
+   "title": "Researchers and Postdocs",
+   "apply": [
+    "Email your academic transcript, CV, and research interests in computer vision to kbkong@pusan.ac.kr.",
+    "The process will be similar to that of graduate student applications, which includes a preliminary interview and potential further steps."
+   ]
+  }
+ ],
+ "address": [
+  "Computer Vision & Signal Processing Lab. Department of Electrical & Electronics Engineering College of Engineering, PNU",
+  "(+82) 51 - 510 - 2399"
+ ]
+}

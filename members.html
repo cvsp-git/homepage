@@ -20,11 +20,10 @@ slug: members
     </header>
     {% if forloop.first %}
       {% for m in g.people %}
-      {% assign mp = site.members | where_exp: "x", "x.title == m.name" | first %}
       <article class="pi-card">
         {% include avatar.html m=m %}
         <div class="pi-body">
-          <h3>{% if mp %}<a href="{{ mp.url | relative_url }}">{{ m.name }}</a>{% else %}{{ m.name }}{% endif %} <span class="ko">{{ m.name_ko }}</span></h3>
+          <h3>{% if m.page %}<a href="{{ m.page | relative_url }}">{{ m.name }}</a>{% else %}{{ m.name }}{% endif %} <span class="ko">{{ m.name_ko }}</span></h3>
           <p class="role">{{ m.role }}</p>
           <p class="pi-dept">{{ site.department }}, {{ site.university }}</p>
           {% if m.interests %}<ul class="kw">{% for k in m.interests %}<li>{{ k }}</li>{% endfor %}</ul>{% endif %}
@@ -35,10 +34,9 @@ slug: members
     {% else %}
     <ul class="member-grid">
       {% for m in g.people %}
-      {% assign mp = site.members | where_exp: "x", "x.title == m.name" | first %}
       <li class="member">
         {% include avatar.html m=m %}
-        <p class="m-name">{% if mp %}<a href="{{ mp.url | relative_url }}">{{ m.name }}</a>{% else %}{{ m.name }}{% endif %}</p>
+        <p class="m-name">{% if m.page %}<a href="{{ m.page | relative_url }}">{{ m.name }}</a>{% else %}{{ m.name }}{% endif %}</p>
         {% if m.name_ko != "" %}<p class="m-ko">{{ m.name_ko }}</p>{% endif %}
         {% if m.note %}<p class="m-note mono">{{ m.note }}</p>{% endif %}
         {% if m.honors %}<ul class="m-honors">{% for h in m.honors %}<li>{{ h }}</li>{% endfor %}</ul>{% endif %}

@@ -3,6 +3,7 @@ layout: default
 ---
 {% assign kind_label = "News" %}{% assign back = "/news.html" %}
 {% if page.kind == "gallery" %}{% assign kind_label = "Gallery" %}{% assign back = "/gallery.html#gallery" %}{% endif %}
+{% if page.kind == "seminar" %}{% assign kind_label = "Seminar" %}{% assign back = "/lab.html#seminar" %}{% endif %}
 {% if page.kind == "life" %}{% assign kind_label = "Lab Life" %}{% assign back = "/gallery.html#life" %}{% endif %}
 <section class="page-head">
   <div class="wrap narrow">

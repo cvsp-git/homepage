@@ -14,11 +14,13 @@ slug: join
 </section>
 
 <section class="section">
+  {% if j.offer %}<div class="wrap"><p class="lede" style="margin-bottom:28px">{{ j.offer }}</p></div>{% endif %}
   <div class="wrap join-grid">
     {% for t in j.tracks %}
     <article class="join-card">
       <p class="mono small">{{ t.label }}</p>
       <h2>{{ t.title }}</h2>
+      {% if t.dept %}<p class="muted small">{{ t.dept }}</p>{% endif %}
       {% if t.notice %}<p class="join-alert">{{ t.notice }}</p>{% endif %}
       {% if t.role %}<h3>Role</h3><ul class="join-list">{% for x in t.role %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
       {% if t.apply %}<h3>How to apply</h3><ol class="join-steps">{% for x in t.apply %}<li>{{ x }}</li>{% endfor %}</ol>{% endif %}
@@ -32,6 +34,7 @@ slug: join
   <div class="wrap join-grid join-grid-2">
     <div>
       <header class="group-head"><h2>Lab principles</h2></header>
+      {% if j.intro %}<p class="muted">{{ j.intro }}</p>{% endif %}
       <ol class="values">
         {% for v in j.principles %}<li>{{ v }}</li>{% endfor %}
       </ol>

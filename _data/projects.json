@@ -1,0 +1,251 @@
+[
+ {
+  "title": "모빌리티 특화 AI 반도체 풀스택 ICC",
+  "funder": "글로컬대학",
+  "start": "2026.10",
+  "end": "",
+  "status": "ongoing"
+ },
+ {
+  "title": "1인칭 시점 기반 인간-환경 통합 4D 복원 모델 개발",
+  "funder": "BK21 신진교수 지원사업, AI연구용컴퓨팅지원프로젝트(B200x8GPU)",
+  "start": "2026.10",
+  "end": "",
+  "status": "ongoing"
+ },
+ {
+  "title": "경찰대학 보이스매칭 코호트 데이터 구축 및 파라미터 검토 연구용역",
+  "funder": "경찰대학",
+  "start": "2026.08",
+  "end": "",
+  "status": "ongoing"
+ },
+ {
+  "title": "AI최고급신진연구자지원사업(6년 120억, PL of PROJECT 2)",
+  "funder": "과학기술정보통신부",
+  "start": "2026.07",
+  "end": "2031.12",
+  "status": "ongoing"
+ },
+ {
+  "title": "로봇 시점 기반 3차원 공간·포즈 통합 복원 파운데이션 모델 개발",
+  "funder": "정보통신산업진흥원",
+  "start": "2026.05",
+  "end": "2026.07",
+  "status": "complete"
+ },
+ {
+  "title": "홈로봇 객체 변화 기반 정돈도 감지 기술 개발",
+  "funder": "LG Electronics",
+  "start": "2026.04",
+  "end": "",
+  "status": "ongoing"
+ },
+ {
+  "title": "고품질 가상시점 합성을 위한 4D 가우시안 표현 학습 및 시점 증강 SW 구현",
+  "funder": "ETRI",
+  "start": "2026.04",
+  "end": "",
+  "status": "ongoing"
+ },
+ {
+  "title": "첨단로봇산업 전문인력양성",
+  "funder": "과학기술정보통신부",
+  "start": "2026.03",
+  "end": "2029.02",
+  "status": "ongoing"
+ },
+ {
+  "title": "다조건 비디오 데이터 기반 Anomaly Detection 연구",
+  "funder": "LG Electronics",
+  "start": "2025.11",
+  "end": "2026.01",
+  "status": "complete"
+ },
+ {
+  "title": "정사 사진(영상)을 활용한 고품질 3차원 공간 구축 개발 및 실증",
+  "funder": "RISE 사업",
+  "start": "2025.08",
+  "end": "2026.01",
+  "status": "complete"
+ },
+ {
+  "title": "홈로봇 이상 상황 환경 감지 기술 개발",
+  "funder": "LG Electronics",
+  "start": "2025.07",
+  "end": "2025.11",
+  "status": "complete"
+ },
+ {
+  "title": "홈로봇 환경을 고려한 VLM 기반 시각 인식 기술 개발 및 상황 인지·추론 성능 개선",
+  "funder": "LG Electronics",
+  "start": "2025.05",
+  "end": "",
+  "status": "ongoing"
+ },
+ {
+  "title": "VLA 기반 인터랙티브 AI튜터를 활용한 차세대 실습형 에듀테크 플랫폼 구축",
+  "funder": "글로컬대학",
+  "start": "2025.05",
+  "end": "2025.12",
+  "status": "complete"
+ },
+ {
+  "title": "라이트필드 비디오 데이터 생성을 위한 다시점 영상 기반 고품질 4D 공간 복원 SW 구현",
+  "funder": "ETRI",
+  "start": "2025.03",
+  "end": "2025.11",
+  "status": "complete"
+ },
+ {
+  "title": "인카메라 VFX를 위한 생성형 AI 기반 통합 프레임워크 개발",
+  "funder": "한국연구재단",
+  "start": "2024.09",
+  "end": "",
+  "status": "ongoing",
+  "note": "중견연구"
+ },
+ {
+  "title": "안구운동검사 신호 분석 기술",
+  "funder": "부산대학교병원",
+  "start": "2024.09",
+  "end": "",
+  "status": "ongoing"
+ },
+ {
+  "title": "4D 공간표현 생성 및 라이트필드 비디오 렌더링 SW 구현",
+  "funder": "ETRI",
+  "start": "2024.08",
+  "end": "2024.11",
+  "status": "complete"
+ },
+ {
+  "title": "홈로봇 환경을 고려한 야간 사람 인식 기술 개발 및 주간 얼굴 인식 성능 개선",
+  "funder": "LG Electronics",
+  "start": "2023.12",
+  "end": "2024.12",
+  "status": "complete"
+ },
+ {
+  "title": "다중송신원 환경 TDOA Hybrid 위치추정 기술",
+  "funder": "LIG 넥스원",
+  "start": "2023.11",
+  "end": "2025.09",
+  "status": "complete"
+ },
+ {
+  "title": "개방형 기획을 위한 초실감 디스플레이 디바이스 분야 기술분석 및 연구추진 방향 도출",
+  "funder": "ETRI",
+  "start": "2023.08",
+  "end": "2023.12",
+  "status": "complete"
+ },
+ {
+  "title": "생성형 AI를 활용한 실감형 해양콘텐츠 제작 체계 개발",
+  "funder": "방송문화진흥회",
+  "start": "2023.07",
+  "end": "2024.11",
+  "status": "complete"
+ },
+ {
+  "title": "지역수요기반 실감콘텐츠 제작환경을 위한 AI 애셋 생성 플랫폼 개발",
+  "funder": "부산테크노파크",
+  "start": "2023.06",
+  "end": "2023.11",
+  "status": "complete",
+  "note": "2023 지산학협력 우수사례 선정"
+ },
+ {
+  "title": "차량용 디스플레이 화질 보정 및 적응적 소비전력 저감 기술 개발",
+  "funder": "LG Electronics",
+  "start": "2023.03",
+  "end": "2023.11",
+  "status": "complete"
+ },
+ {
+  "title": "다조건 영상을 활용한 영상 합성 전처리 기술 개발",
+  "funder": "LG Electronics",
+  "start": "2022.06",
+  "end": "2023.06",
+  "status": "complete"
+ },
+ {
+  "title": "AI 영상 처리 기반 OLED 잔상 보상 기법 개발",
+  "funder": "LG Display",
+  "start": "2021.09",
+  "end": "2022.08",
+  "status": "complete"
+ },
+ {
+  "title": "스트레쳐블 디스플레이를 위한 딥러닝 기반 저왜곡 영상 확장 알고리즘 개발",
+  "funder": "한국연구재단",
+  "start": "2021.06",
+  "end": "2023.06",
+  "status": "complete",
+  "note": "창의도전기반연구지원"
+ },
+ {
+  "title": "딥러닝 기반 Anti-aliasing 기술 개발",
+  "funder": "LG Electronics",
+  "start": "2021.05",
+  "end": "2021.12",
+  "status": "complete"
+ },
+ {
+  "title": "자율주행 차량 기반 다수 시나리오 실시간 인터랙티브 콘텐츠 및 플랫폼 기술 개발",
+  "funder": "한국콘텐츠진흥원",
+  "start": "2020.09",
+  "end": "2020.12",
+  "status": "complete"
+ },
+ {
+  "title": "차세대 프리 폼 디스플레이를 위한 딥러닝 기반 비디오 리타겟팅 시스템 개발",
+  "funder": "한국연구재단",
+  "start": "2020.09",
+  "end": "2021.08",
+  "status": "complete",
+  "note": "박사후국내연수"
+ },
+ {
+  "title": "딥러닝 기반 frame rate up-conversion 알고리즘 개발 및 구현",
+  "funder": "LG Display",
+  "start": "2019.08",
+  "end": "2020.07",
+  "status": "complete"
+ },
+ {
+  "title": "딥러닝 기반 contents 분류 알고리즘 개발 및 최적 화질 설정",
+  "funder": "LG Display",
+  "start": "2018.06",
+  "end": "2019.05",
+  "status": "complete"
+ },
+ {
+  "title": "딥러닝 기반 contents-adaptive image enhancement 알고리즘 개발 및 구현",
+  "funder": "LG Display",
+  "start": "2017.06",
+  "end": "2018.05",
+  "status": "complete"
+ },
+ {
+  "title": "SAR/IR 영상의 표적 식별 및 정보 융합 연구",
+  "funder": "국방부",
+  "start": "2017.05",
+  "end": "2017.11",
+  "status": "complete"
+ },
+ {
+  "title": "Contents에 따른 HDR 변환 알고리즘 개발 및 하드웨어 구현",
+  "funder": "LG Display",
+  "start": "2016.06",
+  "end": "2017.05",
+  "status": "complete"
+ },
+ {
+  "title": "Depth perception 향상을 위한 depth estimation 알고리즘 개발 및 구현",
+  "funder": "LG Display",
+  "start": "2015.06",
+  "end": "2016.05",
+  "status": "complete"
+ }
+]

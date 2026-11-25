@@ -10,7 +10,8 @@ slug: index
   <div class="wrap hero-inner">
     <p class="eyebrow eyebrow-hero">{{ site.university }} · {{ site.department_short }}</p>
     <h1 id="hero-title" class="hero-title">Computer Vision &amp; Signal Processing Lab</h1>
-    <p class="hero-lede">We build spatial multimodal AI that understands, generates, and interacts with the physical world, from 4D scene reconstruction to robots that reason about the space around them.</p>
+    {% assign home = site.data.home %}
+    <p class="hero-lede">{% if home.lede and home.lede != "" %}{{ home.lede }}{% else %}We build spatial multimodal AI that understands, generates, and interacts with the physical world, from 4D scene reconstruction to robots that reason about the space around them.{% endif %}</p>
     <div class="hero-actions">
       <a class="btn btn-ghost" href="{{ '/join.html' | relative_url }}">Join the lab</a>
     </div>
@@ -33,14 +34,14 @@ slug: index
       </figure>
       {% endif %}
       <ul class="focus-list">
-        {% for r in site.data.research %}
+        {% assign research = site.data.home.research %}{% for r in research %}
         <li><strong>{{ r.title }}</strong> — {{ r.summary }}</li>
         {% endfor %}
       </ul>
     </div>
     <aside class="recruit-card" aria-labelledby="recruit-title">
       <h2 id="recruit-title">We are recruiting</h2>
-      <p>{{ site.recruiting }}</p>
+      <p>{{ site.data.home.recruiting | default: site.recruiting }}</p>
       <a class="pill-btn pill-outline" href="{{ '/join.html' | relative_url }}">Join Us!</a>
     </aside>
   </div>

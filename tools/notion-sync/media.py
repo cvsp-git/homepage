@@ -74,6 +74,22 @@ def convert(src, ext, dst_noext, first_frame=False):
     return dst_noext + ".jpg"
 
 
+MAX_FILE = 15_000_000   # bigger attachments (seminar PDFs etc.) are linked to Notion instead of copied
+
+
+def fetch_file(src, block_id, space_id, dst_noext):
+    """Copy an attachment (PDF, PPT, ...) as is. Returns the path or None."""
+    url = signed_url(src, block_id, space_id) if notion_hosted(src) else src
+    ext = os.path.splitext(name_of(src))[1].lower() or ".bin"
+    try:
+        download(url, dst_noext + ext)
+    except Exception as e:
+        print("   download failed:", src[:80], e); return None
+    if os.path.getsize(dst_noext + ext) > MAX_FILE:
+        os.remove(dst_noext + ext); return None
+    return dst_noext + ext
+
+
 def fetch(src, block_id, space_id, dst_noext, first_frame=False):
     """Download + convert. Returns written path or None (caller may keep remote URL)."""
     if not src: return None

@@ -1,0 +1,116 @@
+{
+ "compute": [
+  {
+   "label": "GPUs",
+   "value": "50+"
+  },
+  {
+   "label": "GPU Memory",
+   "value": "1.5+ TB"
+  }
+ ],
+ "robots": [
+  {
+   "name": "SO-101",
+   "count": "1",
+   "category": "Robot",
+   "image": ""
+  },
+  {
+   "name": "NVIDIA Thor",
+   "count": "1",
+   "category": "Compute platform",
+   "image": ""
+  },
+  {
+   "name": "Intel D435i",
+   "count": "1",
+   "category": "Depth sensor",
+   "image": ""
+  },
+  {
+   "name": "YOR",
+   "count": "1",
+   "category": "Robot",
+   "image": ""
+  }
+ ],
+ "seminars": [
+  {
+   "title": "2026 Summer Vacation Seminar",
+   "date": "2026.08.10",
+   "link": "/board/seminar-2026-08-10-2026-summer-vacation-seminar/"
+  },
+  {
+   "title": "2026 Winter Vacation Seminar",
+   "date": "2026.01.09",
+   "link": "/board/seminar-2026-01-09-2026-winter-vacation-seminar/"
+  },
+  {
+   "title": "2025 Summer Vacation Seminar",
+   "date": "2025.07.21",
+   "link": "/board/seminar-2025-07-21-2025-summer-vacation-seminar/"
+  },
+  {
+   "title": "2025 Winter Vacation Seminar",
+   "date": "2025.01.25",
+   "link": "/board/seminar-2025-01-25-2025-winter-vacation-seminar/"
+  },
+  {
+   "title": "2024 Winter Vacation Seminar",
+   "date": "2024.01.20",
+   "link": "/board/seminar-2024-01-20-2024-winter-vacation-seminar/"
+  },
+  {
+   "title": "2023 Winter Vacation Seminar",
+   "date": "2023.01.13",
+   "link": "/board/seminar-2023-01-13-2023-winter-vacation-seminar/"
+  }
+ ],
+ "courses": [
+  {
+   "term": "2026 Spring",
+   "list": [
+    "EE1500570 Engineering Linear Algebra",
+    "EE2001449 Artificial Intelligence"
+   ]
+  },
+  {
+   "term": "2025 Fall",
+   "list": [
+    "EE2700992 Engineering Mathematics (II)",
+    "EE3100591 Circuit Theory (I)",
+    "ED6500713 Pattern Recognition"
+   ]
+  },
+  {
+   "term": "2025 Spring",
+   "list": [
+    "EE1500570 Engineering Linear Algebra",
+    "EE2001449 Artificial Intelligence",
+    "ED6700371 Design of Multimedia Systems"
+   ]
+  },
+  {
+   "term": "2024 Fall",
+   "list": [
+    "EE3100591 Circuit Theory (I)",
+    "ED6400463 Computer Vision"
+   ]
+  },
+  {
+   "term": "2024 Spring",
+   "list": [
+    "EE2001449 Artificial Intelligence",
+    "ED6001334 Generative AI"
+   ]
+  },
+  {
+   "term": "2023 Fall",
+   "list": [
+    "EE3100591 Circuit Theory (I)",
+    "ED6400463 Computer Vision"
+   ]
+  }
+ ]
+}

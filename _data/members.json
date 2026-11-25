@@ -1,0 +1,177 @@
+[
+ {
+  "group": "Professor",
+  "people": [
+   {
+    "name": "Kyeongbo Kong",
+    "name_ko": "공경보",
+    "role": "Principal Investigator",
+    "photo": "kyeongbo-kong.jpg",
+    "email": "kbkong@pusan.ac.kr",
+    "interests": [
+     "3D/4D World Modeling",
+     "Vision-Language Models",
+     "Embodied AI"
+    ],
+    "page": "/members/kyeongbo-kong/",
+    "homepage": "https://sites.google.com/view/kyeongbokong/"
+   }
+  ]
+ },
+ {
+  "group": "Postdoctoral Researcher",
+  "people": [
+   {
+    "name": "Sunchan Park",
+    "name_ko": "박순찬",
+    "photo": "sunchan-park.jpg",
+    "interests": [
+     "Multi-Modality",
+     "Audio-Visual Learning"
+    ],
+    "page": "/members/parksunchan/"
+   }
+  ]
+ },
+ {
+  "group": "Ph.D. Course",
+  "people": [
+   {
+    "name": "JiAn Yang",
+    "name_ko": "양지안",
+    "photo": "jian-yang.jpg",
+    "page": "/members/jay/"
+   },
+   {
+    "name": "Seong-Hun Jeong",
+    "name_ko": "정성훈",
+    "photo": "seong-hun-jeong.jpg",
+    "page": "/members/shj/"
+   }
+  ]
+ },
+ {
+  "group": "M.S. Course",
+  "people": [
+   {
+    "name": "Daun Jeong",
+    "name_ko": "정다운",
+    "photo": "daun-jeong.jpg",
+    "page": "/members/daun/"
+   },
+   {
+    "name": "In-Hwan Jin",
+    "name_ko": "진인환",
+    "photo": "in-hwan-jin.jpg",
+    "honors": [
+     "Visiting Researcher, University of Toronto"
+    ],
+    "page": "/members/inhwan/"
+   },
+   {
+    "name": "Taehoon Kim",
+    "name_ko": "김태훈",
+    "photo": "taehoon-kim.jpg",
+    "page": "/members/taehoon/"
+   }
+  ]
+ },
+ {
+  "group": "Integrated B.S.–M.S. Course",
+  "people": [
+   {
+    "name": "Changwoo Baek",
+    "name_ko": "백창우",
+    "photo": "changwoo-baek.jpg",
+    "honors": [
+     "NRF Master's Research Grant",
+     "LG Electronics Industry–Academia Scholarship"
+    ],
+    "page": "/members/changwoo/"
+   },
+   {
+    "name": "HyeongJu Mun",
+    "name_ko": "문형주",
+    "photo": "hyeongju-mun.jpg",
+    "honors": [
+     "NRF Master's Research Grant"
+    ],
+    "page": "/members/hyeong-ju/"
+   },
+   {
+    "name": "MinSoo Woo",
+    "name_ko": "우민수",
+    "photo": "minsoo-woo.jpg",
+    "page": "/members/minsoo/"
+   },
+   {
+    "name": "Sohyeon Kim",
+    "name_ko": "김소현",
+    "photo": "sohyeon-kim.jpg",
+    "honors": [
+     "NRF Master's Research Grant"
+    ],
+    "page": "/members/sohyeon/"
+   },
+   {
+    "name": "Sohyeong Kim",
+    "name_ko": "김소형",
+    "photo": "sohyeong-kim.jpg",
+    "page": "/members/sohyeong/"
+   },
+   {
+    "name": "Jihoon Choi",
+    "name_ko": "최지훈",
+    "photo": "jihoon-choi.jpg",
+    "page": "/members/jihoon/"
+   },
+   {
+    "name": "Beomkwon Cho",
+    "name_ko": "조범권",
+    "photo": "beomkwon-cho.jpg",
+    "page": "/members/beomgwon/"
+   },
+   {
+    "name": "Woohyeong Kim",
+    "name_ko": "김우형",
+    "photo": "woohyeong-kim.jpg",
+    "page": "/members/woohyeong/"
+   },
+   {
+    "name": "Junsu Kim",
+    "name_ko": "김준수",
+    "photo": "junsu-kim.jpg",
+    "page": "/members/junsu/"
+   }
+  ]
+ },
+ {
+  "group": "Research Intern",
+  "people": [
+   {
+    "name": "Sang Yeon Yoon",
+    "name_ko": "윤상연",
+    "photo": "sang-yeon-yoon.jpg",
+    "page": "/members/sang-yeon/"
+   },
+   {
+    "name": "JongWon Choi",
+    "name_ko": "최종원",
+    "photo": "jongwon-choi.jpg",
+    "page": "/members/jongwon-choi/"
+   }
+  ]
+ },
+ {
+  "group": "Alumni",
+  "people": [
+   {
+    "name": "Haesoo Choo",
+    "name_ko": "추해수",
+    "photo": "haesoo-choo.jpg",
+    "note": "NAVER WEBTOON",
+    "page": "/members/haesoo-choo/"
+   }
+  ]
+ }
+]

@@ -82,9 +82,9 @@ class Renderer:
         return ""
 
     def fix_href(self, u):
-        m = re.search(r'([0-9a-f]{32})(?:[?#].*)?$', u)
-        if m and ("notion" in u or u.startswith("/")):
-            h = m.group(1)
+        m = re.search(r'([0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12})(?:[?#].*)?$', u)
+        if m and ("notion" in u or "pnu-cvsp.com" in u or u.startswith("/")):
+            h = m.group(1).replace("-", "")
             pid = "%s-%s-%s-%s-%s" % (h[:8], h[8:12], h[12:16], h[16:20], h[20:])
             url = self.link(pid)
             if url: return url
@@ -185,7 +185,7 @@ class Renderer:
             link = self.source(b) or plain(p.get("link"))
             if not link: return []
             if t in ("file", "pdf"):
-                src = self.media("file", link, b, "") or link
+                src = self.media("file", link, b, "") or "https://www.notion.so/" + b["id"].replace("-", "")
                 name = plain(p.get("title")) or "file"
                 return ["", pad + "[📎 %s](%s)" % (esc(name), src), ""]
             name = plain(p.get("title")) or link

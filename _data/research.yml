@@ -1,7 +1,0 @@
-# 홈 화면 "Our research focuses on:" 목록. 굵은 제목 — 설명 형식으로 나옵니다.
-- title: 3D/4D World Modeling
-  summary: Gaussian splatting, dynamic scene reconstruction
-- title: Efficient Vision-Language/Vision-Language-Action Models
-  summary: token pruning, model compression, and reliable multimodal reasoning
-- title: Embodied Spatial Intelligence
-  summary: real-world perception and decision-making for robots
