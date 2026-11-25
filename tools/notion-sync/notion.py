@@ -5,8 +5,15 @@ API = "https://www.notion.so/api/v3/"
 HDR = {"content-type": "application/json", "user-agent": "Mozilla/5.0 (cvsp-homepage-sync)"}
 
 
-def post(ep, body, tries=4):
+_last = [0.0]
+
+
+def post(ep, body, tries=8):
     for i in range(tries):
+        wait = _last[0] + 0.4 - time.time()   # stay well under Notion's rate limit
+        if wait > 0:
+            time.sleep(wait)
+        _last[0] = time.time()
         try:
             req = urllib.request.Request(API + ep, json.dumps(body).encode(), HDR)
             with urllib.request.urlopen(req, timeout=60) as r:
@@ -14,7 +21,8 @@ def post(ep, body, tries=4):
         except (urllib.error.URLError, TimeoutError) as e:
             if i == tries - 1 or (isinstance(e, urllib.error.HTTPError) and e.code < 500 and e.code != 429):
                 raise
-            time.sleep(2 ** i * 2)
+            ra = getattr(e, "headers", None) and e.headers.get("retry-after")
+            time.sleep(float(ra) if ra and ra.replace(".", "").isdigit() else min(60, 2 ** i * 2))
 
 
 def unwrap(rec):

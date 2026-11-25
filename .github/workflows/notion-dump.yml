@@ -1,10 +1,16 @@
 name: Notion dump
 on: workflow_dispatch
+permissions:
+  contents: write
 jobs:
   dump:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: python3 tools/notion-sync/dump.py dump
-      - uses: actions/upload-artifact@v4
-        with: {name: notion-dump, path: dump, retention-days: 3}
+      - run: python3 tools/notion-sync/dump.py /tmp/dump
+      - name: Push dump to the notion-dump branch
+        run: |
+          cd /tmp/dump
+          git init -q -b notion-dump && git add -A
+          git -c user.name=bot -c user.email=bot@users.noreply.github.com commit -qm dump
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" notion-dump
