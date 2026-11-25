@@ -413,6 +413,9 @@ img.avatar { aspect-ratio: auto; object-fit: initial; }  /* 원본 비율 그대
 .m-name { font-weight: 600; }
 .m-ko { color: var(--muted); font-size: .9rem; }
 .m-note { font-size: .72rem; color: var(--signal); }
+.m-honors { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 3px; }
+.m-honors li { position: relative; padding-left: 11px; font-size: .76rem; line-height: 1.35; color: var(--pnu); }
+.m-honors li::before { content: ""; position: absolute; left: 0; top: .5em; width: 5px; height: 5px; border-radius: 50%; background: var(--signal); }
 .m-mail { font-size: .8rem; }
 
 /* ---------- projects ---------- */

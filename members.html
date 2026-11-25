@@ -39,6 +39,7 @@ slug: members
         <p class="m-name">{{ m.name }}</p>
         {% if m.name_ko != "" %}<p class="m-ko">{{ m.name_ko }}</p>{% endif %}
         {% if m.note %}<p class="m-note mono">{{ m.note }}</p>{% endif %}
+        {% if m.honors %}<ul class="m-honors">{% for h in m.honors %}<li>{{ h }}</li>{% endfor %}</ul>{% endif %}
         {% if m.email %}<a class="m-mail" href="mailto:{{ m.email }}">{{ m.email }}</a>{% endif %}
       </li>
       {% endfor %}
