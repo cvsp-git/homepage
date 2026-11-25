@@ -41,7 +41,7 @@ def load_db(page, dumpname):
 
 
 def load_page(pid, dumpname):
-    if args.dump:
+    if args.dump and dumpname:
         p = os.path.join(args.dump, dumpname, pid + ".json")
         return json.load(open(p)) if os.path.exists(p) else None
     rm = notion.load_page(pid)
@@ -274,7 +274,45 @@ def sync_members():
     log("members: %d pages, %d re-rendered" % (len(people), changed))
 
 
+# ---------------- publications ----------------
+PUB_PAGES = {"international": "d9c4ac58-eaed-42a2-935d-e1c83397e1dd", "domestic": "00312390-10c3-4807-a64a-f3cef4306fdf"}
+
+
+def load_full(pid, dumpname):
+    if args.dump:
+        p = os.path.join(args.dump, dumpname + ".json")
+        return json.load(open(p))["recordMap"] if os.path.exists(p) else None
+    return load_page(pid, None)
+
+
+def write_json(path, data):
+    text = json.dumps(data, ensure_ascii=False, indent=1) + "\n"
+    old = open(path, encoding="utf-8").read() if os.path.exists(path) else None
+    if old != text:
+        open(path, "w", encoding="utf-8").write(text); log("  updated", os.path.relpath(path, ROOT))
+
+
+def sync_publications():
+    import pubs
+    figs = json.load(open(os.path.join(ROOT, "tools/notion-sync/pub_figures.json")))
+    norm = lambda t: re.sub(r"[^0-9a-z가-힣]", "", t.lower())
+    for name, pid in PUB_PAGES.items():
+        rm = load_full(pid, {"international": "intl", "domestic": "domestic"}[name])
+        if rm is None: continue
+        recs = pubs.parse(rm, pid, name)
+        if len(recs) < 5:
+            log("  publications/%s: only %d entries parsed, keeping the old list" % (name, len(recs))); continue
+        figdir = os.path.join(ROOT, "images/publications", name)
+        have = set(os.listdir(figdir)) if os.path.isdir(figdir) else set()
+        for r in recs:
+            f = figs.get(norm(r["title"]))
+            if f and f in have: r["figure"] = f
+        write_json(os.path.join(ROOT, "_data/publications_%s.json" % name), recs)
+        log("publications/%s: %d" % (name, len(recs)))
+
+
 BOARD_URLS = {k: "/board/%s/" % v["slug"] for k, v in state.get("board", {}).items()}
+sync_publications()
 sync_members()
 sync_board()
 json.dump(state, open(STATE, "w"), ensure_ascii=False, indent=1, sort_keys=True)

@@ -1,0 +1,1669 @@
+[
+ {
+  "id": "J33",
+  "type": "journal",
+  "year": 2026,
+  "title": "Indocyanine Green Fluorescence Angiography in Colorectal Cancer Surgery after a Decade of Randomized Trials: From Visual Assessment to Quantification and Beyond",
+  "venue": "Cancers, 2026",
+  "authors": [
+   "Gyung Mo Son*†",
+   "In Young Lee",
+   "Seojeong Park",
+   "Sang-Ho Park",
+   "Kyeongbo Kong",
+   "Kwang-Ryul Baek"
+  ]
+ },
+ {
+  "id": "J32",
+  "type": "journal",
+  "year": 2026,
+  "title": "RoAD: Robust Adaptive Domain-Aware Visual Place Recognition with Dynamic Architecture",
+  "venue": "IEEE Robotics and Automation Letters (IEEE RA-L), 2026",
+  "authors": [
+   "Dongkyu Kim*",
+   "Eunho Shin*",
+   "Kyeongbo Kong†",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Robotics",
+   "Visual Place Recognition"
+  ]
+ },
+ {
+  "id": "J31",
+  "type": "journal",
+  "year": 2026,
+  "title": "VIPA: Visual Informative Part Attention for Referring Image Segmentation",
+  "venue": "IEEE Transactions on Circuits and Systems for Video Technology, 2026",
+  "authors": [
+   "Yubin Cho*",
+   "Hyunwoo Yu*",
+   "Kyeongbo Kong*",
+   "Kyomin Sohn",
+   "Bongjoon Hyun",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Referring Segmentation"
+  ]
+ },
+ {
+  "id": "J30",
+  "type": "journal",
+  "year": 2026,
+  "title": "Hidden-State-Relative Actuator Bounds for PID-Style Activation Steering in Language Models",
+  "venue": "IEEE Signal Processing Letters, 2026",
+  "authors": [
+   "Seungjun Shin*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Reliable",
+   "Large Language Model"
+  ]
+ },
+ {
+  "id": "J29",
+  "type": "journal",
+  "year": 2026,
+  "title": "On the Design of Mixture-of-Experts for Dynamic Gaussian Splatting",
+  "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence (IEEE TPAMI), Nov., 2026",
+  "authors": [
+   "Inhwan Jin*",
+   "Hyeongju Mun*",
+   "Joonsoo Kim",
+   "Kugjin Yun",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "World Modeling",
+   "Gaussian Splatting"
+  ],
+  "note": "IF: 20.4, JCR 0.9%",
+  "figure": "J29.jpg"
+ },
+ {
+  "id": "J28",
+  "type": "journal",
+  "year": 2026,
+  "title": "Group-wise Layer Aggregation of Self-Supervised Representations for Speech Emotion Recognition",
+  "venue": "IEEE Signal Processing Letters, Jun., 2026",
+  "authors": [
+   "Sunchan Park*",
+   "Hyung Soon Kim",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Multi-Modality",
+   "Speech Emotion Recognition"
+  ]
+ },
+ {
+  "id": "J27",
+  "type": "journal",
+  "year": 2026,
+  "title": "Target-Aware Change Detection for Efficient VLM Gating in Mobile Robots",
+  "venue": "IEEE Robotics and Automation Letters (IEEE RA-L), Jul., 2026",
+  "authors": [
+   "Changwoo Baek*",
+   "Taehoon Kim*",
+   "Woojin Lee*",
+   "Jungkwan Son",
+   "Seoyoung Lee",
+   "Jiyoung Kim",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Robotics",
+   "Vision-Language Model"
+  ],
+  "note": "ICRA 2027 Presentation"
+ },
+ {
+  "id": "J26",
+  "type": "journal",
+  "year": 2026,
+  "title": "Motion-to-Attention: Enhancing Attention Maps to Improve Performance of Text-Guided Video Editing",
+  "venue": "ACM Transactions on Multimedia Computing, Communications, and Applications (ACM TOMM), Jul., 2026",
+  "authors": [
+   "Seong-Hun Jeong*",
+   "In-Hwan Jin*",
+   "Haesoo Choo*",
+   "Hyeonjun Na*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Text-Guided Video Editing"
+  ],
+  "note": "IF: 6.0, JCR 7.8%",
+  "figure": "J26.jpg"
+ },
+ {
+  "id": "J25",
+  "type": "journal",
+  "year": 2026,
+  "title": "Realistic Human Image Animation with Dynamic Camera Effects",
+  "venue": "IEEE Transactions on Circuits and Systems for Video Technology (IEEE TCSVT), 2026",
+  "authors": [
+   "Minseok Kang*",
+   "Jihyun Kim*",
+   "ChangHee Yang*",
+   "Kyeongbo Kong*",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Human Pose Estimation"
+  ],
+  "note": "IF: 11.1, JCR 2.7%"
+ },
+ {
+  "id": "C57",
+  "type": "conference",
+  "year": 2026,
+  "title": "Sparse-View Dynamic Scene Reconstruction with Gaussian Splatting",
+  "venue": "International Conference on Electronics, Information, and Communication (ICEIC), Nov. 2026",
+  "authors": [
+   "Jihoon Choi",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Multi-Modality",
+   "Vision-Language Model"
+  ]
+ },
+ {
+  "id": "C56",
+  "type": "conference",
+  "year": 2026,
+  "title": "OmniWhere: Agentic Audio-Visual Perception for Embodied Spatial Reasoning",
+  "venue": "Neural Workshop on Embodied Spatial Reasoning (NeurIPSW), Sep. 2026",
+  "authors": [
+   "Sunchan Park*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Multi-Modality",
+   "Vision-Language Model"
+  ],
+  "note": "Top-tier AI Conference Workshop"
+ },
+ {
+  "id": "C55",
+  "type": "conference",
+  "year": 2026,
+  "title": "Focus Matters: Attention-Value Dynamics for Efficient Hallucination Mitigation in Vision-Language Models",
+  "venue": "Neural Information Processing Systems (NeurIPS), Dec. 2026",
+  "authors": [
+   "Sohyeon Kim*",
+   "Sang Yeon Yoon",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Agentic",
+   "Vision-Language Model"
+  ],
+  "note": "Top-tier AI Conference, Acceptance Rate: 25.7%",
+  "paper": "https://arxiv.org/pdf/2604.03556",
+  "project": "https://paper.pnu-cvsp.com/FocusMatters/"
+ },
+ {
+  "id": "C54",
+  "type": "conference",
+  "year": 2026,
+  "title": "Counterfactual Simulation-Guided Physical Reasoning for Physics-Based Video Generation",
+  "venue": "European Conference on Computer Vision workshops on 3D in the Era of World Models (ECCVW), sep. 2026",
+  "authors": [
+   "Sohyeong Kim*",
+   "Woo Hyeong Kim*",
+   "In-Hwan Jin*",
+   "Hyeongju Mun",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "World Modeling",
+   "Gaussian Splatting"
+  ],
+  "note": "Top-tier AI conference workshop"
+ },
+ {
+  "id": "C53",
+  "type": "conference",
+  "year": 2026,
+  "title": "LivingWorld: Interactive 4D World Generation with Environmental Dynamics",
+  "venue": "European Conference on Computer Vision (ECCV), Sep. 2026 · Also Presented in 5th Workshop on Computer Vision for Multimedia Spatial Intelligence through Time with ECCV 2026",
+  "authors": [
+   "Hyeongju Mun*",
+   "In-Hwan Jin*",
+   "Sohyeong Kim",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "World Modeling",
+   "Gaussian Splatting"
+  ],
+  "note": "Top-tier AI Conference, Acceptance Rate: 27.5%",
+  "paper": "https://arxiv.org/pdf/2604.01641",
+  "project": "https://paper.pnu-cvsp.com/LivingWorld/"
+ },
+ {
+  "id": "C52",
+  "type": "conference",
+  "year": 2026,
+  "title": "TRiGS: Temporal Rigid-Body Motion for Scalable 4D Gaussian Splatting",
+  "venue": "European Conference on Computer Vision (ECCV), Sep. 2026 · Also Presented in 5th Workshop on Computer Vision for Multimedia Spatial Intelligence through Time with ECCV 2026",
+  "authors": [
+   "Suwoong Yeom*",
+   "Joonsik Nam*",
+   "Seunggyu Choi*",
+   "Lucas Yunkyu Lee",
+   "Sangmin Kim",
+   "Jaesik Park",
+   "Joonsoo Kim",
+   "Kugjin Yun",
+   "Kyeongbo Kong†",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "World Modeling",
+   "Gaussian Splatting"
+  ],
+  "note": "Top-tier AI Conference, Acceptance Rate: 27.5%",
+  "paper": "https://arxiv.org/pdf/2604.00538",
+  "project": "https://wwwjjn.github.io/TRiGS-project_page/"
+ },
+ {
+  "id": "C51",
+  "type": "conference",
+  "year": 2026,
+  "title": "3DZip: Spatial-Aware Feature Diversity-Guided Token Compression for 3D Question Answering",
+  "venue": "European Conference on Computer Vision (ECCV), Sep. 2026",
+  "authors": [
+   "Changwoo Baek*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Efficient",
+   "3D Vision-Language Model"
+  ],
+  "note": "Top-tier AI Conference, Acceptance Rate: 27.5%",
+  "paper": "https://arxiv.org/pdf/2608.01185",
+  "project": "https://paper.pnu-cvsp.com/3DZip/",
+  "code": "https://github.com/cvsp-lab/3DZip",
+  "figure": "C51.jpg"
+ },
+ {
+  "id": "C50",
+  "type": "conference",
+  "year": 2026,
+  "title": "Structured Redundancy Modeling for Efficient Visual Token Pruning in High-Resolution MLLMs",
+  "venue": "European Conference on Computer Vision (ECCV), Sep. 2026",
+  "authors": [
+   "Jouwon Song*",
+   "Woohyeong Kim",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Efficient",
+   "Vision-Language Model"
+  ],
+  "note": "Top-tier AI Conference, Acceptance Rate: 27.5%",
+  "paper": "https://arxiv.org/pdf/2607.23046",
+  "figure": "C50.jpg"
+ },
+ {
+  "id": "C49",
+  "type": "conference",
+  "year": 2026,
+  "title": "Efficient Visual Token Compression for 3D Question Answering",
+  "venue": "ICML Workshop on efficient multimodal question answering (ICMLw), Jul. 2026",
+  "authors": [
+   "Changwoo Baek*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Efficient",
+   "Vision-Language Model"
+  ]
+ },
+ {
+  "id": "C48",
+  "type": "conference",
+  "year": 2026,
+  "title": "Compositional Agentic Formulation Search for Open-Vocabulary Audio-Visual Event Localization",
+  "venue": "ICML Workshop on Compositional Learning: Safety, Interpretability, and Agents (ICMLw), Jul. 2026",
+  "authors": [
+   "Beomgwon Jo*",
+   "Sunchan Park*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Agentic",
+   "Audio-Visual Event Localization"
+  ]
+ },
+ {
+  "id": "C47",
+  "type": "conference",
+  "year": 2026,
+  "title": "Attention Weight Decomposition for Vision Model Compression",
+  "venue": "ICML Workshop on Weight-Space Symmetries: from Foundations to Practical Applications (ICMLw), Jul. 2026",
+  "authors": [
+   "Hyunwoo Yu*",
+   "Yubin Cho*",
+   "Kyeongbo Kong†",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Efficient",
+   "Vision-Language Model"
+  ]
+ },
+ {
+  "id": "C46",
+  "type": "conference",
+  "year": 2026,
+  "title": "Failure-Aware Query Refinement for Reliable Open-Vocabulary Home-Robot Perception",
+  "venue": "ICML Workshop on Agents in the Wild: Safety, Security, and Beyond (ICMLw), Jul. 2026",
+  "authors": [
+   "Daun Jeong*",
+   "Sohyeon Kim*",
+   "Jouwon Song",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Robotics",
+   "Open-Vocabulary Object Detection"
+  ]
+ },
+ {
+  "id": "C45",
+  "type": "conference",
+  "year": 2026,
+  "title": "Mitigating Visual Hallucinations for Reliable Multimodal Agents",
+  "venue": "ICML Workshop on Agents in the Wild: Safety, Security, and Beyond (ICMLw), Jul. 2026",
+  "authors": [
+   "Sohyeon Kim*",
+   "Sang Yeon Yoon",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Agentic",
+   "Vision-Language Model"
+  ]
+ },
+ {
+  "id": "C44",
+  "type": "conference",
+  "year": 2026,
+  "title": "HYBRIDKV: Exploiting Head-Dominant Reconstruction for Efficient Query-Agnostic KV Cache Compression",
+  "venue": "ICML Workshop on AdaptFM: Resource-Adaptive Foundation Model Inference (ICMLw), Jul. 2026",
+  "authors": [
+   "Changwoo Baek*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Efficient",
+   "Large Language Model"
+  ]
+ },
+ {
+  "id": "C43",
+  "type": "conference",
+  "year": 2026,
+  "title": "SFPruner: Single-Forward Visual Token Subset Selection for Resource-Efficient Multimodal Foundation Model Inference",
+  "venue": "ICML Workshop on AdaptFM: Resource-Adaptive Foundation Model Inference (ICMLw), Jul. 2026",
+  "authors": [
+   "Jouwon Song*",
+   "Woohyeong Kim",
+   "Seungjae Baek",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Efficient",
+   "Vision-Language Model"
+  ],
+  "paper": "https://openreview.net/pdf?id=d9H5uBnHeL",
+  "figure": "C43.jpg"
+ },
+ {
+  "id": "C42",
+  "type": "conference",
+  "year": 2026,
+  "title": "Reducing Attention Distribution Error with Unified Tail Aggregation for Sparse Attention",
+  "venue": "ICML Workshop on AdaptFM: Resource-Adaptive Foundation Model Inference (ICMLw), Jul. 2026",
+  "authors": [
+   "Hyunwoo Yu*",
+   "Jongbeom Lee",
+   "Jaemin Choi",
+   "Jincheol Yang",
+   "Yubin Cho",
+   "Joonsik Nam",
+   "Seunghun Moon",
+   "Jung-Woo Chang",
+   "Bongjoon Hyun",
+   "Kyomin Sohn",
+   "Kyeongbo Kong†",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Efficient",
+   "Diffusion Transformers"
+  ]
+ },
+ {
+  "id": "C41",
+  "type": "conference",
+  "year": 2026,
+  "title": "PADS-TAL: Padding-Annealed Diffusion Sampling in Text-Aware Latent Space for Robust and Diverse Text-to-Music Generation",
+  "venue": "International Conference on Machine Learning (ICML), Jul. 2026",
+  "authors": [
+   "Taekoan Yoo*",
+   "Wonkyung Jung*",
+   "Kyunghun Kim*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Multi-Modality",
+   "Text-to-Music Generatio"
+  ],
+  "note": "Top-tier AI Conference, Acceptance Rate: 26.6%",
+  "project": "https://pads-tal.github.io/PADS-TAL.io/"
+ },
+ {
+  "id": "C40",
+  "type": "conference",
+  "year": 2026,
+  "title": "Video-Conditioned Hyperparameter Prediction for Audio-Visual Event Localization",
+  "venue": "International Technical Conference on Circuits/Systems, Computers and Communications (ITC-CSCC), July. 2026",
+  "authors": [
+   "Beomgwon Jo*",
+   "Sunchan Park*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Multi-Modality",
+   "Audio-Visual Event Localization"
+  ]
+ },
+ {
+  "id": "C39",
+  "type": "conference",
+  "year": 2026,
+  "title": "Uncertainty-Guided Graph Formulation via MWIS for Token Pruning in LVLMs",
+  "venue": "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Findings, Jun. 2026",
+  "authors": [
+   "Jouwon Song*",
+   "Sohyeon Kim*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Efficient",
+   "Vision-Language Model"
+  ],
+  "note": "Top-tier AI Conference"
+ },
+ {
+  "id": "C38",
+  "type": "conference",
+  "year": 2026,
+  "title": "FluIDWorld: Fluid-like Interactive Dynamics for 4D Worlds",
+  "venue": "ICLR Workshop on World Models: Understanding, Modelling and Scaling (ICLRw), Apr. 2026",
+  "authors": [
+   "Hyeongju Mun*",
+   "In-Hwan Jin*",
+   "Sohyeong Kim",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "World Modeling",
+   "Gaussian Splatting"
+  ]
+ },
+ {
+  "id": "C37",
+  "type": "conference",
+  "year": 2026,
+  "title": "AgilePruner: An Empirical Study of Attention and Diversity for Adaptive Visual Token Pruning in Large Vision-Language Models",
+  "venue": "International Conference on Learning Representations (ICLR), Apr. 2026",
+  "authors": [
+   "Changwoo Baek*",
+   "Jouwon Song*",
+   "Sohyeon Kim*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Efficient",
+   "Vision-Language Model"
+  ],
+  "note": "Top-tier AI Conference, Acceptance Rate: 28%",
+  "paper": "https://arxiv.org/pdf/2603.01236",
+  "project": "https://paper.pnu-cvsp.com/AgilePruner/",
+  "code": "https://github.com/cvsp-lab/AgilePruner",
+  "figure": "C37.jpg"
+ },
+ {
+  "id": "C36",
+  "type": "conference",
+  "year": 2026,
+  "title": "MoE-GS: Mixture of Experts for Dynamic Gaussian Splatting",
+  "venue": "International Conference on Learning Representations (ICLR), Apr. 2026",
+  "authors": [
+   "Inhwan Jin*",
+   "Hyeongju Mun*",
+   "Joonsoo Kim",
+   "Kugjin Yun",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "World Modeling",
+   "Gaussian Splatting"
+  ],
+  "note": "Top-tier AI Conference, Acceptance Rate: 28%",
+  "figure": "C36.jpg"
+ },
+ {
+  "id": "J24",
+  "type": "journal",
+  "year": 2025,
+  "title": "3D Gaussian rasterization for rendering of view-multiplexed image for multiview displays",
+  "venue": "ETRI Journal, 2025",
+  "authors": [
+   "Joonsoo Kim*",
+   "Kugjin Yun",
+   "Hyon-Gon Choo",
+   "Hyeongju Mun",
+   "Kyeongbo Kong"
+  ],
+  "tags": [
+   "World Modeling",
+   "Gaussian Splatting"
+  ]
+ },
+ {
+  "id": "J23",
+  "type": "journal",
+  "year": 2025,
+  "title": "Self-Supervised Anomaly Segmentation for Surface Defect Inspection in Display Panels",
+  "venue": "Journal of the Society for Information Display, Nov., 2025",
+  "authors": [
+   "Jou Won Song*",
+   "Kyeongbo Kong*",
+   "Ye In Park",
+   "Seong-Gyun Kim",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Visual Inspection AI",
+   "Anomaly Detection"
+  ]
+ },
+ {
+  "id": "J22",
+  "type": "journal",
+  "year": 2025,
+  "title": "Programmable-Room: Interactive Textured 3D Room Meshes Generation Empowered by Large Language Models",
+  "venue": "IEEE Transactions on Multimedia (IEEE TMM), Sep., 2025",
+  "authors": [
+   "Jihyun Kim*",
+   "Junho Park*",
+   "Kyeongbo Kong*",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "World Modeling",
+   "Large Language Model"
+  ],
+  "note": "IF: 8.182, JCR 2.5%",
+  "figure": "J22.jpg"
+ },
+ {
+  "id": "J21",
+  "type": "journal",
+  "year": 2025,
+  "title": "Unsupervised Knowledge Distillation via Local Representations for Vision-Language Models",
+  "venue": "IEEE Signal Processing Letters, Aug., 2025",
+  "authors": [
+   "Changwoo Baek*",
+   "Jouwon Song",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Multi-Modality",
+   "Vision-Language Model"
+  ]
+ },
+ {
+  "id": "C35",
+  "type": "conference",
+  "year": 2025,
+  "title": "Generating 3D Gaussian Motion Fields for Dynamic Scene Video from Single Image",
+  "venue": "International Conference on Electronics, Information, and Communication (ICEIC). Jan. 2026",
+  "authors": [
+   "Sohyeong Kim*",
+   "Hyeongju Mun*",
+   "In-Hwan Jin*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "World Modeling",
+   "Gaussian Splatting"
+  ]
+ },
+ {
+  "id": "C34",
+  "type": "conference",
+  "year": 2025,
+  "title": "An Empirical Study of Attention and Diversity for Adaptive Visual Token Pruning in Multimodal Reasoning Models",
+  "venue": "NeurIPS Workshop on Efficient Reasoning (NeurIPSw), Dec. 2025",
+  "authors": [
+   "Changwoo Baek*",
+   "Jouwon Song*",
+   "Sohyeon Kim*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Efficient",
+   "Vision-Language Model"
+  ],
+  "figure": "C34.jpg"
+ },
+ {
+  "id": "C33",
+  "type": "conference",
+  "year": 2025,
+  "title": "Efficient Token Pruning for Vision-Language Models in Multi-turn Scenarios",
+  "venue": "IEEE Asia Pacific Conference on Circuits and Systems (APCCAS), Oct. 2025",
+  "authors": [
+   "Changwoo Baek*",
+   "Sohyeon Kim*",
+   "Jouwon Song*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Efficient",
+   "Vision-Language Model"
+  ]
+ },
+ {
+  "id": "C32",
+  "type": "conference",
+  "year": 2025,
+  "title": "Low-Light Face Recognition for Mobile Robots",
+  "venue": "International Technical Conference on Circuits/Systems, Computers and Communications (ITC-CSCC), July. 2025",
+  "authors": [
+   "Changwoo Baek*",
+   "Jouwon Song",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Robotics",
+   "Image Restoration"
+  ]
+ },
+ {
+  "id": "C31",
+  "type": "conference",
+  "year": 2025,
+  "title": "Optimizing 4D Gaussians for Dynamic Scene Video from Single Landscape Images",
+  "venue": "International Conference on Learning Representations (ICLR), Apr. 2025",
+  "authors": [
+   "Inhwan Jin*",
+   "Haesoo Choo*",
+   "Seong-Hun Jeong",
+   "Heemoon Park",
+   "Junghwan Kim",
+   "Oh-joon Kwon",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "World Modeling",
+   "Gaussian Splatting"
+  ],
+  "note": "Top-tier AI Conference, Acceptance Rate: 32.08%",
+  "figure": "C31.jpg"
+ },
+ {
+  "id": "J20",
+  "type": "journal",
+  "year": 2024,
+  "title": "Trends in Computer Vision Researches",
+  "venue": "IEIE Transactions on Smart Processing & Computing, 2024",
+  "authors": [
+   "Jaeseo Choi*",
+   "Chankuk Choi",
+   "Heera Ha",
+   "Kyeongbo Kong",
+   "Junghwan Kim†"
+  ],
+  "tags": [
+   "Core AI & Applications"
+  ]
+ },
+ {
+  "id": "J19",
+  "type": "journal",
+  "year": 2024,
+  "title": "Enhanced Control of Human Motion Generation Using Action-Conditioned Transformer VAE with Low-Rank Factorization",
+  "venue": "IEIE Transactions on Smart Processing & Computing, Dec. 2024",
+  "authors": [
+   "Hyunsung Kim*",
+   "Kyeongbo Kong*",
+   "Joseph Kihoon Kim*",
+   "James Lee*",
+   "Geonho Cha",
+   "Ho-Deok Jang",
+   "Dongyoon Wee",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Core AI & Applications",
+   "Human Pose Estimation"
+  ],
+  "note": "Haedong Best Paper Awards"
+ },
+ {
+  "id": "J18",
+  "type": "journal",
+  "year": 2024,
+  "title": "Enhancing Stability in Training Conditional Generative Adversarial Networks via Selective Data Matching",
+  "venue": "IEEE Access, Sep. 2024",
+  "authors": [
+   "Kyeongbo Kong*",
+   "Kyunghun Kim",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Core AI & Applications",
+   "GAN Training"
+  ],
+  "paper": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10623662",
+  "figure": "J18.jpg"
+ },
+ {
+  "id": "J17",
+  "type": "journal",
+  "year": 2024,
+  "title": "MosaicMVS: Mosaic-based Omnidirectional Multi-view Stereo for Indoor Scenes",
+  "venue": "IEEE Transactions on Multimedia (IEEE TMM), Jul. 2024",
+  "authors": [
+   "Min-jung Shin*",
+   "Woojune Park*",
+   "Minji Cho*",
+   "Kyeongbo Kong*",
+   "Hosung Son",
+   "Joonsoo Kim",
+   "Kugjin Yun",
+   "Gwangsoon Lee",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Multi-view Stereo"
+  ],
+  "note": "IF: 8.182, JCR 2.5%",
+  "paper": "https://ieeexplore.ieee.org/document/10005048",
+  "figure": "J17.jpg"
+ },
+ {
+  "id": "J16",
+  "type": "journal",
+  "year": 2024,
+  "title": "Image Clustering using Generated Text Centroids",
+  "venue": "Signal Processing: Image Communication, Jul. 2024",
+  "authors": [
+   "Daehyeon Kong*",
+   "Kyeongbo Kong*",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Core AI & Applications",
+   "Image Clustering"
+  ],
+  "paper": "https://www.sciencedirect.com/science/article/abs/pii/S0923596524000298"
+ },
+ {
+  "id": "C30",
+  "type": "conference",
+  "year": 2024,
+  "title": "AttentionHand: Text-driven Controllable Hand Image Generation for 3D Hand Reconstruction in the Wild",
+  "venue": "European Conference on Computer Vision (ECCV), Oct. 2024. (Top-tier AI Conference, Oral Presentation Acceptance Rate: 2.3%)",
+  "authors": [
+   "ECCV workshop on Observing",
+   "Understanding Hands in Action (ECCVw)",
+   "Oct. 2024.(Invited)"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Generative AI"
+  ],
+  "note": "Oral",
+  "figure": "C30.jpg"
+ },
+ {
+  "id": "C29",
+  "type": "conference",
+  "year": 2024,
+  "title": "Embedding-Free Transformer with Inference Spatial Reduction for Efficient Semantic Segmentation",
+  "venue": "European Conference on Computer Vision (ECCV), Oct. 2024",
+  "authors": [
+   "Hyunwoo Yu*",
+   "Yubin Cho*",
+   "Beoungwoo Kang*",
+   "Moon Seunghun*",
+   "Kyeongbo Kong*",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Semantic Segmentation"
+  ],
+  "note": "Top-tier AI Conference, Acceptance Rate: 27.9%"
+ },
+ {
+  "id": "C28",
+  "type": "conference",
+  "year": 2024,
+  "title": "Dynamic Scene Reconstruction from Single Landscape Image Using 4D Gaussian in the Wild",
+  "venue": "ECCV workshop on Wild3D: 3D Modeling, Reconstruction, and Generation in the Wild (ECCVw), Oct. 2024",
+  "authors": [
+   "Inhwan Jin*",
+   "Haesoo Choo*",
+   "Seong-Hun Jeong",
+   "Heemoon Park",
+   "Junghwan Kim",
+   "Oh-joon Kwon",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Generative AI"
+  ],
+  "note": "Top-tier AI Conference Workshop"
+ },
+ {
+  "id": "C27",
+  "type": "conference",
+  "year": 2024,
+  "title": "Revealing Uncertainty in Medical Application Using Bayesian Neural Network with Latent Variable Model",
+  "venue": "ECCV workshop on 3rd Uncertainty Quantification for Computer Vision (ECCVw), Oct. 2024",
+  "authors": [
+   "Joseph Kihoon Kim*",
+   "Kyeongbo Kong*",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Semantic Segmentation"
+  ]
+ },
+ {
+  "id": "C26",
+  "type": "conference",
+  "year": 2024,
+  "title": "Interactive 3D Room Generation for Virtual Reality via Compositional Programming",
+  "venue": "ECCV workshop on 3rd Computer Vision for Metaverse (ECCVw), Oct. 2024",
+  "authors": [
+   "Jihyun Kim*",
+   "Junho Park*",
+   "Kyeongbo Kong*",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Generative AI"
+  ],
+  "note": "Oral"
+ },
+ {
+  "id": "C25",
+  "type": "conference",
+  "year": 2024,
+  "title": "4D Gaussian Splatting for Multi-view 3D Cinemagraphy",
+  "venue": "International Meeting on Information Display (IMID), Aug. 2024. (Invited)",
+  "authors": [
+   "Inhwan Jin*",
+   "Haesoo Choo*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Generative AI"
+  ]
+ },
+ {
+  "id": "C24",
+  "type": "conference",
+  "year": 2024,
+  "title": "Person in Place: Generating Associative Skeleton-Guidance Maps for Human-Object Interaction Image Editing",
+  "venue": "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), Jun. 2024",
+  "authors": [
+   "ChangHee Yang*",
+   "Chan Hee Kang*",
+   "Kyeongbo Kong*",
+   "Hanni Oh",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Generative AI"
+  ],
+  "note": "Top-tier AI Conference, Acceptance Rate: 23.6%",
+  "paper": "https://openaccess.thecvf.com/content/CVPR2024/papers/Yang_Person_in_Place_Generating_Associative_Skeleton-Guidance_Maps_for_Human-Object_Interaction_CVPR_2024_paper.pdf",
+  "figure": "C24.jpg"
+ },
+ {
+  "id": "C23",
+  "type": "conference",
+  "year": 2024,
+  "title": "Human Motion Aware Text-to-Video Generation with Explicit Camera Control",
+  "venue": "IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), Jan. 2024. (Second-tier AI Conference)",
+  "authors": [
+   "Taehoon Kim*",
+   "Chanhee Kang*",
+   "Jaehyuk Park*",
+   "Daun Jeong*",
+   "ChangHee Yang*",
+   "Suk-Ju Kang†",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Generative AI"
+  ],
+  "paper": "https://openaccess.thecvf.com/content/WACV2024/papers/Kim_Human_Motion_Aware_Text-to-Video_Generation_With_Explicit_Camera_Control_WACV_2024_paper.pdf",
+  "figure": "C23.jpg"
+ },
+ {
+  "id": "J15",
+  "type": "journal",
+  "year": 2023,
+  "title": "Human Body-Aware Feature Extractor Using Attachable Feature Corrector for Human Pose Estimation",
+  "venue": "IEEE Transactions on Multimedia (IEEE TMM), Nov. 2023",
+  "authors": [
+   "Ginam Kim*",
+   "Hyunsung Kim*",
+   "Kyeongbo Kong",
+   "Jou Won Song",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Human Pose Estimation"
+  ],
+  "note": "IF: 8.182, JCR 2.5%",
+  "paper": "https://ieeexplore.ieee.org/document/9858008"
+ },
+ {
+  "id": "J14",
+  "type": "journal",
+  "year": 2023,
+  "title": "Out-of-Focus Image Deblurring for Mobile Display Vision Inspection",
+  "venue": "IEEE Transactions on Circuits and Systems for Video Technology (IEEE TCSVT), Sep. 2023",
+  "authors": [
+   "Sung-Jun Min*",
+   "Kyeongbo Kong*",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Visual Inspection AI",
+   "Image Deblurring"
+  ],
+  "note": "IF: 8.4, JCR 5.5%",
+  "paper": "https://ieeexplore.ieee.org/document/10036087"
+ },
+ {
+  "id": "J13",
+  "type": "journal",
+  "year": 2023,
+  "title": "Subject-Invariant Deep Neural Networks Based on Baseline Correction for Brain-Computer Interfaces",
+  "venue": "IEEE Journal of Biomedical and Health Informatics, Apr. 2023",
+  "authors": [
+   "Youngchul Kwak*",
+   "Kyeongbo Kong",
+   "Woo-Jin Song",
+   "Seong-Eun Kim†"
+  ],
+  "tags": [
+   "Core AI & Applications",
+   "Brain Wave"
+  ],
+  "note": "IF: 7.7, JCR 5.7%",
+  "paper": "https://ieeexplore.ieee.org/document/10026478"
+ },
+ {
+  "id": "C22",
+  "type": "conference",
+  "year": 2023,
+  "title": "Text-to-Video Editing Using Direction Information of Optical Flow",
+  "venue": "International Conference on Consumer Electronics (ICCE) Asia, Oct. 2023",
+  "authors": [
+   "Seong-Hun Jeong*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Generative AI"
+  ]
+ },
+ {
+  "id": "C21",
+  "type": "conference",
+  "year": 2023,
+  "title": "Text-Based Video Generation with Human Motion and Controllable Camera",
+  "venue": "ICCV workshop on AI for Creative Video Editing and Understanding (ICCVw), Oct. 2023",
+  "authors": [
+   "Taehoon Kim*",
+   "Chanhee Kang*",
+   "Jaehyuk Park*",
+   "Daun Jeong*",
+   "ChangHee Yang*",
+   "Suk-Ju Kang†",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Generative AI"
+  ]
+ },
+ {
+  "id": "C20",
+  "type": "conference",
+  "year": 2023,
+  "title": "Enhancing Text-to-Video Editing with Motion Map Injection",
+  "venue": "ICCV workshop on AI for Creative Video Editing and Understanding (ICCVw), Oct. 2023",
+  "authors": [
+   "Seong-Hun Jeong*",
+   "Inhwan Jin*",
+   "Haesoo Choo*",
+   "Hyunjun Na*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Generative AI"
+  ],
+  "note": "Oral",
+  "figure": "C20.jpg"
+ },
+ {
+  "id": "C19",
+  "type": "conference",
+  "year": 2023,
+  "title": "A Novel Framework for Generating In-the-Wild 3D Hand Datasets",
+  "venue": "ICCV workshop on Observing and Understanding Hands in Action (ICCVw), Oct. 2023",
+  "authors": [
+   "Junho Park*",
+   "Kyeongbo Kong*",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Generative AI"
+  ]
+ },
+ {
+  "id": "C18",
+  "type": "conference",
+  "year": 2023,
+  "title": "SEFD: Learning to Distill Complex Pose and Occlusion",
+  "venue": "International Conference on Computer Vision (ICCV), Oct. 2023",
+  "authors": [
+   "ChangHee Yang*",
+   "Kyeongbo Kong*",
+   "Sung-Jun Min*",
+   "Geonho Cha",
+   "Ho-Deok Jang",
+   "Dongyoon Wee",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Human Pose Estimation"
+  ],
+  "note": "Top-tier AI Conference, Acceptance Rate: 26.8%",
+  "paper": "https://openaccess.thecvf.com/content/ICCV2023/papers/Yang_SEFD_Learning_to_Distill_Complex_Pose_and_Occlusion_ICCV_2023_paper.pdf",
+  "figure": "C18.jpg"
+ },
+ {
+  "id": "C17",
+  "type": "conference",
+  "year": 2023,
+  "title": "Captioning-based Extensive Painting for Image Completion",
+  "venue": "International Meeting on Information Display (IMID), Aug, 2023. (Invited)",
+  "authors": [
+   "Seong-Hun Jeong*",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Image Processing",
+   "Image Outpainting"
+  ]
+ },
+ {
+  "id": "C16",
+  "type": "conference",
+  "year": 2023,
+  "title": "FeedFormer: Revisiting Transformer Decoder for Efficient Semantic Segmentation",
+  "venue": "Association for the Advancement of Artificial Intelligence (AAAI), Feb. 2023",
+  "authors": [
+   "Jae-hun Shim*",
+   "Hyunwoo Yu*",
+   "Kyeongbo Kong*",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Semantic Segmentation"
+  ],
+  "note": "Top-tier AI Conference, Acceptance Rate: 19.6%",
+  "paper": "https://ojs.aaai.org/index.php/AAAI/article/view/25321"
+ },
+ {
+  "id": "C15",
+  "type": "conference",
+  "year": 2023,
+  "title": "Digital Handwriting Correction Using Deep Learning",
+  "venue": "International Conference on Electronics, Information, and Communication (ICEIC). Feb. 2023",
+  "authors": [
+   "Dong-Hoon Kim*",
+   "Hyunjun Na*",
+   "Seong-Hun Jeong*",
+   "Nayoung Kim",
+   "Kyeongbo Kong†"
+  ],
+  "tags": [
+   "Core AI & Applications"
+  ],
+  "note": "Best Paper Award",
+  "paper": "https://ieeexplore.ieee.org/document/10049853"
+ },
+ {
+  "id": "C14",
+  "type": "conference",
+  "year": 2023,
+  "title": "Trends in Computer Vision Researches",
+  "venue": "International Conference on Electronics, Information, and Communication (ICEIC). Feb. 2023",
+  "authors": [
+   "Jaeseo Choi*",
+   "Changuk Choi",
+   "Kyeongbo Kong",
+   "Junghwan Kim†"
+  ],
+  "tags": [
+   "Core AI & Applications"
+  ]
+ },
+ {
+  "id": "C13",
+  "type": "conference",
+  "year": 2023,
+  "title": "An Unified Framework for Language Guided Image Completion",
+  "venue": "IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), Jan. 2023",
+  "authors": [
+   "Jihyun Kim*",
+   "Seong-Hun Jeong*",
+   "Kyeongbo Kong*",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Image Processing",
+   "Image Outpainting"
+  ],
+  "note": "Second-tier AI Conference, Acceptance Rate in Round 2: 29.1%",
+  "paper": "https://openaccess.thecvf.com/content/WACV2023/papers/Kim_An_Unified_Framework_for_Language_Guided_Image_Completion_WACV_2023_paper.pdf"
+ },
+ {
+  "id": "J12",
+  "type": "journal",
+  "year": 2022,
+  "title": "Dynamic Hand Gesture Recognition using Improved Spatio-Temporal Graph Convolutional Network",
+  "venue": "IEEE Transactions on Circuits and Systems for Video Technology (IEEE TCSVT), Sep. 2022",
+  "authors": [
+   "Jae-Hun Song*",
+   "Kyeongbo Kong",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Hand Gesture Recognition"
+  ],
+  "note": "IF: 5.859",
+  "paper": "https://ieeexplore.ieee.org/document/9749235"
+ },
+ {
+  "id": "J11",
+  "type": "journal",
+  "year": 2022,
+  "title": "Image Demoireing Via U-Net for Detection of Display Defects",
+  "venue": "IEEE Access, Jul. 2022",
+  "authors": [
+   "Jung-Hyun Kim*",
+   "Kyeongbo Kong",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Visual Inspection AI",
+   "Image Demoireing"
+  ],
+  "paper": "https://ieeexplore.ieee.org/document/9808134"
+ },
+ {
+  "id": "J10",
+  "type": "journal",
+  "year": 2022,
+  "title": "Penalty based Robust Learning with Noisy Labels",
+  "venue": "Neurocomputing, Jun. 2022",
+  "authors": [
+   "Kyeongbo Kong*",
+   "Junggi Lee",
+   "Youngchul Kwak",
+   "Young-Rae Cho",
+   "Seong-Eun Kim",
+   "Woo-Jin Song†"
+  ],
+  "tags": [
+   "Core AI & Applications",
+   "Noisy Label"
+  ],
+  "note": "IF: 5.779",
+  "paper": "https://reader.elsevier.com/reader/sd/pii/S0925231222001862?token=DD02A6A50594594D11AEB438E05E37E79672EC634AFB2A4B8CD597FF5B993928994829D6E4A358B99D1BF239DD7C5FC3&originRegion=us-east-1&originCreation=20220709052511"
+ },
+ {
+  "id": "C12",
+  "type": "conference",
+  "year": 2022,
+  "title": "Mosaic-based omnidirectional depth estimation for view synthesis",
+  "venue": "ECCV workshop on Learning to Generate 3D Shapes and Scenes (ECCVw), Oct. 2022",
+  "authors": [
+   "Min-jung Shin*",
+   "Minji Cho*",
+   "Woojune Park",
+   "Kyeongbo Kong",
+   "Joonsoo Kim",
+   "Kugjin Yun",
+   "Gwangsoon Lee",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Multi-view Stereo"
+  ]
+ },
+ {
+  "id": "C11",
+  "type": "conference",
+  "year": 2022,
+  "title": "Selective TransHDR: Transformer-based selective HDR Imaging using Ghost Region Mask",
+  "venue": "European Conference on Computer Vision (ECCV), Oct. 2022",
+  "authors": [
+   "Jou Won Song*",
+   "Ye In Park*",
+   "Kyeongbo Kong",
+   "Jaeho Kwak",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Image Processing",
+   "High Dynamic Range (HDR)"
+  ],
+  "note": "Top-tier AI Conference, Acceptance Rate: 28%",
+  "paper": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136770292.pdf"
+ },
+ {
+  "id": "C10",
+  "type": "conference",
+  "year": 2022,
+  "title": "Deep Anti-Aliasing: Image Restoration for Enhancing Display Defects Detection",
+  "venue": "International Meeting on Information Display (IMID), Aug, 2022. (Invited)",
+  "authors": [
+   "Sung-Jun Min*",
+   "Kyeongbo Kong*",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Visual Inspection AI",
+   "Image Deblurring"
+  ]
+ },
+ {
+  "id": "C9",
+  "type": "conference",
+  "year": 2022,
+  "title": "Anomaly Segmentation Network Using Self-Supervised Learning",
+  "venue": "AAAI workshop on AI for Design and Manufacturing (AAAIw), Feb. 2022",
+  "authors": [
+   "Jou Won Song*",
+   "Kyeongbo Kong*",
+   "Ye In Park",
+   "Seong-Gyun Kim",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Visual Inspection AI",
+   "Anomaly Detection"
+  ],
+  "paper": "https://openreview.net/pdf?id=x-Tw-P777R"
+ },
+ {
+  "id": "C8",
+  "type": "conference",
+  "year": 2022,
+  "title": "Image-Adaptive Hint Generation via Vision Transformer for Outpainting",
+  "venue": "IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), Jan. 2022. (Second-tier AI Conference)",
+  "authors": [
+   "Daehyeon Kong*",
+   "Kyeongbo Kong*",
+   "Kyunghun Kim*",
+   "Sung-Jun Min*",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Image Processing",
+   "Image Outpainting"
+  ],
+  "paper": "https://openaccess.thecvf.com/content/WACV2022/papers/Kong_Image-Adaptive_Hint_Generation_via_Vision_Transformer_for_Outpainting_WACV_2022_paper.pdf"
+ },
+ {
+  "id": "J9",
+  "type": "journal",
+  "year": 2021,
+  "title": "Knowledge Distillation-aided End-to-End Learning for Linear Precoding in Multiuser MIMO Downlink Systems with Finite-Rate Feedback",
+  "venue": "IEEE Transactions on Vehicular Technology (IEEE TVT), Oct. 2021",
+  "authors": [
+   "Kyeongbo Kong*",
+   "Woo-Jin Song",
+   "Moonsik Min†"
+  ],
+  "tags": [
+   "Core AI & Applications",
+   "Communications"
+  ],
+  "note": "IF: 6.239",
+  "paper": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9531511&tag=1"
+ },
+ {
+  "id": "C7",
+  "type": "conference",
+  "year": 2021,
+  "title": "Core-set Sampling for Efficient Neural Architecture Search",
+  "venue": "ICML workshop on SubSetML (ICMLw), Jul. 2021",
+  "authors": [
+   "Jae-hun Shim*",
+   "Kyeongbo Kong*",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Core AI & Applications",
+   "Instance Selection"
+  ],
+  "note": "Spotlight",
+  "paper": "https://arxiv.org/pdf/2107.06869.pdf"
+ },
+ {
+  "id": "C6",
+  "type": "conference",
+  "year": 2021,
+  "title": "Selective Focusing Learning for Conditional GANs",
+  "venue": "ICML workshop on SubSetML (ICMLw), Jul. 2021",
+  "authors": [
+   "Kyeongbo Kong*",
+   "Kyunghun Kim*",
+   "Woo-Jin Song",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Core AI & Applications",
+   "GAN Training"
+  ],
+  "note": "Spotlight",
+  "paper": "https://arxiv.org/pdf/2107.08792.pdf"
+ },
+ {
+  "id": "C5",
+  "type": "conference",
+  "year": 2021,
+  "title": "Mitigating Memorization in Sample Selection for Learning with Noisy Labels",
+  "venue": "ICML workshop on SubSetML (ICMLw), Jul. 2021",
+  "authors": [
+   "Kyeongbo Kong*",
+   "Junggi Lee*",
+   "Youngchul Kwak",
+   "Young-Rae Cho",
+   "Seong-Eun Kim",
+   "Woo-Jin Song†"
+  ],
+  "tags": [
+   "Core AI & Applications",
+   "Noisy Label"
+  ],
+  "note": "Spotlight",
+  "paper": "https://arxiv.org/pdf/2107.07041.pdf"
+ },
+ {
+  "id": "C4",
+  "type": "conference",
+  "year": 2021,
+  "title": "Painting Outside As Inside: Edge Guided Image Outpainting via Bidirectional Rearrangement With Progressive Step Learning",
+  "venue": "IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), Jan. 2021. (Second-tier AI Conference)",
+  "authors": [
+   "Kyunghun Kim*",
+   "Yeohun Yun",
+   "Keon-Woo Kang",
+   "Kyeongbo Kong",
+   "Siyeong Lee",
+   "Suk-Ju Kang†"
+  ],
+  "tags": [
+   "Image Processing",
+   "Image Outpainting"
+  ],
+  "paper": "https://openaccess.thecvf.com/content/WACV2021/papers/Kim_Painting_Outside_As_Inside_Edge_Guided_Image_Outpainting_via_Bidirectional_WACV_2021_paper.pdf"
+ },
+ {
+  "id": "J8",
+  "type": "journal",
+  "year": 2020,
+  "title": "Learning algorithm with noisy labels for video frame classification",
+  "venue": "Journal of the Society for Information Display, Dec. 2020",
+  "authors": [
+   "Junggi Lee*",
+   "Kyeongbo Kong",
+   "Woo-Jin Song†"
+  ],
+  "tags": [
+   "Core AI & Applications",
+   "Noisy Label"
+  ],
+  "paper": "https://sid.onlinelibrary.wiley.com/doi/full/10.1002/jsid.959"
+ },
+ {
+  "id": "J7",
+  "type": "journal",
+  "year": 2020,
+  "title": "BlockNet: A Deep Neural Network for Block-Based Motion Estimation Using Representative Matching",
+  "venue": "SYMMETRY-BASEL, May 2020",
+  "authors": [
+   "Junggi Lee*",
+   "Kyeongbo Kong*",
+   "Gyu Jin Bae",
+   "Woo-Jin Song†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Motion Estimation"
+  ],
+  "paper": "https://www.mdpi.com/2073-8994/12/5/840/htm"
+ },
+ {
+  "id": "J6",
+  "type": "journal",
+  "year": 2020,
+  "title": "Multilevel Feature Fusion With 3D Convolutional Neural Network for EEG-Based Workload Estimation",
+  "venue": "IEEE Access, Jan. 2020",
+  "authors": [
+   "Youngchul Kwak*",
+   "Kyeongbo Kong",
+   "Woo-Jin Song",
+   "Byoung-Kyong Min",
+   "Seong-Eun Kim†"
+  ],
+  "tags": [
+   "Core AI & Applications",
+   "Brain Wave"
+  ],
+  "paper": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8960298"
+ },
+ {
+  "id": "J5",
+  "type": "journal",
+  "year": 2019,
+  "title": "How to Estimate Global Motion Non-Iteratively From a Coarsely Sampled Motion Vector Field",
+  "venue": "IEEE Transactions on Circuits and Systems for Video Technology (IEEE TCSVT), Dec. 2019",
+  "authors": [
+   "Kyeongbo Kong*",
+   "Seungjun Shin",
+   "Junggi Lee",
+   "Woo-Jin Song†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Motion Estimation"
+  ],
+  "note": "IF: 4.133",
+  "paper": "https://ieeexplore.ieee.org/abstract/document/8542739"
+ },
+ {
+  "id": "J4",
+  "type": "journal",
+  "year": 2019,
+  "title": "Multitask bilateral learning for real‐time image enhancement",
+  "venue": "Journal of the Society for Information Display, Oct. 2019",
+  "authors": [
+   "Kyeongbo Kong*",
+   "Junggi Lee",
+   "Woo-Jin Song†",
+   "Minsung Kang",
+   "Kyung Joon Kwon",
+   "Seong Gyun Kim"
+  ],
+  "tags": [
+   "Image Processing",
+   "Real-time Image Enhancement"
+  ],
+  "paper": "https://sid.onlinelibrary.wiley.com/doi/full/10.1002/jsid.791?utm_campaign=Feed%3A+JournalOfTheSocietyForInformationDisplay+%28Journal+of+the+Society+for+Information+Display%29&af=R&utm_medium=feed&utm_source=feedburner"
+ },
+ {
+  "id": "J3",
+  "type": "journal",
+  "year": 2019,
+  "title": "Recycling: Semi-Supervised Learning With Noisy Labels in Deep Neural Networks",
+  "venue": "IEEE Access, Jun. 2019",
+  "authors": [
+   "Kyeongbo Kong*",
+   "Junggi Lee",
+   "Youngchul Kwak",
+   "Minsung Kang",
+   "Seong Gyun Kim",
+   "Woo-Jin Song†"
+  ],
+  "tags": [
+   "Core AI & Applications",
+   "Noisy Label"
+  ],
+  "paper": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8721656"
+ },
+ {
+  "id": "J2",
+  "type": "journal",
+  "year": 2019,
+  "title": "Multistage Fusion With Dissimilarity Regularization for SAR/IR Target Recognition",
+  "venue": "IEEE Access, Jan. 2019",
+  "authors": [
+   "Young-Rae Cho*",
+   "Seungjun Shin",
+   "Sung-Hyuk Yim",
+   "Kyeongbo Kong",
+   "Hyun-Woong Cho",
+   "Woo-Jin Song†"
+  ],
+  "tags": [
+   "Core AI & Applications",
+   "SAR/IR"
+  ],
+  "paper": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8570746"
+ },
+ {
+  "id": "J1",
+  "type": "journal",
+  "year": 2017,
+  "title": "Tone mapping to minimize visual sensation distortion considering brightness and local band-limited contrast: Minimum visual sensation distortion tone mapping",
+  "venue": "Journal of the Society for Information Display, Oct. 2017",
+  "authors": [
+   "Seungjun Shin*",
+   "Kyeongbo Kong",
+   "Junggi Lee",
+   "Woo-Jin Song†",
+   "Kyung Joon Kwon",
+   "Seong Gyun Kim"
+  ],
+  "tags": [
+   "Image Processing",
+   "High Dynamic Range (HDR)"
+  ],
+  "paper": "https://sid.onlinelibrary.wiley.com/doi/full/10.1002/jsid.612"
+ },
+ {
+  "id": "C3",
+  "type": "conference",
+  "year": 2018,
+  "title": "CNN-based LDR-to-HDR conversion system",
+  "venue": "IEEE International Conference on Consumer Electronics (ICCE), Jan. 2018",
+  "authors": [
+   "Seung-Jun Shin*",
+   "Kyeongbo Kong",
+   "Woo-Jin Song†"
+  ],
+  "tags": [
+   "Image Processing",
+   "High Dynamic Range (HDR)"
+  ],
+  "paper": "https://ieeexplore.ieee.org/document/8326255"
+ },
+ {
+  "id": "C2",
+  "type": "conference",
+  "year": 2016,
+  "title": "Histogram-based Non-Iterative Global Motion Estimation",
+  "venue": "International Technical Conference on Circuits/Systems, Computers and Communications (ITC-CSCC), Jul. 2016",
+  "authors": [
+   "Kyeongbo Kong*",
+   "Seungjun Shin",
+   "Woo-Jin Song†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Motion Estimation"
+  ]
+ },
+ {
+  "id": "C1",
+  "type": "conference",
+  "year": 2016,
+  "title": "Time-consistent Depth Estimation for 2D-to-3D Conversion System Using Color Histogram and Variance Map",
+  "venue": "International Technical Conference on Circuits/Systems, Computers and Communications (ITC-CSCC), Jul. 2016",
+  "authors": [
+   "Seungjun Shin*",
+   "Kyeongbo Kong",
+   "Woo-Jin Song†"
+  ],
+  "tags": [
+   "Computer Vision",
+   "Depth Estimation"
+  ]
+ }
+]

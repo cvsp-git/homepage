@@ -2,9 +2,6 @@
 <li class="pub" data-type="{{ p.type }}" data-year="{{ p.year }}" data-search="{{ p.title | downcase | escape }} {{ p.authors | join: ' ' | downcase | escape }} {{ p.venue | downcase | escape }} {{ p.tags | join: ' ' | downcase | escape }}">
   {%- assign fig = nil -%}
   {%- if p.figure -%}{%- assign fig = "/images/publications/" | append: include.figdir | append: "/" | append: p.figure -%}
-  {%- elsif include.figdir -%}
-    {%- assign figpath = "/images/publications/" | append: include.figdir | append: "/" -%}
-    {%- for f in pubfigs -%}{%- if f.basename == p.id and f.path contains figpath -%}{%- assign fig = f.path -%}{%- break -%}{%- endif -%}{%- endfor -%}
   {%- endif -%}
   {%- if p.venue contains "(" -%}{%- assign vshort = p.venue | split: "(" | last | split: ")" | first -%}{%- elsif p.type == "journal" -%}{%- assign vshort = "Journal" -%}{%- else -%}{%- assign vshort = "Conference" -%}{%- endif -%}
   {%- assign flink = p.project | default: p.paper -%}
