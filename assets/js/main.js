@@ -243,7 +243,8 @@
       var stage = parseFloat(getComputedStyle(canvas.parentNode).getPropertyValue("--stage")) || 400;
       cx = W * 0.5;
       scale = Math.min(W * 0.5, 343) / 3;
-      cy = stage * 0.5 + scale * 0.5 + 10;
+      var inner = canvas.parentNode.querySelector(".hero-inner");
+      cy = (inner ? inner.offsetTop : 0) + stage * 0.5 + scale * 0.5 + 10;
       return;
     }
     cx = wide ? W * 0.70 : W * 0.5;
@@ -463,3 +464,11 @@
   });
 })();
 
+
+// keep the publications year anchors clear of the sticky filter bar
+(function () {
+  var bar = document.querySelector(".pub-controls");
+  if (!bar) return;
+  var set = function () { document.documentElement.style.setProperty("--pubbar", bar.offsetHeight + "px"); };
+  set(); window.addEventListener("resize", set);
+})();
