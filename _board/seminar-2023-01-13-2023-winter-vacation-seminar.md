@@ -18,6 +18,8 @@ notion_id: 77cc29c3-3c48-411f-8dea-523f539998dd
 
 </details>
 
+<p class="nb-gap"></p>
+
 ### Diffusion Model & **DDPM**
 
 - 시간 : 2023.01.26
@@ -27,6 +29,8 @@ notion_id: 77cc29c3-3c48-411f-8dea-523f539998dd
 <details markdown="1"><summary>발표자료</summary>
 
 </details>
+
+<p class="nb-gap"></p>
 
 ### **NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis**
 
@@ -38,6 +42,8 @@ notion_id: 77cc29c3-3c48-411f-8dea-523f539998dd
 
 </details>
 
+<p class="nb-gap"></p>
+
 ### **Transformer & Vision Transformer**
 
 - 시간 : 2023.01.31
@@ -47,6 +53,8 @@ notion_id: 77cc29c3-3c48-411f-8dea-523f539998dd
 <details markdown="1"><summary>발표자료</summary>
 
 </details>
+
+<p class="nb-gap"></p>
 
 ### Open Pose
 
@@ -58,6 +66,8 @@ notion_id: 77cc29c3-3c48-411f-8dea-523f539998dd
 
 </details>
 
+<p class="nb-gap"></p>
+
 ### One Word
 
 - 시간 : 2023.02.16
@@ -68,6 +78,8 @@ notion_id: 77cc29c3-3c48-411f-8dea-523f539998dd
 
 </details>
 
+<p class="nb-gap"></p>
+
 ### Knowledge distillation & Data distillation
 
 - 시간 : 2023.02.16
@@ -77,3 +89,11 @@ notion_id: 77cc29c3-3c48-411f-8dea-523f539998dd
 <details markdown="1"><summary>발표자료</summary>
 
 </details>
+
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>

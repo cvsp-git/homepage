@@ -20,12 +20,14 @@ MS Course
 </div>
 <div markdown="1">
 
-<div class="board-table"><table><tr><td><span class="nc-teal">[<code>Github</code>](https://github.com/TriFullKim)</span>  </td><td>[<code>Profile</code>](https://www.trifull.kim/)</td><td><span class="nc-gray"><code>mail@trifull.kim</code></span>  </td></tr></table></div>
+<div class="board-table"><table><tr><td><span class="nc-teal">[<code>Github</code>](https://github.com/TriFullKim)</span> </td><td>[<code>Profile</code>](https://www.trifull.kim/)</td><td><span class="nc-gray"><code>mail@trifull.kim</code></span> </td></tr></table></div>
 
 ## <span class="nc-blue">Research Interests</span>
 
 - 3D Representation
 - Free-View Video
+
+<p class="nb-gap"></p>
 
 </div>
 
@@ -41,11 +43,11 @@ MS Course
 
 ### **International Conference Papers**
 
-**\[C3\] Human Motion Aware Text-to-Video Generation with Explicit Camera Control**<br><br><span class="nc-gray">**Taehoon Kim\***</span><span class="nc-gray">, Chanhee Kang\*, Jaehyuk Park\*, Daun Jeong\*, ChangHee Yang\*, Suk-Ju Kang†</span><span class="nc-gray">**,**</span> <span class="nc-gray">Kyeongbo Kong</span><span class="nc-gray">**†**</span>  
+**\[C3\] Human Motion Aware Text-to-Video Generation with Explicit Camera Control**<br><span class="nc-gray">**Taehoon Kim\***</span><span class="nc-gray">, Chanhee Kang\*, Jaehyuk Park\*, Daun Jeong\*, ChangHee Yang\*, Suk-Ju Kang†</span><span class="nc-gray">**,**</span> <span class="nc-gray">Kyeongbo Kong</span><span class="nc-gray">**†**</span> 
 
 <span class="nc-gray">**WACV**</span><span class="nc-gray">*,*</span> <span class="nc-gray">Jan. 2024. (Second-tier AI conference)</span>
 
-**\[C2\] Text-Based Video Generation With Human Motion and Controllable Camera**<br><br><span class="nc-gray">**Taehoon Kim\***</span><span class="nc-gray">, Chanhee Kang\*, Jaehyuk Park\*, Daun Jeong\*, ChangHee Yang\*, Suk-Ju Kang†</span><span class="nc-gray">**,**</span> <span class="nc-gray">Kyeongbo Kong</span><span class="nc-gray">**†**</span>  
+**\[C2\] Text-Based Video Generation With Human Motion and Controllable Camera**<br><span class="nc-gray">**Taehoon Kim\***</span><span class="nc-gray">, Chanhee Kang\*, Jaehyuk Park\*, Daun Jeong\*, ChangHee Yang\*, Suk-Ju Kang†</span><span class="nc-gray">**,**</span> <span class="nc-gray">Kyeongbo Kong</span><span class="nc-gray">**†**</span> 
 
 <span class="nc-gray">**ICCVw**</span><span class="nc-gray">*,*</span> <span class="nc-gray">Oct. 2023. (Top-tier AI conference workshop)</span>
 
@@ -61,9 +63,11 @@ MS Course
 
 **\[C4\] 오픈셋 이미지 복원을 위한 프롬프트 기반 적응**
 
-<span class="nc-gray">**김태훈\***</span><span class="nc-gray">, 정다운</span><span class="nc-gray">**\***</span><span class="nc-gray">, 공경보†</span><br><br><span class="nc-gray">대한임베디드공학회 ICT 대학생 논문 경진대회, June 2025.</span>
+<span class="nc-gray">**김태훈\***</span><span class="nc-gray">, 정다운</span><span class="nc-gray">**\***</span><span class="nc-gray">, 공경보†</span><br><span class="nc-gray">대한임베디드공학회 ICT 대학생 논문 경진대회, June 2025.</span>
 
-**\[C1\] 휴먼 모션 생성을 통한 텍스트 기반 비디오 생성 알고리즘에 관한 연구**<br><br><span class="nc-gray">**김태훈\***</span><span class="nc-gray">, 정다운\*, 박재혁\*, 공경보</span><span class="nc-gray">**†**</span>  <br><span class="nc-gray">대한전자공학회 하계학술대회, Jun. 2023.</span> 
+**\[C1\] 휴먼 모션 생성을 통한 텍스트 기반 비디오 생성 알고리즘에 관한 연구**<br><span class="nc-gray">**김태훈\***</span><span class="nc-gray">, 정다운\*, 박재혁\*, 공경보</span><span class="nc-gray">**†**</span> <br><span class="nc-gray">대한전자공학회 하계학술대회, Jun. 2023.</span> 
+
+<p class="nb-gap"></p>
 
 ## <span class="nc-blue">**Project**</span>
 
@@ -78,5 +82,9 @@ MS Course
 <hr>
 
 - **2025학년도 석사우수장학금(이공계)**
-- **장려상**  — 2024-2학기 국립부경대학교 소프트웨어융합혁신원 프로그래밍 경진대회
+- **장려상** — 2024-2학기 국립부경대학교 소프트웨어융합혁신원 프로그래밍 경진대회
 - **우수상** — 2024학년도 정보융합대학 융합캡스톤디자인 경진대회
+
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>

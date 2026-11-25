@@ -10,15 +10,19 @@ notion_id: 3b8abcc9-0e34-801c-b86a-feba3cb71d84
 ---
 <figure class="board-fig"><img src="/images/gallery/board/seminar-2026-08-10-2026-summer-vacation-seminar/01.jpg" alt="" loading="lazy"></figure>
 
-2026-08-08  
+<p class="nb-gap"></p>
+
+2026-08-08 
 
 **주제: Learning Manufacturing Know-How from CAD Data: Building VLM Datasets for the Factory Floor**
 
-1.   [CADFS: A Big CAD Program Dataset and Framework for Computer-Aided Design with Large Language Models](https://arxiv.org/pdf/2605.01925) \[CVPR 2026\]
+1.  [CADFS: A Big CAD Program Dataset and Framework for Computer-Aided Design with Large Language Models](https://arxiv.org/pdf/2605.01925) \[CVPR 2026\]
 
 발표자: [정성훈](/members/shj/)
 
 [📎 \[2026 summer seminar\] 정성훈.pdf](/images/gallery/board/seminar-2026-08-10-2026-summer-vacation-seminar/02.pdf)
+
+<p class="nb-gap"></p>
 
 주제: Efficient Agentic Systems through Tool Orchestration and Latent Collaboration
 
@@ -29,7 +33,11 @@ notion_id: 3b8abcc9-0e34-801c-b86a-feba3cb71d84
 
 [📎 \[2026 summer seminar\] 윤상연.pdf](/images/gallery/board/seminar-2026-08-10-2026-summer-vacation-seminar/03.pdf)
 
-2026-08-14  
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
+
+2026-08-14 
 
 주제: Towards Explicit 3D Representation: Mesh Reconstruction for Static and Dynamic Scenes
 
@@ -40,6 +48,8 @@ notion_id: 3b8abcc9-0e34-801c-b86a-feba3cb71d84
 
 [📎 \[2026 summer seminar\] 김태훈.pdf](/images/gallery/board/seminar-2026-08-10-2026-summer-vacation-seminar/04.pdf)
 
+<p class="nb-gap"></p>
+
 주제: Integrating Video Diffusion into 4D Scene Modeling
 
 1. [SparseCam4D: Spatio-Temporally Consistent 4D Reconstruction from Sparse Cameras](https://arxiv.org/pdf/2603.26481) \[CVPR 2026\]
@@ -48,6 +58,10 @@ notion_id: 3b8abcc9-0e34-801c-b86a-feba3cb71d84
 발표자: [최지훈](/members/jihoon/)
 
 [📎 \[2026 summer seminar\] 최지훈.pdf](/images/gallery/board/seminar-2026-08-10-2026-summer-vacation-seminar/05.pdf)
+
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
 
 2026-08-20
 
@@ -60,6 +74,8 @@ notion_id: 3b8abcc9-0e34-801c-b86a-feba3cb71d84
 
 [📎 \[2026 summer seminar\] 김우형.pdf](/images/gallery/board/seminar-2026-08-10-2026-summer-vacation-seminar/06.pdf)
 
+<p class="nb-gap"></p>
+
 주제: Counterfactual Reasoning: Theory and Applications
 
 1. [Reasoning with cause and effect](https://www.ijcai.org/Proceedings/99-2/Papers/108.pdf) \[AAAI 2002\]
@@ -68,6 +84,10 @@ notion_id: 3b8abcc9-0e34-801c-b86a-feba3cb71d84
 발표자: [김소형](/members/sohyeong/)
 
 [📎 \[2026 summer seminar 김소형\].pdf](/images/gallery/board/seminar-2026-08-10-2026-summer-vacation-seminar/07.pdf)
+
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
 
 2026-08-28
 
@@ -79,6 +99,8 @@ notion_id: 3b8abcc9-0e34-801c-b86a-feba3cb71d84
 발표자: [조범권](/members/beomgwon/)
 
 [📎 \[2026 summer seminar 조범권\].pdf](/images/gallery/board/seminar-2026-08-10-2026-summer-vacation-seminar/08.pdf)
+
+<p class="nb-gap"></p>
 
 주제: Optimizing Texts for an Open-Vocabulary: From Iterative LLM Feedback to Vocabulary-Aware Fine-Tuning
 

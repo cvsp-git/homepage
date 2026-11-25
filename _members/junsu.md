@@ -19,6 +19,8 @@ Integrated BS-MS  Course
 
 </div>
 
+<p class="nb-gap"></p>
+
 </div>
 <div markdown="1">
 
@@ -26,6 +28,12 @@ Integrated BS-MS  Course
 
 - Multimodal AI
 - Audio-Visual Understanding
+
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
 
 </div>
 
@@ -37,4 +45,4 @@ Integrated BS-MS  Course
 
 ### **Domestic Conference Papers**
 
-**\[C1\] 최신 V2A 연구 동향: 제어성, 충실도, 공간감**<br><br><span class="nc-gray">**김준수\***</span><span class="nc-gray">, 박순찬, 공경보†</span><br><br><span class="nc-gray">대한전자공학회 하계학술대회, June.2026.</span>
+**\[C1\] 최신 V2A 연구 동향: 제어성, 충실도, 공간감**<br><span class="nc-gray">**김준수\***</span><span class="nc-gray">, 박순찬, 공경보†</span><br><span class="nc-gray">대한전자공학회 하계학술대회, June.2026.</span>

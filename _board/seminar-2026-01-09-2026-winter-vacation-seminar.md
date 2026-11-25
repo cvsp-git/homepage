@@ -10,7 +10,7 @@ notion_id: 2f1abcc9-0e34-80b0-b66e-c6e69787b3be
 ---
 <figure class="board-fig"><img src="/images/gallery/board/seminar-2026-01-09-2026-winter-vacation-seminar/01.jpg" alt="" loading="lazy"></figure>
 
-2026-01-09  
+2026-01-09 
 
 **주제: Prompt-controllable Camera Parameters in Image manipulation**
 
@@ -22,6 +22,8 @@ notion_id: 2f1abcc9-0e34-80b0-b66e-c6e69787b3be
 
 [📎 \[2026 winter seminar\] 정성훈.pdf](/images/gallery/board/seminar-2026-01-09-2026-winter-vacation-seminar/02.pdf)
 
+<p class="nb-gap"></p>
+
 **주제 : Exploring 3D foundation models**
 
 1. DUSt3R: Geometric 3D Vision Made Easy \[CVPR 2024\]
@@ -31,6 +33,8 @@ notion_id: 2f1abcc9-0e34-80b0-b66e-c6e69787b3be
 발표자: [진인환](/members/inhwan/)
 
 [📎 \[2026 winter seminar\] 진인환.pdf](/images/gallery/board/seminar-2026-01-09-2026-winter-vacation-seminar/03.pdf)
+
+<p class="nb-gap"></p>
 
 **주제 : Deep Dive into Efficient LLMs: KV Cache Compression**
 
@@ -42,7 +46,11 @@ notion_id: 2f1abcc9-0e34-80b0-b66e-c6e69787b3be
 
 [📎 \[2026 winter seminar\] 백창우.pdf](/images/gallery/board/seminar-2026-01-09-2026-winter-vacation-seminar/04.pdf)
 
-2026-01-15  
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
+
+2026-01-15 
 
 **주제 : Agentic Query Refinement for Open-Vocabulary Object Detection**
 
@@ -54,6 +62,8 @@ notion_id: 2f1abcc9-0e34-80b0-b66e-c6e69787b3be
 
 [📎 \[2026 winter seminar\] 정다운.pdf](/images/gallery/board/seminar-2026-01-09-2026-winter-vacation-seminar/05.pdf)
 
+<p class="nb-gap"></p>
+
 **주제: 3D Representation for Dynamic scenes**
 
 1. FreeTimeGS: Free Gaussian Primitives at Anytime and Anywhere for Dynamic Scene Reconstruction \[CVPR2025\]
@@ -63,6 +73,8 @@ notion_id: 2f1abcc9-0e34-80b0-b66e-c6e69787b3be
 발표자: [김태훈](/members/taehoon/)
 
 [📎 \[2026 winter seminar\] 김태훈.pdf](/images/gallery/board/seminar-2026-01-09-2026-winter-vacation-seminar/06.pdf)
+
+<p class="nb-gap"></p>
 
 **주제: Introducing the Meta SAM Family**
 
@@ -74,7 +86,11 @@ notion_id: 2f1abcc9-0e34-80b0-b66e-c6e69787b3be
 
 [📎 \[2026 winter seminar\] 박순찬.pdf](https://www.notion.so/2f1abcc90e3480bbae61faf0e257d9cd)
 
-2026-01-23  
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
+
+2026-01-23 
 
 **주제 : Controllable Video Generation with Physical Priors**
 
@@ -85,13 +101,15 @@ notion_id: 2f1abcc9-0e34-80b0-b66e-c6e69787b3be
 
 [📎 \[2026 winter seminar\] 문형주.pdf](/images/gallery/board/seminar-2026-01-09-2026-winter-vacation-seminar/08.pdf)
 
-<br><br>**주제: real-to-sim-to-real pipeline for humanoid**
+<br>**주제: real-to-sim-to-real pipeline for humanoid**
 
 1. Visual Imitation Enables Contextual Humanoid Control (CoRL 2025, Best Student Paper Award.)
 
 발표자: [이우진](/members/woojin/)
 
 [📎 \[2025 summer seminar\] 이우진.pdf](/images/gallery/board/seminar-2026-01-09-2026-winter-vacation-seminar/09.pdf)
+
+<p class="nb-gap"></p>
 
 **주제 : Object hallucinations in VLM**
 
@@ -102,7 +120,11 @@ notion_id: 2f1abcc9-0e34-80b0-b66e-c6e69787b3be
 
 [📎 \[2026 winter seminar\] 김소현.pdf](/images/gallery/board/seminar-2026-01-09-2026-winter-vacation-seminar/10.pdf)
 
-2026-01-29  
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
+
+2026-01-29 
 
 **주제:  A Unified Feedforward Framework for Scene and Human Understanding**
 
@@ -114,11 +136,15 @@ notion_id: 2f1abcc9-0e34-80b0-b66e-c6e69787b3be
 
 발표자: [최지훈](/members/jihoon/)
 
+<p class="nb-gap"></p>
+
 **주제: 딥러닝 기초 및 실습 코드**
 
 [📎 \[2026 winter seminar\] 윤지원.pdf](/images/gallery/board/seminar-2026-01-09-2026-winter-vacation-seminar/12.pdf)
 
 발표자: [윤지원](/members/jiwon/)
+
+<p class="nb-gap"></p>
 
 **주제: 딥러닝 기초 및 실습 코드**
 
@@ -126,7 +152,11 @@ notion_id: 2f1abcc9-0e34-80b0-b66e-c6e69787b3be
 
 발표자: [조범권](/members/beomgwon/)
 
-2026-02-12  
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
+
+2026-02-12 
 
 **주제:  Physics-Grounded Video Generation**
 
@@ -137,11 +167,15 @@ notion_id: 2f1abcc9-0e34-80b0-b66e-c6e69787b3be
 
 발표자: [김소형](/members/sohyeong/)
 
+<p class="nb-gap"></p>
+
 **주제: 딥러닝 기초 및 실습 코드**
 
 [📎 \[2026 winter seminar\] 김우형.pdf](/images/gallery/board/seminar-2026-01-09-2026-winter-vacation-seminar/15.pdf)
 
 발표자: [김우형](/members/woohyeong/)
+
+<p class="nb-gap"></p>
 
 **주제: 딥러닝 기초 및 실습 코드**
 
@@ -149,7 +183,9 @@ notion_id: 2f1abcc9-0e34-80b0-b66e-c6e69787b3be
 
 발표자: [윤상연](/members/sang-yeon/)
 
-2026-04-03  
+<p class="nb-gap"></p>
+
+2026-04-03 
 
 **주제: 딥러닝 기초 및 실습 코드**
 

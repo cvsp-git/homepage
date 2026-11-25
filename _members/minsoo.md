@@ -17,6 +17,8 @@ Integrated BS-MS  Course
 
 <span class="nc-gray">wminsoo123@naver.com</span>
 
+<p class="nb-gap"></p>
+
 </div>
 
 </div>
@@ -27,6 +29,10 @@ Integrated BS-MS  Course
 - multi modality
 - generative AI
 - 3D/4D Reconstruction
+
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
 
 </div>
 
@@ -44,6 +50,8 @@ Integrated BS-MS  Course
 
 <span class="nc-gray">방송공학회논문지, 2025년 1월.</span>
 
+<p class="nb-gap"></p>
+
 ## <span class="nc-blue">**Project**</span>
 
 <hr>
@@ -59,3 +67,5 @@ Integrated BS-MS  Course
 ### 부산대학교 병원(2024.07~Present)
 
 - 안구운동검사 신호 분석 기술 개발, 부산대학교 병원, Korea/ 참여연구원 (July. 2024 ~ Present)
+
+<p class="nb-gap"></p>

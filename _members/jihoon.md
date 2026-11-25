@@ -19,6 +19,8 @@ Integrated BS-MS  Course
 
 </div>
 
+<p class="nb-gap"></p>
+
 </div>
 <div markdown="1">
 
@@ -28,6 +30,10 @@ Integrated BS-MS  Course
 - 3D/4D World Reconstruction
   - Gaussian Splatting
   - Human Reconstruction
+
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
 
 </div>
 
@@ -41,13 +47,19 @@ Integrated BS-MS  Course
 
 **\[S1\] Anonymized Title**<br><span class="nc-gray">**Jihoon Choi\***</span><span class="nc-gray">, In-Hwan Jin\*, Joonsoo Kim, Kugjin Yun, Kyeongbo Kong†</span>
 
+<p class="nb-gap"></p>
+
 ### **International Conference Papers**
 
 **\[C1\] Sparse-View Dynamic Scene Reconstruction with 4D Gaussian Splatting**<br><span class="nc-gray">**Jihoon Choi\***</span><span class="nc-gray">, Kyeongbo Kong†</span><br><span class="nc-gray">**ICEIC,**</span> <span class="nc-gray">2027.</span>
 
+<p class="nb-gap"></p>
+
 ### **Domestic Conference Papers**
 
-**\[C1\] 단안 비디오 기반 인간-공간 통합형 3D 글로벌 모션 복원 기술 동향**<br><br><span class="nc-gray">**최지훈\***</span><span class="nc-gray">, 진인환\*, 공경보†</span><br><br><span class="nc-gray">대한전자공학회 하계학술대회, June.2026.</span>
+**\[C1\] 단안 비디오 기반 인간-공간 통합형 3D 글로벌 모션 복원 기술 동향**<br><span class="nc-gray">**최지훈\***</span><span class="nc-gray">, 진인환\*, 공경보†</span><br><span class="nc-gray">대한전자공학회 하계학술대회, June.2026.</span>
+
+<p class="nb-gap"></p>
 
 ## <span class="nc-blue">Projects</span>
 

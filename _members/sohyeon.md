@@ -19,6 +19,8 @@ Integrated BS-MS  Course
 
 </div>
 
+<p class="nb-gap"></p>
+
 </div>
 <div markdown="1">
 
@@ -26,6 +28,8 @@ Integrated BS-MS  Course
 
 - Efficient AI
 - Vision-Language Model
+
+<p class="nb-gap"></p>
 
 </div>
 
@@ -39,17 +43,17 @@ Integrated BS-MS  Course
 
 ### **International Conference Papers**
 
-**\[C4\]** **Focus Matters: Attention-Value Dynamics for Hallucination Mitigation in Vision-Language Models**<br><br><span class="nc-gray">**Sohyeon Kim**</span><span class="nc-gray">\*, Sang Yeon Yoon, Kyeongbo Kong†</span><br><span class="nc-gray">**NeurIPS**</span><span class="nc-gray">, 2026.</span>
+**\[C4\]** **Focus Matters: Attention-Value Dynamics for Hallucination Mitigation in Vision-Language Models**<br><span class="nc-gray">**Sohyeon Kim**</span><span class="nc-gray">\*, Sang Yeon Yoon, Kyeongbo Kong†</span><br><span class="nc-gray">**NeurIPS**</span><span class="nc-gray">, 2026.</span>
 
 **\[C3\] Uncertainty-Guided Graph Formulation via MWIS for Token Pruning in LVLMs**<br><span class="nc-gray">Jouwon Song\*,</span> <span class="nc-gray">**Sohyeon Kim\***</span><span class="nc-gray">, Kyeongbo Kong†</span><br><span class="nc-gray">**CVPR Findings**</span><span class="nc-gray">, 2026.</span> 
 
 **\[C2\] AgilePruner: An Empirical Study of Attention and Diversity for Adaptive Visual Token Pruning in Large Vision-Language Models**<br><span class="nc-gray">Changwoo Baek\*, Jouwon Song\*,</span> <span class="nc-gray">**Sohyeon Kim\***</span><span class="nc-gray">, Kyeongbo Kong†</span><br><span class="nc-gray">**ICLR 2026**</span><span class="nc-gray">, 2026.<br>Initial version was presented</span> <span class="nc-gray">**NeurIPSW**</span><span class="nc-gray">, 2025</span>
 
-**\[C1\]** **Efficient Token Pruning for Large Vision-Language Models in Multi-turn Scenarios**<br><br><span class="nc-gray">Changwoo Baek\*,</span> <span class="nc-gray">**Sohyeon Kim\***</span><span class="nc-gray">, Jouwon Song\*, Kyeongbo Kong†<br>IEEE Asia Pacific Conference on Circuits and Systems</span> <span class="nc-gray">**(APCCAS)**</span><span class="nc-gray">, 2025.</span>  
+**\[C1\]** **Efficient Token Pruning for Large Vision-Language Models in Multi-turn Scenarios**<br><span class="nc-gray">Changwoo Baek\*,</span> <span class="nc-gray">**Sohyeon Kim\***</span><span class="nc-gray">, Jouwon Song\*, Kyeongbo Kong†<br>IEEE Asia Pacific Conference on Circuits and Systems</span> <span class="nc-gray">**(APCCAS)**</span><span class="nc-gray">, 2025.</span> 
 
 ### **International Workshop Papers**
 
-**\[W2\] Mitigating Visual Hallucinations for Reliable Multimodal Agents**<br><span class="nc-gray">**Sohyeon Kim**</span><span class="nc-gray">\*, Sang Yeon Yoon, Kyeongbo Kong†</span><br><span class="nc-gray">*ICML Workshop*</span> <span class="nc-gray">(Agents in the Wild: Safety, Security, and Beyond), 2026.</span>  
+**\[W2\] Mitigating Visual Hallucinations for Reliable Multimodal Agents**<br><span class="nc-gray">**Sohyeon Kim**</span><span class="nc-gray">\*, Sang Yeon Yoon, Kyeongbo Kong†</span><br><span class="nc-gray">*ICML Workshop*</span> <span class="nc-gray">(Agents in the Wild: Safety, Security, and Beyond), 2026.</span> 
 
 **\[W1\] Failure-Aware Query Refinement for Reliable Open-Vocabulary Home-Robot Perception**<br><span class="nc-gray">Daun Jeong\*,</span> <span class="nc-gray">**Sohyeon Kim\***</span><span class="nc-gray">, Jouwon Song, Kyeongbo Kong†</span><br><span class="nc-gray">*ICML Workshop*</span> <span class="nc-gray">(Agents in the Wild: Safety, Security, and Beyond), 2026.</span>
 
@@ -67,3 +71,5 @@ Integrated BS-MS  Course
 <hr>
 
 - 홈로봇 환경을 고려한 VLM 기반시각 인식 기술 개발 및 상황 인지·추론 성능 개선, LG Electronics, Korea /공동연구원
+
+<p class="nb-gap"></p>

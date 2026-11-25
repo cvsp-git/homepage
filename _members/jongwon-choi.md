@@ -19,6 +19,8 @@ Research Intern
 
 </div>
 
+<p class="nb-gap"></p>
+
 </div>
 <div markdown="1">
 
@@ -27,6 +29,10 @@ Research Intern
 - Computer Vision
 - Generative AI
 
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
+
 </div>
 
 </div>
@@ -34,3 +40,5 @@ Research Intern
 ## <span class="nc-blue">**Publication**</span>
 
 <hr>
+
+<p class="nb-gap"></p>

@@ -19,6 +19,8 @@ Professor
 
 <span class="nc-gray"><code>kkb4723@gmail.com</code></span>
 
+<p class="nb-gap"></p>
+
 </div>
 
 </div>
@@ -65,24 +67,24 @@ Professor
 - **International Journals**
   1. Gyung Mo Son\*†, In Young Lee, Seojeong Park, Sang-Ho Park, **Kyeongbo Kong**, Kwang-Ryul Baek, “Indocyanine Green Fluorescence Angiography in Colorectal Cancer Surgery after a Decade of Randomized Trials: From Visual Assessment to Quantification and Beyond”, Cancers, 2026.
   2. <span class="nc-teal">**\[JCR Q2 · IF 5.3\]**</span> Dongkyu Kim\*, Eunho Shin\*, **Kyeongbo Kong†**, Suk-Ju Kang†, “RoAD: Robust Adaptive Domain-Aware Visual Place Recognition with Dynamic Architecture”, *IEEE Robotics and Automation Letters (RA-L),* 2026*.*
-  3. <span class="nc-default_background">**\[JCR Top 3.4% · IF 10.8\]**</span>  Yubin Cho\*, Hyunwoo Yu\*, **Kyeongbo Kong\***, Kyomin Sohn, Bongjoon Hyun and Suk-Ju Kang†, “VIPA: Visual Informative Part Attention for Referring Image Segmentation”,  *IEEE Transactions on Circuits and Systems for Video Technology,* 2026*.*
-  4. <span class="nc-teal">**\[JCR Q2 · IF 3.6\]**</span> Seungjun Shin\*, **Kyeongbo Kong†**,  “Hidden-State-Relative Actuator Bounds for PID-Style Activation Steering in Language Models”, *IEEE Signal Processing Letters*, 2026.
-  5. <span class="nc-default_background">**\[JCR Top 0.9% · IF 20.4\]**</span>  In-Hwan Jin\*, Hyeongju Mun\*, Joonsoo Kim, Kugjin Yun, **Kyeongbo Kong****†**, “On the Design of Mixture-of-Experts for Dynamic Gaussian Splatting”,  *IEEE Transactions on Pattern Analysis and Machine Intelligence,* 2026*.*
+  3. <span class="nc-default_background">**\[JCR Top 3.4% · IF 10.8\]**</span> Yubin Cho\*, Hyunwoo Yu\*, **Kyeongbo Kong\***, Kyomin Sohn, Bongjoon Hyun and Suk-Ju Kang†, “VIPA: Visual Informative Part Attention for Referring Image Segmentation”, *IEEE Transactions on Circuits and Systems for Video Technology,* 2026*.*
+  4. <span class="nc-teal">**\[JCR Q2 · IF 3.6\]**</span> Seungjun Shin\*, **Kyeongbo Kong†**, “Hidden-State-Relative Actuator Bounds for PID-Style Activation Steering in Language Models”, *IEEE Signal Processing Letters*, 2026.
+  5. <span class="nc-default_background">**\[JCR Top 0.9% · IF 20.4\]**</span> In-Hwan Jin\*, Hyeongju Mun\*, Joonsoo Kim, Kugjin Yun, **Kyeongbo Kong****†**, “On the Design of Mixture-of-Experts for Dynamic Gaussian Splatting”, *IEEE Transactions on Pattern Analysis and Machine Intelligence,* 2026*.*
   6. <span class="nc-teal">**\[JCR Q2 · IF 3.6\]**</span> Sunchan Park\*, Hyung Soon Kim, **Kyeongbo Kong†,** “Group-wise Layer Aggregation of Self-Supervised Representations for Speech Emotion Recognition”, *IEEE Signal Processing Letters*, 2026.
   7. <span class="nc-teal">**\[JCR Q2 · IF 5.3\]**</span> Changwoo Baek\*, Taehoon Kim\*, Woojin Lee\*, Jungkwan Son, Seoyoung Lee, Jiyoung Kim, **Kyeongbo Kong†,** “Target-Aware Change Detection for Efficient VLM Gating in Mobile Robots”, *IEEE Robotics and Automation Letters (RA-L),* 2026 <span class="nc-red">**(ICRA 2027 Presentation)**</span>*.*
   8. <span class="nc-teal">**\[JCR Q1 · IF 5.6\]**</span> Seong-Hun Jeong\*, Inhwan Jin\*, Haesoo Choo\*, Hyunjun Na\*, **Kyeongbo Kong†**, “Motion-to-Attention: Enhancing Attention Maps to Improve Performance of Text-Guided Video Editing”, *ACM Transactions on Multimedia Computing, Communications, and Applications,* 2026*.*
-  9. <span class="nc-default_background">**\[JCR Top 3.4% · IF 10.8\]**</span>  Minseok Kang\*, Jihyun Kim\*, ChangHee Yang\*, **Kyeongbo Kong**\*, Suk-Ju Kang†, “Realistic Human Image Animation with Dynamic Camera Effects”,  *IEEE Transactions on Circuits and Systems for Video Technology,* 2026*.*
+  9. <span class="nc-default_background">**\[JCR Top 3.4% · IF 10.8\]**</span> Minseok Kang\*, Jihyun Kim\*, ChangHee Yang\*, **Kyeongbo Kong**\*, Suk-Ju Kang†, “Realistic Human Image Animation with Dynamic Camera Effects”, *IEEE Transactions on Circuits and Systems for Video Technology,* 2026*.*
   10. <span class="nc-teal">**\[JCR Q3 · IF 2.0\]**</span> Joonsoo Kim\*, Kugjin Yun, Hyon-Gon Choo, Hyeongju Mun, **Kyeongbo Kong**, “3D Gaussian rasterization for rendering of view-multiplexed image for multiview displays“, *ETRI Journal*, 2026.
 - **International Conferences**
-  1. <span class="nc-purple">**\[ML Top-tier\]**</span>  Sohyeon Kim\*, Sang Yeon Yoon, **Kyeongbo Kong†**, “Focus Matters: Attention-Value Dynamics for Hallucination Mitigation in Vision-Language Models”, **NeurIPS**, 2026.
+  1. <span class="nc-purple">**\[ML Top-tier\]**</span> Sohyeon Kim\*, Sang Yeon Yoon, **Kyeongbo Kong†**, “Focus Matters: Attention-Value Dynamics for Hallucination Mitigation in Vision-Language Models”, **NeurIPS**, 2026.
   2. <span class="nc-blue">**\[CV Top-tier\]**</span> Hyeongju Mun\*, In-Hwan Jin\*, Sohyeong Kim, **Kyeongbo Kong****†**, “LivingWorld: Interactive 4D World Generation with Environmental Dynamics”, **ECCV**, 2026.
-  3. <span class="nc-blue">**\[CV Top-tier\]**</span> Suwoong Yeom\*, Joonsik Nam\*, Seunggyu Choi\*, Lucas Yunkyu Lee, Sangmin Kim, Jaesik Park, Joonsoo Kim, Kugjin Yun, **Kyeongbo Kong†**, Suk-Ju Kang†**,** “TRiGS: Temporal Rigid-Body Motion for Scalable 4D Gaussian Splatting”, **ECCV**, 2026.  
-  4. <span class="nc-blue">**\[CV Top-tier\]**</span> Changwoo Baek\*, **Kyeongbo Kong†,** “3DZip: Spatial-Aware Feature Diversity-Guided Token Compression for 3D Question Answering”, **ECCV**, 2026.  
-  5. <span class="nc-blue">**\[CV Top-tier\]**</span> Jouwon Song\*, Woohyeong Kim, **Kyeongbo Kong†**,  “Structured Redundancy Modeling for Efficient Visual Token Pruning in High-Resolution MLLMs”, **ECCV**, 2026.  
-  6. <span class="nc-purple">**\[ML Top-tier\]**</span>  Taekoan Yoo\*, Wonkyung Jung\*, Kyunghun Kim\*, **Kyeongbo Kong†,** “PADS-TAL: Padding-Annealed Diffusion Sampling in Text-Aware Latent Space for Robust and Diverse Text-to-Music Generation”,  **ICML**, 2026.
-  7. <span class="nc-blue">**\[CV Top-tier\]**</span> Jouwon Song\*, Sohyeon Kim\*, **Kyeongbo Kong†,** “Uncertainty-Guided Graph Formulation via MWIS for Token Pruning in LVLMs”,  **CVPR Findings**, 2026.
-  8. <span class="nc-purple">**\[ML Top-tier\]**</span>  Changwoo Baek\*, Jouwon Song\*, Sohyeon Kim\*, **Kyeongbo Kong†,** “AgilePruner: An Empirical Study of Attention and Diversity for Adaptive Visual Token Pruning in Large Vision-Language Models”,  **ICLR**, 2026.
-  9. <span class="nc-purple">**\[ML Top-tier\]**</span>  In-Hwan Jin\*, Hyeongju Mun\*, Joonsoo Kim, Kugjin Yun, **Kyeongbo Kong****†**, “MoE-GS: Mixture of Experts for Dynamic Gaussian Splatting”,  **ICLR**, 2026.
+  3. <span class="nc-blue">**\[CV Top-tier\]**</span> Suwoong Yeom\*, Joonsik Nam\*, Seunggyu Choi\*, Lucas Yunkyu Lee, Sangmin Kim, Jaesik Park, Joonsoo Kim, Kugjin Yun, **Kyeongbo Kong†**, Suk-Ju Kang†**,** “TRiGS: Temporal Rigid-Body Motion for Scalable 4D Gaussian Splatting”, **ECCV**, 2026. 
+  4. <span class="nc-blue">**\[CV Top-tier\]**</span> Changwoo Baek\*, **Kyeongbo Kong†,** “3DZip: Spatial-Aware Feature Diversity-Guided Token Compression for 3D Question Answering”, **ECCV**, 2026. 
+  5. <span class="nc-blue">**\[CV Top-tier\]**</span> Jouwon Song\*, Woohyeong Kim, **Kyeongbo Kong†**, “Structured Redundancy Modeling for Efficient Visual Token Pruning in High-Resolution MLLMs”, **ECCV**, 2026. 
+  6. <span class="nc-purple">**\[ML Top-tier\]**</span> Taekoan Yoo\*, Wonkyung Jung\*, Kyunghun Kim\*, **Kyeongbo Kong†,** “PADS-TAL: Padding-Annealed Diffusion Sampling in Text-Aware Latent Space for Robust and Diverse Text-to-Music Generation”, **ICML**, 2026.
+  7. <span class="nc-blue">**\[CV Top-tier\]**</span> Jouwon Song\*, Sohyeon Kim\*, **Kyeongbo Kong†,** “Uncertainty-Guided Graph Formulation via MWIS for Token Pruning in LVLMs”, **CVPR Findings**, 2026.
+  8. <span class="nc-purple">**\[ML Top-tier\]**</span> Changwoo Baek\*, Jouwon Song\*, Sohyeon Kim\*, **Kyeongbo Kong†,** “AgilePruner: An Empirical Study of Attention and Diversity for Adaptive Visual Token Pruning in Large Vision-Language Models”, **ICLR**, 2026.
+  9. <span class="nc-purple">**\[ML Top-tier\]**</span> In-Hwan Jin\*, Hyeongju Mun\*, Joonsoo Kim, Kugjin Yun, **Kyeongbo Kong****†**, “MoE-GS: Mixture of Experts for Dynamic Gaussian Splatting”, **ICLR**, 2026.
 
   <details markdown="1"><summary>**Workshop Papers**</summary>
 
@@ -97,9 +99,9 @@ Professor
 - **International Journals**
   1. <span class="nc-teal">**\[JCR Q3 · IF 2.0\]**</span> Jou Won Song\*, **Kyeongbo Kong\***, Ye In Park, Seong-Gyun Kim, Suk-Ju Kang†, "Self-Supervised Anomaly Segmentation for Surface Defect Inspection in Display Panels", *Journal of the Society for Information Display*, 2025.
   2. <span class="nc-teal">**\[JCR Q2 · IF 3.6\]**</span> Changwoo Baek\*, Jou Won Song, **Kyeongbo Kong† , “**Unsupervised Knowledge Distillation via Local Representations for Vision-Language Models”, *IEEE Signal Processing Letters*, 2025.
-  3. <span class="nc-default_background">**\[JCR Top 2.0% · IF 9.9\]**</span>  Jihyun Kim\*, Junho Park\*, **Kyeongbo Kong**\*, Suk-Ju Kang†, “Programmable-Room: Interactive Textured 3D Room Meshes Generation Empowered by Large Language Models”, *IEEE Transactions on Multimedia*, 2025.
+  3. <span class="nc-default_background">**\[JCR Top 2.0% · IF 9.9\]**</span> Jihyun Kim\*, Junho Park\*, **Kyeongbo Kong**\*, Suk-Ju Kang†, “Programmable-Room: Interactive Textured 3D Room Meshes Generation Empowered by Large Language Models”, *IEEE Transactions on Multimedia*, 2025.
 - **International Conferences**
-  1. <span class="nc-purple">**\[ML Top-tier\]**</span>  Inhwan Jin\*, Haesoo Choo\*, Seong-Hun Jeong, Heemoon Park, Junghwan Kim, Oh-joon Kwon, **Kyeongbo Kong†**, “Optimizing 4D Gaussians for Dynamic Scene Video from Single Landscape Images”,  **ICLR**, 2025.
+  1. <span class="nc-purple">**\[ML Top-tier\]**</span> Inhwan Jin\*, Haesoo Choo\*, Seong-Hun Jeong, Heemoon Park, Junghwan Kim, Oh-joon Kwon, **Kyeongbo Kong†**, “Optimizing 4D Gaussians for Dynamic Scene Video from Single Landscape Images”, **ICLR**, 2025.
 
   <details markdown="1"><summary>**Workshop Paper**</summary>
 
@@ -113,14 +115,14 @@ Professor
 
 - **International Journals**
   1. <span class="nc-teal">**\[Scopus\]**</span> Jaeseo Choi\*, Chankuk Choi, Heera Ha, **Kyeongbo Kong**, and Junghwan Kim†, “Trends in Computer Vision Researches,” *IEIE Transactions on Smart Processing & Computing*, 2024.
-  2. <span class="nc-teal">**\[Scopus\]**</span> Hyunsung Kim\*, **Kyeongbo Kong\***, Joseph Kihoon Kim\*, James Lee\*, Geonho Cha, Ho-Deok Jang, Dongyoon Wee, Suk-Ju Kang†, "Enhanced Control of Human Motion Generation Using Action-Conditioned Transformer VAE with Low-Rank Factorization", *IEIE Transactions on Smart Processing & Computing*, 2024. <span class="nc-red">**(Haedong Best Paper Awards)**</span>  
+  2. <span class="nc-teal">**\[Scopus\]**</span> Hyunsung Kim\*, **Kyeongbo Kong\***, Joseph Kihoon Kim\*, James Lee\*, Geonho Cha, Ho-Deok Jang, Dongyoon Wee, Suk-Ju Kang†, "Enhanced Control of Human Motion Generation Using Action-Conditioned Transformer VAE with Low-Rank Factorization", *IEIE Transactions on Smart Processing & Computing*, 2024. <span class="nc-red">**(Haedong Best Paper Awards)**</span> 
   3. <span class="nc-teal">**\[JCR Q2 · IF 3.6\]**</span> **Kyeongbo Kong\***, Kyunghun Kim, Suk-Ju Kang†, "Enhancing Stability in Training Conditional Generative Adversarial Networks via Selective Data Matching", *IEEE Access*, 2024.
   4. <span class="nc-default_background">**\[JCR Top 2.7% · IF 9.7\]**</span> Min-jung Shin\*, Woojune Park\*, Minji Cho\*, **Kyeongbo Kong\***, Hosung Son, Joonsoo Kim, Kugjin Yun, Gwangsoon Lee, Suk-Ju Kang†, "MosaicMVS: Mosaic-based Omnidirectional Multi-view Stereo for Indoor Scenes", *IEEE Transactions on Multimedia*, 2024.
   5. <span class="nc-teal">**\[JCR Q2 · IF 2.7\]**</span> Daehyeon Kong\*, **Kyeongbo Kong\***, Suk-Ju Kang†, “Image Clustering using Generated Text Centroids”, *Signal Processing: Image Communication*, 2024
 - **International Conferences**
-  1. <span class="nc-blue">**\[CV Top-tier\]**</span> Junho Park\*, **Kyeongbo Kong**\***,** Suk-Ju Kang†, “AttentionHand: Text-driven Controllable Hand Image Generation for 3D Hand Reconstruction in the Wild”, **ECCV**, 2024. (Oral Presentation Acceptance Rate: 2.3%)  <span class="nc-red">**(Oral)**</span>
+  1. <span class="nc-blue">**\[CV Top-tier\]**</span> Junho Park\*, **Kyeongbo Kong**\***,** Suk-Ju Kang†, “AttentionHand: Text-driven Controllable Hand Image Generation for 3D Hand Reconstruction in the Wild”, **ECCV**, 2024. (Oral Presentation Acceptance Rate: 2.3%) <span class="nc-red">**(Oral)**</span>
   2. <span class="nc-blue">**\[CV Top-tier\]**</span> Hyunwoo Yu\*, Yubin Cho\*, Beoungwoo Kang\*, Moon Seunghun\*, **Kyeongbo Kong**\*, Suk-Ju Kang†, “Embedding-Free Transformer with Inference Spatial Reduction for Efficient Semantic Segmentation”, **ECCV**, 2024.
-  3. <span class="nc-blue">**\[CV Top-tier\]**</span> ChangHee Yang\*, Chan Hee Kang\*, **Kyeongbo Kong\***,  Hanni Oh, Suk-Ju Kang†, “Person in Place: Generating Associative Skeleton-Guidance Maps for Human-Object Interaction Image Editing”, **CVPR**, 2024.
+  3. <span class="nc-blue">**\[CV Top-tier\]**</span> ChangHee Yang\*, Chan Hee Kang\*, **Kyeongbo Kong\***, Hanni Oh, Suk-Ju Kang†, “Person in Place: Generating Associative Skeleton-Guidance Maps for Human-Object Interaction Image Editing”, **CVPR**, 2024.
 
   <details markdown="1"><summary>**Workshop Papers**</summary>
 
@@ -415,3 +417,5 @@ Professor
 - **공경보**, 진인환, 추해수, 정성훈, "4차원 모델 정보의 생성 방법 및 장치", 출원일자: 2024년 9월 13일, 출원번호: 10-2024-0125265, 부산대학교 산학협력단 <span class="nc-red">(기술이전)</span>
 - 권오준, **공경보**, 정성훈, "깊이 값 추정 인공지능을 이용한 고효율의 입체영상 변환방법 및 이를 이용한 시스템", 출원일자: 2023년 10월 27일, 출원번호: 10-2023-0145718, 주식회사 디엠스튜디오
 - 강석주, 공대현, **공경보**, 김경훈, "이미지 적응적인 힌트 생성을 사용하는 이미지 아웃페인팅 방법 및 그 장치", 출원일자: 2021년 12월 07일, 출원번호: 10-2021-0173708, 서강대학교 산학협력단
+
+<p class="nb-gap"></p>

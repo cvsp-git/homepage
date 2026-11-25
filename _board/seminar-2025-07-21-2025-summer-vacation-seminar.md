@@ -8,9 +8,11 @@ image: ""
 show_cover: false
 notion_id: 237abcc9-0e34-8037-b0d5-e3a6c8dccb87
 ---
+<p class="nb-gap"></p>
+
 <figure class="board-fig"><img src="/images/gallery/board/seminar-2025-07-21-2025-summer-vacation-seminar/01.jpg" alt="" loading="lazy"></figure>
 
-2025-07-21  
+2025-07-21 
 
 **주제: 4D Gaussian Editing using video editing model**
 
@@ -20,6 +22,8 @@ notion_id: 237abcc9-0e34-8037-b0d5-e3a6c8dccb87
 발표자: [정성훈](/members/shj/)
 
 [📎 \[2025 summer seminar\] 정성훈.pdf](/images/gallery/board/seminar-2025-07-21-2025-summer-vacation-seminar/02.pdf)
+
+<p class="nb-gap"></p>
 
 **주제: Understanding Mixture-of-Experts: A study in Efficient Scaling**
 
@@ -31,6 +35,8 @@ notion_id: 237abcc9-0e34-8037-b0d5-e3a6c8dccb87
 
 [📎 \[2025 summer seminar\]진인환.pdf](/images/gallery/board/seminar-2025-07-21-2025-summer-vacation-seminar/03.pdf)
 
+<p class="nb-gap"></p>
+
 **주제 : Motion modeling**
 
 1. Generative Image Dynamics \[CVPR 2024 Best Paper Award\]
@@ -41,7 +47,9 @@ notion_id: 237abcc9-0e34-8037-b0d5-e3a6c8dccb87
 
 [📎 \[2025 summer seminar\] 문형주.pdf](/images/gallery/board/seminar-2025-07-21-2025-summer-vacation-seminar/04.pdf)
 
-2025-07-28  
+<p class="nb-gap"></p>
+
+2025-07-28 
 
 **주제 : Object change detection**
 
@@ -53,6 +61,8 @@ notion_id: 237abcc9-0e34-8037-b0d5-e3a6c8dccb87
 
 [📎 \[2025 summer seminar\] 이우진.pdf](/images/gallery/board/seminar-2025-07-21-2025-summer-vacation-seminar/05.pdf)
 
+<p class="nb-gap"></p>
+
 **주제 : Visual Place Recognition**
 
 1. ETR: An Efficient Transformer for Re-ranking in Visual Place Recognition \[WACV 2023\]
@@ -63,7 +73,9 @@ notion_id: 237abcc9-0e34-8037-b0d5-e3a6c8dccb87
 
 [📎 \[2025 summer seminar\] 우민수.pdf](/images/gallery/board/seminar-2025-07-21-2025-summer-vacation-seminar/06.pdf)
 
-2025-08-14  
+<p class="nb-gap"></p>
+
+2025-08-14 
 
 **주제 : Massive Activation in transformer architecture**
 
@@ -74,6 +86,8 @@ notion_id: 237abcc9-0e34-8037-b0d5-e3a6c8dccb87
 
 [📎 \[2025 summer seminar\] 백창우.pdf](/images/gallery/board/seminar-2025-07-21-2025-summer-vacation-seminar/07.pdf)
 
+<p class="nb-gap"></p>
+
 **주제 : Vision Token Reduction in LVLMs**
 
 1. \[CLS\] Attention is All You Need for Training-Free Visual Token Pruning: Make VLM Inference Faster
@@ -83,7 +97,9 @@ notion_id: 237abcc9-0e34-8037-b0d5-e3a6c8dccb87
 
 [📎 \[2025 summer seminar\]김소현.pdf](/images/gallery/board/seminar-2025-07-21-2025-summer-vacation-seminar/08.pdf)
 
-2025-08-18  
+<p class="nb-gap"></p>
+
+2025-08-18 
 
 **주제 : VLM/MLLM-based Agentic Systems: Methods and Applications**
 
@@ -95,6 +111,8 @@ notion_id: 237abcc9-0e34-8037-b0d5-e3a6c8dccb87
 
 [📎 \[2025 summer seminar\] 정다운.pdf](/images/gallery/board/seminar-2025-07-21-2025-summer-vacation-seminar/09.pdf)
 
+<p class="nb-gap"></p>
+
 **주제 : Object Detection via language modality**
 
 1. YOLO-World: Real-Time Open-Vocabulary Object Detection \[CVPR 2024\]
@@ -105,7 +123,9 @@ notion_id: 237abcc9-0e34-8037-b0d5-e3a6c8dccb87
 
 [📎 \[2025 summer seminar\] 김태훈.pdf](/images/gallery/board/seminar-2025-07-21-2025-summer-vacation-seminar/10.pdf)
 
-2025-08-26  
+<p class="nb-gap"></p>
+
+2025-08-26 
 
 **주제: Matryoshka Representation Learning with Structured Supervision**
 
@@ -117,6 +137,8 @@ notion_id: 237abcc9-0e34-8037-b0d5-e3a6c8dccb87
 
 [📎 \[2025 summer seminar\] 박순찬.pdf](/images/gallery/board/seminar-2025-07-21-2025-summer-vacation-seminar/11.pdf)
 
+<p class="nb-gap"></p>
+
 **주제: 3D Cinemagraphy**
 
 1. LoopGaussian: Creating 3D Cinemagraph with Multi-view Images via Eulerian Motion Field \[ACM MM 2024\]
@@ -126,3 +148,5 @@ notion_id: 237abcc9-0e34-8037-b0d5-e3a6c8dccb87
 발표자: [김소형](/members/sohyeong/)
 
 [📎 \[2025 summer seminar\] 김소형.pdf](/images/gallery/board/seminar-2025-07-21-2025-summer-vacation-seminar/12.pdf)
+
+<p class="nb-gap"></p>

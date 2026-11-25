@@ -21,6 +21,8 @@ notion_id: 24fabcc9-0e34-80fd-a4b2-e0e4c22ea1d6
 
 </div>
 
+<p class="nb-gap"></p>
+
 </div>
 <div markdown="1">
 
@@ -30,6 +32,10 @@ notion_id: 24fabcc9-0e34-80fd-a4b2-e0e4c22ea1d6
 - Audio-Visual Perception
 - Spatio-Temporal Reasoning
 - Agentic Systems
+
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
 
 </div>
 
@@ -73,13 +79,15 @@ notion_id: 24fabcc9-0e34-80fd-a4b2-e0e4c22ea1d6
 
 ### Domestic Conference Papers
 
-\[C4\] Open-Vocabulary Audio-Visual Event Localization을 위한 Agentic Decision-Rule 탐색 프레임워크<br><br>조범권\*, **박순찬\***, 공경보†<br>대한전자공학회 하계학술대회**,** Jun. 2026.
+\[C4\] Open-Vocabulary Audio-Visual Event Localization을 위한 Agentic Decision-Rule 탐색 프레임워크<br>조범권\*, **박순찬\***, 공경보†<br>대한전자공학회 하계학술대회**,** Jun. 2026.
 
 \[C3\] 종단간 음성인식 모델의 다층 특징을 활용한 화자인식<br>**박순찬\***, 김형순†<br>한국음성학회 가을 학술대회, Nov. 2022.
 
 \[C2\] 상호의존정보를 이용한 임베딩 기반 음성감정인식<br>**박순찬\***, 김형순†<br>한국음성학회 가을 학술대회, Nov. 2021.
 
 \[C1\] 음성 감정 인식에서 운율 특징의 영향 분석<br>**박순찬\***, 김형순†<br>한국음성학회 가을 학술대회, Nov. 2020.
+
+<p class="nb-gap"></p>
 
 ## <span class="nc-blue">**Patents**</span>
 
@@ -111,8 +119,10 @@ notion_id: 24fabcc9-0e34-80fd-a4b2-e0e4c22ea1d6
 
 ### 한국연구재단
 
-- 멀티모달 감정 임베딩을 활용한 음성 기반 3D 얼굴 애니메이션의 감정 표현 및 제어 연구, 한국연구재단, 연구책임자 (Sep. 2025 ~ Aug. 2027)<br><br>- 한국인의 언어적·비언어적 감정표현 특성 분석을 통한 감정표현의 정서인식 및 정서조절 기능 연구, 한국연구재단, 참여연구원 (Sep. 2019 ~ Jun. 2022)
+- 멀티모달 감정 임베딩을 활용한 음성 기반 3D 얼굴 애니메이션의 감정 표현 및 제어 연구, 한국연구재단, 연구책임자 (Sep. 2025 ~ Aug. 2027)<br>- 한국인의 언어적·비언어적 감정표현 특성 분석을 통한 감정표현의 정서인식 및 정서조절 기능 연구, 한국연구재단, 참여연구원 (Sep. 2019 ~ Jun. 2022)
 
 ### 산업통상자원부
 
 - 실내용 음성대화 로봇을 위한 원거리 음성인식 기술 및 멀티 태스크 대화처리 기술 개발, 산업통상자원부, 참여연구원 (Sep. 2019 ~ Apr. 2020)
+
+<p class="nb-gap"></p>

@@ -15,11 +15,15 @@ Research Intern
 
 ## Sang Yeon Yoon
 
-<span class="nc-gray"><code>yskite09@gmail.com</code><br><br><code>palsc@pukyong.ac.kr</code></span>
+<span class="nc-gray"><code>yskite09@gmail.com</code><br><code>palsc@pukyong.ac.kr</code></span>
 
 > <span class="nc-default_background">[Personal page](https://glesep.github.io/)</span>
 
 </div>
+
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
 
 </div>
 <div markdown="1">
@@ -28,6 +32,8 @@ Research Intern
 
 - Efficient AI
 - Multi-Agent System
+
+<p class="nb-gap"></p>
 
 </div>
 
@@ -47,6 +53,8 @@ Research Intern
 
 <span class="nc-gray">**NeurIPS,**</span> <span class="nc-gray">Dec. 2026.</span>
 
+<p class="nb-gap"></p>
+
 ### **International Workshop Papers**
 
 **\[W1\] Mitigating Visual Hallucinations for Reliable Multimodal Agents**
@@ -54,6 +62,8 @@ Research Intern
 <span class="nc-gray">Sohyeon Kim,</span> <span class="nc-gray">**Sang Yeon Yoon**</span><span class="nc-gray">, Kyeongbo Kong†</span>
 
 <span class="nc-gray">**ICMLw,**</span> <span class="nc-gray">Jul. 2026.</span>
+
+<p class="nb-gap"></p>
 
 ### **Domestic Conference Papers**
 

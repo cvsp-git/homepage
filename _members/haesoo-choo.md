@@ -19,12 +19,18 @@ Research Intern
 
 </div>
 
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
+
 </div>
 <div markdown="1">
 
 ## <span class="nc-blue">Alumni</span>
 
 - NAVER WEBTOON
+
+<p class="nb-gap"></p>
 
 </div>
 
@@ -44,13 +50,13 @@ Research Intern
 
 <span class="nc-gray">**ACM Transactions on Multimedia Computing, Communications, and Applications (ACM TOMM)**</span> <span class="nc-gray">(IF: 6.0, JCR 7.8%)</span>
 
-<span class="nc-pink">[<code>Project Page</code>](https://currycurry915.github.io/Motion-to-Attention/)</span>    <span class="nc-pink">[<code>Code</code>](https://github.com/currycurry915/ACMTOMM_M2A)</span>  
+<span class="nc-pink">[<code>Project Page</code>](https://currycurry915.github.io/Motion-to-Attention/)</span>  <span class="nc-pink">[<code>Code</code>](https://github.com/currycurry915/ACMTOMM_M2A)</span> 
 
 ### **International Conference Papers**
 
-**\[C4\] Optimizing 4D Gaussians for Dynamic Scene Video from Single Landscape Images**<br><br><span class="nc-gray">In-Hwan Jin\*,</span> <span class="nc-gray">**Haesoo Choo\***</span><span class="nc-gray">, Seong-Hun Jeong, Heemoon Park, Junghwan Kim, Oh-joon Kwon, Kyeongbo Kong†</span>
+**\[C4\] Optimizing 4D Gaussians for Dynamic Scene Video from Single Landscape Images**<br><span class="nc-gray">In-Hwan Jin\*,</span> <span class="nc-gray">**Haesoo Choo\***</span><span class="nc-gray">, Seong-Hun Jeong, Heemoon Park, Junghwan Kim, Oh-joon Kwon, Kyeongbo Kong†</span>
 
-<span class="nc-gray">**ICLR**</span> <span class="nc-gray">2025, Apr, 2025</span>   <span class="nc-gray">(Top-tier AI conference, Acceptance Rate: 32.08%)</span>
+<span class="nc-gray">**ICLR**</span> <span class="nc-gray">2025, Apr, 2025</span>  <span class="nc-gray">(Top-tier AI conference, Acceptance Rate: 32.08%)</span>
 
 **\[C3\] Dynamic Scene Reconstruction from Single Landscape Image Using 4D Gaussian in the Wild**
 
@@ -60,11 +66,11 @@ Research Intern
 
 **\[C2\]4D Gaussian Splatting for Multi-view 3D Cinemagraphy**
 
-<span class="nc-gray">In-Hwan Jin\*,</span>  <span class="nc-gray">**Haesoo Choo\***</span><span class="nc-gray">,</span>   <span class="nc-gray">Kyeongbo Kong†</span>
+<span class="nc-gray">In-Hwan Jin\*,</span> <span class="nc-gray">**Haesoo Choo\***</span><span class="nc-gray">,</span>  <span class="nc-gray">Kyeongbo Kong†</span>
 
-<span class="nc-gray">**IMID**</span>  <span class="nc-gray">2024</span>  <span class="nc-red">**(Invited)**</span>
+<span class="nc-gray">**IMID**</span> <span class="nc-gray">2024</span> <span class="nc-red">**(Invited)**</span>
 
-**\[C1\] Enhancing Text-to-Video Editing with Motion Map Injection**<br><br><span class="nc-gray">Seong-Hun Jeong\*, Inhwan Jin\*,</span> <span class="nc-gray">**Haesoo Choo\***</span><span class="nc-gray">, Hyunjun Na\*, Kyeongbo Kong</span><span class="nc-gray">**†**</span>
+**\[C1\] Enhancing Text-to-Video Editing with Motion Map Injection**<br><span class="nc-gray">Seong-Hun Jeong\*, Inhwan Jin\*,</span> <span class="nc-gray">**Haesoo Choo\***</span><span class="nc-gray">, Hyunjun Na\*, Kyeongbo Kong</span><span class="nc-gray">**†**</span>
 
 <span class="nc-gray">**ICCVW**</span><span class="nc-gray">*,*</span> <span class="nc-gray">Oct. 2023. (Top-tier AI conference workshop)</span> <span class="nc-red">**(Oral Presentation Invitation)**</span>
 
@@ -72,13 +78,13 @@ Research Intern
 
 **\[C3\] 단일 이미지 기반 4차원 동적 장면 생성 프레임워크 구현**
 
-<span class="nc-gray">**추해수\***</span><span class="nc-gray">, 진인환\*, 공경보†</span><br><br><span class="nc-gray">대한임베디드공학회 ICT 대학생 논문 경진대회, June 2025.</span> <span class="nc-red">**(장려상)**</span>
+<span class="nc-gray">**추해수\***</span><span class="nc-gray">, 진인환\*, 공경보†</span><br><span class="nc-gray">대한임베디드공학회 ICT 대학생 논문 경진대회, June 2025.</span> <span class="nc-red">**(장려상)**</span>
 
 **\[C2\] 단일 풍경 이미지의 Dynamic Scene Video 생성을 위한 4D Gaussian Splatting 최적화 알고리즘 구현**
 
-<span class="nc-gray">진인환\*,</span> <span class="nc-gray">**추해수\***</span><span class="nc-gray">, 정성훈, 공경보†</span><br><br><span class="nc-gray">제34회 인공지능신호처리 학술대회, Oct. 2024.</span>
+<span class="nc-gray">진인환\*,</span> <span class="nc-gray">**추해수\***</span><span class="nc-gray">, 정성훈, 공경보†</span><br><span class="nc-gray">제34회 인공지능신호처리 학술대회, Oct. 2024.</span>
 
-**\[C1\] Optical Flow의 방향 정보를 활용한 Text-to-Video 편집 기술**<br><br><span class="nc-gray">정성훈\*, 진인환,</span> <span class="nc-gray">**추해수**</span><span class="nc-gray">, 공경보†</span><br><br><span class="nc-gray">대한임베디드공학회 ICT 대학생 논문 경진대회, Jul. 2024.</span> <span class="nc-red">**(장려상)**</span>
+**\[C1\] Optical Flow의 방향 정보를 활용한 Text-to-Video 편집 기술**<br><span class="nc-gray">정성훈\*, 진인환,</span> <span class="nc-gray">**추해수**</span><span class="nc-gray">, 공경보†</span><br><span class="nc-gray">대한임베디드공학회 ICT 대학생 논문 경진대회, Jul. 2024.</span> <span class="nc-red">**(장려상)**</span>
 
 ### **Domestic Journal Papers**
 
@@ -101,3 +107,5 @@ Research Intern
 <hr>
 
 - 공경보, 진인환, **추해수**, 정성훈, "4차원 모델 정보의 생성 방법 및 장치", 출원일자: 2024년 9월 13일, 출원번호: 10-2024-0125265, 부산대학교 산학협력단
+
+<p class="nb-gap"></p>

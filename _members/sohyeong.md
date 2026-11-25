@@ -19,6 +19,8 @@ Integrated BS-MS  Course
 
 </div>
 
+<p class="nb-gap"></p>
+
 </div>
 <div markdown="1">
 
@@ -28,6 +30,10 @@ Integrated BS-MS  Course
   - Interactive 4D World Generation
   - Physics-Guided Video Generation
   - Dynamic Scene Generation
+
+<p class="nb-gap"></p>
+
+<p class="nb-gap"></p>
 
 </div>
 
@@ -41,11 +47,13 @@ Integrated BS-MS  Course
 
 **\[S1\] Anonymized Title**<br><span class="nc-gray">**Sohyeong Kim\***</span><span class="nc-gray">, Woo Hyeong Kim\*, In-Hwan Jin\*, Joonsoo Kim, Kugjin Yun, Kyeongbo Kong†</span>
 
+<p class="nb-gap"></p>
+
 ### **International Conference Papers**
 
-**\[C4\] Counterfactual Simulation-Guided Physical Reasoning for Physics-Based Video Generation**<br><span class="nc-gray">**Sohyeong Kim\***</span><span class="nc-gray">, Woo Hyeong Kim\*, In-Hwan Jin\*, Hyeongju Mun, Kyeongbo Kong†</span><br><span class="nc-gray">**ECCVW,**</span> <span class="nc-gray">2026. (Top-tier AI conference workshop)</span><br><span class="nc-blue">[<code>Paper</code>](https://eccv2026-3d-world-models.github.io/papers/files/25-counterfactual-simulation-guided-physical-reasoning-for-physics-based-video-gene.pdf)</span>  <span class="nc-blue">[<code>Project Page</code>](https://annon-repo-for-science.github.io/CounterFactual/)</span>  
+**\[C4\] Counterfactual Simulation-Guided Physical Reasoning for Physics-Based Video Generation**<br><span class="nc-gray">**Sohyeong Kim\***</span><span class="nc-gray">, Woo Hyeong Kim\*, In-Hwan Jin\*, Hyeongju Mun, Kyeongbo Kong†</span><br><span class="nc-gray">**ECCVW,**</span> <span class="nc-gray">2026. (Top-tier AI conference workshop)</span><br><span class="nc-blue">[<code>Paper</code>](https://eccv2026-3d-world-models.github.io/papers/files/25-counterfactual-simulation-guided-physical-reasoning-for-physics-based-video-gene.pdf)</span> <span class="nc-blue">[<code>Project Page</code>](https://annon-repo-for-science.github.io/CounterFactual/)</span> 
 
-**\[C3\] LivingWorld: Interactive 4D World Generation with Environmental Dynamics**<br><span class="nc-gray">Hyeongju Mun\*</span><span class="nc-gray">**,**</span> <span class="nc-gray">In-Hwan Jin\*,</span> <span class="nc-gray">**Sohyeong Kim**</span><span class="nc-gray">, Kyeongbo Kong†</span><br><span class="nc-default_background">**ECCV**</span><span class="nc-gray">, 2026. (</span><span class="nc-gray">**Top-tier AI Conference**</span><span class="nc-gray">,</span> <span class="nc-gray">**Acceptance Rate: 27.5%**</span><span class="nc-gray">)</span><br><span class="nc-blue">[<code>Paper</code>](https://arxiv.org/pdf/2604.01641)</span>  <span class="nc-blue">[<code>Project Page</code>](https://paper.pnu-cvsp.com/LivingWorld/)</span>  
+**\[C3\] LivingWorld: Interactive 4D World Generation with Environmental Dynamics**<br><span class="nc-gray">Hyeongju Mun\*</span><span class="nc-gray">**,**</span> <span class="nc-gray">In-Hwan Jin\*,</span> <span class="nc-gray">**Sohyeong Kim**</span><span class="nc-gray">, Kyeongbo Kong†</span><br><span class="nc-default_background">**ECCV**</span><span class="nc-gray">, 2026. (</span><span class="nc-gray">**Top-tier AI Conference**</span><span class="nc-gray">,</span> <span class="nc-gray">**Acceptance Rate: 27.5%**</span><span class="nc-gray">)</span><br><span class="nc-blue">[<code>Paper</code>](https://arxiv.org/pdf/2604.01641)</span> <span class="nc-blue">[<code>Project Page</code>](https://paper.pnu-cvsp.com/LivingWorld/)</span> 
 
 **\[C2\] FluIDWorld: Fluid-like Interactive Dynamics for 4D Worlds**<br><span class="nc-gray">Hyeongju Mun\*, In-Hwan Jin</span><span class="nc-gray">**\***</span><span class="nc-gray">,</span> <span class="nc-gray">**Sohyeong Kim**</span><span class="nc-gray">, Kyeongbo Kong†</span><br><span class="nc-gray">**ICLRW,**</span> <span class="nc-gray">2026. (Top-tier AI conference workshop)</span>
 
@@ -53,4 +61,6 @@ Integrated BS-MS  Course
 
 ### **Domestic Conference Papers**
 
-**\[C1\] 단일 이미지 기반  동역학 인터랙티브 4D 월드 생성**<br><br><span class="nc-gray">**김소형\***</span><span class="nc-gray">, 공경보†</span><br><br><span class="nc-gray">대한전자공학회 하계학술대회, June.2026.</span>
+**\[C1\] 단일 이미지 기반  동역학 인터랙티브 4D 월드 생성**<br><span class="nc-gray">**김소형\***</span><span class="nc-gray">, 공경보†</span><br><span class="nc-gray">대한전자공학회 하계학술대회, June.2026.</span>
+
+<p class="nb-gap"></p>

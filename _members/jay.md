@@ -15,7 +15,9 @@ Ph.D. Course
 
 ## JiAn Yang
 
-[zian.yang94@gmail.com](mailto:zian.yang94@gmail.com)  
+[zian.yang94@gmail.com](mailto:zian.yang94@gmail.com) 
+
+<p class="nb-gap"></p>
 
 </div>
 
@@ -27,12 +29,18 @@ Ph.D. Course
 - Data analysis
 - Battery life estimation
 
+<p class="nb-gap"></p>
+
 ## <span class="nc-blue">**Publication**</span>
 
 **\[C1\] Data–Driven Fault Diagnosis and Cause Analysis of Battery Pack with Real Data**<br>Yang J, Jung J, Ghorbanpour S, Han S.
 
 Energies. 2022
 
+<p class="nb-gap"></p>
+
 </div>
 
 </div>
+
+<p class="nb-gap"></p>
