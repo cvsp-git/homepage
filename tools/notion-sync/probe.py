@@ -8,10 +8,10 @@ def get(u):
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
 
 home = get("https://www.pnu-cvsp.com/")
-paths = sorted(set(re.findall(r'(?:href="|"url":")(?:https?://www\.pnu-cvsp\.com)?(/[a-z][\w/-]*)"', home)) | {"/publications", "/projects", "/lab", "/members", "/contact", "/gallery", "/news", "/research", "/publication", "/project"})
+paths = sorted({"/board/infrastructure", "/board/seminar", "/board/course", "/contact"} or set(re.findall(r'(?:href="|"url":")(?:https?://www\.pnu-cvsp\.com)?(/[a-z][\w/-]*)"', home)) | {"/publications", "/projects", "/lab", "/members", "/contact", "/gallery", "/news", "/research", "/publication", "/project"})
 print("links on home:", paths)
 for path in paths:
-    if path.startswith(("/_next", "/board", "/members/")): continue
+    if path.startswith(("/_next", "/members/")) or path in ("/board/gallery",): continue
     try:
         html = get("https://www.pnu-cvsp.com" + path)
     except Exception as e:
