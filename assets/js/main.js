@@ -442,3 +442,24 @@
     });
   });
 })();
+
+/* Notion "oopy:slide" photo slides on board pages */
+(function () {
+  document.querySelectorAll("[data-slide]").forEach(function (box) {
+    var track = box.querySelector(".board-slide-track");
+    var n = track.children.length; if (n < 2) return;
+    var dots = document.createElement("div"); dots.className = "board-slide-dots";
+    for (var i = 0; i < n; i++) (function (i) {
+      var b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", "Slide " + (i + 1));
+      b.addEventListener("click", function () { go(i); restart(); }); dots.appendChild(b);
+    })(i);
+    box.appendChild(dots);
+    function cur() { return Math.round(track.scrollLeft / track.clientWidth); }
+    function go(i) { track.scrollTo({ left: i * track.clientWidth, behavior: "smooth" }); }
+    function mark() { var c = cur(); [].forEach.call(dots.children, function (d, i) { d.setAttribute("aria-current", i === c ? "true" : "false"); }); }
+    track.addEventListener("scroll", function () { window.requestAnimationFrame(mark); }); mark();
+    var t; function restart() { clearInterval(t); t = setInterval(function () { go((cur() + 1) % n); }, 6000); }
+    restart();
+  });
+})();
+

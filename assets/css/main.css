@@ -543,7 +543,7 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 .feed-cards { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 14px; }
 .feed-more { justify-self: center; padding: 8px 20px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); font: 600 .85rem var(--f-body); cursor: pointer; }
 .feed-more:hover { border-color: var(--signal); color: var(--pnu); }
-@media (max-width: 1100px) { .feed-grid { gap: 18px; } .feed-cards { gap: 10px; } .bcard-body { padding: 10px 11px 12px; } .bcard-news .bcard-body { padding: 12px; } .bcard-title { font-size: .84rem; } }
+@media (max-width: 1100px) { .feed-grid { gap: 18px; } .feed-cards { gap: 10px; } .bcard-body { padding: 10px 11px 12px; } .bcard-title { font-size: .84rem; } }
 /* 휴대폰처럼 아주 좁을 때만 세 묶음을 위아래로 쌓습니다 */
 @media (max-width: 760px) { .feed-grid { grid-template-columns: minmax(0, 1fr); gap: 44px; } .feed-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
@@ -556,8 +556,7 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 .bcard-img.is-empty { background: radial-gradient(60% 55% at 30% 35%, rgba(47,123,255,.45), transparent 70%), radial-gradient(50% 45% at 75% 70%, rgba(63,211,224,.35), transparent 70%), var(--hero-bg); }
 .bcard-life .bcard-img.is-empty { background: radial-gradient(60% 50% at 35% 40%, rgba(231,179,90,.5), transparent 70%), radial-gradient(50% 45% at 70% 65%, rgba(47,123,255,.4), transparent 70%), var(--hero-bg); }
 .bcard-body { display: grid; gap: 8px; padding: 12px 14px 14px; align-content: start; }
-.bcard-news .bcard-body { min-height: 128px; padding: 16px; }
-.bcard-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.bcard-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
 .bcard-meta time { font-size: .72rem; color: var(--muted); }
 .bcard-tag { display: inline-block; font: 500 .68rem var(--f-mono, monospace); padding: 2px 7px; border-radius: 999px; background: var(--pnu-soft); color: var(--pnu); }
 .bcard-title { font-weight: 600; font-size: .9rem; line-height: 1.4; overflow-wrap: anywhere; }
@@ -568,7 +567,24 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 .board-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; color: var(--hero-muted, #93a3b8); }
 .board-meta time { margin-right: 6px; }
 .board-body { display: grid; gap: 20px; }
-.board-body img { max-width: 100%; height: auto; border-radius: 10px; }
+.board-body img, .board-body video { max-width: 100%; height: auto; border-radius: 10px; display: block; }
+.board-body > p, .board-body li { line-height: 1.8; }
+.board-body h1, .board-body h2, .board-body h3 { margin-top: 12px; }
+.board-body blockquote { margin: 0; padding: 10px 16px; border-left: 3px solid var(--signal); background: var(--surface); border-radius: 0 10px 10px 0; }
+.board-body blockquote p { margin: 0; }
+.board-fig { margin: 0; display: grid; gap: 8px; justify-items: center; }
+.board-fig img, .board-fig video { margin: 0 auto; }
+.board-fig figcaption { font-size: .85rem; color: var(--muted); text-align: center; }
+.callout { display: block; padding: 14px 18px; border-radius: 12px; background: var(--pnu-soft); }
+.callout > :first-child { margin-top: 0; } .callout > :last-child { margin-bottom: 0; }
+.board-slide { position: relative; border-radius: 14px; overflow: hidden; background: var(--photo-bg); }
+.board-slide-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; aspect-ratio: 3 / 2; }
+.board-slide-track::-webkit-scrollbar { display: none; }
+.board-slide-track figure { flex: 0 0 100%; margin: 0; scroll-snap-align: center; display: grid; place-items: center; }
+.board-slide-track img { width: 100%; height: 100%; object-fit: contain; border-radius: 0; }
+.board-slide-dots { position: absolute; left: 0; right: 0; bottom: 10px; display: flex; justify-content: center; gap: 6px; }
+.board-slide-dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.6); cursor: pointer; }
+.board-slide-dots button[aria-current="true"] { background: #6196ff; }
 .board-cover { margin: 0; }
 .board-empty { color: var(--muted); }
 .board-back { margin-top: 12px; }

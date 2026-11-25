@@ -119,7 +119,10 @@ index.html 외 *.html 각 페이지
 `_board/` 폴더에 파일을 하나 만들면 홈 화면과 News·Gallery 페이지에 카드가 생기고, 카드를 누르면 그 파일 내용이 상세 페이지로 나옵니다.
 
 - 파일 이름: `종류-날짜-번호.md` (예: `life-2026-11-20-1.md`). 종류는 `news`(소식), `gallery`(학회·세미나 사진), `life`(생일·MT 등 연구실 생활)
-- 사진: `images/gallery/` 에 넣고 `image:` 에 파일 이름. 본문 안에 사진을 더 넣으려면 `![설명](/images/gallery/파일이름.jpg)`
+- 미리보기 사진: `images/gallery/` 에 넣고 `image:` 에 파일 이름 (예: `board/life-2026-11-20-1.jpg`). 인터넷 주소(https://…)도 됩니다.
+- 본문: `---` 아래에 글을 씁니다. 사진은 `images/gallery/board/카드파일이름/` 폴더에 넣고 `![설명](/images/gallery/board/카드파일이름/01.jpg)` 처럼 넣습니다. 사진 아래 설명을 달려면 `<figure class="board-fig"><img src="/images/gallery/board/카드파일이름/01.jpg" alt=""><figcaption>설명</figcaption></figure>`
+- `show_cover: false` 이면 상세 페이지 맨 위에 미리보기 사진을 다시 보여주지 않습니다 (본문에 사진이 있을 때).
+- 기존 카드들은 Notion 내보내기에서 `tools/notion-import/` 스크립트로 옮겨 온 것입니다.
 - `order:` 는 같은 종류 안에서의 순서입니다. 숫자가 작을수록 앞에 나오니, 새 카드는 `-1` 처럼 기존보다 작은 값을 주면 맨 앞에 옵니다.
 
 ```markdown

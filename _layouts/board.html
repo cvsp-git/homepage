@@ -13,7 +13,7 @@ layout: default
 </section>
 <section class="section board-section">
   <div class="wrap narrow board-body">
-    {% if page.image and page.image != "" %}<figure class="board-cover"><img src="{{ '/images/gallery/' | append: page.image | relative_url }}" alt="{{ page.title }}"></figure>{% endif %}
+    {% if page.image and page.image != "" and page.show_cover != false %}<figure class="board-cover"><img src="{% if page.image contains '://' %}{{ page.image }}{% else %}{{ '/images/gallery/' | append: page.image | relative_url }}{% endif %}" alt="{{ page.title }}"></figure>{% endif %}
     {% assign body = content | strip %}
     {% if body != "" %}{{ content }}{% elsif page.image == "" %}<p class="board-empty">No details have been added for this post yet.</p>{% endif %}
     <p class="board-back"><a class="text-link" href="{{ back | relative_url }}">← All {{ kind_label }}</a></p>
