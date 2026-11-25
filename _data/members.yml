@@ -17,17 +17,17 @@
   people:
     - name: Sunchan Park
       name_ko: 박순찬
-      photo: ""
+      photo: "sunchan-park.jpg"
       interests: [Multi-Modality, Audio-Visual Learning]
 
 - group: Ph.D. Course
   people:
     - name: JiAn Yang
-      name_ko: ""
-      photo: ""
+      name_ko: "양지안"
+      photo: "jian-yang.jpg"
     - name: Seong-Hun Jeong
       name_ko: 정성훈
-      photo: ""
+      photo: "seong-hun-jeong.jpg"
 
 - group: M.S. Course
   people:
@@ -36,10 +36,10 @@
       photo: "daun-jeong.jpg"
     - name: In-Hwan Jin
       name_ko: 진인환
-      photo: ""
+      photo: "in-hwan-jin.jpg"
     - name: Taehoon Kim
       name_ko: 김태훈
-      photo: ""
+      photo: "taehoon-kim.jpg"
 
 - group: Integrated B.S.–M.S. Course
   people:
@@ -48,36 +48,36 @@
       photo: "changwoo-baek.jpg"
     - name: HyeongJu Mun
       name_ko: 문형주
-      photo: ""
+      photo: "hyeongju-mun.jpg"
     - name: MinSoo Woo
       name_ko: 우민수
-      photo: ""
+      photo: "minsoo-woo.jpg"
     - name: Sohyeon Kim
       name_ko: 김소현
-      photo: ""
+      photo: "sohyeon-kim.jpg"
     - name: Sohyeong Kim
       name_ko: 김소형
-      photo: ""
+      photo: "sohyeong-kim.jpg"
     - name: Jihoon Choi
       name_ko: 최지훈
-      photo: ""
+      photo: "jihoon-choi.jpg"
     - name: Beomkwon Cho
       name_ko: 조범권
-      photo: ""
+      photo: "beomkwon-cho.jpg"
     - name: Woohyeong Kim
       name_ko: 김우형
-      photo: ""
+      photo: "woohyeong-kim.jpg"
     - name: Junsu Kim
       name_ko: 김준수
-      photo: ""
+      photo: "junsu-kim.jpg"
 
 - group: Research Intern
   people:
     - name: Sang Yeon Yoon
       name_ko: 윤상연
-      photo: ""
+      photo: "sang-yeon-yoon.jpg"
     - name: JongWon Choi
-      name_ko: ""
+      name_ko: "최종원"
       photo: "jongwon-choi.jpg"
 
 - group: Alumni
