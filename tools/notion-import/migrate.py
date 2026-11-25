@@ -130,6 +130,8 @@ def is_fileish(s): return bool(re.search(r'\.(png|jpe?g|gif|heic|svg|webp)$', s.
 def convert_body(md, slug):
     lines = md['body'].split('\n'); out = []; n = 0; media = []
     mdir = md['dir']; dstdir = os.path.join(IMG_OUT, slug)
+    if os.path.isdir(dstdir):
+        for g in os.listdir(dstdir): os.remove(os.path.join(dstdir, g))
     i = 0; slide = None
     def media_html(ref, alt, cls=''):
         nonlocal n
