@@ -243,9 +243,9 @@
       if (W < 760) {  // phones: small, centered above the photos
         scale = Math.min(W * 0.3, 150) / 3; cx = W * 0.5; cy = scale * 1.05 + 18;
       } else {        // a little in from the corner so the burst stays on screen
-        scale = Math.min(W * 0.34, 300) / 3;
-        cx = W - Math.max(scale * 1.7, Math.min(W * 0.12, 220));
-        cy = scale * 1.05 + Math.min(H * 0.1, 90);
+        scale = Math.min(W * 0.3, 260) / 3;
+        cx = W - Math.max(scale * 1.8, Math.min(W * 0.11, 200));
+        cy = H - Math.max(24, H * 0.04);
       }
       return;
     }
@@ -458,47 +458,65 @@
   });
 })();
 
-/* home hero photo slides (Notion main page "oopy:slide"): slide sideways every 4.5 s; arrows, dots and swipe */
+/* home hero photo carousel (Notion main page "oopy:slide"): the current photo in the middle,
+   neighbours peeking in at the sides; slides sideways every 4.5 s, endless loop; arrows, dots, swipe */
 (function () {
   var box = document.querySelector("[data-hero-slides]");
   if (!box) return;
-  var imgs = Array.prototype.slice.call(box.querySelectorAll("img")), n = imgs.length, cur = 0, timer = null, busy = false;
-  if (n < 2) return;
-  imgs.forEach(function (im, i) { im.classList.remove("is-on"); im.style.transform = "translateX(" + (i ? 100 : 0) + "%)"; });
-  var dots = document.createElement("div"); dots.className = "hero-slides-dots";
-  var go = function (i, dir) {
-    i = (i + n) % n;
-    if (i === cur || busy) return;
-    dir = dir || (i > cur ? 1 : -1);
-    var a = imgs[cur], b = imgs[i];
-    b.loading = "eager"; imgs[(i + 1) % n].loading = "eager";
-    b.style.transition = "none"; b.style.transform = "translateX(" + (dir * 100) + "%)";
-    void b.offsetWidth;  // place it beside the current photo before animating
-    busy = true;
-    a.style.transition = b.style.transition = "";
-    a.style.transform = "translateX(" + (-dir * 100) + "%)"; b.style.transform = "translateX(0)";
-    dots.children[cur].classList.remove("is-on"); dots.children[i].classList.add("is-on");
-    cur = i; setTimeout(function () { busy = false; }, 820);
+  var orig = Array.prototype.slice.call(box.querySelectorAll("img")), n = orig.length;
+  if (!n) return;
+  var K = Math.min(2, n), track = document.createElement("div"); track.className = "hero-slides-track";
+  orig.forEach(function (im) { im.classList.remove("is-on"); im.loading = "eager"; });
+  var head = orig.slice(-K).map(function (im) { var c = im.cloneNode(); c.setAttribute("aria-hidden", "true"); return c; });
+  var tail = orig.slice(0, K).map(function (im) { var c = im.cloneNode(); c.setAttribute("aria-hidden", "true"); return c; });
+  head.concat(orig, tail).forEach(function (im) { track.appendChild(im); });
+  box.appendChild(track);
+  var all = track.children, pos = K, timer = null, busy = false;
+  var place = function (anim) {
+    var sw = all[0].getBoundingClientRect().width, gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    track.classList.toggle("is-moving", !!anim);
+    track.style.transform = "translateX(" + (box.clientWidth / 2 - sw / 2 - pos * (sw + gap)) + "px)";
+    for (var i = 0; i < all.length; i++) all[i].classList.toggle("is-on", i === pos);
+    var cur = ((pos - K) % n + n) % n;
+    for (var j = 0; j < dots.children.length; j++) dots.children[j].classList.toggle("is-on", j === cur);
   };
-  var restart = function () { clearInterval(timer); if (!reduce) timer = setInterval(function () { go(cur + 1, 1); }, 4500); };
+  var dots = document.createElement("div"); dots.className = "hero-slides-dots";
+  var go = function (to) {
+    if (busy || n < 2) return;
+    busy = true; pos = to; place(true);
+    setTimeout(function () {
+      // stepped onto a copy at either end: jump to the real photo without animation
+      if (pos >= K + n) { pos -= n; place(false); }
+      else if (pos < K) { pos += n; place(false); }
+      busy = false;
+    }, 820);
+  };
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  for (var i = 0; i < n; i++) (function (i) {
-    var d = document.createElement("button"); d.type = "button"; d.setAttribute("aria-label", "Photo " + (i + 1));
-    d.addEventListener("click", function () { go(i); restart(); }); dots.appendChild(d);
-  })(i);
-  dots.children[0].classList.add("is-on"); box.appendChild(dots);
-  [["prev", -1, "Previous photo", "\u2039"], ["next", 1, "Next photo", "\u203A"]].forEach(function (x) {
-    var btn = document.createElement("button"); btn.type = "button"; btn.className = "hero-slides-arrow is-" + x[0];
-    btn.setAttribute("aria-label", x[2]); btn.textContent = x[3];
-    btn.addEventListener("click", function () { go(cur + x[1], x[1]); restart(); }); box.appendChild(btn);
-  });
-  var sx = null;
-  box.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; }, { passive: true });
-  box.addEventListener("touchend", function (e) {
-    if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; sx = null;
-    if (Math.abs(dx) > 40) { go(cur + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1); restart(); }
-  });
-  imgs[1].loading = "eager";
+  var restart = function () { clearInterval(timer); if (!reduce && n > 1) timer = setInterval(function () { go(pos + 1); }, 4500); };
+  if (n > 1) {
+    for (var i = 0; i < n; i++) (function (i) {
+      var d = document.createElement("button"); d.type = "button"; d.setAttribute("aria-label", "Photo " + (i + 1));
+      d.addEventListener("click", function () { go(K + i); restart(); }); dots.appendChild(d);
+    })(i);
+    box.appendChild(dots);
+    [["prev", -1, "Previous photo", "\u2039"], ["next", 1, "Next photo", "\u203A"]].forEach(function (x) {
+      var btn = document.createElement("button"); btn.type = "button"; btn.className = "hero-slides-arrow is-" + x[0];
+      btn.setAttribute("aria-label", x[2]); btn.textContent = x[3];
+      btn.addEventListener("click", function () { go(pos + x[1]); restart(); }); box.appendChild(btn);
+    });
+    var sx = null;
+    box.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener("touchend", function (e) {
+      if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; sx = null;
+      if (Math.abs(dx) > 40) { go(pos + (dx < 0 ? 1 : -1)); restart(); }
+    });
+    // click a peeking neighbour to bring it to the middle
+    for (var k = 0; k < all.length; k++) (function (k) {
+      all[k].addEventListener("click", function () { if (k !== pos) { go(k); restart(); } });
+    })(k);
+  }
+  place(false);
+  window.addEventListener("resize", function () { place(false); });
   restart();
 })();
 
