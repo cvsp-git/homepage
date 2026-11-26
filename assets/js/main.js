@@ -204,10 +204,11 @@
   // (trained by tools/train_mascot_gaussians.py; older point formats still render)
   // characters standing in a row: Sanjini in the middle, the Sanjini Friends (assets/js/friends-data.js) beside him.
   // ox = place along the row, s = size (guidebook proportions, a bit enlarged), ph = turn offset (0 = all face the same way)
-  var groups = [{ key: "CVSP_MASCOT", ox: 0, s: 1, ph: 0 },
-                { key: "CVSP_FRIEND_DAENY", ox: -0.95, s: 0.72, ph: 0 },
-                { key: "CVSP_FRIEND_TORY", ox: 0.86, s: 0.6, ph: 0 },
-                { key: "CVSP_FRIEND_BUDDY", ox: 1.42, s: 0.5, ph: 0 }];
+  // evenly spaced: the same gap (0.6) between every two characters, the row centred on the page
+  var groups = [{ key: "CVSP_MASCOT", ox: -0.47, s: 1, ph: 0 },
+                { key: "CVSP_FRIEND_DAENY", ox: -1.85, s: 0.72, ph: 0 },
+                { key: "CVSP_FRIEND_TORY", ox: 0.85, s: 0.6, ph: 0 },
+                { key: "CVSP_FRIEND_BUDDY", ox: 1.94, s: 0.5, ph: 0 }];
   var addMascotFromData = function (m, gi) {
     if (!m || !m.data) return false;
     var bin = atob(m.data), dv = new DataView(new ArrayBuffer(bin.length));
@@ -231,7 +232,8 @@
           sx0: (Math.random() - .5) * 2.4, sy0: Math.random() * 1.6 - .2, sz0: (Math.random() - .5) * 2.4,
           spr: gl ? null : gaussSprite(dv.getUint8(o3 + 6), dv.getUint8(o3 + 7), dv.getUint8(o3 + 8)),
           rgb: [dv.getUint8(o3 + 6) / 255, dv.getUint8(o3 + 7) / 255, dv.getUint8(o3 + 8) / 255],
-          s: 1, delay: Math.random() * .6, op: dv.getUint8(o3 + 9) / 255, M: M, ax: null
+          s: 1, delay: Math.random() * .6, op: dv.getUint8(o3 + 9) / 255, M: M, ax: null,
+          ux: Math.random(), uy: Math.random(), uz: Math.random(), uw: Math.random()
         });
       }
       return m.n > 0;
@@ -265,7 +267,7 @@
   if (!useMascot) addTorus();
   setCount();
 
-  var W = 0, H = 0, dpr = 1, cx = 0, cy = 0, scale = 1, burstR = 0.6, burstY = 0.5;
+  var W = 0, H = 0, dpr = 1, cx = 0, cy = 0, scale = 1, burstR = 0.6, burstY = 0.5, bandTop = 10, bandBot = 120;
   var resize = function () {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     W = canvas.clientWidth; H = canvas.clientHeight;
@@ -283,6 +285,10 @@
       var photoTop = (inner2 ? inner2.offsetTop : 0) + room;
       cy = photoTop * 0.5 + scale * 0.5;
       burstR = Math.max(30, photoTop * 0.5 - 8) / scale; burstY = (cy - photoTop * 0.5) / scale;
+      bandTop = 12; bandBot = Math.max(bandTop + 40, photoTop - 12);
+      // phones: the button sits in the top corner so it never covers the characters
+      if (gatherBtn) gatherBtn.style.top = (W < 760 ? 6 : Math.max(8, photoTop - 40)) + "px";
+      if (typeof toBand === "function") groups.forEach(function (G, gi) { if (G && G.sc) toBand(gi); });
       return;
     }
     if (canvas.hasAttribute("data-mascot")) {
@@ -309,12 +315,22 @@
     for (var gi = 0; gi < groups.length; gi++) {
       var G = groups[gi]; if (!G) continue;
       var gx = cx + G.ox * scale, hw = scale * 0.45 * G.s, top = cy - scale * 1.0 * G.s;
+      if (G.sc && overlay) continue;
       if (G.sc) { hw = burstR * scale; top = cy - (burstY + burstR) * scale; }
       if (Math.abs(mx - gx) < hw && my > top && my < cy + scale * 0.05) return gi;
     }
     return -1;
   };
   var onMascot = function (e) { return mascotAt(e) >= 0; };
+  // the scattered look: every gaussian of a character gets its own spot anywhere in the blue band above the photos
+  var toBand = function (gi) {
+    var cp0 = Math.cos(pitch) || 1;
+    for (var n = 0; n < pts.length; n++) {
+      var p = pts[n]; if (p.kind !== 2 || p.g !== gi) continue;
+      var bx = p.ux * W, by = bandTop + p.uy * (bandBot - bandTop);
+      p.sx0 = (bx - cx) / scale; p.sy0 = (cy - by) / (scale * cp0); p.sz0 = 0;
+    }
+  };
   // click a character: its gaussians burst into a round cloud around it; click again and it gathers back
   var burst = function (gi) {
     var G = groups[gi]; if (!G) return;
@@ -328,9 +344,7 @@
         var p = pts[n];
         if (p.kind !== 2 || p.g !== gi) continue;
         if (overlay) {
-          // round cloud: denser in the middle, thinning out toward the edge, never past the band above the photos
-          var ang = Math.random() * Math.PI * 2, rr = R * Math.pow(Math.random(), 0.7);
-          p.sx0 = G.ox + Math.cos(ang) * rr; p.sy0 = burstY + Math.sin(ang) * rr; p.sz0 = (Math.random() - .5) * 0.1;
+          continue;   // spots in the band are set by toBand below
         } else {
           // fly outward from the body center, with some randomness
           var dx = p.tx + (Math.random() - .5) * .3, dy = p.ty - 0.45 + (Math.random() - .5) * .3, dz = p.tz + (Math.random() - .5) * .3;
@@ -339,9 +353,22 @@
         }
         p.delay = Math.random() * .35;
       }
+      if (overlay) toBand(gi);
       G.bt = 0; G.sc = true;
     }
     scattered = groups.some(function (H) { return H && H.sc; });
+    if (gatherBtn) setGatherLabel();
+  };
+  // Sanjini & Friends start scattered over the blue background; the button gathers them (and scatters them again)
+  var gatherBtn = null;
+  var setGatherLabel = function () {
+    var anyOut = groups.some(function (H) { return H && H.sc; });
+    gatherBtn.textContent = anyOut ? "✦ Gather Sanjini & Friends" : "✦ Scatter";
+    gatherBtn.setAttribute("aria-pressed", anyOut ? "false" : "true");
+  };
+  var gatherAll = function () {
+    var anyOut = groups.some(function (H) { return H && H.sc; });
+    groups.forEach(function (G, gi) { if (G && G.sc === anyOut) burst(gi); });
   };
   // with the photo carousel the canvas is drawn on top (so the burst is not hidden behind the photos)
   // and lets clicks through; the hero listens instead and only reacts on Sanjini or the empty background
@@ -420,7 +447,7 @@
     for (var gq = 0; gq < groups.length; gq++) { var Gq = groups[gq]; if (Gq) { Gq.c = Math.cos(yaw + Gq.ph); Gq.sn = Math.sin(yaw + Gq.ph); } }
     buf.length = 0;
     for (var n = 0; n < pts.length; n++) {
-      var p = pts[n], x, y, z, col;
+      var p = pts[n], x, y, z, col, shrink = 1;
       if (p.kind === 0) {
         x = p.x; z = p.z;
         if (mascotMode) { x *= 0.85; z *= 0.85; }
@@ -440,10 +467,16 @@
         var lx = p.tx * G.s, lz = p.tz * G.s;
         var ax0 = G.ox + lx * G.c - lz * G.sn, az0 = lx * G.sn + lz * G.c;
         var ay0 = (p.ty + wob + Math.sin(t * 1.1 + G.ph) * 0.012) * G.s;
-        x = p.sx0 + (ax0 - p.sx0) * e;
-        y = p.sy0 + (ay0 - p.sy0) * e;
+        var bx0 = p.sx0, by0 = p.sy0;
+        if (overlay && p.ux !== undefined) {
+          // scattered gaussians float gently in place
+          // (each drift uses the other coordinate's random number, so the dots never bunch into stripes)
+          bx0 += Math.sin(t * 0.35 + p.uz * 40) * 0.05; by0 += Math.cos(t * 0.3 + p.uw * 53) * 0.04;
+        }
+        x = bx0 + (ax0 - bx0) * e;
+        y = by0 + (ay0 - by0) * e;
         z = p.sz0 + (az0 - p.sz0) * e;
-        col = -1;
+        col = -1; shrink = e;
       } else {
         var bb = p.b + t * 0.6;
         var rx = (p.R + p.r * Math.cos(bb)) * Math.cos(p.a), ry = p.r * Math.sin(bb), rz = (p.R + p.r * Math.cos(bb)) * Math.sin(p.a);
@@ -472,6 +505,14 @@
         }
         var l11 = Math.sqrt(a2), l21 = b2 / l11, l22 = Math.sqrt(Math.max(c2 - l21 * l21, 1e-4));
         it.g = [3 * l11, 3 * l21, 3 * l22];
+        if (shrink < 1 && p.ux !== undefined) {
+          // while scattered each gaussian is a small round dot (sizes vary a little), it grows back into shape on the way home
+          var r0 = 1.2 + 2.6 * ((p.uy * 7.31) % 1), w0 = shrink * shrink;
+          it.g = [it.g[0] * w0 + r0 * (1 - w0), it.g[1] * w0, it.g[2] * w0 + r0 * (1 - w0)];
+          // the cloud fades out softly at its edges instead of ending in a hard line
+          var fx = Math.min(1, p.ux * 8, (1 - p.ux) * 8), fy = Math.min(1, p.uy * 3.5, (1 - p.uy) * 3.5), fd = fx * fy;
+          it.op = p.op * (0.7 + 0.3 * shrink) * (fd + (1 - fd) * shrink);
+        }
       } else if (p.ax) {
         // project both ellipsoid axes to the screen (same rotation as the position, no translation)
         var A = p.ax, k2 = scale * persp;
@@ -539,6 +580,21 @@
 
   if (useMascot) startMascot();
   resize();
+  if (useMascot && overlay) {
+    gatherBtn = document.createElement("button");
+    gatherBtn.type = "button"; gatherBtn.className = "hero-gather";
+    canvas.parentNode.appendChild(gatherBtn); resize();
+    gatherBtn.addEventListener("click", function (e) { e.stopPropagation(); gatherAll(); });
+    if (!reduce) {
+      // first view: everything already scattered (no burst animation on load)
+      groups.forEach(function (G, gi) {
+        if (!G) return;
+        for (var n = 0; n < pts.length; n++) if (pts[n].kind === 2 && pts[n].g === gi) pts[n].delay = 0;
+        toBand(gi); G.sc = true; G.bt = 0.55;
+      });
+    }
+    setGatherLabel();
+  }
   window.addEventListener("resize", resize);
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(canvas);
