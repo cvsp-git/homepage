@@ -288,12 +288,16 @@
     }
     burstT = 0; scattered = true;
   };
-  canvas.addEventListener("pointerdown", function (e) { drag = { x: e.clientX, y: e.clientY, yaw: yaw, pitch: pitch, moved: false }; canvas.classList.add("dragging"); });
+  // with the photo carousel the canvas is drawn on top (so the burst is not hidden behind the photos)
+  // and lets clicks through; the hero listens instead and only reacts on Sanjini or the empty background
+  var overlay = canvas.parentNode.classList.contains("has-slides"), hit = overlay ? canvas.parentNode : canvas;
+  var freeSpot = function (e) { return !overlay || onMascot(e) || !(e.target.closest && e.target.closest(".hero-slides, a, button, p, h1")); };
+  hit.addEventListener("pointerdown", function (e) { if (!freeSpot(e)) return; drag = { x: e.clientX, y: e.clientY, yaw: yaw, pitch: pitch, moved: false }; canvas.classList.add("dragging"); });
   window.addEventListener("pointerup", function (e) {
     if (drag && !drag.moved && onMascot(e)) burst();
     drag = null; canvas.classList.remove("dragging");
   });
-  canvas.addEventListener("pointermove", function (e) { if (!drag) canvas.style.cursor = onMascot(e) ? "pointer" : ""; });
+  hit.addEventListener("pointermove", function (e) { if (!drag) hit.style.cursor = onMascot(e) ? "pointer" : ""; });
   window.addEventListener("pointermove", function (e) {
     if (!drag) return;
     if (Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) > 6) drag.moved = true;
