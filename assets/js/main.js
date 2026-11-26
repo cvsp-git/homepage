@@ -239,14 +239,12 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     var wide = W > 900;
     if (canvas.hasAttribute("data-mascot") && canvas.parentNode.classList.contains("has-slides")) {
-      // photo slides take the middle: Sanjini stands small in the top-right corner
-      if (W < 760) {  // phones: small, centered above the photos
-        scale = Math.min(W * 0.3, 150) / 3; cx = W * 0.5; cy = scale * 1.05 + 18;
-      } else {        // a little in from the corner so the burst stays on screen
-        scale = Math.min(W * 0.3, 260) / 3;
-        cx = W - Math.max(scale * 1.8, Math.min(W * 0.11, 200));
-        cy = H - Math.max(64, H * 0.1);
-      }
+      // Sanjini stands centred just above the photo carousel, in the room left by --mascot-room
+      var inner2 = canvas.parentNode.querySelector(".hero-inner");
+      var room = parseFloat(getComputedStyle(canvas.parentNode).getPropertyValue("--mascot-room")) || 110;
+      scale = (W < 760 ? Math.min(W * 0.3, 150) : Math.min(W * 0.3, 240)) / 3;
+      cx = W * 0.5;
+      cy = (inner2 ? inner2.offsetTop : 0) + room - 16;
       return;
     }
     if (canvas.hasAttribute("data-mascot")) {
