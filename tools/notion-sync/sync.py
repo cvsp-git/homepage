@@ -288,7 +288,30 @@ def sync_members():
             if stem not in keep and os.path.isdir(d): shutil.rmtree(d)
     state["members_fmt"] = MEMBER_FMT
     log("members: %d pages, %d re-rendered" % (len(people), changed))
-    sync_member_list(rows_b, rm, get)
+    sync_member_list(members_view_order(rows_b, rm), rm, get)
+
+
+# the MEMBERS page people look at in Notion (a linked view of LABDB_family with its own order);
+# the Members page on the site lists people in that same order
+MEMBERS_VIEW_PAGE = "33e626c9-6abc-47d6-bc2c-a5b56148e518"
+
+
+def members_view_order(rows, rm):
+    if args.dump: return rows
+    try:
+        page = notion.load_page(MEMBERS_VIEW_PAGE)
+        coll = rm["block"][FAMILY_DB].get("collection_id")
+        for b in page.get("block", {}).values():
+            if b.get("type") in ("collection_view", "collection_view_page") and b.get("view_ids"):
+                cid = b.get("collection_id") or (b.get("format") or {}).get("collection_pointer", {}).get("id")
+                if cid != coll: continue
+                ids, _ = notion.query(cid, b["view_ids"][0], b.get("space_id") or rm["block"][FAMILY_DB]["space_id"])
+                pos = {i: k for k, i in enumerate(ids)}
+                log("member order: from the MEMBERS page view (%d rows)" % len(ids))
+                return sorted(rows, key=lambda r: pos.get(r["id"], 10000))
+    except Exception as e:
+        log("member order: MEMBERS page view not readable (%s), using the database order" % e)
+    return rows
 
 
 GROUPS = [("Professor", "Professor"), ("Postdoctoral researcher", "Postdoctoral Researcher"), ("Ph.D. Course", "Ph.D. Course"),
