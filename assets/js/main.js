@@ -119,7 +119,17 @@
   /* ---------- hero: a living 4D Gaussian field ---------- */
   var canvas = document.getElementById("splat-canvas");
   if (!canvas || !canvas.getContext) return;
-  var ctx = canvas.getContext("2d");
+  // the gaussian characters are drawn with WebGL (one draw call for all of them, smooth even on laptops);
+  // without WebGL the same picture is drawn with the 2D canvas, one sprite per gaussian (slower)
+  var gl = null, glx = null;
+  if (canvas.hasAttribute("data-mascot")) {
+    try {
+      gl = canvas.getContext("webgl", { alpha: true, premultipliedAlpha: true, antialias: false, depth: false });
+      glx = gl && gl.getExtension("ANGLE_instanced_arrays");
+      if (!glx) gl = null;
+    } catch (err) { gl = null; }
+  }
+  var ctx = gl ? null : canvas.getContext("2d");
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var countEl = document.getElementById("splat-count");
   var timeEl = document.getElementById("splat-time");
@@ -193,11 +203,11 @@
   // Sanjini as a 3D gaussian cloud: points come from assets/js/mascot-data.js
   // (trained by tools/train_mascot_gaussians.py; older point formats still render)
   // characters standing in a row: Sanjini in the middle, the Sanjini Friends (assets/js/friends-data.js) beside him.
-  // ox = place along the row, s = size (guidebook proportions, a bit enlarged), ph = turn phase so they don't spin in step
+  // ox = place along the row, s = size (guidebook proportions, a bit enlarged), ph = turn offset (0 = all face the same way)
   var groups = [{ key: "CVSP_MASCOT", ox: 0, s: 1, ph: 0 },
-                { key: "CVSP_FRIEND_DAENY", ox: -0.95, s: 0.72, ph: 1.9 },
-                { key: "CVSP_FRIEND_TORY", ox: 0.86, s: 0.6, ph: -1.3 },
-                { key: "CVSP_FRIEND_BUDDY", ox: 1.42, s: 0.5, ph: 2.6 }];
+                { key: "CVSP_FRIEND_DAENY", ox: -0.95, s: 0.72, ph: 0 },
+                { key: "CVSP_FRIEND_TORY", ox: 0.86, s: 0.6, ph: 0 },
+                { key: "CVSP_FRIEND_BUDDY", ox: 1.42, s: 0.5, ph: 0 }];
   var addMascotFromData = function (m, gi) {
     if (!m || !m.data) return false;
     var bin = atob(m.data), dv = new DataView(new ArrayBuffer(bin.length));
@@ -219,7 +229,8 @@
         pts.push({
           kind: 2, g: gi, tx: gx0, ty: gy0, tz: gz0,
           sx0: (Math.random() - .5) * 2.4, sy0: Math.random() * 1.6 - .2, sz0: (Math.random() - .5) * 2.4,
-          spr: gaussSprite(dv.getUint8(o3 + 6), dv.getUint8(o3 + 7), dv.getUint8(o3 + 8)),
+          spr: gl ? null : gaussSprite(dv.getUint8(o3 + 6), dv.getUint8(o3 + 7), dv.getUint8(o3 + 8)),
+          rgb: [dv.getUint8(o3 + 6) / 255, dv.getUint8(o3 + 7) / 255, dv.getUint8(o3 + 8) / 255],
           s: 1, delay: Math.random() * .6, op: dv.getUint8(o3 + 9) / 255, M: M, ax: null
         });
       }
@@ -259,7 +270,7 @@
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     W = canvas.clientWidth; H = canvas.clientHeight;
     canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0); else gl.viewport(0, 0, canvas.width, canvas.height);
     var wide = W > 900;
     if (canvas.hasAttribute("data-mascot") && canvas.parentNode.classList.contains("has-slides")) {
       // Sanjini stands centred just above the photo carousel, in the room left by --mascot-room
@@ -350,9 +361,60 @@
   });
 
   var buf = [];
+  // ---- WebGL: every gaussian is an instanced quad; the shader draws exp(-r^2/2) out to 3 sigma, like the sprite
+  var glProg = null, glBuf = null, glData = null, glLoc = null;
+  var glInit = function () {
+    var vs = "attribute vec2 q; attribute vec2 c; attribute vec3 l; attribute vec4 col; uniform vec2 vp; varying vec2 uv; varying vec4 vc;" +
+      "void main(){ vec2 p = c + vec2(l.x*q.x, l.y*q.x + l.z*q.y); uv = q; vc = col;" +
+      " gl_Position = vec4(p.x/vp.x*2.0-1.0, 1.0-p.y/vp.y*2.0, 0.0, 1.0); }";
+    var fs = "precision mediump float; varying vec2 uv; varying vec4 vc;" +
+      "void main(){ float r2 = dot(uv,uv); if (r2 > 1.0) discard; float a = vc.a * exp(-4.5*r2); gl_FragColor = vec4(vc.rgb*a, a); }";
+    var mk = function (type, src) { var sh = gl.createShader(type); gl.shaderSource(sh, src); gl.compileShader(sh); return sh; };
+    glProg = gl.createProgram();
+    gl.attachShader(glProg, mk(gl.VERTEX_SHADER, vs)); gl.attachShader(glProg, mk(gl.FRAGMENT_SHADER, fs));
+    gl.linkProgram(glProg);
+    if (!gl.getProgramParameter(glProg, gl.LINK_STATUS)) return false;
+    gl.useProgram(glProg);
+    glLoc = { q: gl.getAttribLocation(glProg, "q"), c: gl.getAttribLocation(glProg, "c"), l: gl.getAttribLocation(glProg, "l"),
+              col: gl.getAttribLocation(glProg, "col"), vp: gl.getUniformLocation(glProg, "vp") };
+    var quad = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, quad);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(glLoc.q); gl.vertexAttribPointer(glLoc.q, 2, gl.FLOAT, false, 0, 0);
+    glBuf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, glBuf);
+    var st = 9 * 4;
+    [[glLoc.c, 2, 0], [glLoc.l, 3, 8], [glLoc.col, 4, 20]].forEach(function (a) {
+      gl.enableVertexAttribArray(a[0]); gl.vertexAttribPointer(a[0], a[1], gl.FLOAT, false, st, a[2]); glx.vertexAttribDivisorANGLE(a[0], 1);
+    });
+    gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+    return true;
+  };
+  if (gl && !glInit()) {
+    // WebGL refused the shaders: draw with the 2D canvas instead (needs a fresh canvas, a canvas keeps its first context)
+    var c2 = canvas.cloneNode(false); canvas.parentNode.replaceChild(c2, canvas); canvas = c2;
+    gl = null; ctx = canvas.getContext("2d");
+    pts.forEach(function (p) { if (p.rgb && !p.spr) p.spr = gaussSprite(p.rgb[0] * 255, p.rgb[1] * 255, p.rgb[2] * 255); });
+    resize();
+  }
+  var drawGL = function () {
+    var n = 0;
+    if (!glData || glData.length < buf.length * 9) glData = new Float32Array(buf.length * 9);
+    for (var q = 0; q < buf.length; q++) {
+      var b = buf[q];
+      if (b.k !== 2 || !b.g || b.op < 0.02) continue;
+      var o = n * 9;
+      glData[o] = b.sx; glData[o + 1] = b.sy; glData[o + 2] = b.g[0]; glData[o + 3] = b.g[1]; glData[o + 4] = b.g[2];
+      glData[o + 5] = b.rgb[0]; glData[o + 6] = b.rgb[1]; glData[o + 7] = b.rgb[2]; glData[o + 8] = b.op;
+      n++;
+    }
+    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniform2f(glLoc.vp, W, H);
+    gl.bindBuffer(gl.ARRAY_BUFFER, glBuf);
+    gl.bufferData(gl.ARRAY_BUFFER, glData.subarray(0, n * 9), gl.DYNAMIC_DRAW);
+    glx.drawArraysInstancedANGLE(gl.TRIANGLE_STRIP, 0, 4, n);
+  };
+
   var draw = function (t) {
-    ctx.clearRect(0, 0, W, H);
-    ctx.globalCompositeOperation = "lighter";
+    if (ctx) { ctx.clearRect(0, 0, W, H); ctx.globalCompositeOperation = "lighter"; }
     var cyw = Math.cos(yaw), syw = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch);
     // each character turns around its own centre (yaw + its phase); the row itself is not rotated
     for (var gq = 0; gq < groups.length; gq++) { var Gq = groups[gq]; if (Gq) { Gq.c = Math.cos(yaw + Gq.ph); Gq.sn = Math.sin(yaw + Gq.ph); } }
@@ -396,7 +458,7 @@
       var X = x * ry0 - z * rs0, Z = x * rs0 + z * ry0;
       var Y = y * cp - Z * sp, Z2 = y * sp + Z * cp;
       var persp = 2.6 / (2.6 + Z2);
-      var it = { sx: cx + X * scale * persp, sy: cy - Y * scale * persp, d: Z2, r: p.s * persp, c: col, k: p.kind, spr: p.spr, a: null, op: p.op };
+      var it = { sx: cx + X * scale * persp, sy: cy - Y * scale * persp, d: Z2, r: p.s * persp, c: col, k: p.kind, spr: p.spr, a: null, op: p.op, rgb: p.rgb };
       if (p.M) {
         // full 3D gaussian: project the covariance with the perspective jacobian (as in 3DGS)
         var Mm = p.M, fz = scale * persp, dz = 2.6 + Z2, a2 = 0.3, b2 = 0, c2 = 0.3;
@@ -421,6 +483,7 @@
     }
     // in mascot mode the field is drawn first and the mascot on top, so it stays readable
     buf.sort(function (m, n2) { if (mascotMode && (m.k === 2) !== (n2.k === 2)) return m.k === 2 ? 1 : -1; return n2.d - m.d; });
+    if (gl) { drawGL(); return; }
     for (var q = 0; q < buf.length; q++) {
       var b = buf[q];
       if (b.k === 2) {

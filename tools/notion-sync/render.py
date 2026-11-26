@@ -234,3 +234,147 @@ class Renderer:
         p = b.get("properties") or {}
         f = b.get("format") or {}
         return plain(p.get("source")) or f.get("display_source") or ""
+
+
+class HtmlRenderer(Renderer):
+    """Same blocks, written straight to HTML (no Markdown step), so the page looks like it does in Notion:
+    bold/italic runs that touch each other, stars and brackets in the text, toggles and indented lines all
+    come out exactly as typed. Used for member pages (each member decorates their own Notion page)."""
+
+    def rich(self, t):
+        out = []
+        for seg in self._merge(t):
+            txt = seg[0]
+            anns = seg[1] if len(seg) > 1 else []
+            if txt == "‣":
+                out.append(self.mention(anns)); continue
+            core = html.escape(txt).replace("\n", "<br>")
+            if not txt.strip():
+                out.append(core); continue
+            kinds = [a[0] for a in anns]
+            href = next((a[1] for a in anns if a[0] == "a"), None)
+            if "c" in kinds: core = "<code>" + core + "</code>"
+            if "b" in kinds: core = "<strong>" + core + "</strong>"
+            if "i" in kinds: core = "<em>" + core + "</em>"
+            if "s" in kinds: core = "<s>" + core + "</s>"
+            if "_" in kinds: core = "<u>" + core + "</u>"
+            if href: core = '<a href="%s">%s</a>' % (html.escape(self.fix_href(href), quote=True), core)
+            color = next((a[1] for a in anns if a[0] == "h" and isinstance(a[1], str)), None)
+            if color and color != "default":
+                core = '<span class="nc-%s">%s</span>' % (re.sub(r"[^a-z_]", "", color), core)
+            out.append(core)
+        return "".join(out)
+
+    def mention(self, anns):
+        for a in anns:
+            if a[0] == "d":
+                d = a[1]
+                return html.escape(d.get("start_date", "") + (" → " + d["end_date"] if d.get("end_date") else ""))
+            if a[0] == "p":
+                b = self.blocks.get(a[1], {})
+                title = html.escape(plain((b.get("properties") or {}).get("title"))) or "link"
+                url = self.link(a[1])
+                return '<a href="%s">%s</a>' % (url, title) if url else title
+            if a[0] == "lm":
+                m = a[1] if isinstance(a[1], dict) else {}
+                return '<a href="%s">%s</a>' % (html.escape(m.get("href", ""), quote=True), html.escape(m.get("title") or m.get("href", "")))
+        return ""
+
+    def page(self, pid):
+        text = "\n".join(self.render_list(self.children(self.blocks[pid]), 0)).strip()
+        text = re.sub(r'\n{2,}', '\n', text)
+        if "{{" in text or "{%" in text:
+            text = "{% raw %}\n" + text + "\n{% endraw %}"
+        return text
+
+    def render_list(self, bs, ind=0):
+        out, i = [], 0
+        while i < len(bs):
+            t = bs[i]["type"]
+            if t in ("bulleted_list", "numbered_list", "to_do"):
+                j = i
+                while j < len(bs) and bs[j]["type"] == t: j += 1
+                tag = "ol" if t == "numbered_list" else "ul"
+                out.append("<%s%s>" % (tag, ' class="nb-todo"' if t == "to_do" else ""))
+                for b in bs[i:j]: out += self.block(b)
+                out.append("</%s>" % tag)
+                i = j
+            else:
+                out += self.block(bs[i]); i += 1
+        return out
+
+    def block(self, b, ind=0, n=0):
+        t, p, f = b["type"], b.get("properties") or {}, b.get("format") or {}
+        title = self.rich(p.get("title"))
+        bc = re.sub(r"[^a-z_]", "", f.get("block_color") or "")
+        cls = ' class="nc-%s"' % bc if bc and bc != "default" else ""
+        kids = self.children(b)
+        sub = self.render_list(kids) if kids else []
+        if t == "text":
+            if not title.strip() and not kids: return ['<p class="nb-gap"></p>']
+            out = ["<p%s>%s</p>" % (cls, title)] if title.strip() else []
+            # Notion shows a text block's children indented under it
+            return out + (['<div class="nb-indent">'] + sub + ["</div>"] if sub else [])
+        if t in ("header", "sub_header", "sub_sub_header"):
+            lvl = {"header": 1, "sub_header": 2, "sub_sub_header": 3}[t]
+            if not title.strip(): return []
+            if f.get("toggleable"):
+                return ['<details class="nb-toggle"><summary><h%d%s>%s</h%d></summary>' % (lvl, cls, title, lvl)] + sub + ["</details>"]
+            return ["<h%d%s>%s</h%d>" % (lvl, cls, title, lvl)] + sub
+        if t in ("bulleted_list", "numbered_list"):
+            return ["<li%s>%s" % (cls, title)] + sub + ["</li>"]
+        if t == "to_do":
+            chk = "☑" if plain(p.get("checked")) == "Yes" else "☐"
+            return ["<li%s>%s %s" % (cls, chk, title)] + sub + ["</li>"]
+        if t == "quote":
+            return ["<blockquote%s>%s" % (cls, title)] + sub + ["</blockquote>"]
+        if t == "divider":
+            return ["<hr>"]
+        if t == "code":
+            code = plain(p.get("title"))
+            if OOPY_CODE.search(code): return []
+            return ["<pre><code>%s</code></pre>" % html.escape(code)]
+        if t == "callout":
+            if "oopy:slide" in plain(p.get("title")):
+                return super().block(b, 0)
+            icon = f.get("page_icon") or ""
+            icon = icon if icon and not icon.startswith(("http", "/")) else ""
+            head = ((html.escape(icon) + " ") if icon else "") + title
+            return ['<div class="callout">'] + (["<p>%s</p>" % head] if head.strip() else []) + sub + ["</div>"]
+        if t == "toggle":
+            return ['<details class="nb-toggle"><summary%s>%s</summary>' % (cls, title)] + sub + ["</details>"]
+        if t == "image":
+            src = self.media("image", self.source(b), b, "")
+            if not src: return []
+            cap = self.rich(p.get("caption"))
+            return ['<figure class="board-fig"><img src="%s" alt="" loading="lazy">%s</figure>' % (
+                src, "<figcaption>%s</figcaption>" % cap if cap.strip() else "")]
+        if t in ("bookmark", "embed", "file", "pdf"):
+            link = self.source(b) or plain(p.get("link"))
+            if not link: return []
+            if t in ("file", "pdf"):
+                src = self.media("file", link, b, "") or "https://www.notion.so/" + b["id"].replace("-", "")
+                return ['<p><a href="%s">📎 %s</a></p>' % (html.escape(src, quote=True), html.escape(plain(p.get("title")) or "file"))]
+            return ['<p><a href="%s">%s</a></p>' % (html.escape(link, quote=True), html.escape(plain(p.get("title")) or link))]
+        if t == "column_list":
+            cols = []
+            for c in kids:
+                cols += ["<div>"] + self.render_list(self.children(c)) + ["</div>"]
+            return ['<div class="board-cols">'] + cols + ["</div>"]
+        if t in ("column", "transclusion_container"):
+            return sub
+        if t == "transclusion_reference":
+            ptr = (f.get("transclusion_reference_pointer") or {}).get("id")
+            src = self.blocks.get(ptr)
+            return self.render_list(self.children(src)) if src else []
+        if t in ("page", "alias"):
+            pid = b["id"] if t == "page" else (f.get("alias_pointer") or {}).get("id")
+            url = self.link(pid) if pid else None
+            tb = self.blocks.get(pid, b)
+            name = html.escape(plain((tb.get("properties") or {}).get("title")))
+            return ['<p><a href="%s">%s</a></p>' % (url, name) if url else "<p>%s</p>" % name] if name else []
+        if t == "equation":
+            return ["<p>$$%s$$</p>" % html.escape(plain(p.get("title")))]
+        if t in ("video", "table"):
+            return [l for l in super().block(b, 0) if l.strip()]
+        return sub

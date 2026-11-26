@@ -11,7 +11,7 @@ images/gallery/board/, images/members/pages/) are overwritten on every sync.
 import argparse, datetime, json, os, re, shutil, sys, unicodedata
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import notion
-from render import Renderer, plain
+from render import Renderer, HtmlRenderer, plain
 
 BOARD_DB = "c6158afa-34c1-4fbf-bf5e-3af211773d19"    # Website CMS / LABDB_images
 FAMILY_DB = "07237418-f973-4512-b2e6-d9339488a79d"   # MEMBERS / LABDB_family
@@ -57,6 +57,12 @@ def load_page(pid, dumpname):
         notion.fill_missing(rm, want)
         kids = [c for w in want for c in (rm["block"].get(w, {}).get("content") or [])]
         notion.fill_missing(rm, kids)
+    # blocks inside closed toggles (and other deep children) are not always in the first load: fetch them too
+    for _ in range(6):
+        want = [c for v in list(rm.get("block", {}).values()) for c in (v.get("content") or [])
+                if c not in rm["block"] and v.get("type") not in ("page", "collection_view_page", "collection_view")]
+        if not want: break
+        notion.fill_missing(rm, want)
     return rm
 
 
@@ -209,6 +215,10 @@ def sync_board():
 MEMBER_URLS = {}
 
 
+# member pages are written as HTML (HtmlRenderer); bump this to re-render every member page once
+MEMBER_FMT = 2
+
+
 def sync_members():
     rows, rm = load_db(FAMILY_DB, "family")
     coll = rm["block"][FAMILY_DB]["collection_id"]
@@ -228,8 +238,8 @@ def sync_members():
     for p in people:
         prev = st.get(p["id"], {})
         slug = prev.get("slug")
-        md = os.path.join(out_dir, (slug or "_") + ".md")
-        fresh = args.full or not slug or prev.get("edited") != p["edited"] or not os.path.exists(md) or p["id"] in (args.only or "")
+        md = os.path.join(out_dir, (slug or "_") + ".html")
+        fresh = args.full or state.get("members_fmt") != MEMBER_FMT or not slug or prev.get("edited") != p["edited"] or not os.path.exists(md) or p["id"] in (args.only or "")
         if fresh:
             prm = load_page(p["id"], "family")
             if prm is None: continue
@@ -257,10 +267,10 @@ def sync_members():
             MEMBER_URLS[p["id"]] = "/members/%s/" % p["slug"]
             log("  duplicate cleanUrl /members/%s: %s -> /members/%s/" % (slug, p["name"], p["slug"]))
     for p in people:
-        md = os.path.join(out_dir, p["slug"] + ".md")
+        md = os.path.join(out_dir, p["slug"] + ".html")
         if "rm" in p:
             media = Media(p["rm"], os.path.join(img_dir, p["slug"]), "/images/members/pages/" + p["slug"])
-            body = Renderer(p["rm"], media, lambda pid: MEMBER_URLS.get(pid) or BOARD_URLS.get(pid)).page(p["id"])
+            body = HtmlRenderer(p["rm"], media, lambda pid: MEMBER_URLS.get(pid) or BOARD_URLS.get(pid)).page(p["id"])
             changed += 1; log("  rendered member", p["slug"])
             if media.failed: p["edited"] = None   # try the missing media again next run
         else:
@@ -271,10 +281,12 @@ def sync_members():
     keep = {p["slug"] for p in people}
     for k in [k for k in st if k not in {p["id"] for p in people}]: del st[k]
     for f in os.listdir(out_dir):
-        if f.endswith(".md") and f[:-3] not in keep:
-            os.remove(os.path.join(out_dir, f)); log("  removed member", f)
-            d = os.path.join(img_dir, f[:-3])
-            if os.path.isdir(d): shutil.rmtree(d)
+        stem, ext = os.path.splitext(f)
+        if ext == ".md" or (ext == ".html" and stem not in keep):   # .md = the old Markdown format
+            os.remove(os.path.join(out_dir, f)); log("  removed member file", f)
+            d = os.path.join(img_dir, stem)
+            if stem not in keep and os.path.isdir(d): shutil.rmtree(d)
+    state["members_fmt"] = MEMBER_FMT
     log("members: %d pages, %d re-rendered" % (len(people), changed))
     sync_member_list(rows_b, rm, get)
 

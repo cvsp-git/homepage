@@ -669,3 +669,16 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 }
 @media (min-width: 761px) and (max-width: 1100px) { .feed-grid { --fg: 18px; --fc: 10px; } }
 .bcard-tag { white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+/* member pages are rendered straight from Notion (HtmlRenderer): Notion-style toggles, lists and indents */
+.member-body details.nb-toggle { padding: 0; border: 0; border-radius: 0; }
+.member-body details.nb-toggle > summary { list-style: none; display: flex; align-items: baseline; gap: 6px; padding: 2px 0; font-weight: 600; }
+.member-body details.nb-toggle > summary::-webkit-details-marker { display: none; }
+.member-body details.nb-toggle > summary::before { content: "▶"; font-size: .7em; color: var(--muted, #888); transition: transform .15s; display: inline-block; }
+.member-body details.nb-toggle[open] > summary::before { transform: rotate(90deg); }
+.member-body details.nb-toggle > summary > h1, .member-body details.nb-toggle > summary > h2, .member-body details.nb-toggle > summary > h3 { display: inline; margin: 0; }
+.member-body details.nb-toggle > :not(summary) { margin-left: 1.3em; }
+.member-body .nb-indent { margin-left: 1.5em; display: grid; gap: 4px; }
+.member-body ul, .member-body ol { margin: 0; padding-left: 1.5em; line-height: 1.6; }
+.member-body ul { list-style: disc; } .member-body ol { list-style: decimal; }
+.member-body ul.nb-todo { list-style: none; padding-left: .2em; }
+.member-body li > ul, .member-body li > ol { margin-top: 2px; }
