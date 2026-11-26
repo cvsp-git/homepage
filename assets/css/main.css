@@ -629,7 +629,7 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 .has-slides .hero-title { font-size: clamp(1.5rem, 2.8vw, 2.5rem); }
 .has-slides .hero-lede { font-size: clamp(.9rem, 1.1vw, 1rem); max-width: 70ch; }
 /* carousel: the current photo in the middle, the previous and next ones peeking in at the sides */
-.hero-slides { --sw: min(1100px, 66vw, calc((100svh - 68px - 230px) * 1.5)); --gap: clamp(12px, 1.8vw, 28px); position: relative; pointer-events: auto; justify-self: start; width: 100vw; margin-left: calc(50% - 50vw); height: calc(var(--sw) / 1.5); overflow: hidden; }
+.hero-slides { --sw: min(980px, 60vw, calc((100svh - 68px - 340px) * 1.5)); --gap: clamp(12px, 1.8vw, 28px); position: relative; pointer-events: auto; justify-self: start; width: 100vw; margin-left: calc(50% - 50vw); height: calc(var(--sw) / 1.5); overflow: hidden; }
 .hero-slides-track { display: flex; gap: var(--gap); height: 100%; will-change: transform; }
 .hero-slides-track.is-moving { transition: transform .8s cubic-bezier(.65, 0, .35, 1); }
 .hero-slides-track img { flex: 0 0 var(--sw); width: var(--sw); height: 100%; object-fit: cover; border-radius: 16px; box-shadow: 0 18px 50px rgba(3, 12, 28, .35); opacity: .75; transition: opacity .8s; }
@@ -642,7 +642,9 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 .hero-slides-dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.55); cursor: pointer; transition: width .3s; }
 .hero-slides-dots button.is-on { background: #fff; width: 22px; border-radius: 4px; }
 @media (max-width: 759px) { .hero-slides { --sw: 82vw; --gap: 10px; } .hero-slides-arrow { display: none; } .has-slides .hero-inner { padding-top: 76px; } }
-.has-slides .hero-slides + .eyebrow { margin-top: 6px; }
+.has-slides .hero-slides + .eyebrow { margin-top: clamp(14px, 3vh, 30px); }
+.has-slides .hero-title { margin-top: clamp(2px, .8vh, 8px); }
+.has-slides .hero-lede { margin-top: clamp(4px, 1.2vh, 12px); line-height: 1.75; }
 /* Latest News previews: show the whole picture (posters, letters), not a crop */
 .feed-news .bcard-img img { object-fit: contain; background: #fff; }
 /* member pages: the profile box looks like the Notion callout (white, thin border) */
