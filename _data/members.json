@@ -113,16 +113,16 @@
     "page": "/members/woohyeong/"
    },
    {
-    "name": "Sang Yeon Yoon",
-    "name_ko": "윤상연",
-    "photo": "sang-yeon-yoon.jpg",
-    "page": "/members/sang-yeon/"
-   },
-   {
     "name": "Junsu Kim",
     "name_ko": "김준수",
     "photo": "junsu-kim.jpg",
     "page": "/members/junsu/"
+   },
+   {
+    "name": "Sang Yeon Yoon",
+    "name_ko": "윤상연",
+    "photo": "sang-yeon-yoon.jpg",
+    "page": "/members/sang-yeon/"
    }
   ]
  },
