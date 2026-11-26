@@ -265,7 +265,8 @@
       // Sanjini stands centred just above the photo carousel, in the room left by --mascot-room
       var inner2 = canvas.parentNode.querySelector(".hero-inner");
       var room = parseFloat(getComputedStyle(canvas.parentNode).getPropertyValue("--mascot-room")) || 110;
-      scale = (W < 760 ? Math.min(W * 0.3, 150) : Math.min(W * 0.3, 240)) / 3;
+      // the row of characters fills most of the band above the photos
+      scale = (W < 760 ? Math.min(W * 0.3, 150) : Math.min(W * 0.3, 240)) / 2;
       cx = W * 0.5;
       // the burst is a round cloud that fills the empty band above the photos (photoTop = top edge of the photos)
       var photoTop = (inner2 ? inner2.offsetTop : 0) + room;
