@@ -244,7 +244,7 @@
       var room = parseFloat(getComputedStyle(canvas.parentNode).getPropertyValue("--mascot-room")) || 110;
       scale = (W < 760 ? Math.min(W * 0.3, 150) : Math.min(W * 0.3, 240)) / 3;
       cx = W * 0.5;
-      cy = (inner2 ? inner2.offsetTop : 0) + room - 16;
+      cy = (inner2 ? inner2.offsetTop : 0) + room - 30;
       return;
     }
     if (canvas.hasAttribute("data-mascot")) {
@@ -283,7 +283,13 @@
       // fly outward from the body center, with some randomness
       var dx = p.tx + (Math.random() - .5) * .3, dy = p.ty - 0.45 + (Math.random() - .5) * .3, dz = p.tz + (Math.random() - .5) * .3;
       var len = Math.sqrt(dx * dx + dy * dy + dz * dz) || 1, dist = 0.3 + Math.random() * 0.5;
-      p.sx0 = p.tx + dx / len * dist; p.sy0 = p.ty + dy / len * dist; p.sz0 = p.tz + dz / len * dist;
+      if (overlay) {
+        // above the photos: spread sideways in a flat ellipse so the burst stays off the pictures
+        var ang = Math.random() * Math.PI * 2, rad = Math.sqrt(Math.random());
+        p.sx0 = Math.cos(ang) * rad * 1.7; p.sy0 = 0.42 + Math.sin(ang) * rad * 0.26; p.sz0 = (Math.random() - .5) * 0.15;
+      } else {
+        p.sx0 = p.tx + dx / len * dist; p.sy0 = p.ty + dy / len * dist; p.sz0 = p.tz + dz / len * dist;
+      }
       p.delay = Math.random() * .35;
     }
     burstT = 0; scattered = true;
@@ -411,7 +417,7 @@
     if (visible && !document.hidden) {
       simT += dt;
       if (burstT >= 0) burstT = Math.min(0.55, burstT + dt);
-      if (mascotMode) { assembleT += dt; if (!drag) yaw += (Math.sin(simT * 0.4) * 0.75 - yaw) * Math.min(1, dt * 1.5); }
+      if (mascotMode) { assembleT += dt; if (!drag) yaw += ((overlay && scattered ? 0 : Math.sin(simT * 0.4) * 0.75) - yaw) * Math.min(1, dt * (overlay && scattered ? 6 : 1.5)); }
       else if (!drag) yaw += spin * dt;
       draw(simT);
     }
