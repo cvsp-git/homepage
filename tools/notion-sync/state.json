@@ -999,11 +999,11 @@
  },
  "members": {
   "08cf6152-1849-44d3-a03b-be69a67927d2": {
-   "edited": 1792217121893,
+   "edited": 1795714352070,
    "slug": "taehoon"
   },
   "147860f6-624f-474a-9a73-1ea6481bd30b": {
-   "edited": 1795699262766,
+   "edited": 1795714384050,
    "slug": "minsoo"
   },
   "1bfabcc9-0e34-8019-ba8a-fb7bdbc986af": {
@@ -1011,11 +1011,11 @@
    "slug": "shj"
   },
   "22538a5b-26fc-43d4-9123-48d7eb847e16": {
-   "edited": 1795699262766,
+   "edited": 1795714402109,
    "slug": "sohyeong"
   },
   "229abcc9-0e34-8073-9a1c-d2274794dd8f": {
-   "edited": 1795699262766,
+   "edited": 1795714406386,
    "slug": "jihoon"
   },
   "24fabcc9-0e34-80fd-a4b2-e0e4c22ea1d6": {
@@ -1023,19 +1023,19 @@
    "slug": "parksunchan"
   },
   "277abcc9-0e34-8035-832c-e91219639564": {
-   "edited": 1795699262766,
+   "edited": 1795714413429,
    "slug": "beomgwon"
   },
   "2a7abcc9-0e34-807c-a4f9-efa1b621ae3e": {
-   "edited": 1795699262766,
+   "edited": 1795714417532,
    "slug": "woohyeong"
   },
   "2e0abcc9-0e34-8050-8d9c-e13946fa1617": {
-   "edited": 1795699223886,
+   "edited": 1795714422098,
    "slug": "sang-yeon"
   },
   "302abcc9-0e34-8017-9fca-f0c9f941f931": {
-   "edited": 1795699262766,
+   "edited": 1795714426904,
    "slug": "junsu"
   },
   "3b0abcc9-0e34-802e-b45c-defcf4649263": {
@@ -1055,15 +1055,15 @@
    "slug": "inhwan"
   },
   "a2054fca-652f-4c79-9683-ea2ca3b6a7d1": {
-   "edited": 1795699312078,
+   "edited": 1795714331926,
    "slug": "daun"
   },
   "a5cd7f2f-263a-43a7-9e58-bf4741bce393": {
-   "edited": 1795699262766,
+   "edited": 1795714360160,
    "slug": "changwoo"
   },
   "ca43074d-47c9-43c3-8399-8bbfd5251144": {
-   "edited": 1795699262766,
+   "edited": 1795714389820,
    "slug": "sohyeon"
   },
   "d8929ead-a6cc-430d-b9ae-700fa0859124": {
@@ -1075,5 +1075,5 @@
    "slug": "hyeong-ju"
   }
  },
- "members_fmt": 2
+ "members_fmt": 4
 }
