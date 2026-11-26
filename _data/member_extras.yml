@@ -14,14 +14,13 @@
       role: Principal Investigator
       photo: "kyeongbo-kong.jpg"
       email: kbkong@pusan.ac.kr
-      interests: [3D/4D World Modeling, Vision-Language Models, Embodied AI]
 
 - group: Postdoctoral Researcher
   people:
     - name: Sunchan Park
       name_ko: 박순찬
       photo: "sunchan-park.jpg"
-      interests: [Multi-Modality, Audio-Visual Learning]
+      interests: [Multimodal AI, Audio-Visual Perception]
 
 - group: Ph.D. Course
   people:

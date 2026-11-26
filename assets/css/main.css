@@ -686,3 +686,5 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 @media (min-width: 760px) { .member-body .nb-cols { grid-template-columns: var(--cols); } }
 .member-body .callout .board-fig img { max-width: 100%; width: 100%; }
 .member-body [class*="_background"] { padding: 0; }
+/* every member page: the profile column (photo + e-mail box) is as wide as on the professor's page */
+@media (min-width: 760px) { .member-body > .board-cols:first-child { grid-template-columns: 0.3125fr 0.6875fr; } }
