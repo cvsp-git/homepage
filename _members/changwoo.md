@@ -1,6 +1,6 @@
 ---
 title: "Changwoo Baek"
-status: "Integrated B.S./M.S. Course"
+status: "M.S. Course"
 notion_id: a5cd7f2f-263a-43a7-9e58-bf4741bce393
 ---
 <div class="board-cols">

@@ -54,10 +54,20 @@
   "group": "M.S. Course",
   "people": [
    {
-    "name": "Daun Jeong",
-    "name_ko": "정다운",
-    "photo": "daun-jeong.jpg",
-    "page": "/members/daun/"
+    "name": "Changwoo Baek",
+    "name_ko": "백창우",
+    "photo": "changwoo-baek.jpg",
+    "honors": [
+     "NRF Master's Research Grant",
+     "LG Electronics Industry–Academia Scholarship"
+    ],
+    "page": "/members/changwoo/"
+   },
+   {
+    "name": "Sang Yeon Yoon",
+    "name_ko": "윤상연",
+    "photo": "sang-yeon-yoon.jpg",
+    "page": "/members/sang-yeon/"
    },
    {
     "name": "In-Hwan Jin",
@@ -73,30 +83,6 @@
     "name_ko": "김태훈",
     "photo": "taehoon-kim.jpg",
     "page": "/members/taehoon/"
-   }
-  ]
- },
- {
-  "group": "Integrated B.S.–M.S. Course",
-  "people": [
-   {
-    "name": "Changwoo Baek",
-    "name_ko": "백창우",
-    "photo": "changwoo-baek.jpg",
-    "honors": [
-     "NRF Master's Research Grant",
-     "LG Electronics Industry–Academia Scholarship"
-    ],
-    "page": "/members/changwoo/"
-   },
-   {
-    "name": "HyeongJu Mun",
-    "name_ko": "문형주",
-    "photo": "hyeongju-mun.jpg",
-    "honors": [
-     "NRF Master's Research Grant"
-    ],
-    "page": "/members/hyeong-ju/"
    },
    {
     "name": "MinSoo Woo",
@@ -149,12 +135,6 @@
   "group": "Research Intern",
   "people": [
    {
-    "name": "Sang Yeon Yoon",
-    "name_ko": "윤상연",
-    "photo": "sang-yeon-yoon.jpg",
-    "page": "/members/sang-yeon/"
-   },
-   {
     "name": "JongWon Choi",
     "name_ko": "최종원",
     "photo": "jongwon-choi.jpg",
@@ -171,6 +151,15 @@
     "photo": "haesoo-choo.jpg",
     "note": "NAVER WEBTOON",
     "page": "/members/haesoo-choo/"
+   },
+   {
+    "name": "HyeongJu Mun",
+    "name_ko": "문형주",
+    "photo": "hyeongju-mun.jpg",
+    "honors": [
+     "NRF Master's Research Grant"
+    ],
+    "page": "/members/hyeong-ju/"
    }
   ]
  }

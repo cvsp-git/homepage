@@ -1,6 +1,6 @@
 ---
 title: "Sohyeong Kim"
-status: "Integrated B.S./M.S. Course"
+status: "M.S. Course"
 notion_id: 22538a5b-26fc-43d4-9123-48d7eb847e16
 ---
 <div class="board-cols">

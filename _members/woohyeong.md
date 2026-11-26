@@ -1,6 +1,6 @@
 ---
 title: "Woohyeong Kim"
-status: "Integrated B.S./M.S. Course"
+status: "M.S. Course"
 notion_id: 2a7abcc9-0e34-807c-a4f9-efa1b621ae3e
 ---
 <div class="board-cols">

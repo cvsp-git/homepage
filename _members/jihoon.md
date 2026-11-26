@@ -1,6 +1,6 @@
 ---
 title: "Jihoon Choi"
-status: "Integrated B.S./M.S. Course"
+status: "M.S. Course"
 notion_id: 229abcc9-0e34-8073-9a1c-d2274794dd8f
 ---
 <div class="board-cols">

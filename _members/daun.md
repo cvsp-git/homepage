@@ -1,6 +1,6 @@
 ---
 title: "Daun Jeong"
-status: "M.S. Course"
+status: "M.S. Researcher"
 notion_id: a2054fca-652f-4c79-9683-ea2ca3b6a7d1
 ---
 <div class="board-cols">

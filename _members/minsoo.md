@@ -1,6 +1,6 @@
 ---
 title: "MinSoo Woo"
-status: "Integrated B.S./M.S. Course"
+status: "M.S. Course"
 notion_id: 147860f6-624f-474a-9a73-1ea6481bd30b
 ---
 <div class="board-cols">

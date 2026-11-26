@@ -1,6 +1,6 @@
 ---
 title: "Beomkwon Cho"
-status: "Integrated B.S./M.S. Course"
+status: "M.S. Course"
 notion_id: 277abcc9-0e34-8035-832c-e91219639564
 ---
 <div class="board-cols">

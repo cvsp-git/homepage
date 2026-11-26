@@ -1,6 +1,6 @@
 ---
 title: "HyeongJu Mun"
-status: "Integrated B.S./M.S. Course"
+status: "Alumni"
 notion_id: db8f37b9-45ee-4cc5-add7-f91371266544
 ---
 <div class="board-cols">

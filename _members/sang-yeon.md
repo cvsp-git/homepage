@@ -1,6 +1,6 @@
 ---
 title: "Sang Yeon Yoon"
-status: "Research Intern"
+status: "M.S. Course"
 notion_id: 2e0abcc9-0e34-8050-8d9c-e13946fa1617
 ---
 <div class="board-cols">

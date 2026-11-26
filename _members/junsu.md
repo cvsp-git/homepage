@@ -1,6 +1,6 @@
 ---
 title: "Junsu Kim"
-status: "Integrated B.S./M.S. Course"
+status: "M.S. Course"
 notion_id: 302abcc9-0e34-8017-9fca-f0c9f941f931
 ---
 <div class="board-cols">
