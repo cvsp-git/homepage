@@ -245,7 +245,7 @@
       } else {        // a little in from the corner so the burst stays on screen
         scale = Math.min(W * 0.3, 260) / 3;
         cx = W - Math.max(scale * 1.8, Math.min(W * 0.11, 200));
-        cy = H - Math.max(24, H * 0.04);
+        cy = H - Math.max(64, H * 0.1);
       }
       return;
     }
