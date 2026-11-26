@@ -417,7 +417,11 @@
     if (visible && !document.hidden) {
       simT += dt;
       if (burstT >= 0) burstT = Math.min(0.55, burstT + dt);
-      if (mascotMode) { assembleT += dt; if (!drag) yaw += ((overlay && scattered ? 0 : Math.sin(simT * 0.4) * 0.75) - yaw) * Math.min(1, dt * (overlay && scattered ? 6 : 1.5)); }
+      if (mascotMode) { assembleT += dt; if (!drag) {
+        // Sanjini turns all the way round (360°); while burst above the photos it faces front so the ellipse stays flat
+        if (overlay && scattered) { var front = Math.round(yaw / Math.PI) * Math.PI; yaw += (front - yaw) * Math.min(1, dt * 6); }
+        else yaw += 0.6 * dt;
+      } }
       else if (!drag) yaw += spin * dt;
       draw(simT);
     }
