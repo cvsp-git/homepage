@@ -69,16 +69,27 @@
   /* ---------- gallery ---------- */
   var gf = document.querySelector("[data-gallery-filter]");
   if (gf) {
-    var gchips = gf.querySelectorAll(".chip");
+    /* 갤러리: 처음에는 STEP장만 보이고 "Load more"를 누를 때마다 STEP장씩 더 나옵니다 (분류를 바꾸면 다시 처음부터). */
+    var STEP = 12, gcat = "all", shown = STEP;
+    var gchips = gf.querySelectorAll(".chip"), gcards = document.querySelectorAll(".board-grid .bcard");
+    var gmore = document.querySelector("[data-gallery-more]");
+    var gapply = function () {
+      var k = 0;
+      gcards.forEach(function (t) {
+        var match = gcat === "all" || t.classList.contains("bcard-" + gcat);
+        t.hidden = !(match && k++ < shown);
+      });
+      if (gmore) gmore.hidden = k <= shown;
+    };
     gchips.forEach(function (c) {
       c.addEventListener("click", function () {
-        var cat = c.dataset.cat;
+        gcat = c.dataset.cat; shown = STEP;
         gchips.forEach(function (x) { x.classList.toggle("is-on", x === c); });
-        document.querySelectorAll(".board-grid .bcard").forEach(function (t) {
-          t.hidden = !(cat === "all" || t.classList.contains("bcard-" + cat));
-        });
+        gapply();
       });
     });
+    if (gmore) gmore.addEventListener("click", function () { shown += STEP; gapply(); });
+    gapply();
     /* gallery.html#conference 처럼 주소 끝에 분류를 붙이면 그 분류만 보여 줍니다. */
     var h = (location.hash || "").slice(1).toLowerCase();
     gchips.forEach(function (c) { if (h && c.dataset.cat === h) c.click(); });

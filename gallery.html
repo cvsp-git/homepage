@@ -21,8 +21,9 @@ slug: gallery
       <button type="button" class="chip" data-cat="life">Lab Life</button>
     </div>
     <div class="board-grid">
-      {% for b in gal %}{% include board-card.html b=b %}{% endfor %}
-      {% for b in life %}{% include board-card.html b=b %}{% endfor %}
+      {% for b in gal %}{% include board-card.html b=b more=true %}{% endfor %}
+      {% for b in life %}{% include board-card.html b=b more=true %}{% endfor %}
     </div>
+    <div class="feed-more-row"><button type="button" class="feed-more" data-gallery-more hidden>Load more</button></div>
   </div>
 </section>
