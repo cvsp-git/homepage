@@ -292,8 +292,9 @@ def sync_members():
 
 
 GROUPS = [("Professor", "Professor"), ("Postdoctoral researcher", "Postdoctoral Researcher"), ("Ph.D. Course", "Ph.D. Course"),
-          ("M.S. Course", "M.S. Course"), ("Integrated B.S./M.S. Course", "Integrated B.S.–M.S. Course"),
+          ("M.S. Course", "M.S. Course"), ("M.S. Researcher", "M.S. Researcher"), ("Integrated B.S./M.S. Course", "Integrated B.S.–M.S. Course"),
           ("Research Intern", "Research Intern"), ("Alumni", "Alumni")]
+HIDDEN_STATUS = {"", "n/a", "alumni_old"}   # statuses that are not shown on the Members page
 
 
 def sync_member_list(rows, rm, get):
@@ -312,7 +313,9 @@ def sync_member_list(rows, rm, get):
         if not b.get("alive", True) or plain(get(b, "id_hidden")) == "Yes": continue
         status = plain(get(b, "status")).strip()
         g = next((label for key, label in GROUPS if key.lower() == status.lower()), None)
-        if not g: continue
+        if not g:
+            if status.lower() in HIDDEN_STATUS: continue
+            g = status   # a new status added in Notion gets its own group (shown before Alumni)
         name = N(plain(get(b, "name")))
         x = dict(extras.get(name.lower(), {}))
         x.pop("group", None)
@@ -333,8 +336,10 @@ def sync_member_list(rows, rm, get):
                     out = fetch(att[0], b["id"], b.get("space_id"), os.path.join(photo_dir, slug), first_frame=True)
                     if out: fn = os.path.basename(out); state.setdefault("member_photos", {})[slug] = att[0]
                 if fn: person["photo"] = "notion/" + fn; keep_photos.add(fn)
-        groups.setdefault(g, []).append((order.get(name.lower(), 1000 + n), person))
-    out = [{"group": label, "people": [p for _, p in sorted(groups[label], key=lambda t: t[0])]} for _, label in GROUPS if label in groups]
+        groups.setdefault(g, []).append((n, person))  # same order as the Notion MEMBERS table
+    labels = [label for _, label in GROUPS]
+    labels[-1:-1] = sorted(g for g in groups if g not in labels)
+    out = [{"group": label, "people": [p for _, p in sorted(groups[label], key=lambda t: t[0])]} for label in labels if label in groups]
     for f in os.listdir(photo_dir):
         if f not in keep_photos and not args.dump: os.remove(os.path.join(photo_dir, f))
     if sum(len(g["people"]) for g in out) >= 3:

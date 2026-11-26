@@ -70,7 +70,7 @@
   var gf = document.querySelector("[data-gallery-filter]");
   if (gf) {
     /* 갤러리: 처음에는 STEP장만 보이고 "Load more"를 누를 때마다 STEP장씩 더 나옵니다 (분류를 바꾸면 다시 처음부터). */
-    var STEP = 12, gcat = "all", shown = STEP;
+    var STEP = 12, gcat = "gallery", shown = STEP;
     var gchips = gf.querySelectorAll(".chip"), gcards = document.querySelectorAll(".board-grid .bcard");
     var gmore = document.querySelector("[data-gallery-more]");
     var gapply = function () {

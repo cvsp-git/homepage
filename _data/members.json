@@ -32,38 +32,22 @@
   "group": "Ph.D. Course",
   "people": [
    {
-    "name": "JiAn Yang",
-    "name_ko": "양지안",
-    "photo": "jian-yang.jpg",
-    "page": "/members/jay/"
-   },
-   {
     "name": "Seong-Hun Jeong",
     "name_ko": "정성훈",
     "photo": "seong-hun-jeong.jpg",
     "page": "/members/shj/"
+   },
+   {
+    "name": "JiAn Yang",
+    "name_ko": "양지안",
+    "photo": "jian-yang.jpg",
+    "page": "/members/jay/"
    }
   ]
  },
  {
   "group": "M.S. Course",
   "people": [
-   {
-    "name": "Changwoo Baek",
-    "name_ko": "백창우",
-    "photo": "changwoo-baek.jpg",
-    "honors": [
-     "NRF Master's Research Grant",
-     "LG Electronics Industry–Academia Scholarship"
-    ],
-    "page": "/members/changwoo/"
-   },
-   {
-    "name": "Sang Yeon Yoon",
-    "name_ko": "윤상연",
-    "photo": "sang-yeon-yoon.jpg",
-    "page": "/members/sang-yeon/"
-   },
    {
     "name": "In-Hwan Jin",
     "name_ko": "진인환",
@@ -78,6 +62,16 @@
     "name_ko": "김태훈",
     "photo": "taehoon-kim.jpg",
     "page": "/members/taehoon/"
+   },
+   {
+    "name": "Changwoo Baek",
+    "name_ko": "백창우",
+    "photo": "changwoo-baek.jpg",
+    "honors": [
+     "NRF Master's Research Grant",
+     "LG Electronics Industry–Academia Scholarship"
+    ],
+    "page": "/members/changwoo/"
    },
    {
     "name": "MinSoo Woo",
@@ -119,10 +113,27 @@
     "page": "/members/woohyeong/"
    },
    {
+    "name": "Sang Yeon Yoon",
+    "name_ko": "윤상연",
+    "photo": "sang-yeon-yoon.jpg",
+    "page": "/members/sang-yeon/"
+   },
+   {
     "name": "Junsu Kim",
     "name_ko": "김준수",
     "photo": "junsu-kim.jpg",
     "page": "/members/junsu/"
+   }
+  ]
+ },
+ {
+  "group": "M.S. Researcher",
+  "people": [
+   {
+    "name": "Daun Jeong",
+    "name_ko": "정다운",
+    "photo": "daun-jeong.jpg",
+    "page": "/members/daun/"
    }
   ]
  },
@@ -141,13 +152,6 @@
   "group": "Alumni",
   "people": [
    {
-    "name": "Haesoo Choo",
-    "name_ko": "추해수",
-    "photo": "haesoo-choo.jpg",
-    "note": "NAVER WEBTOON",
-    "page": "/members/haesoo-choo/"
-   },
-   {
     "name": "HyeongJu Mun",
     "name_ko": "문형주",
     "photo": "hyeongju-mun.jpg",
@@ -155,6 +159,13 @@
      "NRF Master's Research Grant"
     ],
     "page": "/members/hyeong-ju/"
+   },
+   {
+    "name": "Haesoo Choo",
+    "name_ko": "추해수",
+    "photo": "haesoo-choo.jpg",
+    "note": "NAVER WEBTOON",
+    "page": "/members/haesoo-choo/"
    }
   ]
  }
