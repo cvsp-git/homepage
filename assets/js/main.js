@@ -192,8 +192,13 @@
   };
   // Sanjini as a 3D gaussian cloud: points come from assets/js/mascot-data.js
   // (trained by tools/train_mascot_gaussians.py; older point formats still render)
-  var addMascotFromData = function () {
-    var m = window.CVSP_MASCOT;
+  // characters standing in a row: Sanjini in the middle, the Sanjini Friends (assets/js/friends-data.js) beside him.
+  // ox = place along the row, s = size (guidebook proportions, a bit enlarged), ph = turn phase so they don't spin in step
+  var groups = [{ key: "CVSP_MASCOT", ox: 0, s: 1, ph: 0 },
+                { key: "CVSP_FRIEND_DAENY", ox: -0.95, s: 0.72, ph: 1.9 },
+                { key: "CVSP_FRIEND_TORY", ox: 0.86, s: 0.6, ph: -1.3 },
+                { key: "CVSP_FRIEND_BUDDY", ox: 1.42, s: 0.5, ph: 2.6 }];
+  var addMascotFromData = function (m, gi) {
     if (!m || !m.data) return false;
     var bin = atob(m.data), dv = new DataView(new ArrayBuffer(bin.length));
     for (var q = 0; q < bin.length; q++) dv.setUint8(q, bin.charCodeAt(q));
@@ -212,7 +217,7 @@
         for (var r3 = 0; r3 < 3; r3++) for (var c3 = 0; c3 < 3; c3++) M.push(R[r3 * 3 + c3] * sc[c3]);
         var gx0 = dv.getInt16(o3, true) / 10000, gy0 = dv.getInt16(o3 + 2, true) / 10000, gz0 = dv.getInt16(o3 + 4, true) / 10000;
         pts.push({
-          kind: 2, tx: gx0, ty: gy0, tz: gz0,
+          kind: 2, g: gi, tx: gx0, ty: gy0, tz: gz0,
           sx0: (Math.random() - .5) * 2.4, sy0: Math.random() * 1.6 - .2, sz0: (Math.random() - .5) * 2.4,
           spr: gaussSprite(dv.getUint8(o3 + 6), dv.getUint8(o3 + 7), dv.getUint8(o3 + 8)),
           s: 1, delay: Math.random() * .6, op: dv.getUint8(o3 + 9) / 255, M: M, ax: null
@@ -225,7 +230,7 @@
       var o = k * stride;
       var tx = dv.getInt16(o, true) / 10000, ty = dv.getInt16(o + 2, true) / 10000, tz = -dv.getInt16(o + 4, true) / 10000; // +z is away from the camera
       pts.push({
-        kind: 2, tx: tx, ty: ty, tz: tz,
+        kind: 2, g: gi, tx: tx, ty: ty, tz: tz,
         sx0: (Math.random() - .5) * 2.4, sy0: Math.random() * 1.6 - .2, sz0: (Math.random() - .5) * 2.4,
         spr: spriteFor(dv.getUint8(o + 6), dv.getUint8(o + 7), dv.getUint8(o + 8)),
         s: (thin > 1 ? 1.35 : 1) * (.95 + Math.random() * .1), delay: Math.random() * .6, op: 0.78 + Math.random() * 0.2,
@@ -236,9 +241,16 @@
     }
     return m.n > 0;
   };
-  var startMascot = function () { mascotMode = true; assembleT = reduce ? 10 : 0; yaw = 0; pitch = 0.2; };
+  var startMascot = function () {
+    mascotMode = true; assembleT = reduce ? 10 : 0; yaw = 0; pitch = 0.2;
+    groups.forEach(function (G) { if (G) { G.at = assembleT; G.bt = -1; G.sc = false; } });
+  };
   var setCount = function () { if (countEl) countEl.textContent = pts.length.toLocaleString("en-US"); };
-  var useMascot = !!mascotSrc && addMascotFromData();
+  var useMascot = !!mascotSrc && addMascotFromData(window.CVSP_MASCOT, 0);
+  // the friends only join when Sanjini stands above the photo carousel
+  if (useMascot && canvas.parentNode.classList.contains("has-slides")) groups.forEach(function (G, gi) { if (gi) G.on = addMascotFromData(window[G.key], gi); });
+  groups[0].on = useMascot;
+  groups = groups.map(function (G) { return G.on ? G : null; });
   if (!useMascot) addTorus();
   setCount();
 
@@ -277,36 +289,47 @@
 
   var yaw = 0.6, pitch = 0.42, drag = null, spin = 0.12;
   // click (or tap) on the mascot: the gaussians burst apart and fly back
-  var burstT = -1, scattered = false;
-  var onMascot = function (e) {
-    if (!mascotMode) return false;
+  var scattered = false;   // true while any character is burst (kept for older code paths)
+  // which character is under the pointer (index into groups) or -1
+  var mascotAt = function (e) {
+    if (!mascotMode) return -1;
     var r = canvas.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
-    return Math.abs(mx - cx) < scale * 0.45 && my > cy - scale * 1.0 && my < cy + scale * 0.05;
+    for (var gi = 0; gi < groups.length; gi++) {
+      var G = groups[gi]; if (!G) continue;
+      var gx = cx + G.ox * scale, hw = scale * 0.45 * G.s, top = cy - scale * 1.0 * G.s;
+      if (G.sc) { hw = burstR * scale; top = cy - (burstY + burstR) * scale; }
+      if (Math.abs(mx - gx) < hw && my > top && my < cy + scale * 0.05) return gi;
+    }
+    return -1;
   };
-  var burst = function () {
-    if (burstT >= 0 && burstT < 0.55) return;
-    if (scattered) {
-      // second click: gather back into Sanjini
-      for (var k = 0; k < pts.length; k++) if (pts[k].kind === 2) pts[k].delay = Math.random() * .25;
-      scattered = false; assembleT = 0; burstT = -1;
-      return;
-    }
-    for (var n = 0; n < pts.length; n++) {
-      var p = pts[n];
-      if (p.kind !== 2) continue;
-      // fly outward from the body center, with some randomness
-      var dx = p.tx + (Math.random() - .5) * .3, dy = p.ty - 0.45 + (Math.random() - .5) * .3, dz = p.tz + (Math.random() - .5) * .3;
-      var len = Math.sqrt(dx * dx + dy * dy + dz * dz) || 1, dist = 0.3 + Math.random() * 0.5;
-      if (overlay) {
-        // round cloud: denser in the middle, thinning out toward the edge, never past the band above the photos
-        var ang = Math.random() * Math.PI * 2, rr = burstR * Math.pow(Math.random(), 0.7);
-        p.sx0 = Math.cos(ang) * rr; p.sy0 = burstY + Math.sin(ang) * rr; p.sz0 = (Math.random() - .5) * 0.1;
-      } else {
-        p.sx0 = p.tx + dx / len * dist; p.sy0 = p.ty + dy / len * dist; p.sz0 = p.tz + dz / len * dist;
+  var onMascot = function (e) { return mascotAt(e) >= 0; };
+  // click a character: its gaussians burst into a round cloud around it; click again and it gathers back
+  var burst = function (gi) {
+    var G = groups[gi]; if (!G) return;
+    if (G.bt >= 0 && G.bt < 0.55) return;
+    if (G.sc) {
+      for (var k = 0; k < pts.length; k++) if (pts[k].kind === 2 && pts[k].g === gi) pts[k].delay = Math.random() * .25;
+      G.sc = false; G.at = 0; G.bt = -1;
+    } else {
+      var R = burstR * (0.55 + 0.45 * G.s);
+      for (var n = 0; n < pts.length; n++) {
+        var p = pts[n];
+        if (p.kind !== 2 || p.g !== gi) continue;
+        if (overlay) {
+          // round cloud: denser in the middle, thinning out toward the edge, never past the band above the photos
+          var ang = Math.random() * Math.PI * 2, rr = R * Math.pow(Math.random(), 0.7);
+          p.sx0 = G.ox + Math.cos(ang) * rr; p.sy0 = burstY + Math.sin(ang) * rr; p.sz0 = (Math.random() - .5) * 0.1;
+        } else {
+          // fly outward from the body center, with some randomness
+          var dx = p.tx + (Math.random() - .5) * .3, dy = p.ty - 0.45 + (Math.random() - .5) * .3, dz = p.tz + (Math.random() - .5) * .3;
+          var len = Math.sqrt(dx * dx + dy * dy + dz * dz) || 1, dist = 0.3 + Math.random() * 0.5;
+          p.sx0 = p.tx + dx / len * dist; p.sy0 = p.ty + dy / len * dist; p.sz0 = p.tz + dz / len * dist;
+        }
+        p.delay = Math.random() * .35;
       }
-      p.delay = Math.random() * .35;
+      G.bt = 0; G.sc = true;
     }
-    burstT = 0; scattered = true;
+    scattered = groups.some(function (H) { return H && H.sc; });
   };
   // with the photo carousel the canvas is drawn on top (so the burst is not hidden behind the photos)
   // and lets clicks through; the hero listens instead and only reacts on Sanjini or the empty background
@@ -314,7 +337,7 @@
   var freeSpot = function (e) { return !overlay || onMascot(e) || !(e.target.closest && e.target.closest(".hero-slides, a, button, p, h1")); };
   hit.addEventListener("pointerdown", function (e) { if (!freeSpot(e)) return; drag = { x: e.clientX, y: e.clientY, yaw: yaw, pitch: pitch, moved: false }; canvas.classList.add("dragging"); });
   window.addEventListener("pointerup", function (e) {
-    if (drag && !drag.moved && onMascot(e)) burst();
+    if (drag && !drag.moved) { var gi = mascotAt(e); if (gi >= 0) burst(gi); }
     drag = null; canvas.classList.remove("dragging");
   });
   hit.addEventListener("pointermove", function (e) { if (!drag) hit.style.cursor = onMascot(e) ? "pointer" : ""; });
@@ -330,6 +353,8 @@
     ctx.clearRect(0, 0, W, H);
     ctx.globalCompositeOperation = "lighter";
     var cyw = Math.cos(yaw), syw = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch);
+    // each character turns around its own centre (yaw + its phase); the row itself is not rotated
+    for (var gq = 0; gq < groups.length; gq++) { var Gq = groups[gq]; if (Gq) { Gq.c = Math.cos(yaw + Gq.ph); Gq.sn = Math.sin(yaw + Gq.ph); } }
     buf.length = 0;
     for (var n = 0; n < pts.length; n++) {
       var p = pts[n], x, y, z, col;
@@ -339,18 +364,22 @@
         y = Math.sin(x * 3.1 + t * 0.9) * Math.cos(z * 2.6 - t * 0.7) * 0.12 + Math.sin((x + z) * 5 + t * 1.6) * 0.025;
         col = y > 0.06 ? 1 : (y > -0.02 ? 2 : 0);
       } else if (p.kind === 2) {
-        var e;
-        if (scattered) {
+        var e, G = groups[p.g];
+        if (G.sc) {
           // burst phase: from the shape out to the scattered positions, then stay there
-          var u2 = Math.min(1, burstT / 0.55); e = 1 - (1 - Math.pow(1 - u2, 3));
+          var u2 = Math.min(1, G.bt / 0.55); e = 1 - (1 - Math.pow(1 - u2, 3));
         } else {
-          e = Math.min(1, Math.max(0, (assembleT - p.delay) / 1.8));
+          e = Math.min(1, Math.max(0, (G.at - p.delay) / 1.8));
         }
         e = 1 - Math.pow(1 - e, 3);
         var wob = Math.sin(t * 1.4 + p.tx * 6) * 0.004;
-        x = p.sx0 + (p.tx - p.sx0) * e;
-        y = p.sy0 + (p.ty + wob + Math.sin(t * 1.1) * 0.012 - p.sy0) * e;
-        z = p.sz0 + (p.tz - p.sz0) * e;
+        // assembled place: the character's own turn and size, then its spot in the row
+        var lx = p.tx * G.s, lz = p.tz * G.s;
+        var ax0 = G.ox + lx * G.c - lz * G.sn, az0 = lx * G.sn + lz * G.c;
+        var ay0 = (p.ty + wob + Math.sin(t * 1.1 + G.ph) * 0.012) * G.s;
+        x = p.sx0 + (ax0 - p.sx0) * e;
+        y = p.sy0 + (ay0 - p.sy0) * e;
+        z = p.sz0 + (az0 - p.sz0) * e;
         col = -1;
       } else {
         var bb = p.b + t * 0.6;
@@ -361,17 +390,19 @@
         x = rx; y = y2 + 0.52 + Math.sin(t * 0.8) * 0.04; z = z2;
         col = p.c;
       }
-      // rotate yaw (around y), then pitch (around x)
-      var X = x * cyw - z * syw, Z = x * syw + z * cyw;
+      // rotate yaw (around y), then pitch (around x); characters are already turned (see above)
+      var ry0 = p.kind === 2 ? 1 : cyw, rs0 = p.kind === 2 ? 0 : syw;
+      var X = x * ry0 - z * rs0, Z = x * rs0 + z * ry0;
       var Y = y * cp - Z * sp, Z2 = y * sp + Z * cp;
       var persp = 2.6 / (2.6 + Z2);
       var it = { sx: cx + X * scale * persp, sy: cy - Y * scale * persp, d: Z2, r: p.s * persp, c: col, k: p.kind, spr: p.spr, a: null, op: p.op };
       if (p.M) {
         // full 3D gaussian: project the covariance with the perspective jacobian (as in 3DGS)
         var Mm = p.M, fz = scale * persp, dz = 2.6 + Z2, a2 = 0.3, b2 = 0, c2 = 0.3;
+        var Gm = groups[p.g], gc = Gm.c * Gm.s, gs = Gm.sn * Gm.s, gsz = Gm.s;
         for (var ci = 0; ci < 3; ci++) {
-          var vx = Mm[ci], vy = Mm[3 + ci], vz = Mm[6 + ci];
-          var rx = vx * cyw - vz * syw, rzt = vx * syw + vz * cyw;
+          var vx = Mm[ci], vy = Mm[3 + ci] * gsz, vz = Mm[6 + ci];
+          var rx = vx * gc - vz * gs, rzt = vx * gs + vz * gc;
           var ry = vy * cp - rzt * sp, rz = vy * sp + rzt * cp;
           var ux = fz * (rx - X * rz / dz), uy = -fz * (ry - Y * rz / dz);
           a2 += ux * ux; b2 += ux * uy; c2 += uy * uy;
@@ -430,12 +461,12 @@
     var dt = Math.min(0.05, (now - last) / 1000); last = now;
     if (visible && !document.hidden) {
       simT += dt;
-      if (burstT >= 0) burstT = Math.min(0.55, burstT + dt);
-      if (mascotMode) { assembleT += dt; if (!drag) {
-        // Sanjini turns all the way round (360°); while burst above the photos it faces front so the ellipse stays flat
-        if (overlay && scattered) { var front = Math.round(yaw / Math.PI) * Math.PI; yaw += (front - yaw) * Math.min(1, dt * 6); }
-        else yaw += 0.6 * dt;
-      } }
+      if (mascotMode) {
+        assembleT += dt;
+        groups.forEach(function (G) { if (!G) return; G.at += dt; if (G.bt >= 0) G.bt = Math.min(0.55, G.bt + dt); });
+        // the characters keep turning all the way round (360°)
+        if (!drag) yaw += 0.6 * dt;
+      }
       else if (!drag) yaw += spin * dt;
       draw(simT);
     }
