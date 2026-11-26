@@ -216,7 +216,7 @@ MEMBER_URLS = {}
 
 
 # member pages are written as HTML (HtmlRenderer); bump this to re-render every member page once
-MEMBER_FMT = 3
+MEMBER_FMT = 4
 
 
 def sync_members():

@@ -59,9 +59,9 @@ class Renderer:
             if "s" in kinds: core = "~~" + core + "~~"
             if "_" in kinds: core = "<u>" + core + "</u>"
             if href: core = "[%s](%s)" % (core, self.fix_href(href))
-            color = next((a[1] for a in anns if a[0] == "h" and isinstance(a[1], str)), None)
-            if color and color != "default":
-                core = '<span class="nc-%s">%s</span>' % (re.sub(r"[^a-z_]", "", color), core)
+            colors = [c for c in (ncolor(a[1]) for a in anns if a[0] == "h" and isinstance(a[1], str)) if c]
+            if colors:
+                core = '<span class="%s">%s</span>' % (" ".join("nc-" + c for c in dict.fromkeys(colors)), core)
             s = lead + core + trail
             out.append(s)
         return "".join(out)
@@ -265,9 +265,10 @@ class HtmlRenderer(Renderer):
             if "s" in kinds: core = "<s>" + core + "</s>"
             if "_" in kinds: core = "<u>" + core + "</u>"
             if href: core = '<a href="%s">%s</a>' % (html.escape(self.fix_href(href), quote=True), core)
-            color = ncolor(next((a[1] for a in anns if a[0] == "h" and isinstance(a[1], str)), None))
-            if color:
-                core = '<span class="nc-%s">%s</span>' % (color, core)
+            # Notion can stack a text colour and a background colour on the same run: keep both
+            colors = [c for c in (ncolor(a[1]) for a in anns if a[0] == "h" and isinstance(a[1], str)) if c]
+            if colors:
+                core = '<span class="%s">%s</span>' % (" ".join("nc-" + c for c in dict.fromkeys(colors)), core)
             out.append(core)
         return "".join(out)
 
