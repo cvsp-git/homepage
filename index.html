@@ -18,7 +18,7 @@ slug: index
     <h1 id="hero-title" class="hero-title">Computer Vision &amp; Signal Processing Lab</h1>
     <p class="hero-lede">{% if home.lede and home.lede != "" %}{{ home.lede }}{% else %}We build spatial multimodal AI that understands, generates, and interacts with the physical world, from 4D scene reconstruction to robots that reason about the space around them.{% endif %}</p>
     {% unless home.slides and home.slides.size > 0 %}<div class="hero-actions">
-      <a class="btn btn-ghost" href="{{ '/join.html' | relative_url }}">Join the lab</a>
+      <a class="btn btn-ghost" href="{{ '/join' | relative_url }}">Join the lab</a>
     </div>{% endunless %}
   </div>
 </section>
@@ -28,7 +28,7 @@ slug: index
     <div class="research-main">
       <header class="research-head">
         <h2 id="research-title">Our research focuses on:</h2>
-        <a class="pill-btn" href="{{ '/publications.html' | relative_url }}">Explore Our Research <span aria-hidden="true">→</span></a>
+        <a class="pill-btn" href="{{ '/publications' | relative_url }}">Explore Our Research <span aria-hidden="true">→</span></a>
       </header>
       {% if site.research_overview and site.research_overview != "" %}
       <figure class="research-overview">
@@ -46,7 +46,7 @@ slug: index
     <aside class="recruit-card" aria-labelledby="recruit-title">
       <h2 id="recruit-title">We are recruiting</h2>
       <p>{{ site.data.home.recruiting | default: site.recruiting }}</p>
-      <a class="pill-btn pill-outline" href="{{ '/join.html' | relative_url }}">Join Us!</a>
+      <a class="pill-btn pill-outline" href="{{ '/join' | relative_url }}">Join Us!</a>
     </aside>
   </div>
 </section>
@@ -82,9 +82,9 @@ slug: index
 
 <section class="section home-feed" aria-label="Latest news, gallery and lab life">
   <div class="wrap wide feed-grid">
-    {% include board-feed.html kind="news" cols=3 title="Latest News" all="/news.html" %}
-    {% include board-feed.html kind="gallery" cols=2 title="Gallery" all="/gallery.html#gallery" %}
-    {% include board-feed.html kind="life" cols=1 title="LAB Life" all="/gallery.html#life" %}
+    {% include board-feed.html kind="news" cols=3 title="Latest News" all="/news" %}
+    {% include board-feed.html kind="gallery" cols=2 title="Gallery" all="/gallery#gallery" %}
+    {% include board-feed.html kind="life" cols=1 title="LAB Life" all="/gallery#life" %}
   </div>
   <div class="wrap wide feed-more-row"><button type="button" class="feed-more" data-feed-more-all>Load more</button></div>
 </section>
