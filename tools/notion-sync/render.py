@@ -236,6 +236,12 @@ class Renderer:
         return plain(p.get("source")) or f.get("display_source") or ""
 
 
+def ncolor(c):
+    c = re.sub(r"[^a-z_]", "", c or "")
+    if not c or c.startswith("default"): return ""
+    return c.replace("teal", "green")
+
+
 class HtmlRenderer(Renderer):
     """Same blocks, written straight to HTML (no Markdown step), so the page looks like it does in Notion:
     bold/italic runs that touch each other, stars and brackets in the text, toggles and indented lines all
@@ -259,9 +265,9 @@ class HtmlRenderer(Renderer):
             if "s" in kinds: core = "<s>" + core + "</s>"
             if "_" in kinds: core = "<u>" + core + "</u>"
             if href: core = '<a href="%s">%s</a>' % (html.escape(self.fix_href(href), quote=True), core)
-            color = next((a[1] for a in anns if a[0] == "h" and isinstance(a[1], str)), None)
-            if color and color != "default":
-                core = '<span class="nc-%s">%s</span>' % (re.sub(r"[^a-z_]", "", color), core)
+            color = ncolor(next((a[1] for a in anns if a[0] == "h" and isinstance(a[1], str)), None))
+            if color:
+                core = '<span class="nc-%s">%s</span>' % (color, core)
             out.append(core)
         return "".join(out)
 
@@ -306,8 +312,8 @@ class HtmlRenderer(Renderer):
     def block(self, b, ind=0, n=0):
         t, p, f = b["type"], b.get("properties") or {}, b.get("format") or {}
         title = self.rich(p.get("title"))
-        bc = re.sub(r"[^a-z_]", "", f.get("block_color") or "")
-        cls = ' class="nc-%s"' % bc if bc and bc != "default" else ""
+        bc = ncolor(f.get("block_color"))
+        cls = ' class="nc-%s"' % bc if bc else ""
         kids = self.children(b)
         sub = self.render_list(kids) if kids else []
         if t == "text":
@@ -358,8 +364,12 @@ class HtmlRenderer(Renderer):
             return ['<p><a href="%s">%s</a></p>' % (html.escape(link, quote=True), html.escape(plain(p.get("title")) or link))]
         if t == "column_list":
             cols = []
+            ratios = [((c.get("format") or {}).get("column_ratio") or 0) for c in kids]
             for c in kids:
                 cols += ["<div>"] + self.render_list(self.children(c)) + ["</div>"]
+            if kids and all(r > 0 for r in ratios):
+                tpl = " ".join("%.4ffr" % r for r in ratios)
+                return ['<div class="board-cols nb-cols" style="--cols:%s">' % tpl] + cols + ["</div>"]
             return ['<div class="board-cols">'] + cols + ["</div>"]
         if t in ("column", "transclusion_container"):
             return sub

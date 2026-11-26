@@ -682,3 +682,7 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 .member-body ul { list-style: disc; } .member-body ol { list-style: decimal; }
 .member-body ul.nb-todo { list-style: none; padding-left: .2em; }
 .member-body li > ul, .member-body li > ol { margin-top: 2px; }
+/* member pages: Notion column widths, profile photo fills its (narrow) callout, inline highlights add no width */
+@media (min-width: 760px) { .member-body .nb-cols { grid-template-columns: var(--cols); } }
+.member-body .callout .board-fig img { max-width: 100%; width: 100%; }
+.member-body [class*="_background"] { padding: 0; }
