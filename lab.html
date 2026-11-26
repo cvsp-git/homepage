@@ -1,57 +1,12 @@
 ---
-layout: default
-title: Resources
-slug: lab
+layout: null
+permalink: /lab.html
+sitemap: false
 ---
-{% assign lab = site.data.lab %}
-<section class="page-head">
-  <div class="wrap">
-    <p class="eyebrow">Resources</p>
-    <h1>Infrastructure, seminars &amp; courses</h1>
-    <nav class="year-jump mono" aria-label="Sections"><a href="#infrastructure">Infrastructure</a><a href="#seminar">Seminar</a><a href="#course">Course</a></nav>
-  </div>
-</section>
-
-<section class="section" id="infrastructure">
-  <div class="wrap">
-    <header class="group-head"><h2>Computing resources</h2></header>
-    <dl class="big-stats">
-      {% for c in lab.compute %}<div><dt>{{ c.label }}</dt><dd>{{ c.value }}</dd></div>{% endfor %}
-    </dl>
-    <header class="group-head"><h2>Robotics platforms</h2><span class="mono count">{{ lab.robots.size }}</span></header>
-    <ul class="robot-grid">
-      {% for r in lab.robots %}
-      <li class="robot">
-        {% if r.image != "" %}<img src="{{ '/images/infra/' | append: r.image | relative_url }}" alt="{{ r.name }}" loading="lazy">{% else %}<span class="robot-ph" aria-hidden="true"></span>{% endif %}
-        <p class="mono small">{{ r.category }} · ×{{ r.count }}</p>
-        <h3>{{ r.name }}</h3>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-</section>
-
-<section class="section section-alt" id="seminar">
-  <div class="wrap narrow">
-    <header class="group-head"><h2>Seminar</h2><span class="mono count">{{ lab.seminars.size }}</span></header>
-    <ul class="row-list">
-      {% for s in lab.seminars %}
-      <li><a href="{% if s.link contains '://' %}{{ s.link }}{% else %}{{ s.link | relative_url }}{% endif %}"><span>{{ s.title }}</span><time class="mono">{{ s.date }}</time></a></li>
-      {% endfor %}
-    </ul>
-  </div>
-</section>
-
-<section class="section" id="course">
-  <div class="wrap narrow">
-    <header class="group-head"><h2>Courses taught</h2></header>
-    <div class="course-list">
-      {% for t in lab.courses %}
-      <div class="course-term">
-        <h3 class="mono">{{ t.term }}</h3>
-        <ul>{% for c in t.list %}{% assign code = c | split: ' ' | first %}<li><span class="mono code">{{ code }}</span>{{ c | remove_first: code | strip }}</li>{% endfor %}</ul>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Resources</title>
+<link rel="canonical" href="{{ '/resources' | relative_url }}">
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url={{ '/resources' | relative_url }}">
+<script>location.replace("{{ '/resources' | relative_url }}" + location.hash);</script>
+</head><body><a href="{{ '/resources' | relative_url }}">Resources</a></body></html>
