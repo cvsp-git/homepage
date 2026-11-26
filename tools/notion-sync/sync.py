@@ -535,6 +535,22 @@ def text(b):
     return re.sub(r"\s+", " ", plain((b.get("properties") or {}).get("title"))).strip()
 
 
+def trim_white_edges(path):
+    """Cut plain white strips off the edges of a slide photo (e.g. a white line left under an exported image)."""
+    from PIL import Image, ImageStat
+    im = Image.open(path).convert("RGB"); w, h = im.size
+    def white(box):
+        st = ImageStat.Stat(im.crop(box).convert("L"))
+        return st.mean[0] > 240 and st.stddev[0] < 12
+    t, b, l, r = 0, h, 0, w
+    while b - t > h * 0.8 and white((0, b - 1, w, b)): b -= 1
+    while b - t > h * 0.8 and white((0, t, w, t + 1)): t += 1
+    while r - l > w * 0.8 and white((r - 1, 0, r, h)): r -= 1
+    while r - l > w * 0.8 and white((l, 0, l + 1, h)): l += 1
+    if (t, b, l, r) != (0, h, 0, w):
+        im.crop((l, t, r, b)).save(path, quality=85)
+
+
 def home_slides(rm):
     """Photos of the 'oopy:slide' callout on the main page -> images/home/slides/, in Notion order."""
     B = rm.get("block", {})
@@ -559,6 +575,7 @@ def home_slides(rm):
             if not got:
                 if path: out.append(path); keep.add(b["id"])
                 continue
+            if got.lower().endswith((".jpg", ".jpeg", ".png")): trim_white_edges(got)
             path = os.path.relpath(got, ROOT).replace(os.sep, "/")
             cache[b["id"]] = {"key": key, "path": path}
         out.append(path); keep.add(b["id"])
