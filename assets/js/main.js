@@ -285,8 +285,13 @@
       var len = Math.sqrt(dx * dx + dy * dy + dz * dz) || 1, dist = 0.3 + Math.random() * 0.5;
       if (overlay) {
         // above the photos: spread sideways in a flat ellipse so the burst stays off the pictures
-        var ang = Math.random() * Math.PI * 2, rad = Math.sqrt(Math.random());
-        p.sx0 = Math.cos(ang) * rad * 1.7; p.sy0 = 0.42 + Math.sin(ang) * rad * 0.26; p.sz0 = (Math.random() - .5) * 0.15;
+        // loose spray: each piece flies left or right by a random, long-tailed distance and lands at a random height
+        var g = function () { return (Math.random() + Math.random() + Math.random() - 1.5) / 1.5; };
+        var side = (dx >= 0 ? 1 : -1) * (Math.random() < .2 ? -1 : 1);
+        var far = Math.min(6, 0.15 + -Math.log(1 - Math.random() * .99) * 1.3);
+        p.sx0 = p.tx * .5 + side * far + g() * .3;
+        p.sy0 = Math.max(-0.2, Math.min(1.0, 0.42 + g() * 0.6 + (p.ty - 0.45) * .3));
+        p.sz0 = g() * 0.3;
       } else {
         p.sx0 = p.tx + dx / len * dist; p.sy0 = p.ty + dy / len * dist; p.sz0 = p.tz + dz / len * dist;
       }
