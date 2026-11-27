@@ -37,10 +37,12 @@ yellow = (rgb[:, 0] > .75) & (rgb[:, 1] > .6) & (rgb[:, 2] < .55)
 rim = (np.abs(xyz[:, 2]) < 0.045) & (rgb.mean(1) > body.mean() + 0.12) & ~yellow
 rgb[rim] = body * 0.85
 P = torch.tensor(xyz); C = torch.tensor(rgb)
-GT_R = 9 / 640                        # world radius of one round splat in the old renderer
+import os
+RES = float(os.environ.get("RES", "1"))        # training resolution multiplier (2 = sharper, ~4x slower)
+GT_R = 9 / 640 / float(os.environ.get("GT_SHARP", "1"))   # world radius of one GT splat (smaller = crisper edges; cloud spacing is ~0.0047)
 
 # ---------------------------------------------------------------- camera (same math as main.js)
-IMG_W, IMG_H, F = 128, 160, 150.0     # ~ the on-screen size at devicePixelRatio 1.3
+IMG_W, IMG_H, F = int(128 * RES), int(160 * RES), 150.0 * RES     # RES=1: ~ the on-screen size at devicePixelRatio 1.3
 def view_mats(yaw, pitch):
     cy_, sy_, cp, sp = math.cos(yaw), math.sin(yaw), math.cos(pitch), math.sin(pitch)
     # X = x cy - z sy ; Zt = x sy + z cy ; Y = y cp - Zt sp ; Z2 = y sp + Zt cp
@@ -198,7 +200,8 @@ for it in range(1, ITERS + 1):
     if it == 1600 or it == ITERS:
         # keep the most useful gaussians (opacity x size), up to N_OUT
         with torch.no_grad():
-            imp = torch.sigmoid(params["lop"]) * torch.exp(params["lscale"]).prod(1) ** (1 / 3)
+            # rank by opacity: keeps small opaque detail (eyes, mouths); faint wide gaussians (edge haze) go first
+            imp = torch.sigmoid(params["lop"]) * (torch.exp(params["lscale"]).prod(1) ** (1 / 3)) ** float(os.environ.get("IMP_SIZE_POW", "1"))
         keep = torch.zeros(len(imp), dtype=torch.bool)
         keep[torch.argsort(imp, descending=True)[:N_OUT]] = True
         keep &= torch.sigmoid(params["lop"]).detach() > 0.03
