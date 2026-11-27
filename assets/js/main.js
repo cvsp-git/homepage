@@ -589,16 +589,7 @@
 
   if (useMascot) startMascot();
   resize();
-  if (useMascot && overlay) {
-    if (!reduce) {
-      // first view: everything already scattered (no burst animation on load)
-      groups.forEach(function (G, gi) {
-        if (!G) return;
-        for (var n = 0; n < pts.length; n++) if (pts[n].kind === 2 && pts[n].g === gi) pts[n].delay = 0;
-        toBand(gi); G.sc = true; G.bt = 0.55;
-      });
-    }
-  }
+
   window.addEventListener("resize", resize);
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(canvas);
