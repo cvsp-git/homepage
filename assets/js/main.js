@@ -279,11 +279,14 @@
       var inner2 = canvas.parentNode.querySelector(".hero-inner");
       var room = parseFloat(getComputedStyle(canvas.parentNode).getPropertyValue("--mascot-room")) || 110;
       // the row of characters fills most of the band above the photos
-      scale = (W < 760 ? Math.min(W * 0.3, 150) : Math.min(W * 0.3, 240)) / 2;
+      scale = (W < 760 ? Math.min(W * 0.3, 150) : Math.min(W * 0.3, 240)) / 1.7;
       cx = W * 0.5;
       // the burst is a round cloud that fills the empty band above the photos (photoTop = top edge of the photos)
       var photoTop = (inner2 ? inner2.offsetTop : 0) + room;
-      cy = photoTop * 0.5 + scale * 0.5;
+      var slidesEl = canvas.parentNode.querySelector(".hero-slides");
+      if (slidesEl) { var st0 = slidesEl.getBoundingClientRect().top - canvas.getBoundingClientRect().top; if (st0 > 40) photoTop = st0; }
+      // feet just above the photos (a little lower than the middle of the band)
+      cy = Math.max(photoTop * 0.5 + scale * 0.5, photoTop - 16);
       burstR = Math.max(30, photoTop * 0.5 - 8) / scale; burstY = (cy - photoTop * 0.5) / scale;
       bandTop = 12; bandBot = Math.max(bandTop + 40, photoTop - 12);
       // phones: the button sits in the top corner so it never covers the characters
