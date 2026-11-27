@@ -205,10 +205,11 @@
   // characters standing in a row: Sanjini in the middle, the Sanjini Friends (assets/js/friends-data.js) beside him.
   // ox = place along the row, s = size (guidebook proportions, a bit enlarged), ph = turn offset (0 = all face the same way)
   // evenly spaced: the same gap (0.6) between every two characters, the row centred on the page
-  var groups = [{ key: "CVSP_MASCOT", ox: -0.47, s: 1, ph: 0 },
-                { key: "CVSP_FRIEND_DAENY", ox: -1.85, s: 0.72, ph: 0 },
-                { key: "CVSP_FRIEND_TORY", ox: 0.85, s: 0.6, ph: 0 },
-                { key: "CVSP_FRIEND_BUDDY", ox: 1.94, s: 0.5, ph: 0 }];
+  // name = the small label under each character
+  var groups = [{ key: "CVSP_MASCOT", ox: -0.47, s: 1, ph: 0, name: "Sanjini" },
+                { key: "CVSP_FRIEND_DAENY", ox: -1.85, s: 0.72, ph: 0, name: "Daeny" },
+                { key: "CVSP_FRIEND_TORY", ox: 0.85, s: 0.6, ph: 0, name: "Tory" },
+                { key: "CVSP_FRIEND_BUDDY", ox: 1.94, s: 0.5, ph: 0, name: "Buddy" }];
   var addMascotFromData = function (m, gi) {
     if (!m || !m.data) return false;
     var bin = atob(m.data), dv = new DataView(new ArrayBuffer(bin.length));
@@ -286,7 +287,20 @@
       var slidesEl = canvas.parentNode.querySelector(".hero-slides");
       if (slidesEl) { var st0 = slidesEl.getBoundingClientRect().top - canvas.getBoundingClientRect().top; if (st0 > 40) photoTop = st0; }
       // feet just above the photos (a little lower than the middle of the band)
-      cy = Math.max(photoTop * 0.5 + scale * 0.5, photoTop - 16);
+      // the lowest point (feet) of each character, so each name sits right under its own feet
+      groups.forEach(function (G, gi) {
+        if (!G || G.foot !== undefined) return;
+        var lo = 1e9; for (var n = 0; n < pts.length; n++) if (pts[n].kind === 2 && pts[n].g === gi && pts[n].ty < lo) lo = pts[n].ty;
+        G.foot = lo < 1e8 ? lo * G.s : 0;
+      });
+      var labelH = W < 760 ? 13 : 15, footMin = 0;
+      groups.forEach(function (G) { if (G && G.foot > footMin) footMin = G.foot; });
+      // feet just above the names, the names just above the photos
+      cy = photoTop - 6 - labelH - 3 + Math.min.apply(null, groups.filter(Boolean).map(function (G) { return G.foot; })) * scale;
+      groups.forEach(function (G) {
+        if (!G || !G.label) return;
+        G.label.style.left = (cx + G.ox * scale) + "px"; G.label.style.top = (photoTop - 6 - labelH) + "px";   // all names on one line
+      });
       burstR = Math.max(30, photoTop * 0.5 - 8) / scale; burstY = (cy - photoTop * 0.5) / scale;
       bandTop = 12; bandBot = Math.max(bandTop + 40, photoTop - 12);
       // phones: the button sits in the top corner so it never covers the characters
@@ -361,6 +375,7 @@
     }
     scattered = groups.some(function (H) { return H && H.sc; });
     if (gatherBtn) setGatherLabel();
+    groups.forEach(function (H) { if (H && H.label) H.label.classList.toggle("is-away", !!H.sc); });
   };
   // Sanjini & Friends start scattered over the blue background; the button gathers them (and scatters them again)
   var gatherBtn = null;
@@ -591,6 +606,11 @@
   };
 
   if (useMascot) startMascot();
+  if (useMascot && overlay) groups.forEach(function (G) {
+    if (!G) return;
+    G.label = document.createElement("span"); G.label.className = "hero-name"; G.label.textContent = G.name;
+    G.label.setAttribute("aria-hidden", "true"); canvas.parentNode.appendChild(G.label);
+  });
   resize();
 
   window.addEventListener("resize", resize);

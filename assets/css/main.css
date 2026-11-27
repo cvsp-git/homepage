@@ -688,3 +688,7 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 .member-body [class*="_background"] { padding: 0; }
 /* every member page: the profile column (photo + e-mail box) is as wide as on the professor's page */
 @media (min-width: 760px) { .member-body > .board-cols:first-child { grid-template-columns: 0.3125fr 0.6875fr; } }
+/* hero: small name under each of Sanjini & Friends (hidden while that character is scattered) */
+.hero-name { position: absolute; z-index: 4; transform: translateX(-50%); pointer-events: none; font-size: .72rem; font-weight: 600; letter-spacing: .04em; color: rgba(255,255,255,.82); white-space: nowrap; transition: opacity .4s; }
+.hero-name.is-away { opacity: 0; }
+@media (max-width: 759px) { .hero-name { font-size: .62rem; } }
