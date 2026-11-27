@@ -82,20 +82,32 @@ def add(x, y, z, c, f=1.0):
     c = np.clip(np.asarray(c) * f, 0, 255)
     pts.append((x, y, z, int(c[0]), int(c[1]), int(c[2])))
 
+# the side wall: along the outline the surface rises steeply, so close the gap between the front and
+# the back with a full wall up to the depth found a few pixels inward (otherwise the sides look hollow)
+zwall = ndimage.maximum_filter(zpx, size=9) * mask
+# the wall takes its colour from a few pixels inward (the outline itself is a dark line / light fringe)
+inner_px = dist >= 4
+_, (iy, ix) = ndimage.distance_transform_edt(~inner_px, return_indices=True)
 cx = W / 2
 for y in range(H):
     for x in range(W):
         if not mask[y, x]:
             continue
         X = (x - cx) * unit; Y = 0.1 + (H - y) * unit; Z = zpx[y, x] * unit
-        front = (y % 2 == 0 and x % 2 == 0) or edge[y, x]
-        if front:
+        bc = back[y, x] if back is not None else (rgb[y, x] if feet[y, x] else body)
+        near_edge = dist[y, x] < 6          # steep part of the surface: sample every pixel there
+        grid = y % 2 == 0 and x % 2 == 0
+        if grid or edge[y, x] or near_edge:
             add(X, Y, Z, rgb[y, x], shade[y, x])
-        if y % 2 == 0 and x % 2 == 0:  # back side
-            add(X, Y, -Z, back[y, x] if back is not None else (rgb[y, x] if feet[y, x] else body), 0.7 * shade[y, x])
-        if dist[y, x] < 1.5 and (x + y) % 2 == 0:  # side wall along the outline
-            for t in (-0.6, -0.2, 0.2, 0.6):
-                add(X, Y, Z * t, back[y, x] if back is not None else (rgb[y, x] if feet[y, x] else body), 0.75)
+        if grid or near_edge:  # back side
+            add(X, Y, -Z, bc, 0.7 * shade[y, x])
+        if dist[y, x] < 1.5:  # side wall along the outline, about one pixel apart in depth
+            zw = max(zwall[y, x], zpx[y, x])
+            k = max(2, int(np.ceil(2 * zw / 1.2)))
+            for t in np.linspace(-1, 1, k + 1)[1:-1]:
+                yy, xx = iy[y, x], ix[y, x]
+                wb = back[yy, xx] if back is not None else (rgb[y, x] if feet[y, x] else body)
+                add(X, Y, zw * t * unit, rgb[yy, xx] if t > 0 else wb, 0.82 if t > 0 else 0.72)
 
 arr = np.array(pts, dtype=np.float64)
 xyz = np.round(arr[:, :3] * 10000).astype("<i2")
