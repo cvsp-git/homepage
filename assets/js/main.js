@@ -518,7 +518,9 @@
       var X = x * ry0 - z * rs0, Z = x * rs0 + z * ry0;
       var Y = y * cp - Z * sp, Z2 = y * sp + Z * cp;
       var persp = 2.6 / (2.6 + Z2);
-      var it = { sx: cx + X * scale * persp, sy: cy - Y * scale * persp, d: Z2, r: p.s * persp, c: col, k: p.kind, spr: p.spr, a: null, op: p.op, rgb: p.rgb };
+      // each character gets its own camera straight in front of it (so the ones at the sides show their faces, not their flanks)
+      var oxg = p.kind === 2 ? groups[p.g].ox * (e === undefined ? 1 : e) : 0, Xl = X - oxg;
+      var it = { sx: cx + (oxg + Xl * persp) * scale, sy: cy - Y * scale * persp, d: Z2, r: p.s * persp, c: col, k: p.kind, spr: p.spr, a: null, op: p.op, rgb: p.rgb };
       if (p.M) {
         // full 3D gaussian: project the covariance with the perspective jacobian (as in 3DGS)
         var Mm = p.M, fz = scale * persp, dz = 2.6 + Z2, a2 = 0.3, b2 = 0, c2 = 0.3;
@@ -527,7 +529,7 @@
           var vx = Mm[ci], vy = Mm[3 + ci] * gsz, vz = Mm[6 + ci];
           var rx = vx * gc - vz * gs, rzt = vx * gs + vz * gc;
           var ry = vy * cp - rzt * sp, rz = vy * sp + rzt * cp;
-          var ux = fz * (rx - X * rz / dz), uy = -fz * (ry - Y * rz / dz);
+          var ux = fz * (rx - Xl * rz / dz), uy = -fz * (ry - Y * rz / dz);
           a2 += ux * ux; b2 += ux * uy; c2 += uy * uy;
         }
         var l11 = Math.sqrt(a2), l21 = b2 / l11, l22 = Math.sqrt(Math.max(c2 - l21 * l21, 1e-4));
