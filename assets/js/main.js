@@ -521,7 +521,7 @@
       var it = { sx: cx + X * scale * persp, sy: cy - Y * scale * persp, d: Z2, r: p.s * persp, c: col, k: p.kind, spr: p.spr, a: null, op: p.op, rgb: p.rgb };
       if (p.M) {
         // full 3D gaussian: project the covariance with the perspective jacobian (as in 3DGS)
-        var Mm = p.M, fz = scale * persp, dz = 2.6 + Z2, a2 = 0.3, b2 = 0, c2 = 0.3;
+        var Mm = p.M, fz = scale * persp, dz = 2.6 + Z2, a2 = 0.6, b2 = 0, c2 = 0.6;
         var Gm = groups[p.g], gc = Gm.c * Gm.s, gs = Gm.sn * Gm.s, gsz = Gm.s;
         for (var ci = 0; ci < 3; ci++) {
           var vx = Mm[ci], vy = Mm[3 + ci] * gsz, vz = Mm[6 + ci];
@@ -531,7 +531,9 @@
           a2 += ux * ux; b2 += ux * uy; c2 += uy * uy;
         }
         var l11 = Math.sqrt(a2), l21 = b2 / l11, l22 = Math.sqrt(Math.max(c2 - l21 * l21, 1e-4));
-        it.g = [3 * l11, 3 * l21, 3 * l22];
+        // a touch larger and more opaque than trained, so the surface closes up (no see-through pinholes)
+        it.g = [3.3 * l11, 3.3 * l21, 3.3 * l22];
+        it.op = 1 - Math.pow(1 - p.op, 1.6);
         if (shrink < 1 && p.ux !== undefined) {
           // while scattered each gaussian is a small round dot (sizes vary a little), it grows back into shape on the way home
           var r0 = 1.2 + 2.6 * ((p.uy * 7.31) % 1), w0 = shrink * shrink;
