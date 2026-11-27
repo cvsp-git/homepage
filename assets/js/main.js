@@ -598,8 +598,8 @@
       if (mascotMode) {
         assembleT += dt;
         groups.forEach(function (G) { if (!G) return; G.at += dt; if (G.bt >= 0) G.bt = Math.min(0.55, G.bt + dt); });
-        // the characters keep turning all the way round (360°)
-        if (!drag) yaw += 0.6 * dt;
+        // no auto-turn: the characters face front; after a drag they ease back to the front
+        if (!drag) { var yf = Math.round(yaw / 6.2832) * 6.2832; yaw += (yf - yaw) * Math.min(1, 2.5 * dt); }
       }
       else if (!drag) yaw += spin * dt;
       draw(simT);
