@@ -688,8 +688,3 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 .member-body [class*="_background"] { padding: 0; }
 /* every member page: the profile column (photo + e-mail box) is as wide as on the professor's page */
 @media (min-width: 760px) { .member-body > .board-cols:first-child { grid-template-columns: 0.3125fr 0.6875fr; } }
-/* hero: Sanjini & Friends start scattered over the blue band; this button gathers / scatters them */
-.hero-gather { position: absolute; right: max(16px, calc((100vw - var(--wrap)) / 2 + 16px)); z-index: 4; padding: 6px 14px; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; background: rgba(10,30,70,.45); color: #fff; font: 600 .8rem/1.2 var(--font-sans, inherit); letter-spacing: .02em; cursor: pointer; backdrop-filter: blur(4px); transition: background .2s, border-color .2s; }
-.hero-gather:hover { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.6); }
-.hero-gather:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-@media (max-width: 759px) { .hero-gather { right: 10px; padding: 4px 10px; font-size: .68rem; } }

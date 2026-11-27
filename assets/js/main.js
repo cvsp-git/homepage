@@ -376,10 +376,19 @@
   var freeSpot = function (e) { return !overlay || onMascot(e) || !(e.target.closest && e.target.closest(".hero-slides, a, button, p, h1")); };
   hit.addEventListener("pointerdown", function (e) { if (!freeSpot(e)) return; drag = { x: e.clientX, y: e.clientY, yaw: yaw, pitch: pitch, moved: false }; canvas.classList.add("dragging"); });
   window.addEventListener("pointerup", function (e) {
-    if (drag && !drag.moved) { var gi = mascotAt(e); if (gi >= 0) burst(gi); }
+    if (drag && !drag.moved) {
+      var gi = mascotAt(e);
+      if (gi >= 0) burst(gi);
+      else if (overlay && groups.some(function (H) { return H && H.sc; })) {
+        // a click on the scattered dots (the blue band above the photos) gathers Sanjini & Friends
+        var rr = canvas.getBoundingClientRect();
+        if (e.clientY - rr.top < bandBot + 12) gatherAll();
+      }
+    }
     drag = null; canvas.classList.remove("dragging");
   });
-  hit.addEventListener("pointermove", function (e) { if (!drag) hit.style.cursor = onMascot(e) ? "pointer" : ""; });
+  var onBand = function (e) { return overlay && groups.some(function (H) { return H && H.sc; }) && e.clientY - canvas.getBoundingClientRect().top < bandBot + 12; };
+  hit.addEventListener("pointermove", function (e) { if (!drag) hit.style.cursor = onMascot(e) || (onBand(e) && freeSpot(e)) ? "pointer" : ""; });
   window.addEventListener("pointermove", function (e) {
     if (!drag) return;
     if (Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) > 6) drag.moved = true;
@@ -581,10 +590,6 @@
   if (useMascot) startMascot();
   resize();
   if (useMascot && overlay) {
-    gatherBtn = document.createElement("button");
-    gatherBtn.type = "button"; gatherBtn.className = "hero-gather";
-    canvas.parentNode.appendChild(gatherBtn); resize();
-    gatherBtn.addEventListener("click", function (e) { e.stopPropagation(); gatherAll(); });
     if (!reduce) {
       // first view: everything already scattered (no burst animation on load)
       groups.forEach(function (G, gi) {
@@ -593,7 +598,6 @@
         toBand(gi); G.sc = true; G.bt = 0.55;
       });
     }
-    setGatherLabel();
   }
   window.addEventListener("resize", resize);
   if ("IntersectionObserver" in window) {
