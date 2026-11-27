@@ -255,7 +255,7 @@
     return m.n > 0;
   };
   var startMascot = function () {
-    mascotMode = true; assembleT = reduce ? 10 : 0; yaw = 0; pitch = 0.2;
+    mascotMode = true; assembleT = reduce ? 10 : 0; yaw = 0; pitch = 0;   // eye level: the characters look straight ahead
     groups.forEach(function (G) { if (G) { G.at = assembleT; G.bt = -1; G.sc = false; } });
   };
   var setCount = function () { if (countEl) countEl.textContent = pts.length.toLocaleString("en-US"); };
@@ -396,7 +396,7 @@
     if (!drag) return;
     if (Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) > 6) drag.moved = true;
     yaw = drag.yaw + (e.clientX - drag.x) * 0.006;
-    pitch = Math.max(0.1, Math.min(1.1, drag.pitch + (e.clientY - drag.y) * 0.004));
+    pitch = Math.max(mascotMode ? 0 : 0.1, Math.min(1.1, drag.pitch + (e.clientY - drag.y) * 0.004));
   });
 
   var buf = [];
