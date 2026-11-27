@@ -17,7 +17,7 @@ layout: default
     {% if page.image and page.image != "" and page.show_cover != false %}<figure class="board-cover"><img src="{% if page.image contains '://' %}{{ page.image }}{% else %}{{ '/images/gallery/' | append: page.image | relative_url }}{% endif %}" alt="{{ page.title }}"></figure>{% endif %}
     {% assign body = content | strip %}
     {% assign alt_title = page.title | escape %}{% assign alt_attr = 'alt="' | append: alt_title | append: '"' %}{% assign src_base = 'src="' | append: site.baseurl | append: '/' %}{% assign href_base = 'href="' | append: site.baseurl | append: '/' %}
-    {% if body != "" %}{{ content | replace: 'src="/', src_base | replace: 'href="/', href_base | replace: 'alt=""', alt_attr }}{% elsif page.image == "" %}<p class="board-empty">No details have been added for this post yet.</p>{% endif %}
+    {% if body != "" %}{{ content | replace: 'src="/', src_base | replace: 'href="/', href_base | replace: 'alt=""', alt_attr | replace: '<h1', '<h2 class="nh1"' | replace: '</h1>', '</h2>' }}{% elsif page.image == "" %}<p class="board-empty">No details have been added for this post yet.</p>{% endif %}
     <p class="board-back"><a class="text-link" href="{{ back | relative_url }}">← All {{ kind_label }}</a></p>
   </div>
 </section>

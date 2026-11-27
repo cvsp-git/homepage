@@ -4,6 +4,12 @@
 {%- comment -%} ── SEO: 제목 · 설명 · 대표 URL · 공유 미리보기 ── {%- endcomment -%}
 {%- if page.slug == 'index' -%}
   {%- assign seo_title = site.long_title | append: ' (CVSP) · ' | append: site.university -%}
+{%- elsif page.collection == "board" -%}
+  {%- comment -%} 같은 제목(Birthday Party 등)이 여러 개면 날짜를 붙여 구분하고, 긴 소식 제목이 잘리지 않게 학교 이름은 뺍니다 {%- endcomment -%}
+  {%- assign same_title = site.board | where: "title", page.title -%}
+  {%- assign seo_title = page.title -%}
+  {%- if same_title.size > 1 -%}{%- assign seo_date = page.date | date: '%Y.%m.%d' -%}{%- assign seo_title = seo_title | append: ' (' | append: seo_date | append: ')' -%}{%- endif -%}
+  {%- assign seo_title = seo_title | append: ' · ' | append: site.title -%}
 {%- elsif page.title -%}
   {%- assign seo_title = page.title | append: ' · ' | append: site.title | append: ' · ' | append: site.university -%}
 {%- else -%}

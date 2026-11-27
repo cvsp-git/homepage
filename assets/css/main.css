@@ -574,6 +574,7 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 .board-body img, .board-body video { max-width: 100%; height: auto; border-radius: 10px; display: block; }
 .board-body > p, .board-body li { line-height: 1.8; }
 .board-body h1, .board-body h2, .board-body h3 { margin-top: 12px; }
+.board-body h2.nh1 { font-size: 2em; } /* 노션 "#" 제목: 페이지 제목과 겹치지 않게 h2로 바꾸고 크기는 그대로 */
 .board-body blockquote { margin: 0; padding: 10px 16px; border-left: 3px solid var(--signal); background: var(--surface); border-radius: 0 10px 10px 0; }
 .board-body blockquote p { margin: 0; }
 .board-fig { margin: 0; display: grid; gap: 8px; justify-items: center; }
