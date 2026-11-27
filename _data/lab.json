@@ -29,10 +29,10 @@
    "image": "intel-d435i.jpg"
   },
   {
-   "name": "YOR",
+   "name": "OpenArm 2.0",
    "count": "1",
    "category": "Robot",
-   "image": "yor.jpg"
+   "image": "openarm-2-0.jpg"
   }
  ],
  "seminars": [
