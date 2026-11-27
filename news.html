@@ -2,6 +2,7 @@
 layout: default
 title: News
 slug: news
+description: "Latest news from the CVSP Lab at Pusan National University: paper acceptances, awards, and lab events."
 ---
 {% comment %} 소식 카드는 _board 폴더의 news-*.md 파일입니다. {% endcomment %}
 {% assign items = site.board | where: "kind", "news" | sort: "order" %}

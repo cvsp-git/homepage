@@ -101,6 +101,9 @@ bundle exec jekyll serve
    - 루트(`@`) 는 `A` 레코드로 `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
    을 추가합니다. 반영까지 최대 하루 걸릴 수 있고, 그 뒤 **Enforce HTTPS** 를 켜 주세요.
 3. 다음 관리자에게 넘길 때는 GitHub Organization 의 **People → Invite member** 로 초대하고 Owner 권한을 주면 됩니다.
+4. 검색엔진 등록(SEO): [Google Search Console](https://search.google.com/search-console)과 [네이버 서치어드바이저](https://searchadvisor.naver.com)에 `https://www.pnu-cvsp.com` 을 추가하고, 소유 확인 방법으로 **HTML 태그**를 고른 뒤 `content="..."` 안의 값만 `_config.yml` 의 `google_site_verification` / `naver_site_verification` 에 넣습니다. 확인이 끝나면 두 곳 모두 사이트맵 `https://www.pnu-cvsp.com/sitemap.xml` 을 제출하세요.
+   - 사이트맵·`robots.txt`·공유 미리보기(카카오톡/슬랙 썸네일)·구조화 데이터는 `_includes/head.html`, `_includes/seo-jsonld.html`, `sitemap.xml` 이 자동으로 만듭니다.
+   - 페이지 설명문은 각 페이지(`members.html` 등) 맨 위 `description:` 에서 고칩니다. 소식·갤러리 글은 본문 앞부분이 자동으로 쓰입니다.
 
 ## 6. 폴더 구조
 

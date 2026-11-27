@@ -1,0 +1,61 @@
+{%- comment -%}
+  검색엔진용 구조화 데이터(JSON-LD). head.html에서 불러옵니다.
+  메인: 연구실(ResearchOrganization) + 웹사이트 정보 / 소식·갤러리 글: Article
+{%- endcomment -%}
+{%- assign org_id = '/#organization' | absolute_url -%}
+{%- if page.slug == 'index' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ResearchOrganization",
+      "@id": {{ org_id | jsonify }},
+      "name": {{ site.long_title | jsonify }},
+      "alternateName": [{{ site.title | jsonify }}, "CVSP", {{ site.korean_title | jsonify }}, {{ site.university_ko | append: ' ' | append: site.korean_title | jsonify }}],
+      "url": {{ '/' | absolute_url | jsonify }},
+      "logo": {{ '/images/logo/cvsp-logo-dark.png' | absolute_url | jsonify }},
+      "image": {{ include.image | jsonify }},
+      "description": {{ include.desc | jsonify }},
+      "email": {{ site.email | prepend: 'mailto:' | jsonify }},
+      "telephone": {{ site.phone | jsonify }},
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2 Busandaehak-ro 63beon-gil, Geumjeong-gu",
+        "addressLocality": "Busan",
+        "postalCode": "46241",
+        "addressCountry": "KR"
+      },
+      "parentOrganization": {
+        "@type": "CollegeOrUniversity",
+        "name": {{ site.university | jsonify }},
+        "alternateName": {{ site.university_ko | jsonify }},
+        "url": "https://www.pusan.ac.kr"
+      },
+      "sameAs": [{{ site.github | jsonify }}, {{ site.project_pages | jsonify }}]
+    },
+    {
+      "@type": "WebSite",
+      "name": {{ site.title | append: ' · ' | append: site.university | jsonify }},
+      "url": {{ '/' | absolute_url | jsonify }},
+      "publisher": {"@id": {{ org_id | jsonify }}},
+      "inLanguage": ["en", "ko"]
+    }
+  ]
+}
+</script>
+{%- elsif page.collection == "board" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ include.desc | jsonify }},
+  "image": {{ include.image | jsonify }},
+  "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+  "mainEntityOfPage": {{ include.url | jsonify }},
+  "author": {"@type": "Organization", "name": {{ site.long_title | jsonify }}, "url": {{ '/' | absolute_url | jsonify }}},
+  "publisher": {"@type": "Organization", "name": {{ site.long_title | jsonify }}, "logo": {"@type": "ImageObject", "url": {{ '/images/logo/cvsp-logo-dark.png' | absolute_url | jsonify }}}}
+}
+</script>
+{%- endif %}

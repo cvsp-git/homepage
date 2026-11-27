@@ -21,6 +21,10 @@ recruiting: "Research Interns, M.S. Students, Ph.D. Students and Postdoctoral Re
 project_pages: https://paper.pnu-cvsp.com/
 github: https://github.com/cvsp-lab
 
+# 검색엔진 소유 확인 코드 (Google Search Console / 네이버 서치어드바이저에서 "HTML 태그" 방식으로 받은 content 값만 붙여 넣기)
+google_site_verification: ""
+naver_site_verification: ""
+
 # 도메인 연결 후에는 url을 실제 주소로 둡니다. baseurl은 비워 두세요.
 url: "https://www.pnu-cvsp.com"
 baseurl: ""  # www.pnu-cvsp.com 도메인에 연결됨 (CNAME 파일). github.io 주소로 되돌리려면 "/homepage"로 바꾸고 CNAME 파일을 지우세요

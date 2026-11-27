@@ -1,0 +1,17 @@
+---
+layout: null
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+{%- comment -%} 검색엔진 제출용 사이트맵. 페이지·소식·멤버 페이지가 자동으로 들어갑니다. 빼려면 해당 파일 앞부분에 sitemap: false {%- endcomment %}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for p in site.html_pages %}{% if p.sitemap != false and p.noindex != true %}
+  <url><loc>{{ p.url | replace: 'index.html', '' | replace: '.html', '' | absolute_url }}</loc></url>
+{%- endif %}{% endfor %}
+{%- for p in site.board %}{% if p.sitemap != false %}
+  <url><loc>{{ p.url | absolute_url }}</loc><lastmod>{{ p.date | date: '%Y-%m-%d' }}</lastmod></url>
+{%- endif %}{% endfor %}
+{%- for p in site.members %}{% if p.sitemap != false %}
+  <url><loc>{{ p.url | absolute_url }}</loc></url>
+{%- endif %}{% endfor %}
+</urlset>

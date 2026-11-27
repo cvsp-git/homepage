@@ -1,12 +1,43 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }} · {{ site.university }}</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="{{ page.description | default: site.description | strip_newlines }}">
-<meta property="og:title" content="{% if page.title %}{{ page.title }} · {% endif %}{{ site.long_title }}">
-<meta property="og:description" content="{{ site.description | strip_newlines }}">
-<meta property="og:type" content="website">
+{%- comment -%} ── SEO: 제목 · 설명 · 대표 URL · 공유 미리보기 ── {%- endcomment -%}
+{%- if page.slug == 'index' -%}
+  {%- assign seo_title = site.long_title | append: ' (CVSP) · ' | append: site.university -%}
+{%- elsif page.title -%}
+  {%- assign seo_title = page.title | append: ' · ' | append: site.title | append: ' · ' | append: site.university -%}
+{%- else -%}
+  {%- assign seo_title = site.title | append: ' · ' | append: site.university -%}
+{%- endif -%}
+{%- assign seo_desc = page.description -%}
+{%- if seo_desc == nil or seo_desc == "" -%}{%- if page.collection == "board" -%}{%- assign seo_desc = page.content | replace: '<', ' <' | strip_html | normalize_whitespace | strip -%}{%- if seo_desc.size < 50 -%}{%- assign seo_desc = page.title | append: ' — ' | append: seo_desc | append: ' (CVSP Lab, ' | append: site.university | append: ')' | replace: ' —  (', ' (' -%}{%- endif -%}{%- assign seo_desc = seo_desc | truncate: 155 -%}{%- endif -%}{%- endif -%}
+{%- if seo_desc == nil or seo_desc == "" -%}{%- if page.collection == "members" -%}{%- assign seo_desc = page.title | append: ' — ' | append: page.status | append: ' at the ' | append: site.long_title | append: ' (CVSP), ' | append: site.university | append: '.' -%}{%- endif -%}{%- endif -%}
+{%- if seo_desc == nil or seo_desc == "" -%}{%- assign seo_desc = site.description -%}{%- endif -%}
+{%- assign seo_desc = seo_desc | strip_newlines | normalize_whitespace | strip -%}
+{%- assign seo_path = page.url | replace: 'index.html', '' | replace: '.html', '' -%}
+{%- assign seo_url = seo_path | absolute_url -%}
+{%- assign seo_image = '/images/logo/og-default.png' | absolute_url -%}
+{%- if page.collection == "board" and page.image and page.image != "" -%}
+  {%- if page.image contains '://' -%}{%- assign seo_image = page.image -%}{%- else -%}{%- assign seo_image = '/images/gallery/' | append: page.image | absolute_url -%}{%- endif -%}
+{%- endif %}
+<title>{{ seo_title }}</title>
+<meta name="description" content="{{ seo_desc | escape }}">
+<link rel="canonical" href="{{ seo_url }}">
+{% if page.noindex %}<meta name="robots" content="noindex">
+{% endif %}{% if site.google_site_verification and site.google_site_verification != "" %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">
+{% endif %}{% if site.naver_site_verification and site.naver_site_verification != "" %}<meta name="naver-site-verification" content="{{ site.naver_site_verification }}">
+{% endif %}<meta property="og:site_name" content="{{ site.title }} · {{ site.university }}">
+<meta property="og:title" content="{{ seo_title | escape }}">
+<meta property="og:description" content="{{ seo_desc | escape }}">
+<meta property="og:url" content="{{ seo_url }}">
+<meta property="og:image" content="{{ seo_image }}">
+<meta property="og:locale" content="{% if page.lang == 'ko' %}ko_KR{% else %}en_US{% endif %}">
+{% if page.collection == "board" %}<meta property="og:type" content="article">
+<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+{% else %}<meta property="og:type" content="website">
+{% endif %}<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#ffffff">
+{% include seo-jsonld.html title=seo_title desc=seo_desc url=seo_url image=seo_image %}
 <link rel="icon" href="{{ '/images/logo/favicon.png' | relative_url }}" type="image/png">
 <link rel="apple-touch-icon" href="{{ '/images/logo/apple-touch-icon.png' | relative_url }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
