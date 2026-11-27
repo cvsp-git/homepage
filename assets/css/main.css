@@ -19,7 +19,7 @@
   --signal: #5f9a00;       /* bright accent (text-safe on light) */
   --gold: #b7791f;         /* awards */
   --gold-soft: #fbf1df;
-  --hero-bg: #111111;      /* hero + join band: black in both themes (NVIDIA style) */
+  --hero-bg: #24281f;      /* hero + join band: black in both themes (NVIDIA style) */
   --hero-ink: #f4f4f4;
   --hero-muted: #bdbdbd;
   --hero-signal: #76b900;
@@ -151,7 +151,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ---------- hero ---------- */
 .hero {
   position: relative; overflow: hidden; isolation: isolate;
-  background: radial-gradient(120% 80% at 80% 30%, #2b3a12 0%, var(--hero-bg) 62%);
+  background: radial-gradient(120% 80% at 80% 30%, #3f5719 0%, var(--hero-bg) 62%);
   color: var(--hero-ink);
 }
 .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; cursor: grab; touch-action: pan-y; }
