@@ -29,12 +29,12 @@ description: "Computer Vision & Signal Processing Lab (CVSP) at Pusan National U
   <div class="wrap wide">
     <header class="feed-head news-head">
       <h2 id="news-title">Latest News</h2>
-      <span class="news-nav"><button type="button" class="news-arrow" data-news-prev aria-label="Previous news">‹</button><button type="button" class="news-arrow" data-news-next aria-label="Next news">›</button></span>
+      <span class="news-nav"><a class="news-all" href="{{ '/news' | relative_url }}">View all news →</a><button type="button" class="news-arrow" data-news-prev aria-label="Previous news">‹</button><button type="button" class="news-arrow" data-news-next aria-label="Next news">›</button></span>
     </header>
-    <div class="news-strip feed-news" data-news-strip data-step="4">
-      {% for b in news %}{% if forloop.index > 4 %}{% include board-card.html b=b more=true %}{% else %}{% include board-card.html b=b %}{% endif %}{% endfor %}
+    <div class="news-strip feed-news" data-news-strip>
+      {% for b in news limit: 12 %}{% include board-card.html b=b %}{% endfor %}
     </div>
-    <div class="feed-more-row"><button type="button" class="feed-more" data-news-more>Load more</button></div>
+    <p class="news-dots" data-news-dots aria-hidden="true"></p>
   </div>
 </section>
 

@@ -698,10 +698,16 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 .board-body a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
 .board-body a:hover { color: var(--signal); text-decoration-color: currentColor; }
 
-/* home: Latest News as one row under the hero, read left to right; Load more adds 4 cards and slides to them */
+/* home: Latest News slider under the hero (newest 12, 4 at a time); ‹ › slide a page, View all opens /news */
 .home-news { padding-bottom: 0; }
 .news-head { align-items: center; margin-bottom: 18px; }
-.news-nav { display: flex; gap: 8px; }
+.news-nav { display: flex; gap: 8px; align-items: center; }
+.news-all { margin-right: 10px; font: 600 .88rem var(--f-body); color: var(--pnu); text-decoration: none; }
+.news-all:hover { color: var(--signal); }
+.news-dots { display: flex; justify-content: center; gap: 6px; margin: 14px 0 0; }
+.news-dots span { width: 8px; height: 8px; border-radius: 99px; background: var(--line); transition: width .2s, background .2s; }
+.news-dots span.is-on { width: 22px; background: var(--pnu); }
+.news-strip { overflow-x: hidden !important; }
 .news-arrow { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); font: 400 1.4rem/1 var(--f-body); cursor: pointer; }
 .news-arrow:hover:not(:disabled) { border-color: var(--signal); color: var(--pnu); }
 .news-arrow:disabled { opacity: .35; cursor: default; }

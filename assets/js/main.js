@@ -769,28 +769,25 @@
   if (location.hash) window.addEventListener("load", function () { go(location.hash.slice(1), false); });
 })();
 
-/* home Latest News strip: arrows slide one card; Load more shows the next 4 and slides to them */
+/* home Latest News slider: 4 cards at a time (3 / 1.4 on smaller screens); ‹ › slide one page, dots show the page */
 (function () {
   var strip = document.querySelector("[data-news-strip]");
   if (!strip) return;
-  var more = document.querySelector("[data-news-more]"), prev = document.querySelector("[data-news-prev]"), next = document.querySelector("[data-news-next]");
-  var step = parseInt(strip.getAttribute("data-step"), 10) || 4;
-  var cardW = function () { var c = strip.querySelector(".bcard:not([hidden])"); return c ? c.getBoundingClientRect().width + 16 : 300; };
-  var upd = function () {
-    var max = strip.scrollWidth - strip.clientWidth - 2;
-    if (prev) prev.disabled = strip.scrollLeft <= 2;
-    if (next) next.disabled = strip.scrollLeft >= max;
-    if (more) more.hidden = !strip.querySelector(".bcard.is-more[hidden]");
+  var prev = document.querySelector("[data-news-prev]"), next = document.querySelector("[data-news-next]"), dots = document.querySelector("[data-news-dots]");
+  var cards = strip.querySelectorAll(".bcard"), page = 0;
+  var per = function () { var c = cards[0]; return c ? Math.max(1, Math.round(strip.clientWidth / (c.getBoundingClientRect().width + 16))) : 4; };
+  var pages = function () { return Math.max(1, Math.ceil(cards.length / per())); };
+  var go = function (k) {
+    var n = pages(); page = (k + n) % n;            // wraps around like the hero photos
+    var c = cards[Math.min(cards.length - 1, page * per())];
+    strip.scrollTo({ left: c ? c.offsetLeft - strip.offsetLeft - 2 : 0, behavior: "smooth" });
+    if (dots) { dots.innerHTML = ""; for (var i = 0; i < n; i++) { var d = document.createElement("span"); if (i === page) d.className = "is-on"; dots.appendChild(d); } }
   };
-  if (prev) prev.addEventListener("click", function () { strip.scrollBy({ left: -cardW(), behavior: "smooth" }); });
-  if (next) next.addEventListener("click", function () { strip.scrollBy({ left: cardW(), behavior: "smooth" }); });
-  if (more) more.addEventListener("click", function () {
-    var rest = strip.querySelectorAll(".bcard.is-more[hidden]"), first = rest[0];
-    for (var i = 0; i < rest.length && i < step; i++) rest[i].hidden = false;
-    if (first) strip.scrollTo({ left: first.offsetLeft - strip.offsetLeft - 2, behavior: "smooth" });
-    upd();
-  });
-  strip.addEventListener("scroll", upd, { passive: true });
-  window.addEventListener("resize", upd);
-  upd();
+  if (prev) prev.addEventListener("click", function () { go(page - 1); });
+  if (next) next.addEventListener("click", function () { go(page + 1); });
+  var sx = null;
+  strip.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; }, { passive: true });
+  strip.addEventListener("touchend", function (e) { if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) go(page + (dx < 0 ? 1 : -1)); sx = null; });
+  window.addEventListener("resize", function () { go(Math.min(page, pages() - 1)); });
+  go(0);
 })();
