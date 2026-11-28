@@ -63,6 +63,13 @@ else:
     face = mask & inner & far & ((lum0 > 185) | (lum0 < 75)
                                  | ((r_ > 200) & (g_ < 190) & (b_ > 140))   # pink cheeks
                                  | ((r_ > 150) & (g_ < 110) & (b_ < 110)))  # red (glasses)
+    # also any other blob that differs from the body and sits fully inside it (beak, cheeks): it is on the front only.
+    # blobs that reach the outline (arms, tail, ears) keep their colour on the back
+    lab, nl = ndimage.label(mask & (np.linalg.norm(rgb - body, axis=-1) > 30))
+    if nl:
+        touch = np.unique(lab[(lab > 0) & (dist <= 2.5)])
+        enclosed = np.isin(lab, [i for i in range(1, nl + 1) if i not in set(touch.tolist())])
+        face |= enclosed & mask
     face = ndimage.binary_dilation(face, iterations=3) & mask
     # fill the face with the nearest colour around it, so the back has no patches
     idx = ndimage.distance_transform_edt(face, return_distances=False, return_indices=True)
@@ -101,6 +108,11 @@ for y in range(H):
             add(X, Y, Z, rgb[y, x], shade[y, x])
         if grid or near_edge:  # back side
             add(X, Y, -Z, bc, 0.7 * shade[y, x])
+        if grid and zpx[y, x] > 3:
+            # opaque inner layers just under each surface, so the face never shows through the back (and the back
+            # never through the face) when the gaussians are a little sparse
+            add(X, Y, 0.55 * Z, rgb[y, x], shade[y, x])
+            add(X, Y, -0.55 * Z, bc, 0.7 * shade[y, x])
         if dist[y, x] < 1.5:  # side wall along the outline, about one pixel apart in depth
             zw = max(zwall[y, x], zpx[y, x])
             k = max(2, int(np.ceil(2 * zw / 1.2)))
