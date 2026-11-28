@@ -716,9 +716,9 @@ ol.values { list-style: none; padding: 0; margin: 0; counter-reset: v; }
 .news-strip .bcard { scroll-snap-align: start; }
 @media (max-width: 1100px) { .news-strip { grid-auto-columns: calc((100% - 2 * var(--gap)) / 3); } }
 @media (max-width: 760px) { .news-strip { --gap: 12px; grid-auto-columns: 72%; } }
-/* home bottom: Gallery and LAB Life side by side, 3 columns each */
+/* home bottom: Gallery and LAB Life side by side, 2 columns each: 4 cards first, Load more adds 4 */
 .feed-grid { grid-template-columns: 1fr 1fr; }
-@media (min-width: 761px) { .feed-grid .bcard-img { height: calc((100cqw - var(--fg) - 4 * var(--fc)) / 6 * 0.75); } }
+@media (min-width: 761px) { .feed-grid .bcard-img { height: calc((100cqw - var(--fg) - 2 * var(--fc)) / 4 * 0.75); } }
 @media (max-width: 760px) { .feed-grid { grid-template-columns: minmax(0, 1fr); } }
 
 /* /news: every news item as the same card as on the home page, 4 per row, grouped by year */
