@@ -2,14 +2,14 @@
 layout: default
 title: Resources
 slug: resources
-description: "Research infrastructure (50+ GPUs, robot arms, depth sensors), seminars, and courses of the CVSP Lab at Pusan National University."
+description: "Research infrastructure (50+ GPUs, robot arms, depth sensors) and seminars of the CVSP Lab at Pusan National University."
 ---
 {% assign lab = site.data.lab %}
 <section class="page-head">
   <div class="wrap">
     <p class="eyebrow">Resources</p>
-    <h1>Infrastructure, seminars &amp; courses</h1>
-    <nav class="year-jump mono" aria-label="Sections"><a href="#infrastructure">Infrastructure</a><a href="#seminar">Seminar</a><a href="#course">Course</a></nav>
+    <h1>Infrastructure &amp; seminars</h1>
+    <nav class="year-jump mono" aria-label="Sections"><a href="#infrastructure">Infrastructure</a><a href="#seminar">Seminar</a></nav>
   </div>
 </section>
 
@@ -40,19 +40,5 @@ description: "Research infrastructure (50+ GPUs, robot arms, depth sensors), sem
       <li><a href="{% if s.link contains '://' %}{{ s.link }}{% else %}{{ s.link | relative_url }}{% endif %}"><span>{{ s.title }}</span><time class="mono">{{ s.date }}</time></a></li>
       {% endfor %}
     </ul>
-  </div>
-</section>
-
-<section class="section" id="course">
-  <div class="wrap narrow">
-    <header class="group-head"><h2>Courses taught</h2></header>
-    <div class="course-list">
-      {% for t in lab.courses %}
-      <div class="course-term">
-        <h3 class="mono">{{ t.term }}</h3>
-        <ul>{% for c in t.list %}{% assign code = c | split: ' ' | first %}<li><span class="mono code">{{ code }}</span>{{ c | remove_first: code | strip }}</li>{% endfor %}</ul>
-      </div>
-      {% endfor %}
-    </div>
   </div>
 </section>

@@ -1,0 +1,26 @@
+---
+layout: default
+title: Course
+slug: course
+description: "Courses taught by Prof. Kyeongbo Kong and the CVSP Lab at Pusan National University."
+---
+{% assign lab = site.data.lab %}
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Course</p>
+    <h1>Courses taught</h1>
+  </div>
+</section>
+
+<section class="section" id="course">
+  <div class="wrap narrow">
+    <div class="course-list">
+      {% for t in lab.courses %}
+      <div class="course-term">
+        <h3 class="mono">{{ t.term }}</h3>
+        <ul>{% for c in t.list %}{% assign code = c | split: ' ' | first %}<li><span class="mono code">{{ code }}</span>{{ c | remove_first: code | strip }}</li>{% endfor %}</ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
