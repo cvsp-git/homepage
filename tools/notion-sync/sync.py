@@ -683,6 +683,10 @@ def sync_contact():
             continue
         if part and t in ("bulleted_list", "numbered_list"):
             track.setdefault(part, []).append(x)
+    # the Contact page is shown in English: Korean sentences are swapped for their entry in translations.json
+    tr = json.load(open(os.path.join(ROOT, "tools/notion-sync/translations.json")))
+    en = lambda v: [en(x) for x in v] if isinstance(v, list) else (tr.get(v.strip(), v) if isinstance(v, str) else v)
+    j = {k: ([dict((kk, en(vv)) for kk, vv in x.items()) for x in v] if k == "tracks" else en(v)) for k, v in j.items()}
     if j["tracks"]:
         write_json(os.path.join(ROOT, "_data/join.json"), j)
     log("contact: %d notices, %d principles, %d tracks" % (len(j["notice"]), len(j["principles"]), len(j["tracks"])))
