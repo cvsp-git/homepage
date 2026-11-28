@@ -320,6 +320,33 @@ GROUPS = [("Professor", "Professor"), ("Postdoctoral researcher", "Postdoctoral 
 HIDDEN_STATUS = {"", "n/a", "alumni_old"}   # statuses that are not shown on the Members page
 
 
+def page_photo_card(url):
+    """The profile photo on a member's own page (first image in its first callout), cut to the 4:5 card
+    frame and saved as images/members/notion/<slug>-card.jpg. Returns the file name, or None."""
+    m = re.fullmatch(r"/members/([^/]+)/", url or "")
+    if not m: return None
+    slug = m.group(1)
+    try: html = open(os.path.join(ROOT, "_members", slug + ".html"), encoding="utf-8").read()
+    except OSError: return None
+    c = re.search(r'<div class="callout">(.*?)</div>', html, re.S)
+    img = c and re.search(r'<img src="/images/members/pages/([^"]+)"', c.group(1))
+    if not img: return None
+    src = os.path.join(ROOT, "images/members/pages", img.group(1))
+    name = slug + "-card.jpg"; dst = os.path.join(ROOT, "images/members/notion", name)
+    if not os.path.exists(src): return name if os.path.exists(dst) else None
+    if os.path.exists(dst) and os.path.getmtime(dst) >= os.path.getmtime(src): return name
+    from PIL import Image, ImageOps
+    im = ImageOps.exif_transpose(Image.open(src)).convert("RGB")
+    w, h = im.size
+    if w / h > 0.8:                     # wider than 4:5: keep the middle
+        cw = round(h * 0.8); box = ((w - cw) // 2, 0, (w - cw) // 2 + cw, h)
+    else:                               # taller: keep the top part (faces sit high in portraits)
+        ch = round(w / 0.8); top = round((h - ch) * 0.2); box = (0, top, w, top + ch)
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    im.crop(box).resize((480, 600), Image.LANCZOS).save(dst, quality=86, optimize=True, progressive=True)
+    return name
+
+
 def sync_member_list(rows, rm, get):
     """Members page: who is in which group comes from Notion; extra details from _data/member_extras.yml."""
     import yaml
@@ -347,6 +374,9 @@ def sync_member_list(rows, rm, get):
         if b["id"] in MEMBER_URLS: person["page"] = MEMBER_URLS[b["id"]]
         hp = plain(get(b, "Homepage"))
         if hp.startswith("http") and "homepage" not in person: person["homepage"] = hp
+        card = page_photo_card(person.get("page"))
+        if card:
+            person["photo"] = "notion/" + card; keep_photos.add(card)   # the card shows the photo on their own Notion page
         if not person.get("photo"):
             att = [a[1] for seg in (get(b, "Profile image") or []) for a in (seg[1] if len(seg) > 1 else []) if a[0] == "a"]
             if att:

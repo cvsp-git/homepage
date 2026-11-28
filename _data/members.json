@@ -6,7 +6,7 @@
     "name": "Kyeongbo Kong",
     "name_ko": "공경보",
     "role": "Principal Investigator",
-    "photo": "kyeongbo-kong.jpg",
+    "photo": "notion/kyeongbo-kong-card.jpg",
     "email": "kbkong@pusan.ac.kr",
     "page": "/members/kyeongbo-kong/",
     "homepage": "https://sites.google.com/view/kyeongbokong/"
@@ -19,7 +19,7 @@
    {
     "name": "Sunchan Park",
     "name_ko": "박순찬",
-    "photo": "sunchan-park.jpg",
+    "photo": "notion/parksunchan-card.jpg",
     "interests": [
      "Multimodal AI",
      "Audio-Visual Perception"
@@ -34,13 +34,13 @@
    {
     "name": "Seong-Hun Jeong",
     "name_ko": "정성훈",
-    "photo": "seong-hun-jeong.jpg",
+    "photo": "notion/shj-card.jpg",
     "page": "/members/shj/"
    },
    {
     "name": "JiAn Yang",
     "name_ko": "양지안",
-    "photo": "jian-yang.jpg",
+    "photo": "notion/jay-card.jpg",
     "page": "/members/jay/"
    }
   ]
@@ -51,7 +51,7 @@
    {
     "name": "In-Hwan Jin",
     "name_ko": "진인환",
-    "photo": "in-hwan-jin.jpg",
+    "photo": "notion/inhwan-card.jpg",
     "honors": [
      "Visiting Researcher, University of Toronto"
     ],
@@ -60,13 +60,13 @@
    {
     "name": "Taehoon Kim",
     "name_ko": "김태훈",
-    "photo": "taehoon-kim.jpg",
+    "photo": "notion/taehoon-card.jpg",
     "page": "/members/taehoon/"
    },
    {
     "name": "Changwoo Baek",
     "name_ko": "백창우",
-    "photo": "changwoo-baek.jpg",
+    "photo": "notion/changwoo-card.jpg",
     "honors": [
      "NRF Master's Research Grant",
      "LG Electronics Industry–Academia Scholarship"
@@ -76,13 +76,13 @@
    {
     "name": "MinSoo Woo",
     "name_ko": "우민수",
-    "photo": "minsoo-woo.jpg",
+    "photo": "notion/minsoo-card.jpg",
     "page": "/members/minsoo/"
    },
    {
     "name": "Sohyeon Kim",
     "name_ko": "김소현",
-    "photo": "sohyeon-kim.jpg",
+    "photo": "notion/sohyeon-card.jpg",
     "honors": [
      "NRF Master's Research Grant"
     ],
@@ -91,37 +91,37 @@
    {
     "name": "Sohyeong Kim",
     "name_ko": "김소형",
-    "photo": "sohyeong-kim.jpg",
+    "photo": "notion/sohyeong-card.jpg",
     "page": "/members/sohyeong/"
    },
    {
     "name": "Jihoon Choi",
     "name_ko": "최지훈",
-    "photo": "jihoon-choi.jpg",
+    "photo": "notion/jihoon-card.jpg",
     "page": "/members/jihoon/"
    },
    {
     "name": "Beomkwon Cho",
     "name_ko": "조범권",
-    "photo": "beomkwon-cho.jpg",
+    "photo": "notion/beomgwon-card.jpg",
     "page": "/members/beomgwon/"
    },
    {
     "name": "Woohyeong Kim",
     "name_ko": "김우형",
-    "photo": "woohyeong-kim.jpg",
+    "photo": "notion/woohyeong-card.jpg",
     "page": "/members/woohyeong/"
    },
    {
     "name": "Junsu Kim",
     "name_ko": "김준수",
-    "photo": "junsu-kim.jpg",
+    "photo": "notion/junsu-card.jpg",
     "page": "/members/junsu/"
    },
    {
     "name": "Sang Yeon Yoon",
     "name_ko": "윤상연",
-    "photo": "sang-yeon-yoon.jpg",
+    "photo": "notion/sang-yeon-card.jpg",
     "page": "/members/sang-yeon/"
    }
   ]
@@ -132,7 +132,7 @@
    {
     "name": "Daun Jeong",
     "name_ko": "정다운",
-    "photo": "daun-jeong.jpg",
+    "photo": "notion/daun-card.jpg",
     "page": "/members/daun/"
    }
   ]
@@ -143,7 +143,7 @@
    {
     "name": "JongWon Choi",
     "name_ko": "최종원",
-    "photo": "jongwon-choi.jpg",
+    "photo": "notion/jongwon-choi-card.jpg",
     "page": "/members/jongwon-choi/"
    }
   ]
@@ -154,7 +154,7 @@
    {
     "name": "HyeongJu Mun",
     "name_ko": "문형주",
-    "photo": "hyeongju-mun.jpg",
+    "photo": "notion/hyeong-ju-card.jpg",
     "honors": [
      "NRF Master's Research Grant"
     ],
@@ -163,7 +163,7 @@
    {
     "name": "Haesoo Choo",
     "name_ko": "추해수",
-    "photo": "haesoo-choo.jpg",
+    "photo": "notion/haesoo-choo-card.jpg",
     "note": "NAVER WEBTOON",
     "page": "/members/haesoo-choo/"
    }
