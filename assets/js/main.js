@@ -768,3 +768,29 @@
   });
   if (location.hash) window.addEventListener("load", function () { go(location.hash.slice(1), false); });
 })();
+
+/* home Latest News strip: arrows slide one card; Load more shows the next 4 and slides to them */
+(function () {
+  var strip = document.querySelector("[data-news-strip]");
+  if (!strip) return;
+  var more = document.querySelector("[data-news-more]"), prev = document.querySelector("[data-news-prev]"), next = document.querySelector("[data-news-next]");
+  var step = parseInt(strip.getAttribute("data-step"), 10) || 4;
+  var cardW = function () { var c = strip.querySelector(".bcard:not([hidden])"); return c ? c.getBoundingClientRect().width + 16 : 300; };
+  var upd = function () {
+    var max = strip.scrollWidth - strip.clientWidth - 2;
+    if (prev) prev.disabled = strip.scrollLeft <= 2;
+    if (next) next.disabled = strip.scrollLeft >= max;
+    if (more) more.hidden = !strip.querySelector(".bcard.is-more[hidden]");
+  };
+  if (prev) prev.addEventListener("click", function () { strip.scrollBy({ left: -cardW(), behavior: "smooth" }); });
+  if (next) next.addEventListener("click", function () { strip.scrollBy({ left: cardW(), behavior: "smooth" }); });
+  if (more) more.addEventListener("click", function () {
+    var rest = strip.querySelectorAll(".bcard.is-more[hidden]"), first = rest[0];
+    for (var i = 0; i < rest.length && i < step; i++) rest[i].hidden = false;
+    if (first) strip.scrollTo({ left: first.offsetLeft - strip.offsetLeft - 2, behavior: "smooth" });
+    upd();
+  });
+  strip.addEventListener("scroll", upd, { passive: true });
+  window.addEventListener("resize", upd);
+  upd();
+})();

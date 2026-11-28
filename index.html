@@ -24,6 +24,20 @@ description: "Computer Vision & Signal Processing Lab (CVSP) at Pusan National U
   </div>
 </section>
 
+<section class="section home-news" aria-labelledby="news-title">
+  {% assign news = site.board | where: "kind", "news" | sort: "order" %}
+  <div class="wrap wide">
+    <header class="feed-head news-head">
+      <h2 id="news-title">Latest News</h2>
+      <span class="news-nav"><button type="button" class="news-arrow" data-news-prev aria-label="Previous news">‹</button><button type="button" class="news-arrow" data-news-next aria-label="Next news">›</button></span>
+    </header>
+    <div class="news-strip feed-news" data-news-strip data-step="4">
+      {% for b in news %}{% if forloop.index > 4 %}{% include board-card.html b=b more=true %}{% else %}{% include board-card.html b=b %}{% endif %}{% endfor %}
+    </div>
+    <div class="feed-more-row"><button type="button" class="feed-more" data-news-more>Load more</button></div>
+  </div>
+</section>
+
 <section class="section" id="research" aria-labelledby="research-title">
   <div class="wrap research-split">
     <div class="research-main">
@@ -81,11 +95,10 @@ description: "Computer Vision & Signal Processing Lab (CVSP) at Pusan National U
 </section>
 {% endif %}
 
-<section class="section home-feed" aria-label="Latest news, gallery and lab life">
+<section class="section home-feed" aria-label="Gallery and lab life">
   <div class="wrap wide feed-grid">
-    {% include board-feed.html kind="news" cols=3 title="Latest News" all="/news" %}
-    {% include board-feed.html kind="gallery" cols=2 title="Gallery" all="/gallery#gallery" %}
-    {% include board-feed.html kind="life" cols=1 title="LAB Life" all="/gallery#life" %}
+    {% include board-feed.html kind="gallery" cols=3 title="Gallery" all="/gallery#gallery" %}
+    {% include board-feed.html kind="life" cols=3 title="LAB Life" all="/gallery#life" %}
   </div>
   <div class="wrap wide feed-more-row"><button type="button" class="feed-more" data-feed-more-all>Load more</button></div>
 </section>
